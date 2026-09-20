@@ -1,0 +1,16 @@
+title: 数学物理连载 · 重写课程
+description: 从复数到 Galois —— 竞赛生拔尖者的现代数学进阶
+theme: jekyll-theme-cayman
+
+# 这两行是数学渲染的关键，别动：
+# 1. markdown 必须是 kramdown（GitHub Pages 不接受 GFM 作为主引擎，会静默回落）
+# 2. math_engine 必须是 mathjax（若为 nil，公式会被包进 <pre>，MathJax 直接跳过）
+markdown: kramdown
+kramdown:
+  input: GFM
+  math_engine: mathjax
+
+# 站点源是 docs/；工作文件（_BRIEF.md / _check*.py / _experts/ / _navnames.md）
+# 都在仓库根目录，天然不进站点。
+exclude:
+  - "*.py"
