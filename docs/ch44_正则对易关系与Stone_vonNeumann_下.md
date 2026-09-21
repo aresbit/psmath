@@ -12,7 +12,7 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
-本章只做一件事：把 $$[X,P]=i\hbar$$ 这一条关系**当成全部**，追问它究竟决定了什么。三个结论依次出现：这个关系不可能被一对有界算子承载（第 42 章的无界世界是它的天然居所）；指数化之后它只涉及酉算子，成为 Weyl 关系，而 Weyl 关系正是Heisenberg群——一个 Lie 群——的群律；满足 Weyl 关系的不可约实现，在酉等价意义下只有一种，就是 $$L^2(\mathbb R)$$ 上"乘以 $$x$$"与"$$-i\hbar$$ 求导"这一对，这就是 Stone–von Neumann 定理。
+读完第43章的具体例子后——有限维里 $$AB-BA=I$$ 为什么不可能、对易子怎么从两个多项式手算出来、Weyl 相位怎么从一次具体的 $$s=1,t=2$$ 计算里冒出来、升降算子的对易关系怎么展开、以及一个 $$2\times2$$ 矩阵版本的"唯一性"——这里把同样的构造写成一般定义并给出完整证明。本章只做一件事：把 $$[X,P]=i\hbar$$ 这一条关系**当成全部**，追问它究竟决定了什么。三个结论依次出现：这个关系不可能被一对有界算子承载（第 42 章的无界世界是它的天然居所）；指数化之后它只涉及酉算子，成为 Weyl 关系，而 Weyl 关系正是Heisenberg群——一个 Lie 群——的群律；满足 Weyl 关系的不可约实现，在酉等价意义下只有一种，就是 $$L^2(\mathbb R)$$ 上"乘以 $$x$$"与"$$-i\hbar$$ 求导"这一对，这就是 Stone–von Neumann 定理。
 
 逻辑上本章是卷三的收官：第 32 章的对易子、第 34 章的谐振子升降算子、第 42 章的 Stone 定理，在这里合流成一句话——**对易关系是一个 Lie 代数，指数化后是它的 Lie 群，而唯一性是表示论的第一条定理**。这条线在卷四会以完全一般的 Lie 群表示论（第 54 章）与射影表示（第 60 章）形式回来。
 
@@ -46,13 +46,23 @@ $$[A,B]:=AB-BA .$$
 
 (i)(ii)(iii) 恰好就是第 54 章将要定义的 **Lie 代数 (Lie algebra)** 的三条公理：对易子就是算子代数上的 Lie 括号。这是本章把"对易关系"抽象成"Lie 代数"的全部理由。
 
-三条的验证都是直接展开。以 (iii) 为例：把六个乘积项 $$ABC-ACB-BCA+CBA+CAB-CBA-\cdots$$ 完全展开，每一个形如 $$AXY$$ 的项都在 $$[A,[B,C]]$$ 与 $$[B,[C,A]]$$ 里各出现一次而符号相反，故总和为零。∎
+三条的验证都是直接展开。(i)(ii) 只需把 $$[\cdot,\cdot]$$ 按定义代回 $$AB-BA$$，是纯代数恒等式，这里从略。以 (iii) 为例，把三个对易子逐一展开：
+$$[A,[B,C]]=A(BC-CB)-(BC-CB)A=ABC-ACB-BCA+CBA,$$
+$$[B,[C,A]]=B(CA-AC)-(CA-AC)B=BCA-BAC-CAB+ACB,$$
+$$[C,[A,B]]=C(AB-BA)-(AB-BA)C=CAB-CBA-ABC+BAC.$$
+三式相加：
+$$[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=(ABC-ABC)+(-ACB+ACB)+(-BCA+BCA)+(CBA-CBA)+(-BAC+BAC)+(-CAB+CAB)=0,$$
+逐项配对可以看到：第一式的 $$+ABC$$ 与第三式的 $$-ABC$$ 抵消，第一式的 $$-ACB$$ 与第二式的 $$+ACB$$ 抵消，第一式的 $$-BCA$$ 与第二式的 $$+BCA$$ 抵消，第一式的 $$+CBA$$ 与第三式的 $$-CBA$$ 抵消，第二式的 $$-BAC$$ 与第三式的 $$+BAC$$ 抵消，第二式的 $$-CAB$$ 与第三式的 $$+CAB$$ 抵消——六个形如 $$AXY$$（三个字母按某个顺序排列）的单项式各出现两次、符号相反，故总和恒为零，这与 $$A,B,C$$ 是否对易无关，纯粹是把括号展开后重新配对的结果。∎
+
+有了对易子这个记号，"位置与动量不对易"这句物理直觉就可以写成一个精确的等式；但 $$X,P$$ 一般是无界算子（引理 3.4 马上会证明它们不可能同时有界），无界算子的复合未必处处有定义，所以这个等式必须先说清楚"在哪里成立"，这正是下面的定义要交代定义域 $$D$$ 的原因。
 
 **定义 3.2（正则对易关系, canonical commutation relation, CCR）** 设 $$X,P$$ 是 $$\mathcal H$$ 上的自伴算子。若存在一个稠密线性子空间 $$D\subseteq\operatorname{Dom}(XP)\cap\operatorname{Dom}(PX)$$，它在 $$X$$ 与 $$P$$ 下不变（即 $$X D\subseteq D$$、$$P D\subseteq D$$），且
 $$[X,P]\psi=XP\psi-PX\psi=i\hbar\,\psi\qquad(\psi\in D),$$
 即 $$[X,P]=i\hbar I$$ 在 $$D$$ 上成立，则称 $$X$$ 为**位置算子 (position operator)**、$$P$$ 为**动量算子 (momentum operator)**，称 $$D$$ 为关系的一个**定义域 (domain)**，上式称为**正则对易关系**。
 
 这里必须交代定义域：由引理 3.4 知 $$X,P$$ 不可能同时有界，而两个无界算子的复合 $$XP$$ 只在 $$\operatorname{Dom}(XP)$$ 上有意义，所以"$$[X,P]=i\hbar$$"这句话只有在指定了公共不变定义域 $$D$$ 之后才是一个数学命题。第 42 章的无界算子语言在这里第一次被真正用上。
+
+定义 3.2 只固定了 $$X,P$$ 这两个算子之间的关系，却没有说 $$X,P$$ 具体是什么——这提示我们可以把"具体的算子"忘掉，只保留对易子给出的代数骨架，看看这套骨架本身能不能被研究清楚。这正是下面要引入的三维 Lie 代数的动机：它是把 $$[X,P]=i\hbar$$ 里的"标量 $$i\hbar$$"换成一个抽象的中心生成元 $$Z$$ 之后得到的最小非平凡例子。
 
 **定义 3.3（Heisenberg代数, Heisenberg algebra）** 设 $$\mathfrak h$$ 是复向量空间，以 $$X,P,Z$$ 为基，其上括号由
 $$[X,P]=Z,\qquad [X,Z]=0,\qquad [P,Z]=0$$
@@ -104,9 +114,20 @@ $$U(s)V(t)=e^{-i\hbar st}\,V(t)U(s),$$
 
 Weyl 形式里出现的全是**有界算子**（酉算子），没有定义域的负担。代价是：无穷小的关系 $$[X,P]=i\hbar$$ 被换成了有限的群律。记
 $$W(s,t):=e^{i\hbar st/2}\,U(s)V(t),$$
-由定义逐项计算（把 $$V(t)U(s')=e^{i\hbar s't}U(s')V(t)$$ 代入）得
-$$W(s,t)W(s',t')=e^{\frac{i\hbar}{2}(s't-st')}\,W(s+s',t+t'),\qquad W(s,t)^{*}=W(-s,-t).$$
+由定义逐项计算（**展开**）。先把两个 $$W$$ 的定义式相乘、把纯数字的相位提出来：
+$$W(s,t)W(s',t')=e^{i\hbar st/2}U(s)V(t)\cdot e^{i\hbar s't'/2}U(s')V(t')=e^{\frac{i\hbar}{2}(st+s't')}\,U(s)V(t)U(s')V(t').$$
+再把 Weyl 关系 $$U(s)V(t)=e^{-i\hbar st}V(t)U(s)$$ 反过来写成 $$V(t)U(s')=e^{i\hbar s't}U(s')V(t)$$（把定义 3.5 第三式里的 $$s,t$$ 换成 $$s',t$$、两边同乘 $$e^{i\hbar s't}$$ 即得），代入中间那两项：
+$$U(s)V(t)U(s')V(t')=U(s)\cdot e^{i\hbar s't}U(s')V(t)\cdot V(t')=e^{i\hbar s't}\,U(s)U(s')\,V(t)V(t')=e^{i\hbar s't}\,U(s+s')V(t+t')$$
+（最后一步用了 $$U,V$$ 各自的单参数群律）。于是
+$$W(s,t)W(s',t')=e^{\frac{i\hbar}{2}(st+s't')+i\hbar s't}\,U(s+s')V(t+t').$$
+另一方面 $$W(s+s',t+t')=e^{\frac{i\hbar}{2}(s+s')(t+t')}U(s+s')V(t+t')$$，把 $$(s+s')(t+t')=st+st'+s't+s't'$$ 展开后比较两个指数：
+$$\frac{i\hbar}{2}(st+s't')+i\hbar s't-\frac{i\hbar}{2}(st+st'+s't+s't')=\frac{i\hbar}{2}\bigl(-st'-s't\bigr)+i\hbar s't=\frac{i\hbar}{2}(s't-st'),$$
+即两边相差因子 $$e^{\frac{i\hbar}{2}(s't-st')}$$，所以
+$$W(s,t)W(s',t')=e^{\frac{i\hbar}{2}(s't-st')}\,W(s+s',t+t'),\qquad W(s,t)^{*}=W(-s,-t)$$
+（后一式的完整验证见第六节解基 3）。
 这正是**Heisenberg群** $$H_3(\mathbb R)$$ 的群律的表示论影子（见第四节）。
+
+定义 3.5 只是摆出了 Weyl 关系这个"目标形状"；现在要证明的是，只要出发点是无穷小的正则对易关系 $$[X,P]=i\hbar$$，指数化之后自动就会落进这个形状——这样一来，"无界算子上的等式"与"有界酉算子的群律"这两套语言就被命题 3.6 焊接在了一起。
 
 **命题 3.6（对易关系蕴含 Weyl 关系）** 设 $$X,P$$ 自伴，$$[X,P]=i\hbar$$ 在公共不变定义域 $$D$$ 上成立，且 $$D$$ 是 $$X$$ 与 $$P$$ 的公共解析向量空间（例如 $$L^2(\mathbb R)$$ 中的 Schwartz 空间 $$\mathcal S(\mathbb R)$$）。则 $$U(s):=e^{isX}$$、$$V(t):=e^{itP}$$ 是酉算子，且满足 Weyl 关系。
 
@@ -125,6 +146,8 @@ $$U(s)U(s')=e^{isX}e^{is'X}=e^{i(s+s')X}=U(s+s')$$ 等三条同理。∎
 
 **这是第 42 章的核心结论，此处引用而不重证**（完整证明见第 42 章）。它在这里的作用是把通道打通成双向：命题 3.6 从自伴算子造出单参数酉群，Stone 定理反过来从单参数酉群找回唯一的自伴算子。于是"Weyl 系统"与"一对自伴算子 $$X,P$$"是同一件事的两种说法，可以自由往返。
 
+到目前为止一切都是抽象的：对易关系、Weyl 关系、Stone 定理，说的都是"一般的自伴算子/酉群"该满足什么，还没有一个具体的例子摆在眼前。下面这个例子（读者在第 17 章已经用过）正式登场，成为本章后半段"唯一性"讨论的参照系——因为 Stone–von Neumann 定理最终要说的就是：任何满足正则对易关系的不可约实现，都长成这个样子。
+
 **定义 3.8（Schrödinger 表示, Schrödinger representation）** 取 $$\mathcal H=L^2(\mathbb R)$$，定义
 $$(\mathsf X\psi)(x)=x\,\psi(x),\qquad \operatorname{Dom}\mathsf X=\Bigl\{\psi\in L^2:\int_{\mathbb R}x^{2}\lvert\psi(x)\rvert^{2}\,dx<\infty\Bigr\},$$
 $$(\mathsf P\psi)(x)=-i\hbar\,\psi'(x),\qquad \operatorname{Dom}\mathsf P=H^{1}(\mathbb R)=\{\psi\in L^2:\psi'\in L^2\}.$$
@@ -140,6 +163,8 @@ $$\bigl(U(s)V(t)\psi\bigr)(x)=e^{isx}\bigl(V(t)\psi\bigr)(x)=e^{isx}\,\psi(x+\hb
 $$\bigl(V(t)U(s)\psi\bigr)(x)=\bigl(U(s)\psi\bigr)(x+\hbar t)=e^{is(x+\hbar t)}\,\psi(x+\hbar t)=e^{i\hbar st}\,e^{isx}\,\psi(x+\hbar t).$$
 两次结果相差因子 $$e^{-i\hbar st}$$，故在 $$\mathcal S(\mathbb R)$$ 上成立；两边是有界算子，$$\mathcal S(\mathbb R)$$ 稠密，故在全 $$L^2$$ 上成立。单参数群性 $$U(s)U(s')=U(s+s')$$ 由指数律直接得到，强连续性由 $$\lVert U(s)\psi-\psi\rVert\to0\ (s\to0)$$（有界收敛 + $$\mathcal S$$ 上稠密）得到。∎
 
+Schrödinger 表示满足 Weyl 关系，但这还不足以说它是"标准答案"——如果 $$L^2(\mathbb R)$$ 能被拆成几个互不相通的小块，每块各自装着一份独立的 Weyl 系统，那么"唯一性"这句话就无从谈起。下面这条定理排除了这种可能：它说 $$(\mathsf X,\mathsf P)$$ 在 $$L^2(\mathbb R)$$ 上的作用是"浑然一体"的，没有更小的不变子空间可拆——这正是后面唯一性定理（定理 3.11）里"不可约"这个条件在具体例子中的验证。
+
 **定理 3.10（Schrödinger 表示的不可约性）** $$L^2(\mathbb R)$$ 上不存在非平凡的闭子空间同时被所有 $$U(s),V(t)$$ 保持；等价地，与所有 $$U(s),V(t)$$ 交换的有界算子只有标量 $$cI$$。
 
 **证明思路**：先证"与所有 $$U(s)$$ 交换 $$\Rightarrow$$ 是乘法算子"，再用"与所有平移 $$V(t)$$ 交换 $$\Rightarrow$$ 该乘法函数是常数"。
@@ -148,11 +173,13 @@ $$\bigl(V(t)U(s)\psi\bigr)(x)=\bigl(U(s)\psi\bigr)(x+\hbar t)=e^{is(x+\hbar t)}\
 
 （这一步是乘法代数作为**极大交换 von Neumann 代数**的标准性质：乘法代数 $$\{M_f\}$$ 包含全部谱投影 $$M_{\chi_E}$$（$$E$$ 取遍 Borel 集），故它的交换子就是它自身；于是与全体 $$M_f$$ 交换的 $$T$$ 必是某个 $$M_g$$。）
 
-再要求 $$T$$ 与一切 $$V(t)$$ 交换。记平移 $$(\tau_a\varphi)(x)=\varphi(x+a)$$，则 $$V(t)=\tau_{\hbar t}$$。由 $$M_g\tau_{\hbar t}=\tau_{\hbar t}M_g$$ 得
-$$g(x+\hbar t)\,\varphi(x+\hbar t)=g(x)\,\varphi(x+\hbar t)\quad\text{对一切}\ \varphi\in L^2,$$
-取 $$\varphi$$ 在 $$x$$ 的邻域内为正即得 $$g(x+\hbar t)=g(x)$$ 几乎处处，对一切 $$t\in\mathbb R$$。因 $$\hbar\neq0$$，$$g$$ 在整个 $$\mathbb R$$ 上几乎处处等于常数 $$c$$，即 $$T=cI$$。
+再要求 $$T$$ 与一切 $$V(t)$$ 交换。记平移 $$(\tau_a\varphi)(x)=\varphi(x+a)$$，则 $$V(t)=\tau_{\hbar t}$$。先把等式 $$M_g\tau_{\hbar t}=\tau_{\hbar t}M_g$$ 两边分别在 $$\varphi$$ 上展开：左边 $$(M_g\tau_{\hbar t}\varphi)(x)=g(x)\cdot(\tau_{\hbar t}\varphi)(x)=g(x)\varphi(x+\hbar t)$$；右边 $$(\tau_{\hbar t}M_g\varphi)(x)=(M_g\varphi)(x+\hbar t)=g(x+\hbar t)\varphi(x+\hbar t)$$。两者相等，得
+$$g(x+\hbar t)\,\varphi(x+\hbar t)=g(x)\,\varphi(x+\hbar t)\quad\text{对一切}\ \varphi\in L^2\ \text{与几乎所有}\ x.$$
+**为什么这就迫使 $$g(x+\hbar t)=g(x)$$：** 只要在某个 $$x$$ 附近 $$\varphi(x+\hbar t)\neq0$$（例如取 $$\varphi$$ 是一个在 $$x+\hbar t$$ 的一个小邻域上恒为 $$1$$、其余处为 $$0$$ 的示性函数，它属于 $$L^2$$），上式两边就可以同除以 $$\varphi(x+\hbar t)$$，直接得到 $$g(x+\hbar t)=g(x)$$；而这样的 $$\varphi$$ 对几乎每个 $$x$$ 都存在，所以 $$g(x+\hbar t)=g(x)$$ 对几乎所有 $$x$$ 成立，且这对每个固定的 $$t\in\mathbb R$$ 都成立。因 $$\hbar\neq0$$，当 $$t$$ 取遍 $$\mathbb R$$ 时 $$\hbar t$$ 也取遍 $$\mathbb R$$，即 $$g$$ 关于任意平移不变，故 $$g$$ 在整个 $$\mathbb R$$ 上几乎处处等于同一个常数 $$c$$，即 $$T=cI$$。
 
 最后把不可约性接上：算子族 $$\{U(s),V(t)\}$$ 对伴随封闭（$$U(s)^{*}=U(-s)$$，$$V(t)^{*}=V(-t)$$）。若有非平凡闭不变子空间 $$M$$，则因 $$U,V$$ 是酉算子，$$M^{\perp}$$ 也不变，故正交投影 $$P_M$$ 与全体 $$U,V$$ 交换且 $$P_M\neq0,I$$，与"交换子只有标量"矛盾。∎
+
+证明"唯一性"的关键思路是：先在任意 Weyl 系统里造出一个"真空方向"（一个被所有 $$U(s),V(t)$$ 的某种平均"打回原地"的一维子空间），再证明不可约系统里这样的方向只能有一个，从而把整个系统焊死在这一个方向上生成的表示上。下面的引理先在最熟悉的 Schrödinger 表示里把这个"真空方向"具体找出来，验证它确实是谐振子基态——这是定理 3.11 证明第二步的具体范例。
 
 **引理 3.11（von Neumann 投影）** 定义
 $$P_0=\frac{1}{2\pi}\iint_{\mathbb R^{2}}e^{-(s^{2}+t^{2})/4}\,e^{-i(s\mathsf X+t\mathsf P)}\,ds\,dt .$$

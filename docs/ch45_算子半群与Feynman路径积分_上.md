@@ -76,7 +76,7 @@ $$(I+sA)(I+tA)=I+(s+t)A+stA^2=I+(s+t)A$$
 
 把这两个例子共有的三条性质抽出来：
 
-**定义 3.1（强连续半群）**。设 $$X$$ 是 Banach 空间，$$\{T(t)\}_{t\ge0}\subset\mathcal B(X)$$ 是一族有界线性算子，满足
+**定义 3.1（强连续半群, strongly continuous semigroup）**。设 $$X$$ 是 Banach 空间，$$\{T(t)\}_{t\ge0}\subset\mathcal B(X)$$ 是一族有界线性算子，满足
 
 - **(S1)** $$T(0)=I$$；
 - **(S2)** $$T(s+t)=T(s)T(t)$$（$$s,t\ge0$$）；
@@ -102,7 +102,7 @@ $$\frac{T(t)x-x}{t}=\frac{(I+tA)x-x}{t}=Ax ,$$
 
 不需要取极限就已经是 $$Ax$$（因为 $$A^2=0$$ 截断了级数）。这个例子特别干净地说明：**生成元不是某种神秘的新对象，它就是半群在 $$t=0$$ 处的"瞬时变化率"**，只不过一般情形要取真正的极限，且极限未必对每个 $$x$$ 都存在。
 
-**定义 3.2（无穷小生成元）**。设 $$\{T(t)\}_{t\ge0}$$ 是强连续半群。令
+**定义 3.2（无穷小生成元, infinitesimal generator）**。设 $$\{T(t)\}_{t\ge0}$$ 是强连续半群。令
 
 $$D(A)=\Bigl\{x\in X:\ \lim_{t\to0^{+}}\frac{T(t)x-x}{t}\ \text{在}\ X\ \text{中存在}\Bigr\},\qquad
 Ax=\lim_{t\to0^{+}}\frac{T(t)x-x}{t}\ \ (x\in D(A)).$$
@@ -137,7 +137,7 @@ $$\int_0^{\infty}e^{-\lambda t}T(t)\,dt=\int_0^{\infty}e^{-2t}e^{-3t}\,dt=\int_0
 
 另一方面，$$(\lambda-A)^{-1}=(2-(-3))^{-1}=\dfrac15$$——两个数完全相同。这不是巧合：$$\displaystyle\int_0^\infty e^{-\lambda t}e^{-at}\,dt=\dfrac{1}{\lambda+a}$$ 对 $$\lambda>-a$$ 恒成立，而 $$\lambda+a=\lambda-A$$（$$A=-a$$）正是 $$(\lambda-A)$$。
 
-**定义 3.3（预解集与预解式）**。设 $$A$$ 是闭稠定线性算子，$$\rho(A)=\{\lambda\in\mathbb C:\lambda I-A\text{ 是双射}\}$$ 为**预解集**，$$R(\lambda,A)=(\lambda I-A)^{-1}$$ 为 $$A$$ 在 $$\lambda$$ 处的**预解式**。
+**定义 3.3（预解集与预解式, resolvent set and resolvent）**。设 $$A$$ 是闭稠定线性算子，$$\rho(A)=\{\lambda\in\mathbb C:\lambda I-A\text{ 是双射}\}$$ 为**预解集**，$$R(\lambda,A)=(\lambda I-A)^{-1}$$ 为 $$A$$ 在 $$\lambda$$ 处的**预解式**。
 
 **例 3.4**。取 $$2\times2$$ 对角矩阵 $$A=\operatorname{diag}(-2,-3)$$（描述两个互不干扰的标量衰减方程），$$T(t)=e^{tA}=\operatorname{diag}(e^{-2t},e^{-3t})$$。逐分量重复上面的计算：
 
@@ -183,7 +183,7 @@ $$e^{\varepsilon A}e^{\varepsilon B}-e^{\varepsilon(A+B)}=\frac{\varepsilon^2}{2
 
 **对易子 $$[A,B]=AB-BA$$ 第一次在这里现身：它精确地度量"先做 $$A$$ 再做 $$B$$"和"$$A,B$$ 同时做"这两件事的二阶差别。** 取 $$\varepsilon=\frac1m$$ 代入上式，正是第46章 (3.5) 式；上面 $$m=1,2$$ 的数值计算是这条一般公式在 $$\varepsilon=1,\frac12$$ 处的具体取值，第46章 定理 3.7 的证明就是把这里的代数搬到一般的（不假设 $$A^2=B^2=0$$ 的）矩阵上，再加上 $$m$$ 次幂的误差累积估计。
 
-**命题 3.1（Trotter 公式的具体版本）**。对上面的 $$A,B$$，数值计算显示 $$\bigl(e^{A/m}e^{B/m}\bigr)^m$$ 随 $$m$$ 增大而逼近 $$e^{A+B}$$，误差量级是 $$1/m$$。一般地，对任意方阵 $$A,B$$（不必可换），都有
+**命题 3.4（Trotter 公式的具体版本）**。对上面的 $$A,B$$，数值计算显示 $$\bigl(e^{A/m}e^{B/m}\bigr)^m$$ 随 $$m$$ 增大而逼近 $$e^{A+B}$$，误差量级是 $$1/m$$。一般地，对任意方阵 $$A,B$$（不必可换），都有
 
 $$\lim_{m\to\infty}\Bigl(e^{A/m}e^{B/m}\Bigr)^{m}=e^{A+B},$$
 
@@ -264,19 +264,94 @@ $$S=\int_0^2\frac12\cdot1^2\,ds=\frac12\cdot2=1,$$
 ## 六、练习 (Exercises)
 ### 基础（巩固定义）
 
+**基1.** 设 $$T(t)=e^{-5t}$$（$$\mathbb R$$ 上的标量半群）。验证 $$T(2)T(3)=T(5)$$，并求它的生成元。
+
+**基2.** 设 $$A=\operatorname{diag}(1,-1)$$，$$T(t)=e^{tA}=\operatorname{diag}(e^{t},e^{-t})$$。求 $$\lVert T(t)\rVert$$（提示：算子范数是各分量绝对值的最大者），并说明为什么这不是压缩半群。
+
+**基3.** 设 $$A=-4$$（标量）。用定义直接算出 $$R(\lambda,A)=\displaystyle\int_0^\infty e^{-\lambda t}e^{-4t}\,dt$$（$$\lambda>-4$$），并验证 $$(\lambda-A)R(\lambda,A)=1$$。
 
 ### 竞赛（本课目标难度）
 
+**竞1.** 用 3.4 节推出的精确公式 $$e^{\varepsilon A}e^{\varepsilon B}-e^{\varepsilon(A+B)}=(1-\cosh\varepsilon)I+(\varepsilon-\sinh\varepsilon)(A+B)+\varepsilon^2AB$$（$$A,B$$ 是入口题 (c) 的矩阵），取 $$\varepsilon=\dfrac13$$，算出左边的精确值，并与近似值 $$\dfrac{\varepsilon^2}2[A,B]$$ 比较，求两者之差的最大分量。
+
+**竞2.** 设 $$A=\operatorname{diag}(-1,2)$$。写出 $$T(t)=e^{tA}$$ 的显式表达式，算出 $$\lVert T(t)\rVert$$ 关于 $$t\ge0$$ 的表达式，并求出使 $$\lVert T(t)\rVert\le e^{\omega t}$$ 对一切 $$t\ge0$$ 成立的最小 $$\omega$$。
+
+**竞3.** 设 $$T_1(t)=e^{-2t}$$、$$T_2(t)=e^{-5t}$$ 是 $$\mathbb R$$ 上两个标量半群，$$T(t):=T_1(t)T_2(t)$$（逐点乘积）。验证 $$\{T(t)\}$$ 也是强连续半群，求它的生成元，并验证这个生成元恰好等于 $$T_1,T_2$$ 两个生成元之和。
 
 ### 研究（通向下一章）
 
+**研1.**（Yosida 逼近的最简版本）设 $$A=\operatorname{diag}(-2,-3)$$。对 $$\lambda>0$$ 算出 $$\lambda R(\lambda,A)$$ 的显式表达式，验证 $$\lVert\lambda R(\lambda,A)\rVert\le1$$，并说明当 $$\lambda\to\infty$$ 时 $$\lambda R(\lambda,A)\to I$$（逐分量收敛）。这个 $$\lambda R(\lambda,A)$$ 正是下一章 Hille–Yosida 定理证明里 $$A_\lambda=\lambda AR(\lambda,A)$$ 的"表亲"。
+
+**研2.**（三段折线的驻定路径）把经典问题 5.3 的设置换成 $$N=3$$：自由粒子从 $$x_0=0$$ 出发，$$t=3$$ 时到达 $$x_3=3$$，步长 $$\varepsilon=1$$，中间两个可调节点是 $$x_1,x_2$$。离散作用量是
+
+$$S_3(x_1,x_2)=\frac{(x_1-x_0)^2}{2}+\frac{(x_2-x_1)^2}{2}+\frac{(x_3-x_2)^2}{2}.$$
+
+求使 $$S_3$$ 最小的 $$(x_1,x_2)$$，算出最小值，并与连续情形的作用量比较。
 
 ### 解答 (Solutions)
 
+**解 基1.** $$T(2)T(3)=e^{-10}\cdot e^{-15}=e^{-25}=e^{-5\cdot5}=T(5)$$，半群律成立。生成元：$$\dfrac{T(t)-1}{t}=\dfrac{e^{-5t}-1}{t}\to-5$$（$$t\to0^{+}$$，同例 3.2 的算法），故生成元是 $$-5$$。
+
+**解 基2.** $$T(t)=\operatorname{diag}(e^t,e^{-t})$$ 作用在 $$x=(x_1,x_2)$$ 上给出 $$(e^tx_1,e^{-t}x_2)$$，算子范数是使 $$\lVert T(t)x\rVert\le c\lVert x\rVert$$ 成立的最小 $$c$$，对角算子的这个 $$c$$ 就是对角元绝对值的最大者：
+
+$$\lVert T(t)\rVert=\max(e^t,e^{-t})=e^t\qquad(t\ge0).$$
+
+因为 $$e^t>1$$（$$t>0$$ 时），$$\lVert T(t)\rVert>1$$，不满足压缩半群 $$\lVert T(t)\rVert\le1$$ 的要求——**沿第一个分量的方向，$$T(t)$$ 把向量拉长而不是缩短**，这正是 $$A$$ 在这个方向上的对角元 $$+1>0$$（而不是 $$\le0$$）的直接后果。$$\blacksquare$$
+
+**解 基3.** $$\displaystyle\int_0^\infty e^{-\lambda t}e^{-4t}dt=\int_0^\infty e^{-(\lambda+4)t}dt=\dfrac1{\lambda+4}$$（$$\lambda+4>0$$ 时收敛，即 $$\lambda>-4$$）。验证：$$(\lambda-A)R(\lambda,A)=(\lambda+4)\cdot\dfrac1{\lambda+4}=1$$。$$\blacksquare$$
+
+**解 竞1.** 先算精确值。用 $$\cosh x=\dfrac{e^x+e^{-x}}2$$、$$\sinh x=\dfrac{e^x-e^{-x}}2$$ 与 $$e^{1/3}\approx1.395612$$（即 $$e$$ 的立方根）算出
+
+$$\cosh\tfrac13\approx1.056072,\qquad\sinh\tfrac13\approx0.339541 .$$
+
+$$(A+B)=\begin{pmatrix}0&1\\1&0\end{pmatrix}$$，$$AB=\begin{pmatrix}1&0\\0&0\end{pmatrix}$$，$$\varepsilon=\frac13$$。逐项代入 $$(1-\cosh\varepsilon)I+(\varepsilon-\sinh\varepsilon)(A+B)+\varepsilon^2AB$$：
+
+$$1-\cosh\tfrac13\approx-0.056072,\qquad \tfrac13-\sinh\tfrac13\approx-0.006208,\qquad \varepsilon^2=\tfrac19\approx0.111111 .$$
+
+代入矩阵形式：
+
+$$\text{精确差}\approx\begin{pmatrix}-0.056072+0.111111&-0.006208\\-0.006208&-0.056072\end{pmatrix}=\begin{pmatrix}0.055039&-0.006208\\-0.006208&-0.056072\end{pmatrix}.$$
+
+近似值 $$\dfrac{\varepsilon^2}2[A,B]=\dfrac{1}{18}\begin{pmatrix}1&0\\0&-1\end{pmatrix}\approx\begin{pmatrix}0.055556&0\\0&-0.055556\end{pmatrix}$$。两者之差（精确减近似）：
+
+$$\begin{pmatrix}0.055039-0.055556&-0.006208-0\\-0.006208-0&-0.056072+0.055556\end{pmatrix}\approx\begin{pmatrix}-0.000517&-0.006208\\-0.006208&-0.000516\end{pmatrix},$$
+
+最大分量约 $$0.0062$$，量级是 $$\varepsilon^3=\frac1{27}\approx0.037$$ 的几分之一——与"余项是 $$O(\varepsilon^3)$$"吻合。$$\blacksquare$$
+
+**解 竞2.** $$T(t)=\operatorname{diag}(e^{-t},e^{2t})$$，故 $$\lVert T(t)\rVert=\max(e^{-t},e^{2t})=e^{2t}$$（$$t\ge0$$ 时 $$2t\ge-t$$）。要 $$e^{2t}\le e^{\omega t}$$ 对一切 $$t\ge0$$ 成立，需要 $$2\le\omega$$，取等号即最小的 $$\omega=2$$——**恰好是 $$A$$ 里较大的那个对角元**：一般地，对角矩阵生成元的最优增长指数 $$\omega$$ 就是对角元的最大值（这是第46章 定理 3.1 的界 $$\lVert T(t)\rVert\le Me^{\omega t}$$ 在对角情形取到等号的例子，$$M=1$$）。$$\blacksquare$$
+
+**解 竞3.** $$T(t)=e^{-2t}e^{-5t}=e^{-7t}$$，这仍是标量指数半群（半群律、连续性同 基1 的验证），生成元是 $$-7$$（同例 3.2 的算法：$$(e^{-7t}-1)/t\to-7$$）。而 $$T_1,T_2$$ 的生成元分别是 $$-2,-5$$，和恰好是 $$-2+(-5)=-7$$。**这在标量（可交换）情形里成立，是因为标量乘法可交换**：$$e^{-2t}e^{-5t}=e^{-(2+5)t}$$ 这条指数律本身就不需要 Trotter 公式。第46章要处理的 $$H_0,V$$ 是不可交换的算子，$$e^{-tH_0}e^{-tV}\ne e^{-t(H_0+V)}$$，"生成元相加"这件事只能通过 $$m\to\infty$$ 的极限（Trotter 公式）间接成立——**这正是本章 3.4 节要为下一章做的铺垫：可交换时"加法即乘积"是免费的，不可交换时要花一个极限去换。**$$\blacksquare$$
+
+**解 研1.** $$R(\lambda,A)=\operatorname{diag}\bigl((\lambda+2)^{-1},(\lambda+3)^{-1}\bigr)$$（同例 3.4），故
+
+$$\lambda R(\lambda,A)=\operatorname{diag}\Bigl(\frac{\lambda}{\lambda+2},\frac{\lambda}{\lambda+3}\Bigr).$$
+
+每个分量都 $$<1$$（$$\lambda>0$$ 时分子小于分母），故 $$\lVert\lambda R(\lambda,A)\rVert=\max\bigl(\frac{\lambda}{\lambda+2},\frac{\lambda}{\lambda+3}\bigr)=\frac{\lambda}{\lambda+2}<1$$。当 $$\lambda\to\infty$$ 时，$$\frac{\lambda}{\lambda+2}\to1$$、$$\frac{\lambda}{\lambda+3}\to1$$，逐分量趋于 $$1$$，即 $$\lambda R(\lambda,A)\to\operatorname{diag}(1,1)=I$$。**这就是"用预解式在无穷远处逼近恒等算子"这件事在对角情形最直白的样子**——下一章 Hille–Yosida 定理的证明里，$$A_\lambda=\lambda^2R(\lambda,A)-\lambda I$$ 这个"Yosida 逼近"，就是把 $$A$$（这里是 $$\operatorname{diag}(-2,-3)$$ 本身）用 $$\lambda R(\lambda,A)A$$（一个有界算子）去逼近；在对角情形可以直接算出 $$\lambda R(\lambda,A)A=\operatorname{diag}\bigl(\frac{-2\lambda}{\lambda+2},\frac{-3\lambda}{\lambda+3}\bigr)\to\operatorname{diag}(-2,-3)=A$$，与定理里"$$A_\lambda\to A$$"的结论逐分量吻合。$$\blacksquare$$
+
+**解 研2.** $$S_3(x_1,x_2)=\dfrac{x_1^2+(x_2-x_1)^2+(3-x_2)^2}2$$ 对 $$x_1,x_2$$ 分别求偏导并令为零：
+
+$$\frac{\partial S_3}{\partial x_1}=\frac{2x_1-2(x_2-x_1)}2=2x_1-x_2=0,\qquad
+\frac{\partial S_3}{\partial x_2}=\frac{2(x_2-x_1)-2(3-x_2)}2=2x_2-x_1-3=0 .$$
+
+由第一式 $$x_2=2x_1$$，代入第二式：$$2(2x_1)-x_1-3=0\Rightarrow3x_1=3\Rightarrow x_1=1$$，故 $$x_2=2$$。这正是把 $$[0,3]$$ 三等分的匀速直线路径 $$0\to1\to2\to3$$。代回：
+
+$$S_3(1,2)=\frac{1^2+1^2+1^2}2=\frac32 .$$
+
+连续情形（速度恒为 $$1$$，时长 $$3$$）的作用量是 $$S=\int_0^3\frac12\cdot1^2\,ds=\frac32$$，与离散最小值精确相等——**折线段数从 $$N=2$$ 变成 $$N=3$$，只要终点条件对应同一条匀速直线，最小作用量按比例增长（这里从 $$1$$ 变成 $$\frac32$$，正是总时长从 $$2$$ 变成 $$3$$ 的比例），驻定路径始终是那条直线**。这就是经典问题 5.3 的模式可以直接推广到任意 $$N$$ 的证据：第46章不会重复这个论证，但它是"$$\hbar\to0$$ 时相位在经典路径处驻定"这句直觉背后，唯一需要动笔验证的具体计算。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
-（待填：3–5 条核心洞察；明确交棒给第46章——"现在你已经有了直觉和具体计算经验，下一章把它变成严格陈述和证明"。）
+**1. 半群律就是"先走一段再走一段"。** $$T(s+t)=T(s)T(t)$$ 不是凭空的公理，标量情形里它就是指数律 $$e^ae^b=e^{a+b}$$；矩阵情形里它是"把矩阵乘出来、用具体的代数关系（如 $$A^2=0$$）化简"。第46章的三条公理，只是把这件具体的事写成对任意 Banach 空间都成立的语言。
+
+**2. 生成元是出发点的瞬时变化率，未必处处存在。** 标量、矩阵例子里生成元就是求导、逐分量求导；换成热核，生成元的计算需要 Taylor 展开＋逐项积分，且只对"足够光滑"的函数成立——这正是第46章里"定义域 $$D(A)$$ 是真稠密子空间"这件事第一次露出苗头的地方。
+
+**3. 预解式是半群的"现值"。** $$R(\lambda,A)=\int_0^\infty e^{-\lambda t}T(t)\,dt$$ 把一整条时间演化压缩成一个只依赖 $$\lambda$$ 的量；标量、对角情形里这就是初等的收敛积分 $$1/(\lambda+a)$$，第46章的定理 3.3 把它搬到一般算子上，证明的每一步在本章都已经在具体数字上算过一遍。
+
+**4. 对易子是"顺序差"的精确度量，且只在 $$\varepsilon^2$$ 阶现身。** $$e^{\varepsilon A}e^{\varepsilon B}-e^{\varepsilon(A+B)}=\dfrac{\varepsilon^2}2[A,B]+O(\varepsilon^3)$$——这条式子在本章的具体矩阵上是可以逐项验证的等式，不是抽象论断；第46章 Trotter 公式的全部技术内容，就是把它从"某个具体的 $$2\times2$$ 例子"搬到"任意（不必可换的）算子"上，并且把 $$\varepsilon=1/m$$ 的 $$m$$ 次幂误差控制住。
+
+**5. "驻定路径"不是新概念，是一个二次函数求极值。** 离散作用量 $$S_N(x_1,\dots,x_{N-1})$$ 在自由粒子的情形下就是若干项 $$(x_k-x_{k-1})^2$$ 的和，求极值给出的正是匀速直线运动——第46章路径积分里"$$\hbar\to0$$ 时相位在经典路径处驻定"这句话，背后唯一的具体计算就是本章经典问题 5.3、研究 2 已经做过的求偏导数、解线性方程组。
+
+**现在你已经能手算出：半群律为什么成立、生成元怎么从差商里读出来、预解式是什么、两个不可交换的算子指数乘积差多少、离散折线的"作用量"怎么在自由粒子情形下取到最小值。** 下一章会把这些具体计算，一步步变成对任意 Banach 空间、任意无界自伴算子都成立的严格陈述与完整证明——从强连续半群的公理出发，用 Hille–Yosida 定理回答"哪些算子能生成半群"，用 Stone 定理把量子力学的时间演化接进来，最后用 Trotter 乘积公式证明 Feynman 路径积分只是一个良定义的算子极限，而不是一个"对所有路径积分"的新测度。
 
 ---
 
