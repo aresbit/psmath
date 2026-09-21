@@ -259,6 +259,8 @@ $$\varepsilon_{Fc}\circ FG(\varepsilon_{Fc})=\varepsilon_{Fc}\circ\varepsilon_{F
 (b) **自由 Abel 群单子**（$$\mathbf{Set}\xrightarrow{\ \mathbb Z[-]\ }\mathbf{Ab}\xrightarrow{\ U\ }\mathbf{Set}$$，$$T=U\circ\mathbb Z[-]$$）：$$\eta_S$$ 送 $$s$$ 到生成元 $$e_s$$；$$\mu_S$$ 把"形式整数线性组合的形式整数线性组合"按分配律展开收拢。这是定理 3.19 的最标准例子（自由 $$\dashv$$ 遗忘）。
 (c) **张量代数单子**（$$\mathcal C=\mathbf{Vect}_k$$）：$$T(V)=\bigoplus_{n\ge0}V^{\otimes n}$$，$$\eta_V$$ 是 $$V=V^{\otimes1}$$ 的含入，$$\mu_V$$ 把两个张量词"拼接"（第 12 章的 $$V^{\otimes m}\otimes V^{\otimes n}\cong V^{\otimes(m+n)}$$ 正是这件事的算术）。张量代数常被记作 $$TV$$——这个记号本身就来自单子 $$T$$。
 
+定理 3.19 说伴随能"折叠"成单子；反过来，给定一个单子，能不能"拆回"一个伴随？答案不唯一——下面两种拆法是两个极端：一种只记住"打包"操作本身怎么复合（Kleisli），另一种把"折叠"$$a:TA\to A$$ 直接当成对象的一部分随身携带（Eilenberg–Moore）。
+
 **定义 3.20（Kleisli 范畴与 Eilenberg–Moore 代数）** 设 $$(T,\eta,\mu)$$ 是 $$\mathcal C$$ 上的单子。
 - **Kleisli 范畴** $$\mathcal C_T$$：对象与 $$\mathcal C$$ 相同；态射 $$A\to B$$ 定义为 $$\mathcal C$$ 中的态射 $$A\to TB$$；恒同是 $$\eta_A:A\to TA$$；复合为
 $$g\circ_T f:=\mu_C\circ Tg\circ f,\qquad A\xrightarrow{\ f\ }TB\xrightarrow{\ Tg\ }T^2C\xrightarrow{\ \mu_C\ }TC .$$
