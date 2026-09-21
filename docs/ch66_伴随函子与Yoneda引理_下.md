@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 65 章的具体例子——自由生成的字如何唯一延拓成同态、$$\mathbb{Z}/2\otimes\mathbb{Z}/2$$ 与它对应的 Hom 集怎样一一配对、方阵之间的"自然变换"怎么就是乘一个矩阵——之后，这里把同样的构造写成一般定义，并给出完整、不省步骤的证明。
+
 第 62 章把「结构」抽象成**范畴**、把「结构之间的映射」抽象成**函子**；第 64 章把标量从域放宽到环，撞出了第一对**成对出现的函子**——张量积 $$-\otimes_A M$$ 与 Hom 函子 $$\operatorname{Hom}_A(M,-)$$，并注意到它们「一左一右、各保正合性的一半」。那个被搁置的问题就是本章要回答的：
 
 **为什么这些构造成对出现？**
@@ -83,7 +85,7 @@ $$H(f)\circ(\beta\circ\alpha)_X=H(f)\circ\beta_X\circ\alpha_X\ \overset{\beta\ \
 
 所以 $$\beta\circ\alpha:F\Rightarrow H$$ 满足自然性方块。
 
-(ii) **恒等是自然变换。** $$G(f)\circ(1_F)_X=G(f)=F(f)= (1_F)_Y\circ F(f)$$，两边都等于 $$F(f)$$（因为 $$\alpha=F=G$$ 时方块两边同为 $$F(f)$$）。
+(ii) **恒等是自然变换。** 这里要验证的是 $$1_F:F\Rightarrow F$$（$$\alpha=1_F$$ 时取 $$G:=F$$）满足定义 3.1 的方块。分量是 $$(1_F)_X=1_{F(X)}$$、$$(1_F)_Y=1_{F(Y)}$$，代入方块左边：$$F(f)\circ(1_F)_X=F(f)\circ1_{F(X)}=F(f)$$；代入右边：$$(1_F)_Y\circ F(f)=1_{F(Y)}\circ F(f)=F(f)$$。两边分别化简后都等于同一个态射 $$F(f)$$，方块交换。
 
 (iii) **单位律。** $$(\alpha\circ1_F)_X=\alpha_X\circ1_{F(X)}=\alpha_X=(1_G)_X\circ\alpha_X=(1_G\circ\alpha)_X$$ 对每个 $$X$$ 成立；自然变换由各分量决定，故 $$\alpha\circ1_F=\alpha=1_G\circ\alpha$$。
 
@@ -163,7 +165,7 @@ $$\beta(a)_Y:h_A(Y)\to F(Y),\qquad \beta(a)_Y(f):=F(f)(a)\qquad\bigl(f\in h_A(Y)
 
 这里的 $$F(f):F(A)\to F(Y)$$ 是反变函子 $$F$$ 在 $$f:Y\to A$$ 上的作用，所以 $$F(f)(a)\in F(Y)$$，类型正确。
 
-**第二步：$$\beta(a)$$ 是自然变换。** 取任意 $$g:Y\to Z$$（$$\mathcal{C}$$ 中态射）与任意 $$k\in h_A(Y)=\mathcal{C}(Y,A)$$。要验证方块
+**第二步：$$\beta(a)$$ 是自然变换。** 取任意 $$g:Z\to Y$$（$$\mathcal{C}$$ 中态射——注意箭头方向：因为 $$h_A$$、$$F$$ 都是反变函子，方块里从 $$h_A(Y)$$ 出发要落到 $$F(Z)$$，所以取的是"射进 $$Y$$ 的箭头"$$g:Z\to Y$$，而不是从 $$Y$$ 射出）与任意 $$k\in h_A(Y)=\mathcal{C}(Y,A)$$。要验证方块
 
 $$F(g)\circ\beta(a)_Y=\beta(a)_Z\circ h_A(g).$$
 
@@ -265,6 +267,8 @@ $$\varphi_{c,d}:\mathcal{D}(Fc,d)\ \xrightarrow{\ \cong\ }\ \mathcal{C}(c,Gd),$$
 
 $$F\dashv G.$$
 
+定义 3.13 里的 $$\varphi_{c,d}$$ 是"对每一对 $$(c,d)$$ 各给一个双射"，用起来要不断指名 $$c,d$$，不方便。但双射一族里最特殊的一次取值，是**把 $$d$$ 取成 $$Fc$$ 自己**（这时 $$\mathcal{D}(Fc,Fc)$$ 里有一个免费的恒等态射 $$1_{Fc}$$ 可以代进去）、或**把 $$c$$ 取成 $$Gd$$ 自己**（这时 $$\mathcal{C}(Gd,Gd)$$ 里有免费的 $$1_{Gd}$$）。这两次特殊取值各给出一个自然变换，且后面会看到：只要知道这两个自然变换，就能把整族 $$\varphi_{c,d}$$ 重新算回来（定理 3.15）——于是它们才是伴随里"真正独立"的数据。
+
 **定义 3.14（单位与余单位, unit and counit）** 在 $$F\dashv G$$ 中，把恒等态射分别放进 $$\varphi$$：
 
 $$\eta_c:=\varphi_{c,Fc}(1_{Fc}):c\to GFc,\qquad \varepsilon_d:=\varphi_{Gd,d}^{-1}(1_{Gd}):FGd\to d.$$
@@ -289,7 +293,17 @@ $$\varphi_{Gd,d}(\varepsilon_d)=1_{Gd}.$$
 
 $$1_{Gd}=\varphi_{Gd,d}(\varepsilon_d)=G(\varepsilon_d)\circ\eta_{Gd}=(G\varepsilon)_d\circ(\eta G)_d=(G\varepsilon\circ\eta G)_d.$$
 
-此式对一切 $$d$$ 成立，即 $$(G\varepsilon)\circ(\eta G)=1_G$$——这是第二条。第一条同理：由 $$\eta_c=\varphi_{c,Fc}(1_{Fc})$$ 得 $$\varphi_{c,Fc}^{-1}(\eta_c)=1_{Fc}$$；而 $$\varphi_{c,Fc}^{-1}(g)=\varepsilon_{Fc}\circ F(g)$$（见下面 (B)$$\Rightarrow$$(A) 中 $$\psi$$ 的构造），取 $$g=\eta_c$$ 得
+此式对一切 $$d$$ 成立，即 $$(G\varepsilon)\circ(\eta G)=1_G$$——这是第二条。
+
+第一条要用到 $$\varphi^{-1}_{c,d}$$ 的一个通用公式，先把它单独推出来。取任意 $$c,d$$ 与任意 $$h:c\to Gd$$。由 $$\varphi$$ 对第一个变量的自然性（把 $$c$$ 换成 $$Gd$$、态射取 $$h:c\to Gd$$、第二个变量固定为 $$d$$，第一个分量取 $$f=\varepsilon_d:F(Gd)\to d$$）：
+
+$$\varphi_{c,d}\bigl(\varepsilon_d\circ F(h)\bigr)=\varphi_{Gd,d}(\varepsilon_d)\circ h.$$
+
+上一段已经算出 $$\varphi_{Gd,d}(\varepsilon_d)=1_{Gd}$$，代入右边得 $$\varphi_{c,d}\bigl(\varepsilon_d\circ F(h)\bigr)=1_{Gd}\circ h=h$$。这对一切 $$h:c\to Gd$$ 成立，即 $$\varphi_{c,d}$$ 把 $$\varepsilon_d\circ F(h)$$ 送回 $$h$$ 本身；两边取 $$\varphi_{c,d}^{-1}$$（$$\varphi_{c,d}$$ 是双射，逆映射存在）：
+
+$$\varphi_{c,d}^{-1}(h)=\varepsilon_d\circ F(h)\qquad\text{对一切}\ c,d,h.$$
+
+这正是下面 (B)$$\Rightarrow$$(A) 里 $$\psi_{c,d}$$ 的公式——这里独立推出，不必等到那一步。现在取 $$c=c$$、$$d=Fc$$、$$h=\eta_c$$：由 $$\eta_c=\varphi_{c,Fc}(1_{Fc})$$ 得 $$\varphi_{c,Fc}^{-1}(\eta_c)=1_{Fc}$$；另一方面由刚推出的公式 $$\varphi_{c,Fc}^{-1}(\eta_c)=\varepsilon_{Fc}\circ F(\eta_c)$$。两式的左边都是 $$\varphi_{c,Fc}^{-1}(\eta_c)$$，故右边相等，即
 
 $$1_{Fc}=\varepsilon_{Fc}\circ F(\eta_c)=(\varepsilon F)_c\circ(F\eta)_c,$$
 
