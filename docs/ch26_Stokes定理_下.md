@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 25 章的具体例子后——正方形上的 Green 公式、立方体上的散度定理、三角形边界的符号、一次具体的拉回——这里把同一批构造写成一般定义，并给出完整证明。
+
 本章要解决的核心问题只有一个：**把微积分里那几条彼此孤立的积分公式，认成同一条定理。**
 
 平面上的 Green 公式、空间中的 Gauss 散度定理、沿曲面的 Kelvin–Stokes 公式，再加上一维的 Newton–Leibniz 公式，在通常的课本里分散在三四个学期、用三四套记号、各自证明一遍。本章要说明：它们全是
@@ -21,7 +23,7 @@ $$\int_{\partial M}\omega=\int_M d\omega$$
 
 在不同维数、不同舞台上的同一句话。
 
-**从哪来**：第 14 章造出了外微分 $$d$$ 并证明了 $$d^2=0$$；第 09–10 章造出了链群、边界算子 $$\partial$$ 与同调群，并证明了 $$\partial^2=0$$；第 24 章把 $$d$$ 落到了 Maxwell 方程组上。本章把这两条线接起来——拓扑那一侧的 $$\partial$$ 与分析这一侧的 $$d$$，在这里第一次被写在同一个等式的两边。
+**从哪来**：第 14 章造出了外微分 $$d$$ 并证明了 $$d^2=0$$；第 17–20 章造出了链群、边界算子 $$\partial$$ 与同调群，并证明了 $$\partial^2=0$$（第 18 章）；第 24 章把 $$d$$ 落到了 Maxwell 方程组上。本章把这两条线接起来——拓扑那一侧的 $$\partial$$ 与分析这一侧的 $$d$$，在这里第一次被写在同一个等式的两边。
 
 **到哪去**：第 28 章会指出，这条等式不只是在说"两个算子配了对"。它把 $$M$$ 上的微分形式与 $$M$$ 的同调**配对成一个双线性型**，而这个配对是非退化的——那就是 de Rham 定理。
 
@@ -72,6 +74,8 @@ $$\det\bigl(d\tau_{\alpha\beta}\bigr)>0$$
 
 **为什么是这个条件**。在一点 $$p$$ 处，切空间 $$T_pM$$ 的一组基 $$(v_1,\dots,v_n)$$ 被坐标卡 $$\varphi_\alpha$$ 读成 $$\mathbb{R}^n$$ 中的一组向量；两张大卡读出的是同一组向量被一个线性映射（Jacobi 矩阵）搬运的结果。若雅可比行列式为正，则"这组基是正的"这个判断在两张大卡下一致——于是"正基"变成一个**全局**概念。若行列式为负，判断相反，就没有全局的"正"可言。所以定向不是额外数据，它是"能让'正'这个词在 $$\det>0$$ 的图上不变"这件事本身。
 
+**为什么需要这一条定义**。主定理最终要写成 $$\int_{\partial D}\omega=\int_Dd\omega$$，左边这个积分号要有意义，$$\partial D$$ 就必须先有自己的定向——而这个定向不能凭空另定，它必须由 $$D$$ 自己的定向唯一确定，否则等式两边的符号会各算各的、对不上号。第25章 3.1 节已经用矩形边界手算过一次"外法向排第一"的规则；下面把同一条规则写成任意维数的一般定义。
+
 **定义 3.2（诱导定向 / induced orientation）**。设 $$M$$ 是带边的定向 $$n$$ 维流形。在边界点 $$p\in\partial M$$ 处，取 $$T_pM$$ 的**外法向 (outward normal)** $$N_p$$（指向 $$M$$ 外部、且与 $$p$$ 处的边界相截的那个方向）。约定 $$\partial M$$ 的**诱导定向**为：$$\partial M$$ 在 $$p$$ 处的一组基 $$(u_1,\dots,u_{n-1})$$ 是正的，当且仅当
 
 $$(N_p,u_1,\dots,u_{n-1})$$
@@ -88,6 +92,8 @@ $$(N_p,u_1,\dots,u_{n-1})$$
 这两个例子的结论，恰好就是第 18 章里 $$\partial$$ 的那个 $$\sum_i(-1)^i$$ 的符号来源。这不是巧合，定理 3.8 会把它算实。
 
 ### 3.2 标准单形、面映射与边界 (Standard simplex, face maps, boundary)
+
+要证的定理最终要在任意形状的流形上成立，但流形形状各异、坐标各异，没法直接下手算。标准做法是先选一个"最干净"的模型——顶点、边、面都用固定坐标写死，算起来是纯粹的多元微积分——把定理在这个模型上证完，再用一台搬运机器（3.4 节的拉回）把结论原样搬到任意流形上。标准单形就是这个模型；下面的面映射、边界，都是为了在这个模型上把"边界"这个几何操作写成可以计算的代数式。第25章 3.5 节已经在 $$n=2$$ 的情形手算过一次面映射与边界的符号，这里把它写成任意维数的一般定义。
 
 **定义 3.5（标准单形 / standard simplex）**。$$\mathbb{R}^n$$ 中的 **$$n$$-标准单形** $$\sigma_n$$ 是
 
@@ -160,6 +166,12 @@ $$d\psi=\sum_{j=1}^{n}(-1)^{\,j-1}\,\frac{\partial \Psi_j}{\partial x^j}\,dx^1\w
 
 （这里的 $$(-1)^{j-1}$$ 来源要说清楚，不能跳过：把 $$d\Psi_j$$ 楔到 $$dx^1\wedge\cdots\widehat{dx^j}\cdots\wedge dx^n$$ 时，$$d\Psi_j=\sum_k\partial_k\Psi_j\,dx^k$$ 中的 $$dx^k$$ 要穿过前面 $$j-1$$ 个因子抵达它"原来属于的第 $$j$$ 位"，于是出一个 $$(-1)^{j-1}$$；而求和只留下 $$k=j$$ 的项，因为其它 $$k$$ 会让同一个 $$dx^k$$ 出现两次。**这里用了 $$d(dx^i)=0$$，即第 14 章的 $$d^2=0$$。**）
 
+**代一个具体的 $$n$$ 核对一下**。取 $$n=3,\ j=2$$：这一项是 $$\Psi_2\,dx^1\wedge dx^3$$（删去 $$dx^2$$）。它对 $$d\psi$$ 的贡献是 $$d\Psi_2\wedge dx^1\wedge dx^3$$，其中 $$d\Psi_2=\partial_1\Psi_2\,dx^1+\partial_2\Psi_2\,dx^2+\partial_3\Psi_2\,dx^3$$。楔上 $$dx^1\wedge dx^3$$ 后，含 $$dx^1$$ 或 $$dx^3$$ 的两项都因重复因子而为零，只剩
+
+$$\partial_2\Psi_2\,dx^2\wedge dx^1\wedge dx^3 .$$
+
+要把它整理成标准顺序 $$dx^1\wedge dx^2\wedge dx^3$$，只需把 $$dx^2$$ 和 $$dx^1$$ 对调一次（跨过 $$1$$ 个因子），出一个负号：$$dx^2\wedge dx^1\wedge dx^3=-dx^1\wedge dx^2\wedge dx^3$$，符号恰是 $$(-1)^1=(-1)^{j-1}$$（$$j=2$$）。这与第25章 3.2 节里"$$dy\wedge dx=-dx\wedge dy$$"是同一种反交换换算；一般的 $$j$$ 只是要跨过的因子从 $$1$$ 个变成 $$j-1$$ 个，符号相应地累积成 $$(-1)^{j-1}$$。
+
 **定理 3.11（标准单形上的 Stokes 定理 / Stokes on the standard simplex）**。对 $$\sigma_n$$ 邻域上任意光滑的 $$(n-1)$$-形式 $$\psi$$，
 
 $$\int_{\partial\sigma_n}\psi=\int_{\sigma_n}d\psi .$$
@@ -225,6 +237,8 @@ $$dx^1\wedge\cdots\widehat{dx^j}\cdots\wedge dx^n=(-1)^{\,j-1}\,dx^2\wedge\cdots
 
 **(b) 定向的翻转。** $$P_1\to P_j$$ 这个坐标变换（把 $$x_j$$ 挤出去、把 $$x_1$$ 表成 $$x_2,\dots,x_n$$ 的组合）的 Jacobi 行列式是 $$(-1)^{\,j+1}$$：只有 $$x_1$$ 那一行是 $$\partial x_1/\partial x_k=-1$$，其余各行是标准基向量，而 $$x_j$$ 那一行被"跳过"，展开时出一个 $$(-1)^{j-1}$$，与第一行的 $$-1$$ 相乘得 $$(-1)^{\,j+1}$$。域 $$P_j$$ 的定向是它自己的标准定向，不是 $$P_1$$ 的推前——两者相差这个符号的倒数，即再乘 $$(-1)^{\,j+1}$$。
 
+**代 $$n=3,j=2$$ 核对**（这与第25章 3.1 节算过的极坐标 Jacobi 行列式是同一类计算，只是这里换元更绕）：坐标变换是 $$(x_2,x_3)\mapsto(x_1,x_3)=(1-x_2-x_3,\,x_3)$$。Jacobi 矩阵是 $$\begin{pmatrix}\partial x_1/\partial x_2&\partial x_1/\partial x_3\\ \partial x_3/\partial x_2&\partial x_3/\partial x_3\end{pmatrix}=\begin{pmatrix}-1&-1\\0&1\end{pmatrix}$$，行列式 $$=-1\cdot1-(-1)\cdot0=-1$$，恰是 $$(-1)^{j+1}=(-1)^3=-1$$（$$j=2$$）。
+
 **(c) 两次符号相乘。** $$(-1)^{\,j-1}\cdot(-1)^{\,j+1}=(-1)^{\,2j}=+1$$。所以
 
 $$A_j=\int_{P_1}\Psi_j\Big\vert_{\text{斜面上}}dx_{\hat1}\qquad(j\ge2),$$
@@ -262,6 +276,8 @@ $$\langle F^{*}\omega,\ v\rangle_M=\langle \omega,\ F_{*}v\rangle_N .$$
 
 对 $$k$$-形式逐点拉回并保持外积，得到 $$F^{*}:\Omega^{k}(N)\to\Omega^{k}(M)$$。**注意方向是反的**：$$F$$ 把点送出去，$$F^{*}$$ 把形式拉回来——这就是它名字的全部含义。
 
+**展开成坐标里能算的样子**。上面的定义是抽象配对，真要算的时候只需要两条规则：$$F^{*}(fg)=(F^{*}f)(F^{*}g)$$（对函数直接复合，$$F^{*}f=f\circ F$$）、$$F^{*}(df)=d(F^{*}f)$$（这正是下面 定理3.15 要证的特殊情形，$$k=0$$）。于是若 $$N$$ 上取坐标 $$y^1,\dots,y^n$$，$$F$$ 写成 $$y^i=F^i(x)$$，则 $$F^{*}(dy^i)=dF^i=\sum_j\frac{\partial F^i}{\partial x^j}dx^j$$，把 $$\omega=\sum W_I\,dy^{i_1}\wedge\cdots\wedge dy^{i_k}$$ 里的每个 $$y^i$$ 换成 $$F^i(x)$$、每个 $$dy^i$$ 换成 $$dF^i$$，再展开楔积，就是 $$F^{*}\omega$$。第25章 3.4 节已经手算过一次：$$F(t)=(\cos t,\sin t)$$，$$\omega=x\,dy-y\,dx$$，逐项代入 $$x=\cos t,\ dy=d(\sin t)=\cos t\,dt$$ 等，算出 $$F^{*}\omega=dt$$——这就是下面的抽象定义在具体坐标里的样子，本节只是把这套"代入再展开"的算法写成一般规则。
+
 **定理 3.15（拉回与外微分交换）**。对光滑 $$F:M\to N$$ 与 $$\omega\in\Omega^{k}(N)$$，
 
 $$F^{*}(d\omega)=d(F^{*}\omega).$$
@@ -271,6 +287,8 @@ $$F^{*}(d\omega)=d(F^{*}\omega).$$
 **为什么这条是搬家的关键**。它说的是：**$$F^{*}$$ 把 $$d$$ 整个抬过来，一步不多一步不少**。于是"先在 $$M$$ 上取 $$d$$，再拉回"与"先拉回，再在 $$\sigma_n$$ 上取 $$d$$"是同一件事——这正是下面把定理 3.11 搬到流形上时唯一需要的性质。
 
 ### 3.5 奇异单形、奇异链与其上的积分（MP28）
+
+定理 3.11 只在标准单形 $$\sigma_n$$ 上证过；但要处理的区域，比如球面、环面上的一块曲面，形状各不相同，没有哪一个能直接就是某个 $$\sigma_n$$。解决办法不是把每种形状单独证一遍，而是承认它们都可以"捏"出来——用一个光滑映射把规整的 $$\sigma_r$$ 映到流形上一块任意形状的区域。这样一来，流形上任意一块区域上的积分，就都能通过这个映射，换算成 $$\sigma_r$$ 上已经会算的积分（定义 3.10）。这就是引入奇异单形的理由。
 
 **定义 3.16（奇异单形 / singular simplex）**。设 $$M$$ 是 $$n$$ 维（或更高维）微分流形。$$M$$ 的一个 **$$r$$-奇异单形**是一个光滑映射
 
@@ -296,7 +314,7 @@ $$\int_{c}\omega:=\sum_k z_k\int_{s_k}\omega,\qquad
 \partial s:=\sum_{i=0}^{r}(-1)^{\,i}\,(s\circ f_i),\qquad
 \partial c:=\sum_k z_k\,\partial s_k .$$
 
-$$\partial(c)$$ 是 $$(r-1)$$-奇异链。第 09–10 章证明过 $$\partial^2=0$$；本定义把同一个 $$\partial$$ 逐字搬到了光滑映射的单形上，因而 $$\partial^2c=0$$ 依旧成立。
+$$\partial(c)$$ 是 $$(r-1)$$-奇异链。第 18 章证明过 $$\partial^2=0$$；本定义把同一个 $$\partial$$ 逐字搬到了光滑映射的单形上，因而 $$\partial^2c=0$$ 依旧成立。
 
 ### 3.6 奇异链上的 Stokes 定理 (Stokes on singular chains)
 
@@ -325,7 +343,7 @@ $$\int_{\partial s}\omega=\sum_{i=0}^{r}(-1)^i\int_{s\circ f_i}\omega
 
 ### 3.7 带边流形上的 Stokes 定理 (Stokes on manifolds with boundary)
 
-奇异链版本已经足够一般，但要把定理写成 $$\int_{\partial M}$$ 的形式，还需要说明"链的边界"就是"流形的边界"。这一步在单纯/奇异同调里是标准的（第 09–10 章的构造保证：一个定向紧流形可以被它的奇异链以保定向的方式三角剖分，且三角剖分的边界链就是 $$\partial M$$ 的链），我们直接引用。
+奇异链版本已经足够一般，但要把定理写成 $$\int_{\partial M}$$ 的形式，还需要说明"链的边界"就是"流形的边界"。这一步在单纯/奇异同调里是标准的（第 17–20 章的构造保证：一个定向紧流形可以被它的奇异链以保定向的方式三角剖分，且三角剖分的边界链就是 $$\partial M$$ 的链），我们直接引用。
 
 **定理 3.21（带边流形上的 Stokes 定理 / Stokes' theorem）**。设 $$D$$ 是定向 $$n$$ 维带边流形 $$M$$ 的开子流形，$$M$$ 的定向诱导出 $$D$$ 与 $$\partial D$$ 的定向（3.2）。对 $$\omega\in\Omega^{n-1}(M)$$ 紧支（或 $$D$$ 紧），
 
@@ -356,9 +374,19 @@ $$\int_{\partial H^n}\omega=(-1)^{\,n-1}\int_{x_n=0}f_n\,dx_1\cdots dx_{n-1}.$$
 
 两端都是 $$(-1)^{n-1}\int_{x_n=0}f_n$$，相等。**注意这个 $$(-1)^{n-1}$$ 在两端同时出现**——它不是误差，而是 3.2 那个约定留下的印记；这也再次说明约定与符号是一体的。
 
-**第二步：一般流形。** 取从属于 $$D$$ 的定向图册的单位分解 $$\{\rho_\alpha\}$$（$$\sum_\alpha\rho_\alpha\equiv1$$ 于 $$\mathrm{supp}\,\omega$$ 附近）。每个 $$\rho_\alpha\omega$$ 支在单张定向坐标卡内，坐标卡把这小块映到 $$\mathbb{R}^n$$ 中的区域，边界部分落在某个坐标超平面上——局部上就是第一步的半空间情形。由第一步，$$\int_D d(\rho_\alpha\omega)=\int_{\partial D}\rho_\alpha\omega$$。又 $$d(\rho_\alpha\omega)=d\rho_\alpha\wedge\omega+\rho_\alpha\,d\omega$$，且 $$\int_D d\rho_\alpha\wedge\omega$$ 在求和时抵消（因为 $$\sum_\alpha\rho_\alpha\equiv1$$ 迫使 $$\sum_\alpha d\rho_\alpha=0$$），故
+**第二步：一般流形。** 取从属于 $$D$$ 的定向图册的单位分解 $$\{\rho_\alpha\}$$（$$\sum_\alpha\rho_\alpha\equiv1$$ 于 $$\mathrm{supp}\,\omega$$ 附近）。每个 $$\rho_\alpha\omega$$ 支在单张定向坐标卡内，坐标卡把这小块映到 $$\mathbb{R}^n$$ 中的区域，边界部分落在某个坐标超平面上——局部上就是第一步的半空间情形。由第一步，$$\int_D d(\rho_\alpha\omega)=\int_{\partial D}\rho_\alpha\omega$$。又由 Leibniz 律，$$d(\rho_\alpha\omega)=d\rho_\alpha\wedge\omega+\rho_\alpha\,d\omega$$。
 
-$$\int_D d\omega=\sum_\alpha\int_D d(\rho_\alpha\omega)=\sum_\alpha\int_{\partial D}\rho_\alpha\omega=\int_{\partial D}\omega .\ \square$$
+**展开"求和时抵消"这一句**：对 $$\alpha$$ 求和，
+
+$$\sum_\alpha d(\rho_\alpha\omega)=\sum_\alpha d\rho_\alpha\wedge\omega+\Bigl(\sum_\alpha\rho_\alpha\Bigr)d\omega .$$
+
+单位分解要求 $$\sum_\alpha\rho_\alpha\equiv1$$ 在 $$\mathrm{supp}\,\omega$$ 附近恒成立，两边取 $$d$$ 得 $$\sum_\alpha d\rho_\alpha\equiv0$$（常数 $$1$$ 的外微分是 $$0$$）。代入上式，右边第一项整体为零，只剩 $$1\cdot d\omega=d\omega$$，即
+
+$$\sum_\alpha d(\rho_\alpha\omega)=d\omega .$$
+
+两边对 $$D$$ 积分，再逐项代入第一步的结果：
+
+$$\int_D d\omega=\sum_\alpha\int_D d(\rho_\alpha\omega)=\sum_\alpha\int_{\partial D}\rho_\alpha\omega=\int_{\partial D}\Bigl(\sum_\alpha\rho_\alpha\Bigr)\omega=\int_{\partial D}\omega .\ \square$$
 
 **推论 3.22（四个经典公式，同一句话）**。在定理 3.21 中更换 $$n$$ 与 $$\omega$$，就得到入口题 (a) 的三条以及 N–L 本身。翻译细节留给第五节经典题 1、3、4——那里有 $$d$$ 与 $$\nabla$$ 的逐项对照。
 
@@ -390,7 +418,7 @@ $$\bigl\langle \partial c,\ \omega\bigr\rangle=\bigl\langle c,\ d\omega\bigr\ran
 | 章 | 式子 | 它说的是 |
 |---|---|---|
 | 第 14 章 | $$d^2=d\circ d=0$$ | 分析侧：连续取两次"无穷小边界"归零 |
-| 第 09–10 章 | $$\partial^2=\partial\circ\partial=0$$ | 拓扑侧：连续取两次"宏观边界"归零 |
+| 第 18 章 | $$\partial^2=\partial\circ\partial=0$$ | 拓扑侧：连续取两次"宏观边界"归零 |
 | **本章** | $$\displaystyle\int_{\partial}\omega=\int d\omega$$ | **两侧互为伴随——$$d$$ 是 $$\partial$$ 的转置** |
 
 第 14 章末尾那句"$$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 和 $$\partial^2=0$$ 是同一句话、只是分别写在形式世界和链世界"，到这一章才真正兑现：把它们焊在一起的，就是 定理 3.23 这一个等式。而且对偶一旦成立，$$d^2=0$$ 与 $$\partial^2=0$$ 也立刻成为彼此的转置——同一个零，两副面孔。
@@ -609,7 +637,7 @@ $$\int_{c-c'}\omega=\int_{\partial b}\omega=\int_b d\omega=\int_b 0=0,$$
 $$\langle\,\cdot\,,\,\cdot\,\rangle:\ H^{k}_{dR}(M)\times H_k(M)\longrightarrow\mathbb{R},\qquad
 \bigl([\omega],[c]\bigr)\longmapsto\int_c\omega .$$
 
-**注意这里出现的两个商**：$$\ker d/\operatorname{im}d$$（第 14 章的 $$d$$）与 $$\ker\partial/\operatorname{im}\partial$$（第 09–10 章的 $$\partial$$）。它们是本章 定理 3.23 那个伴随关系在对偶空间上留下的痕迹——**$$d$$ 与 $$\partial$$ 互为转置，于是它们的核与像也互为转置**。
+**注意这里出现的两个商**：$$\ker d/\operatorname{im}d$$（第 14 章的 $$d$$）与 $$\ker\partial/\operatorname{im}\partial$$（第 18 章的 $$\partial$$）。它们是本章 定理 3.23 那个伴随关系在对偶空间上留下的痕迹——**$$d$$ 与 $$\partial$$ 互为转置，于是它们的核与像也互为转置**。
 
 **接到下一章**。(iii) 证明了这个配对良定义，但一个字也没说它**非退化**。事实是：当 $$M$$ 是光滑紧流形时，这个配对非退化，对应地有 $$H^{k}_{dR}(M)\cong H^k(M;\mathbb{R})$$——**微分形式的同调与拓扑的同调算了同一件事**。这就是 de Rham 定理，也正是第 28 章的标题。本章到此为止地把 $$\partial$$ 与 $$d$$ 配成对；第 28 章会把这对配对做成一个同构。
 
@@ -845,7 +873,7 @@ $$H_0(M)\cong\mathbb{Z}^{m}.$$
 
 1. **一条定理，四个公式。** $$\int_{\partial M}\omega=\int_M d\omega$$ 在 $$n=1$$ 是 Newton–Leibniz，$$n=2$$ 平面是 Green，$$n=3$$ 把 $$\omega$$ 取 1-形式得 Kelvin–Stokes、取 2-形式得 Gauss。它们不是"四条相似的定理"，而是同一条定理在四个维数上的投影。判断依据不在公式长相，而在**$$\omega$$ 的次数**与**区域维数**是否配套。
 
-2. **$$\partial$$ 与 $$d$$ 互为伴随。** 定理 3.23：$$\langle\partial c,\omega\rangle=\langle c,d\omega\rangle$$。第 14 章的 $$d^2=0$$（分析侧）与第 09–10 章的 $$\partial^2=0$$（拓扑侧）在这里被焊在一起——它们是同一台算子的两个尺度，互为转置。**这是全书暗线的正式闭合点。**
+2. **$$\partial$$ 与 $$d$$ 互为伴随。** 定理 3.23：$$\langle\partial c,\omega\rangle=\langle c,d\omega\rangle$$。第 14 章的 $$d^2=0$$（分析侧）与第 18 章的 $$\partial^2=0$$（拓扑侧）在这里被焊在一起——它们是同一台算子的两个尺度，互为转置。**这是全书暗线的正式闭合点。**
 
 3. **三处"差一"是同一件事。** $$d$$ 升一格、$$\partial$$ 降一格、$$\partial M$$ 比 $$M$$ 低一维——这不是三个巧合。它说的正是"升与降在配对里抵消"，从而积分只能定义在"$$k$$-形式配 $$k$$ 维域"上。
 

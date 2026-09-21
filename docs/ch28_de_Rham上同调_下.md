@@ -13,7 +13,7 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
-本章只回答一个问题：**一个闭形式，什么时候恰好是某个形式的微分？**
+读完第 27 章的具体例子后（那一章已经带你手算过闭、恰当、局部常值函数计数，以及"绕原点积分给出一个数"这三件事），这里把同样的构造写成一般定义，并给出完整证明。本章只回答一个问题：**一个闭形式，什么时候恰好是某个形式的微分？**
 
 **从哪来。** 卷二走到这里，已经铺了三条平行的线，它们在这一章第一次拧成一根绳：
 
@@ -59,6 +59,8 @@ $$\Omega^0(M)\xrightarrow{\ d_0\ }\Omega^1(M)\xrightarrow{\ d_1\ }\Omega^2(M)\xr
 这里值得停下来看一件事：$$\partial^2=0$$（第 18 章）与 $$d^2=0$$ 是**两个不同对象上的同一条法则**。一个降维，一个升维，别的没有区别。而第 09–10 章已经演示过：只要手上有一串"复合为零"的映射，就能造出一台商机器 $$H=Z/B$$。所以本章要做的第一件事，就是把那台机器原封不动地搬到上链复形上。
 
 ### 3.2 闭形式与恰当形式
+
+**为什么先定义这两个词。** 3.1 节把"复合为零"这条法则搬了过来，但还没有名字给复形里的元素分类。入口题已经把两类对象摆在了眼前：$$d\omega=0$$ 这一条件（(a) 算出来的那种"平"）值得起一个名字；"$$\omega$$ 是不是某个函数的微分"（(b) 问的那件事）也值得起一个名字。下面这两个定义就是把入口题里已经用过的两句话，正式钉成术语。
 
 **定义 3.1（闭形式 / closed form）**。$$\omega\in\Omega^k(M)$$ 称为**闭的 (closed)**，若 $$d_k\omega=0$$。全体闭 $$k$$-形式记
 
@@ -146,7 +148,11 @@ $$X=\sum_{i=1}^{n}x^i\partial_i.$$
 
 $$\iota_X\omega=\sum_I\sum_{j=1}^{k}(-1)^{j-1}f_I\,x^{i_j}\,dx^{i_1}\wedge\cdots\widehat{dx^{i_j}}\cdots\wedge dx^{i_k}$$
 
-（帽子表示删去该项）。记 $$L_X$$ 为沿 $$X$$ 的 Lie 导数（一般定义见第 24 章）。此处我们只需它的两条性质：其一，$$\displaystyle L_X\omega=\frac{d}{dt}\Big(\phi_t^*\omega\Big)\Big\vert_{t=0}$$；其二，$$L_X$$ 是 $$\Omega^\bullet(U)$$ 上的**偶（零次）分次导子**，即满足
+（帽子表示删去该项）。记 $$L_X$$ 为沿 $$X$$ 的 Lie 导数（一般定义见第 24 章），它由 $$X$$ **真正的流**生成：径向场 $$X=\sum_ix^i\partial_i$$ 的流不是 $$\phi_t$$，而是指数流
+
+$$\psi_s(x)=e^sx,\qquad s\in\mathbb{R},\qquad \psi_0=\mathrm{id},\qquad \frac{d}{ds}\psi_s(x)=e^sx=\psi_s(x)=X\big(\psi_s(x)\big).$$
+
+**提醒（本节最容易混的一处记号）。** $$\psi_s$$ 与本节稍后要用的径向收缩 $$\phi_t(x)=tx$$（$$t\in[0,1]$$）是两个不同的族：$$\phi_t$$ 只在 $$t\in[0,1]$$ 上有定义，$$\phi_0$$ 把整个 $$U$$ 压成原点这一件事，恰恰是任何向量场的流都做不到的（流在 $$\mathrm{id}$$ 附近，不可能把开集压成一点）——所以 $$\phi_t$$ 本身**不是** $$X$$ 的流，只是恰好在 $$t>0$$ 时与流有 $$\phi_t=\psi_{\ln t}$$ 这层换参数的关系。这层关系在定理 3.9 的证明里要用到，届时会看到混淆两者会漏掉一个因子。此处我们只需 $$L_X$$ 的两条性质：其一，$$\displaystyle L_X\omega=\frac{d}{ds}\Big(\psi_s^*\omega\Big)\Big\vert_{s=0}$$；其二，$$L_X$$ 是 $$\Omega^\bullet(U)$$ 上的**偶（零次）分次导子**，即满足
 
 $$L_X(\alpha\wedge\beta)=L_X\alpha\wedge\beta+\alpha\wedge L_X\beta,$$
 
@@ -176,15 +182,17 @@ $$D\Big(\sum_I f_I\,dx^{i_1}\wedge\cdots\wedge dx^{i_k}\Big)=\sum_I\Big[(Df_I)\,
 于是在生成元上核对两边：
 
 - **函数 $$f$$**：$$L_Xf=Xf=\sum_i x^i\partial_i f$$；而 $$d(\iota_Xf)+\iota_X(df)=0+df(X)=Xf$$，因为 $$0$$-形式的缩并恒为零，而 $$df(X)$$ 就是 $$Xf$$。相符。
-- **$$dx^i$$**：一方面 $$L_X(dx^i)=d(L_Xx^i)=d(x^i)=dx^i$$（第一步用 $$L_X$$ 与 $$d$$ 交换：由 $$\phi_t^*d=d\phi_t^*$$ 对 $$t$$ 求导得到）；另一方面 $$d\big(\iota_X(dx^i)\big)+\iota_X\big(d(dx^i)\big)=d(x^i)+0=dx^i$$。相符。
+- **$$dx^i$$**：一方面 $$L_X(dx^i)=d(L_Xx^i)=d(x^i)=dx^i$$（第一步用 $$L_X$$ 与 $$d$$ 交换：由 $$\psi_s^*d=d\psi_s^*$$——$$\psi_s$$ 是光滑映射，第 14 章定理 3.16 对任意光滑映射都成立——两边对 $$s$$ 求导即得 $$L_Xd=dL_X$$）；另一方面 $$d\big(\iota_X(dx^i)\big)+\iota_X\big(d(dx^i)\big)=d(x^i)+0=dx^i$$。相符。
 
 由 (i)(ii)，两个偶导子处处相等。$$\blacksquare$$
 
+**为什么会想到造这样一个算子。** 引理 3.8 把 $$d\omega$$ 和 $$L_X\omega$$ 用 $$\iota_X$$ 连在了一起；而 $$L_X\omega$$ 又是"沿 $$X$$ 的流把 $$\omega$$ 推一点点"的变化率。如果能把这个"推一点点"从 $$t=0$$ 一路积分到 $$t=1$$（也就是把 $$U$$ 从"一个点"渐变到"恒等"走一遍），左右两边累积下来，应该正好把 $$\omega$$ 和 $$\phi_0^*\omega=0$$ 的差配平——而配平所用的那个原函数，就是要找的 $$K\omega$$。下面把这个想法做实。
+
 **定理 3.9（同伦公式 / homotopy formula）**。在星形区域 $$U$$ 上定义线性算子 $$K:\Omega^k(U)\to\Omega^{k-1}(U)$$（$$k\ge1$$）为
 
-$$K\omega=\int_0^1\phi_t^*\big(\iota_X\omega\big)\,dt,$$
+$$K\omega=\int_0^1\frac1t\,\phi_t^*\big(\iota_X\omega\big)\,dt,$$
 
-（对每个固定的 $$x$$，被积对象是 $$t$$ 的光滑函数，逐点积分），并对 $$\Omega^0(U)$$ 约定 $$Kf=0$$。则对一切 $$\omega\in\Omega^k(U)$$，
+并对 $$\Omega^0(U)$$ 约定 $$Kf=0$$。**这个 $$1/t$$ 不是笔误。** 下面的证明会看到：$$\phi_t^*(\iota_X\omega)$$ 本身总带一个多余的因子 $$t$$（$$\iota_X$$ 把坐标 $$x^i$$ 代进去，拉回又把 $$x^i$$ 换成 $$tx^i$$，多出一个 $$t$$），这里的 $$1/t$$ 恰好把它消掉；消掉之后，被积对象对每个固定的 $$x$$ 是 $$t$$ 的光滑函数，在 $$t=0$$ 处也没有真正的奇点，可以逐点积分。则对一切 $$\omega\in\Omega^k(U)$$，
 
 $$d\big(K\omega\big)+K\big(d\omega\big)=\omega-\phi_0^*\omega.$$
 
@@ -192,18 +200,49 @@ $$d\big(K\omega\big)+K\big(d\omega\big)=\omega-\phi_0^*\omega.$$
 
 $$d\big(K\omega\big)+K\big(d\omega\big)=\omega\qquad(k\ge1).$$
 
-**证明。** 固定 $$x\in U$$。函数 $$t\mapsto\phi_t^*\omega$$（在点 $$x$$ 取值）是光滑的，由微积分基本定理
+**证明。** 固定 $$x\in U$$，写 $$\omega=\sum_If_I\,dx^I$$（$$\lvert I\rvert=k$$）。
 
-$$\omega(x)-\phi_0^*\omega(x)=\int_0^1\frac{d}{dt}\Big(\phi_t^*\omega\Big)\,dt.$$
+*第一步：直接算 $$\dfrac{d}{dt}\big(\phi_t^*\omega\big)$$，不经过"$$\phi_t$$ 是流"这条近路。* 由 $$\phi_t^*(dx^i)=d(tx^i)=t\,dx^i$$ 得 $$\phi_t^*(dx^I)=t^k\,dx^I$$，故
 
-由 Lie 导数的定义（$$L_X$$ 是 $$\phi_t$$ 的无穷小生成元，第 10 章），$$\frac{d}{dt}\phi_t^*\omega=\phi_t^*(L_X\omega)$$。代入引理 3.8：
+$$\phi_t^*\omega=t^k\sum_If_I(tx)\,dx^I .$$
 
-$$\frac{d}{dt}\phi_t^*\omega=\phi_t^*\big(d\iota_X\omega+\iota_Xd\omega\big)
-=d\big(\phi_t^*\iota_X\omega\big)+\phi_t^*\iota_X\big(d\omega\big),$$
+对 $$t$$ 求导，乘积法则给出两项：
 
-第二步用了 $$\phi_t^*$$ 与 $$d$$ 交换（第 14 章定理 3.16）以及与 $$\iota_X$$ 交换（拉回与缩并都是逐点代数运算，逐点核对即知二者可交换）。两边对 $$t$$ 在 $$[0,1]$$ 上积分；被积对象对 $$(t,x)$$ 光滑、积分区域紧，故积分与 $$d$$ 交换：
+$$\frac{d}{dt}\big(\phi_t^*\omega\big)=\sum_I\Big[k\,t^{k-1}f_I(tx)+t^k\,\frac{d}{dt}f_I(tx)\Big]dx^I ,$$
 
-$$\omega-\phi_0^*\omega=d\Big(\int_0^1\phi_t^*\iota_X\omega\,dt\Big)+\int_0^1\phi_t^*\iota_X(d\omega)\,dt=d(K\omega)+K(d\omega). \qquad\blacksquare$$
+再用链式法则 $$\dfrac{d}{dt}f_I(tx)=\displaystyle\sum_jx^j(\partial_jf_I)(tx)$$（对 $$t$$ 求导时，$$x$$ 是常数，变化的是 $$tx$$ 这个自变量）代入，并把公共因子 $$t^{k-1}$$ 提出：
+
+$$\frac{d}{dt}\big(\phi_t^*\omega\big)=t^{k-1}\sum_I\Big[k\,f_I(tx)+\sum_jx^j(\partial_jf_I)(tx)\Big]dx^I . \qquad(\star)$$
+
+*第二步：认出 $$(\star)$$ 括号里的量就是 $$L_X\omega$$（在点 $$tx$$ 取值）。* 径向场满足 $$Xx^i=x^i$$（直接代入 $$X=\sum_jx^j\partial_j$$ 即得），故对任意 $$f$$，$$Xf=\sum_jx^j\partial_jf$$——这正是 $$(\star)$$ 括号里第二项的定义。又由引理 3.8 已验证的 $$L_X(dx^i)=dx^i$$ 及 $$L_X$$ 是导子，
+
+$$L_X(dx^I)=\sum_{s=1}^kdx^{i_1}\wedge\cdots\wedge L_X(dx^{i_s})\wedge\cdots\wedge dx^{i_k}=\sum_{s=1}^kdx^I=k\,dx^I$$
+
+（$$k$$ 个因子各自贡献一次 $$dx^I$$，没有变化，加起来是 $$k$$ 倍）。于是
+
+$$L_X\omega=\sum_I(Xf_I)\,dx^I+\sum_If_I\,L_X(dx^I)=\sum_I\big[Xf_I+k\,f_I\big]dx^I,$$
+
+其系数恰是 $$(\star)$$ 方括号里的表达式（只是自变量还没代入 $$tx$$）。把 $$L_X\omega$$ 在点 $$tx$$ 取值，再乘 $$t^k$$（同第一步的换算规则），就是 $$\phi_t^*(L_X\omega)$$；对照 $$(\star)$$：
+
+$$\frac{d}{dt}\big(\phi_t^*\omega\big)=t^{k-1}\big(L_X\omega\big)(tx)=\frac1t\cdot t^k(L_X\omega)(tx)=\frac1t\,\phi_t^*(L_X\omega). \qquad(\ast)$$
+
+**为什么不能直接写 $$\frac{d}{dt}\phi_t^*\omega=\phi_t^*(L_X\omega)$$（少了 $$1/t$$）。** 引理 3.8 那条注已经提醒过：$$X$$ 真正的流是指数流 $$\psi_s(x)=e^sx$$，而 $$\phi_t(x)=tx=\psi_{\ln t}(x)$$ 只是把流的参数从 $$s$$ 换成了 $$t=e^s$$——这是一次**不等速**的换钟，$$\dfrac{ds}{dt}=\dfrac1t$$。链式法则算变化率时，会自动把这个换钟因子 $$\dfrac1t$$ 乘进来；$$(\star)$$ 的直接坐标计算等于把这件事如实做了一遍，$$(\ast)$$ 里的 $$1/t$$ 正是这个来源，不能省略。
+
+*第三步：代入 Cartan 公式（引理 3.8），再对 $$t$$ 积分。* 由 $$(\ast)$$ 与引理 3.8，
+
+$$\frac{d}{dt}\phi_t^*\omega=\frac1t\phi_t^*\big(d\iota_X\omega+\iota_Xd\omega\big)
+=\frac1t\Big[d\big(\phi_t^*\iota_X\omega\big)+\phi_t^*\iota_X(d\omega)\Big],$$
+
+第二步用了 $$\phi_t^*$$ 与 $$d$$ 交换（第 14 章定理 3.16）以及与 $$\iota_X$$ 交换（拉回与缩并都是逐点代数运算）。由 $$(\star)$$ 可见 $$\frac1t\phi_t^*(\iota_X\omega)$$（它正是 $$K\omega$$ 被积表达式的来源）本质上是 $$t^{k-1}$$ 乘一个在 $$t=0$$ 处取有限值的多项式型表达式，当 $$k\ge1$$ 时对 $$t\in[0,1]$$ 连续、光滑，$$t=0$$ 处没有真正的奇点——这就兑现了定理陈述里"$$1/t$$ 不会在 $$t=0$$ 出问题"的说法。函数 $$t\mapsto\phi_t^*\omega$$（在点 $$x$$ 取值）光滑，由微积分基本定理
+
+$$\omega(x)-\phi_0^*\omega(x)=\int_0^1\frac{d}{dt}\Big(\phi_t^*\omega\Big)\,dt
+=\int_0^1\frac1t\Big[d\big(\phi_t^*\iota_X\omega\big)+\phi_t^*\iota_X(d\omega)\Big]dt.$$
+
+被积对象对 $$(t,x)$$ 光滑、积分区域紧，故积分与 $$d$$ 交换：
+
+$$\omega-\phi_0^*\omega=d\Big(\int_0^1\frac1t\phi_t^*\iota_X\omega\,dt\Big)+\int_0^1\frac1t\phi_t^*\iota_X(d\omega)\,dt=d(K\omega)+K(d\omega). \qquad\blacksquare$$
+
+**验个小例子，确认这个 $$1/t$$ 确实必要。** 取 $$U=\mathbb{R}^2$$、$$\omega=x\,dx$$（$$k=1$$，$$f_I(x,y)=x$$）。按 $$L_X\omega=\sum[Xf_I+kf_I]dx^I$$ 算，$$Xf_I=X(x)=x$$，故 $$L_X\omega=(x+x)dx=2x\,dx$$；这与直接用导子法则 $$L_X(x\,dx)=(Xx)dx+x\,L_X(dx)=x\,dx+x\,dx=2x\,dx$$ 相符。若漏掉 $$1/t$$、直接用 $$\widetilde K\omega=\int_0^1\phi_t^*(\iota_X\omega)\,dt$$，由 $$\iota_X(x\,dx)=x\cdot x=x^2$$（$$\iota_X$$ 把 $$dx$$ 换成 $$X$$ 的 $$x$$-分量，即 $$x$$，再乘系数 $$x$$），$$\phi_t^*(x^2)=(tx)^2=t^2x^2$$，得 $$\widetilde K\omega=\int_0^1t^2x^2\,dt=\frac13x^2$$，于是 $$d(\widetilde K\omega)=\frac23x\,dx\ne\omega$$——同伦公式在 $$\widetilde K$$ 下不成立，说明漏掉 $$1/t$$ 确实是错的。换成本定理的 $$K$$：$$\dfrac1t\phi_t^*(\iota_X\omega)=\dfrac1t\cdot t^2x^2=tx^2$$，$$K\omega=\int_0^1tx^2\,dt=\dfrac12x^2$$，$$d(K\omega)=x\,dx=\omega$$（$$d\omega=0$$ 已知，故 $$K(d\omega)=0$$），同伦公式成立。
 
 **定理 3.7 的证明。** 设 $$\omega\in\Omega^k(U)$$（$$k\ge1$$）闭，即 $$d\omega=0$$。由定理 3.9，
 

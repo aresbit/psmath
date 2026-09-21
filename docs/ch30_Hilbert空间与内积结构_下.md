@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第29章的具体例子后——你已经亲手验证过 Cauchy–Schwarz、算出过平行四边形法则的成立与失效、构造过一个真正"走不出多项式空间"的柯西列、也解过一次具体的 Gram 矩阵——这里把同样的构造写成对任意内积空间都成立的一般定义，并给出完整证明。
+
 **从哪来**：第 08 章的 定理 3.6 证明了「内积给出 $$V\to V^*$$ 的自然同构 $$g^\flat$$」，第 06 章的 定理 3.21 又证明了「$$V\cong V^*$$ 不自然」。这两个结论在有限维里说得通：内积一次选定，之后的指标升降就只是"把向量搬成泛函"。但第 06 章的问题 3 已经埋了地雷——$$V=\mathbb{R}[x]$$ 时 $$\dim V=\aleph_0$$ 而 $$\dim V^*=\mathfrak{c}$$，$$V$$ 与 $$V^*$$ 之间连**同构**都不存在，更不必谈"自然"。本章要回答的就是：**$$g^\flat$$ 在无穷维里什么时候还是同构？**
 
 **到哪去**：答案是——当且仅当空间**完备**且范数**来自内积**，即空间是 **Hilbert 空间**。这时 $$g^\flat$$ 被 Riesz 表示定理救活，$$H\cong H^*$$ 成为内积的免费赠品，而 Banach 空间一般不享有。这一章同时把第 08 章的正交概念从有限维搬到无穷维：正交补、正交投影、正交规范基。下一章（第 32 章）将把这套语言直接翻译成量子力学的态、可观测量与测量。
@@ -154,7 +156,15 @@ $$\underbrace{Q(x+y-z)+Q(x-y-z)}_{u=x-z,\ v=y}=2Q(x-z)+2Q(y). \tag{B}$$
 
 $$Q(x+y+z)-Q(x+y-z)-\big[Q(y-x+z)-Q(y-x-z)\big]=2\big[Q(x+z)-Q(x-z)\big]. \tag{C}$$
 
-再把 $$x$$ 与 $$y$$ 的角色互换，重做同一步骤（把 (A)(B) 里的 $$x,y$$ 对调）：
+再把 $$x$$ 与 $$y$$ 的角色互换，重做同一步骤（把 (A)(B) 里的 $$x,y$$ 对调）。**（展开）** 把 (C) 里的 $$x$$ 换成 $$y$$、$$y$$ 换成 $$x$$，得到
+
+$$Q(y+x+z)-Q(y+x-z)-\big[Q(x-y+z)-Q(x-y-z)\big]=2\big[Q(y+z)-Q(y-z)\big].$$
+
+现在逐项对照回 (C) 里已经出现过的量：加法交换律给出 $$Q(y+x+z)=Q(x+y+z)$$、$$Q(y+x-z)=Q(x+y-z)$$；而 $$x-y+z=-\big((y-x)-z\big)$$、$$x-y-z=-\big((y-x)+z\big)$$ 与 $$Q(-w)=Q(w)$$ 给出 $$Q(x-y+z)=Q(y-x-z)$$、$$Q(x-y-z)=Q(y-x+z)$$，所以方括号里的量翻了个符号：
+
+$$Q(x-y+z)-Q(x-y-z)=Q(y-x-z)-Q(y-x+z)=-\big[Q(y-x+z)-Q(y-x-z)\big].$$
+
+代回上式，中括号前的负号与这里的负号相乘抵消成正号，就得到
 
 $$Q(x+y+z)-Q(x+y-z)+\big[Q(y-x+z)-Q(y-x-z)\big]=2\big[Q(y+z)-Q(y-z)\big]. \tag{D}$$
 
@@ -229,7 +239,11 @@ $$\big\lvert\langle x_n+u_n,y_n+v_n\rangle-\langle x_n,y_n\rangle\big\rvert\le\l
 
 $$\big\langle[x_n],[y_n]\big\rangle_H:=\lim_{n\to\infty}\langle x_n,y_n\rangle$$
 
-是良定义的。它显然对第一变元线性、共轭对称；正定性：$$\big\langle[x_n],[x_n]\big\rangle_H=\lim\lVert x_n\rVert^2\ge0$$，且若此极限为 $$0$$，则 $$\lVert x_n\rVert\to0$$，按定义 $$(x_n)\in\mathcal{N}$$，故 $$[x_n]=0$$。故 $$H$$ 是内积空间。
+是良定义的。**（展开）** 对第一变元的线性：若 $$[x_n]=[x_n']$$ 代表元相同这件事已在上面处理过，故只需在固定代表元的层面验证——设 $$(u_n)\in\mathcal C$$ 是第三个柯西列，则
+
+$$\big\langle\alpha[x_n]+\beta[u_n],[y_n]\big\rangle_H=\lim_n\langle\alpha x_n+\beta u_n,y_n\rangle=\lim_n\big(\alpha\langle x_n,y_n\rangle+\beta\langle u_n,y_n\rangle\big)=\alpha\lim_n\langle x_n,y_n\rangle+\beta\lim_n\langle u_n,y_n\rangle,$$
+
+这里用了 $$V$$ 上内积对第一变元的线性（逐项成立，再取极限；极限对加法、数乘的可加性是数列极限的基本性质），最后一式正是 $$\alpha\langle[x_n],[y_n]\rangle_H+\beta\langle[u_n],[y_n]\rangle_H$$。共轭对称同理：$$\langle[y_n],[x_n]\rangle_H=\lim_n\langle y_n,x_n\rangle=\lim_n\overline{\langle x_n,y_n\rangle}=\overline{\lim_n\langle x_n,y_n\rangle}=\overline{\langle[x_n],[y_n]\rangle_H}$$（共轭运算与取极限可交换，因为共轭是连续映射）。正定性：$$\big\langle[x_n],[x_n]\big\rangle_H=\lim\lVert x_n\rVert^2\ge0$$，且若此极限为 $$0$$，则 $$\lVert x_n\rVert\to0$$，按定义 $$(x_n)\in\mathcal{N}$$，故 $$[x_n]=0$$。故 $$H$$ 是内积空间。
 
 **第四步：$$H$$ 完备。** 设 $$\big(\xi^{(m)}\big)_{m}$$ 是 $$H$$ 中柯西列。对每个 $$m$$ 取代表元 $$(x^{(m)}_n)_n\in\mathcal{C}$$。由于 $$\lVert\xi^{(m)}\rVert_H=\lim_n\lVert x^{(m)}_n\rVert$$，除有限多个 $$n$$ 外都有 $$\lVert x^{(m)}_n\rVert\le\lVert\xi^{(m)}\rVert_H+1$$；把那有限多个"坏项"改成 $$0$$（改动有限多项既保持柯西性也不改变陪类，故仍取到原来的 $$\xi^{(m)}$$），就使取对角列 $$z_n:=x^{(n)}_n$$。由
 
@@ -365,7 +379,11 @@ $$\Phi:H\to H^*,\qquad \Phi(y)=\langle\cdot,y\rangle$$
 
 $$\Phi(\alpha y+\beta z)(x)=\langle x,\alpha y+\beta z\rangle=\overline{\alpha}\langle x,y\rangle+\overline{\beta}\langle x,z\rangle .$$
 
-自反性：$$\Phi$$ 给出 $$H\cong H^*$$（作为赋范空间，通过共轭线性同构），对 $$H^*$$ 再用一次同一结论（$$H^*$$ 本身也是 Hilbert 空间——它由 $$\Phi$$ 与 $$H$$ 等距同构，而完备性在等距下保持）即得 $$H^{**}\cong H^*\cong H$$；细节上还可以验证这个复合恰是自然嵌入 $$J$$。弱拓扑与弱\*拓扑重合，是因为在自反空间上两者都是"使 $$H^*$$ 的元素连续"的最粗拓扑。$$\blacksquare$$
+**自反性（展开）。** 先说明 $$H^*$$ 本身也是 Hilbert 空间：$$\Phi:H\to H^*$$ 是等距（保范），而等距同构把柯西列送到柯西列、把收敛送到收敛，所以完备性沿着 $$\Phi$$ 从 $$H$$ 搬到 $$H^*$$。于是可以对 $$H^*$$ 重新套用定理 3.12/3.13 自己：存在共轭线性等距同构 $$\Psi:H^*\to H^{**}$$，$$\Psi(g)=\langle\cdot,g\rangle_{H^*}$$。要检查的是复合 $$\Psi\circ\Phi:H\to H^{**}$$ 是否就是"自然嵌入" $$J:H\to H^{**}$$，$$(Jx)(f):=f(x)$$（$$f\in H^*$$）。取 $$x\in H$$、$$f=\Phi(y)=\langle\cdot,y\rangle\in H^*$$（$$y\in H$$ 任意，因为 $$\Phi$$ 满射，$$f$$ 可以这样写），直接算两边在 $$f$$ 上的取值：
+
+$$\big(\Psi(\Phi(x))\big)(f)=\big\langle f,\Phi(x)\big\rangle_{H^*}=\overline{\Phi(x)(y)}\cdot(\text{按 }\Phi\text{ 的等距关系换算})=\overline{\langle y,x\rangle}=\langle x,y\rangle=f(x)=(Jx)(f)$$
+
+（第二个等号是把 $$H^*$$ 上的内积 $$\langle\cdot,\cdot\rangle_{H^*}$$ 也用一次 Riesz 表示定理的定义展开，中间的共轭抵消恰好来自 $$\Phi$$ 与 $$\Psi$$ 各自的共轭线性）。两个复合线性映射 $$\Psi\circ\Phi$$ 与 $$J$$ 在每个 $$f$$ 上取值相同，故 $$\Psi\circ\Phi=J$$，即 $$J$$ 本身就是一个（等距）同构，这正是"$$H$$ 自反"的定义。弱拓扑与弱\*拓扑重合，是因为在自反空间上两者都是"使 $$H^*$$ 的元素连续"的最粗拓扑。$$\blacksquare$$
 
 **注 3.13（Riesz 表示把"泛函"换成了"向量"）。** 定理 3.12 可以一句话记住：**Hilbert 空间上的连续线性泛函就是"与某个固定向量做内积"。** 它的第一个用处是让**伴随算子** $$A^*$$ 能被定义成 $$A^*:H\to H$$ 而不是 $$H^*\to H^*$$：固定 $$y$$ 时 $$x\mapsto\langle Ax,y\rangle$$ 是连续线性泛函，由定理 3.12 它等于 $$\langle x,A^*y\rangle$$，这就定出了 $$A^*y\in H$$（第 32 章会用到；更系统的展开见知识库 `泛函分析/ch06.md` 与 `mit-18-102/ch10.md`）。第二个用处是让 **Dirac 符号**合法化：$$\langle\phi\mid\psi\rangle$$ 里的 $$\langle\phi\mid$$ 被理解为"$$H^*$$ 里的泛函"，而由 Riesz，它同时也就是 $$H$$ 里的一个向量——左矢与右矢可以互相搬运（见 MP39 与本章练习竞赛题 1）。
 
@@ -429,9 +447,15 @@ $$\langle e_\alpha,e_\beta\rangle=\delta_{\alpha\beta}=\begin{cases}1,&\alpha=\b
 
 称它**极大 (maximal)**，若唯一与所有 $$e_\alpha$$ 正交的向量是 $$0$$。若 $$H$$ 是 Hilbert 空间且 $$\lbrace e_\alpha\rbrace$$ 是极大正交规范集，则称它为 $$H$$ 的**正交规范基 (orthonormal basis, ONB)**。
 
-（"极大"与"$$\operatorname{span}\lbrace e_\alpha\rbrace$$ 在 $$H$$ 中稠密"等价：若张成不稠密，则由定理 3.10 可取非零元素垂直于该张成的闭包，与极大性矛盾；反之若存在非零 $$x\perp$$ 全体 $$e_\alpha$$，则 $$x$$ 也垂直于它们的张成的闭包，而后者稠密，故 $$\lVert x\rVert^{2}=\langle x,x\rangle=0$$。）
+（**（展开）为什么"极大"等价于"张成稠密"。** 记 $$M=\overline{\operatorname{span}\lbrace e_\alpha\rbrace}$$（张成的闭包，这是 $$H$$ 的闭子空间）。
+
+**"不稠密 $$\Rightarrow$$ 不极大"：** 若 $$M\ne H$$，取 $$x_0\in H\setminus M$$。由定理 3.10（$$M$$ 闭），$$x_0=Px_0+v$$，$$Px_0\in M$$、$$v\perp M$$。因为 $$x_0\notin M$$，必有 $$v\ne0$$（否则 $$x_0=Px_0\in M$$）。又 $$v\perp M\supset\lbrace e_\alpha\rbrace$$，故 $$v$$ 是一个非零的、与全体 $$e_\alpha$$ 正交的向量，与"极大"（唯一与所有 $$e_\alpha$$ 正交的向量是 $$0$$）矛盾。
+
+**"稠密 $$\Rightarrow$$ 极大"：** 反之设 $$M=H$$，并设 $$x\perp$$ 全体 $$e_\alpha$$。由命题 3.8（正交补对张成取闭包不变），$$x\in\lbrace e_\alpha\rbrace^\perp=M^\perp=H^\perp=\lbrace0\rbrace$$，即 $$x=0$$，故极大性成立——只有零向量能同时与所有 $$e_\alpha$$ 正交。两个方向合起来，"极大"与"张成稠密"等价。）
 
 **例 3.15。** $$\mathbb{F}^n$$ 的标准基；$$\ell^2$$ 中的 $$\lbrace e_n\rbrace$$（$$e_n$$ 是第 $$n$$ 位为 $$1$$、其余为 $$0$$ 的数列）；$$L^2([-\pi,\pi])$$ 中的 $$\lbrace e^{inx}/\sqrt{2\pi}\rbrace_{n\in\mathbb{Z}}$$（由 $$\frac1{2\pi}\int_{-\pi}^{\pi}e^{i(n-m)x}dx=\delta_{nm}$$ 验证）。最后这个就是我们熟悉的 Fourier 系。
+
+**为什么先证 Bessel、再证 Parseval。** 我们最终想说"$$x$$ 能展开成正交基的无穷级数"，但"无穷级数收敛"这件事本身要先有保证——下面的 Bessel 不等式正是这份保证的雏形：它说部分和的长度平方**不会超过** $$\lVert x\rVert^2$$，对任意正交规范列都成立（不需要"基"、不需要完备性）；有了这个一致的上界，级数才有资格谈论收敛。
 
 **定理 3.16（Bessel 不等式）。** 设 $$\lbrace e_n\rbrace_{n\ge1}$$ 是正交规范列，则对一切 $$x\in H$$
 
@@ -442,6 +466,8 @@ $$\sum_{n=1}^{\infty}\big\lvert\langle x,e_n\rangle\big\rvert^{2}\le\lVert x\rVe
 $$\lVert x\rVert^{2}=\lVert x-s_N\rVert^{2}+\lVert s_N\rVert^{2}=\lVert x-s_N\rVert^{2}+\sum_{n=1}^{N}\big\lvert\langle x,e_n\rangle\big\rvert^{2}, \tag{3.7}$$
 
 其中第二步用了 $$e_n$$ 两两正交与 $$\lVert e_n\rVert=1$$。正交性 $$\langle x-s_N,e_m\rangle=\langle x,e_m\rangle-\sum_{n=1}^{N}\overline{\langle x,e_n\rangle}\langle e_n,e_m\rangle=\langle x,e_m\rangle-\langle x,e_m\rangle=0$$ 对 $$1\le m\le N$$ 成立，故 $$\langle x-s_N,s_N\rangle=\sum_m\langle x,e_m\rangle\langle x-s_N,e_m\rangle=0$$。于是由 (3.7)，$$\lVert x-s_N\rVert^{2}\ge0$$ 给出部分和 $$\sum_{n=1}^{N}\lvert\langle x,e_n\rangle\rvert^{2}\le\lVert x\rVert^{2}$$。左侧随 $$N$$ 单调不减、有上界，故收敛且极限 $$\le\lVert x\rVert^{2}$$。$$\blacksquare$$
+
+**从"有界"到"收敛"还差一步。** Bessel 只保证了部分和 $$s_N=\sum_{n\le N}\langle x,e_n\rangle e_n$$ 的长度不失控，并没有说 $$s_N$$ 本身收敛到某个向量——这一步恰好要用上完备性（否则 $$s_N$$ 可能又是一列"该收敛却无处可去"的柯西列，正是第29章 3.3 节遇到的麻烦）；而"极大"这条条件保证了即便 $$s_N$$ 收敛，极限也一定是 $$x$$ 本身，不多不少。
 
 **定理 3.17（Fourier 展开与 Parseval 恒等式）。** 设 $$\lbrace e_n\rbrace_{n\ge1}$$ 是 Hilbert 空间 $$H$$ 的正交规范**基**。则对一切 $$x\in H$$
 
