@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第45章的具体例子——标量衰减方程的半群律、对角矩阵与热核的生成元、$$2\times2$$ 矩阵上 Lie 乘积公式的数值验证——之后，这里把同样的构造写成一般定义并给出完整证明。
+
 本章要回答两个看起来不像同一个问题的具体问题：**$$e^{-tH}$$ 里的 $$H$$ 是无界算子，"指数"到底怎么定义？** 以及 **Feynman 路径积分像是在对"所有路径"积分——那是个什么测度？**
 
 答案会落在同一处：那个积分不对应任何测度，它是一个**算子极限**的记号。而算子极限的定义，靠的是把 $$t\mapsto e^{-tH}$$ 看成一个**半群**。
@@ -733,7 +735,11 @@ $$\ln\mu_+=\frac{1}{m}+O(m^{-2})-\frac{1}{2}\Bigl(\frac{1}{m}+O(m^{-2})\Bigr)^{2
 
 $$\ln\mu_-=-\frac{1}{m}-\frac{1}{2m^{2}}+O(m^{-3}),\qquad \mu_-^{m}=\exp\bigl[-1-\frac{1}{2m}+O(m^{-2})\bigr]\to e^{-1}.$$
 
-$$(I+M)^m$$ 的特征值趋于 $$e$$ 与 $$e^{-1}$$，特征向量是 $$\frac{1}{\sqrt2}(1,1)^{\mathsf T}$$ 与 $$\frac{1}{\sqrt2}(1,-1)^{\mathsf T}$$（两个特征向量与 $$m$$ 无关，因为 $$I+M$$ 的两个非对角元相等、对角元之差是 $$\frac1{m^{2}}$$ 的高阶——直接验证 $$(I+M)(1,1)^{\mathsf T}=(1+\frac1m+\frac1{m^{2}})(1,1)^{\mathsf T}$$、$$(I+M)(1,-1)^{\mathsf T}=(1-\frac1m+\frac1{m^{2}})(1,-1)^{\mathsf T}$$，这两个恰好就是 $$\mu_\pm$$ 的精确值）。故
+$$(I+M)^m$$ 的特征值趋于 $$e$$ 与 $$e^{-1}$$，接下来找特征向量。**这里要小心**：$$(1,1)^{\mathsf T}$$、$$(1,-1)^{\mathsf T}$$ 对**有限的** $$m$$ 并不是精确特征向量——直接算
+$$(I+M)\begin{pmatrix}1\\1\end{pmatrix}=\begin{pmatrix}\bigl(1+\frac1{m^2}\bigr)+\frac1m\\[2pt]\frac1m+1\end{pmatrix}=\begin{pmatrix}1+\frac1m+\frac1{m^{2}}\\[2pt]1+\frac1m\end{pmatrix},$$
+两个分量并不相等（差 $$\frac1{m^{2}}$$），故它不是 $$(1,1)^{\mathsf T}$$ 的标量倍。精确特征向量要解 $$(I+M-\mu_\pm I)v=0$$：由第一行，$$v_2/v_1=m\bigl(\mu_\pm-1-\frac1{m^{2}}\bigr)$$，代入 $$\mu_\pm=1+\frac1{2m^{2}}\pm\frac{\sqrt{4m^{2}+1}}{2m^{2}}$$（上面刚求出的精确值）得 $$v_2/v_1=\pm\frac{\sqrt{4m^2+1}}{2m}-\frac1{2m}\xrightarrow[m\to\infty]{}\pm1$$——**特征向量只是渐近地趋于 $$(1,\pm1)^{\mathsf T}$$，比值与 $$1$$ 相差 $$O(1/m)$$**，不是对每个 $$m$$ 精确成立。
+
+不过这个 $$O(1/m)$$ 的偏差不影响 $$m\to\infty$$ 的极限：定理 3.7 已经从 $$\lVert(I+M)^m-e^{A+B}\rVert\to0$$（一般算子范数估计）保证了极限存在且唯一，这里的特征向量对角化只是求这个已知极限的一条计算捷径——用渐近特征向量 $$\frac{1}{\sqrt2}(1,1)^{\mathsf T}$$、$$\frac1{\sqrt2}(1,-1)^{\mathsf T}$$ 与渐近特征值 $$\mu_\pm^m\to e^{\pm1}$$ 拼出同一个极限矩阵，再用下面独立算出的 $$e^{A+B}$$ 核对，两者吻合就说明这条捷径没有算错：
 
 $$\lim_{m\to\infty}(I+M)^{m}
 =\frac{e}{2}\begin{pmatrix}1&1\\1&1\end{pmatrix}+\frac{e^{-1}}{2}\begin{pmatrix}1&-1\\-1&1\end{pmatrix}
@@ -1010,9 +1016,9 @@ $$U_j(t)^{-1}U_k(t)^{-1}=I-t(A_j+A_k)+t^{2}\Bigl(\frac{A_j^{2}}2+A_jA_k+\frac{A_
 
 相乘后一次的 $$t$$ 项抵消，括号里恰好剩下 $$A_jA_k-A_kA_j$$（与定理 3.7 的计算同型）：
 
-$$C(t)=I+t^{2}\Bigl[2\Bigl(\frac{A_j^{2}}2+A_jA_k+\frac{A_k^{2}}2\Bigr)-(A_j+A_k)^{2}\Bigr]+O(t^{3})=I+t^{2}[A_k,A_j]+O(t^{3}).$$
+$$C(t)=I+t^{2}\Bigl[2\Bigl(\frac{A_j^{2}}2+A_jA_k+\frac{A_k^{2}}2\Bigr)-(A_j+A_k)^{2}\Bigr]+O(t^{3})=I+t^{2}[A_j,A_k]+O(t^{3}).$$
 
-于是 $$t^{-2}\bigl(C(t)-I\bigr)\to[A_j,A_k]$$。这是**群元素组合的极限**，其"无穷小方向"必须落在 $$\mathfrak g$$ 的闭包中——否则换位子会产生 $$\{A_j\}$$ 张成之外的新方向，与 $$G$$ 只由这些单参数群生成矛盾。故 $$[A_j,A_k]=\sum_{\ell}c_{jk}^{\ \ \ell}A_\ell$$：对易子封闭，且给出了 $$\mathfrak g$$ 上的**括号运算** $$[\cdot,\cdot]:\mathfrak g\times\mathfrak g\to\mathfrak g$$。
+（展开核对：$$2Q-P^2=(A_j^2+2A_jA_k+A_k^2)-(A_j^2+A_jA_k+A_kA_j+A_k^2)=A_jA_k-A_kA_j=[A_j,A_k]$$，顺序不能颠倒——换位子 $$C(t)$$ 本身就是按 $$U_j\to U_k\to U_j^{-1}\to U_k^{-1}$$ 这个固定顺序定义的，调换 $$j,k$$ 会把整条链反过来，得到 $$[A_k,A_j]=-[A_j,A_k]$$。）于是 $$t^{-2}\bigl(C(t)-I\bigr)\to[A_j,A_k]$$。这是**群元素组合的极限**，其"无穷小方向"必须落在 $$\mathfrak g$$ 的闭包中——否则换位子会产生 $$\{A_j\}$$ 张成之外的新方向，与 $$G$$ 只由这些单参数群生成矛盾。故 $$[A_j,A_k]=\sum_{\ell}c_{jk}^{\ \ \ell}A_\ell$$：对易子封闭，且给出了 $$\mathfrak g$$ 上的**括号运算** $$[\cdot,\cdot]:\mathfrak g\times\mathfrak g\to\mathfrak g$$。
 
 **(ii) 它是一个 Lie 代数。** 这三条性质都由 $$[X,Y]=XY-YX$$ 直接得到（见第 32 章 定理 3.2）：双线性、反对称 $$[X,Y]=-[Y,X]$$、**Jacobi 恒等式**
 

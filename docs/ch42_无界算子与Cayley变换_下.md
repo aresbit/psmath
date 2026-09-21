@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第41章的具体例子后（对角算子的定义域反例、旋转矩阵与标量情形的 Cayley 变换、一阶算子在区间上的亏指数），这里把同样的构造写成一般定义并给出完整证明。
+
 **从哪来**：第 15 到第 40 章把"算子"这件事越做越顺——第 36 章给出谱、预解式与谱半径公式，第 38 章给出谱定理 $$T=\int\lambda\,dE(\lambda)$$，第 40 章把这一切装进 C\*-代数。但这几章共享一个从未被审问的前提：**算子在整空间上有定义，而且有界**。裂缝其实早就露出来了：第 34 章末尾写道，"$$a$$、$$a^\dagger$$、$$X$$、$$P$$ 都不可能是有界算子，'谱'与'定义域'必须在更严格的意义下重新谈"；第 04 章的"诚实清单"更明确地把这笔账记在了本章名下——那里算 $$\sigma(D)=i\mathbb Z$$ 时用的正是一个无界算子。
 
 **核心问题**：量子力学最常用的三个算子——位置 $$\hat x$$、动量 $$\hat p$$、能量 $$-\frac{d^2}{dx^2}$$——**全部无界**。如果可观测量都有界，量子力学的数学在第 40 章就可以结束；它们无界，于是必须回答三个问题：无界算子的"自伴"是什么意思？定义域的选择是技术细节还是实质内容？以及最关键的：**能不能把无界问题变回有界问题？**
@@ -320,7 +322,7 @@ $$\sigma(H_0)=[0,\infty),$$
 
 $$\mathscr K_+=\ker(T^*-i),\qquad \mathscr K_-=\ker(T^*+i)$$
 
-为 $$T$$ 的**亏子空间**，$$n_\pm=\dim\mathscr K_\pm$$ 为**亏指数 (deficiency indices)**。由 (3.2) 与 $$\mathrm{ran}(T\pm i)^\perp=\ker(T^*\mp i)$$（3.3 节已算）得 $$n_\pm=\mathrm{codim}\,\mathrm{ran}(T\mp i)$$；而 $$T$$ 自伴 $$\iff$$ $$n_+=n_-=0$$（定理 3.17）。
+为 $$T$$ 的**亏子空间**，$$n_\pm=\dim\mathscr K_\pm$$ 为**亏指数 (deficiency indices)**。由 (3.2) 与 $$\mathrm{ran}(T\pm i)^\perp=\ker(T^*\mp i)$$（3.3 节已算）得 $$n_\pm=\dim\ker(T^*\mp i)=\dim\mathrm{ran}(T\pm i)^\perp=\mathrm{codim}\,\mathrm{ran}(T\pm i)$$（同号：$$\mathscr K_+=\ker(T^*-i)=\mathrm{ran}(T+i)^\perp$$ 给出 $$n_+=\mathrm{codim}\,\mathrm{ran}(T+i)$$，$$\mathscr K_-=\ker(T^*+i)=\mathrm{ran}(T-i)^\perp$$ 给出 $$n_-=\mathrm{codim}\,\mathrm{ran}(T-i)$$；下文 定理 3.25 的证明里 $$n_+=\dim D^\perp$$、$$D=\mathrm{ran}(T+i)$$ 用的正是这一版本，注意不要错记成异号）；而 $$T$$ 自伴 $$\iff$$ $$n_+=n_-=0$$（定理 3.17）。
 
 **定理 3.25（von Neumann 自伴扩张定理）。** 稠定对称算子 $$T$$ 有自伴扩张，当且仅当 $$n_+=n_-$$。
 
@@ -352,7 +354,9 @@ $$\lVert Vy\rVert^2=\sum_\alpha\lvert c_\alpha\rvert^2+\lVert Ux\rVert^2=\sum_\a
 
 **例（区间上的 $$-d^2/dt^2$$：边界条件从哪里冒出来）。** 取 $$H=L^2(0,1)$$，$$T_0=-\frac{d^2}{dt^2}$$，$$\mathrm{Dom}(T_0)=C_c^\infty(0,1)$$（在 $$(0,1)$$ 内部光滑、在端点附近为零的函数）。两次分部积分（边界项因支集在内部而消失）给出 $$\langle T_0\phi,\psi\rangle=\langle\phi,T_0\psi\rangle$$，故 $$T_0$$ 对称。
 
-它的伴随 $$T_0^*$$ 定义在 $$H^2(0,1)=\lbrace f\in L^2:f''\in L^2\rbrace$$ 上（对 $$g$$ 而言，$$\phi\mapsto\langle T_0\phi,g\rangle=-\int\phi''\overline g$$ 要求 $$g''\in L^2$$，且 $$g'\in L^2$$ 由 $$g''\in L^2$$ 与 $$g\in L^2$$ 自动成立；**没有任何边界条件**）。于是解 $$T_0^*u=\pm i u$$，即 $$u''=\mp iu$$：$$u(t)=e^{\alpha t}$$，$$\alpha^2=\mp i$$，各有两个解，且都落在 $$L^2(0,1)$$。所以
+它的伴随 $$T_0^*$$ 定义在 $$H^2(0,1)=\lbrace f\in L^2:f''\in L^2\rbrace$$ 上（对 $$g$$ 而言，$$\phi\mapsto\langle T_0\phi,g\rangle=-\int\phi''\overline g$$ 要求 $$g''\in L^2$$，且 $$g'\in L^2$$ 由 $$g''\in L^2$$ 与 $$g\in L^2$$ 自动成立；**没有任何边界条件**）。于是解 $$T_0^*u=\pm i u$$，即 $$u''=\mp iu$$：$$u(t)=e^{\alpha t}$$，$$\alpha^2=\mp i$$，各有两个解，且都落在 $$L^2(0,1)$$。
+
+**展开**：这是一个二阶常系数线性 ODE，其解空间的维数等于特征方程 $$\alpha^2=\mp i$$ 的根的个数（重根另计，这里两个平方根不同，故根数为 2）——$$-i$$ 有两个平方根 $$\pm e^{-i\pi/4}$$，$$+i$$ 有两个平方根 $$\pm e^{i\pi/4}$$，于是 $$\ker(T_0^*\mp i)$$ 各由两个线性无关的指数函数 $$e^{\alpha_1t},e^{\alpha_2t}$$ 张成，是**二维**空间（这正是第41章 命题 3.7 里一阶算子只给出一维解空间的对照：阶数每升一阶，特征方程多一个根，解空间就多一维）。区间 $$(0,1)$$ 是有限区间，指数函数在有限区间上必有界，故必平方可积——不像半无穷区间上会有 $$e^{\alpha t}$$ 因实部符号不对而不可积的情形（第41章 六节 研2 已经在一阶的情形里见过这种"账平不了"）。所以
 
 $$n_+=n_-=2 .$$
 
