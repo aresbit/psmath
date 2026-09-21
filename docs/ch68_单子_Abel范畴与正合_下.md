@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第67章的具体例子后——你已经在 $$\mathbb R^2$$、$$\mathbb R^3$$ 上手算过核、双积、像与余像、连接同态与单子的单位/结合律——这里把同样的构造写成一般定义，并给出完整证明。
+
 第 09、10、14 章一直在做同一件事：取一个映射的核，再取前一个映射的像，然后把像塞进核里做商。第 18 章算出 $$\partial^2=0$$，于是 $$\operatorname{im}\partial_{k+1}$$ 落在 $$\ker\partial_k$$ 里，商才有意义；第 20 章把它命名为同调群 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$；第 28 章换成分形式，得到 $$H^k_{dR}=\ker d_k/\operatorname{im}d_{k-1}$$。当时每一步都靠"分母确实是分子的子对象"这一句具体验证撑着。**本章要问的是：这些验证里，哪一部分是结构上必然的、哪一部分才是真正携带信息的量；把"必然的那一部分"抽出来当成公理，会得到什么。**
 
 这条路从第 31–33 章来：那里我们备齐了范畴、函子、自然变换、极限与余极限、伴随与 Yoneda，但它们到此为止还只是语言。本章是这些语言第一次**真的开始算东西**——算出来的第一个对象叫**正合 (exact)**。三条主线：正合序列、**阿贝尔范畴 (abelian category)**（让核、像、商都自动有意义的公理系统）、**单子 (monad)**（伴随的"影子"，把自由构造与约束折叠分开）。
@@ -43,6 +45,8 @@ $$H:=\ker P_2\big/\operatorname{im}P_1 .$$
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
 ### 3.1 零对象、零态射与核
+
+入口题 (1)(2) 用到的"$$P_2\circ P_1=0$$"与"$$\ker P_2$$"，在 $$\mathbf{Ab}$$、$$\mathbf{Vect}$$ 之类具体范畴里唾手可得：零同态、子空间都摸得到元素。要在**没有元素**的一般范畴里说同样的话，第一步必须先把"零"这个对象本身、以及"两个态射复合为零"这句话，用万有性质重新说一遍——否则"$$f\circ k=0$$"根本无从谈起。
 
 **定义 3.1（零对象与零态射, zero object and zero morphism）** 范畴 $$\mathcal C$$ 中的对象 $$0$$ 称为**零对象**，若它同时是**始对象**（对每个 $$X$$ 恰有一个态射 $$0\to X$$）与**终对象**（对每个 $$X$$ 恰有一个态射 $$X\to 0$$）。此时对任意 $$A,B$$，把复合
 $$A\to 0\to B$$
@@ -77,6 +81,8 @@ $$\operatorname{im}f=\ker g$$
 
 ### 3.2 加性范畴与双积
 
+定理 3.6 的证明要用到"两个态射相加"（$$i_Ap_A+i_Bp_B$$）——这在 $$\mathbf{Set}$$ 之类范畴里毫无意义（两个函数不能相加）。要让"直和的积角色与余积角色重合"这句话（第67章定理 3.4 在具体空间里验证过）在一般范畴里成立，必须先补上"态射能相加"这条结构，这就是加性范畴的由来。
+
 **定义 3.4（预加性范畴, preadditive category）** 范畴 $$\mathcal C$$ 称**预加性**，若每个态射集 $$\operatorname{Hom}(A,B)$$ 上给定一个 Abel 群结构，且复合对两个变量都 $$\mathbb{Z}$$-双线性：
 $$(g_1+g_2)\circ f=g_1\circ f+g_2\circ f,\qquad g\circ(f_1+f_2)=g\circ f_1+g\circ f_2 .$$
 两项都要：复合是每个变量各自的函子，只对一边线性是不够的。
@@ -103,6 +109,8 @@ $$p_A\circ(\varphi\circ\psi)=(p_A\circ\varphi)\circ\psi=(p_A\circ\varphi)\circ(i
 **注 3.6** 定理 3.6 是"加性"一词的全部内容：它保证有限积与有限余积不再分家，统一直和 $$\oplus$$。在 $$\mathbf{Ab}$$、$$R\text{-}\mathbf{Mod}$$、$$\mathbf{Vect}_k$$ 中，这个 $$\oplus$$ 就是熟悉的对象层面的直和；而在一般范畴（如 $$\mathbf{Set}$$）里，积（笛卡尔积）与余积（不相交并）是完全不同的东西——这正是 $$\mathbf{Set}$$ 不是加性范畴的原因。
 
 ### 3.3 阿贝尔范畴：像与余像
+
+第67章定理 3.6 在 $$\operatorname{coim}u\cong\operatorname{im}u$$ 这件事上用的是"能摸到元素"这个作弊手段。要在一般范畴里说清"子空间的核描述"与"商空间的余核描述"给出同一个对象，需要恰好三条公理：一条保证核、余核总存在（否则连"像""余像"都写不出来），另外两条保证"单态射自己就是像""满态射自己就是余像"——这两条不是随便加的，它们正是让下面的定理 3.9 成立所需要的**最少**假设。
 
 **定义 3.7（阿贝尔范畴, abelian category）** 加性范畴 $$\mathcal A$$ 称**阿贝尔范畴**，若
 (A1) 每个态射都有核与余核；
@@ -158,6 +166,8 @@ $$0\to\mathbb{Z}\xrightarrow{\ \times m\ }\mathbb{Z}\xrightarrow{\ \bmod m\ }\ma
 是短正合列：$$\times m$$ 单、$$\bmod m$$ 满、$$\operatorname{Im}(\times m)=m\mathbb{Z}=\operatorname{Ker}(\bmod m)$$。且 $$\mathbb{Z}/m=\operatorname{coker}(\times m)$$，正是定理 3.11(iii)。这个例子在 5.5 与练习里会被反复用作"最容易手算的正合列"。
 
 ### 3.5 复形、同调与蛇引理
+
+第67章例 3.4 手算过"$$\operatorname{im}f\subseteq\ker g$$"成立与不成立两种情形——成立时商 $$\ker g/\operatorname{im}f$$ 才有意义。把这件事从"一步"推广到"一串"映射，就是复形：每一步的像都落进下一步的核，这样才能在每个位置都合法地取商。$$d^2=0$$ 这条条件不是随便写的，它恰好就是"处处都能取商"这件事的最省记号。
 
 **定义 3.12（复形与链映射, complex and chain map）** 阿贝尔范畴 $$\mathcal A$$ 中的**（链）复形 (chain complex)** $$C_\bullet$$ 是一族对象 $$C_n$$（$$n\in\mathbb Z$$）连同**微分 (differential)** $$d_n:C_n\to C_{n-1}$$，满足
 $$d_{n-1}\circ d_n=0\qquad\bigl(\text{等价地}\ \operatorname{Im}d_{n+1}\subseteq\operatorname{Ker}d_n\bigr).$$
@@ -215,6 +225,8 @@ $$\operatorname{Ker}d^A_n\to\operatorname{Ker}d^B_n\to\operatorname{Ker}d^C_n\xr
 ### 3.6 单子
 
 **定义 3.17（自函子范畴）** 记 $$\mathbf{End}_{\mathcal C}:=[\mathcal C,\mathcal C]$$：对象是自函子 $$T:\mathcal C\to\mathcal C$$，态射是自然变换 $$\alpha:T\Rightarrow T'$$；复合是自然变换的复合，恒同是 $$1_{\mathcal C}$$。函子复合 $$\circ$$（严格结合）给 $$\mathbf{End}_{\mathcal C}$$ 一个**严格幺半范畴 (strict monoidal category)** 结构，单位对象为 $$1_{\mathcal C}$$。
+
+第67章例 3.5 在三元素集合上手算过"打包"（$$\eta$$）与"摊平"（$$\mu$$）两个操作，也验证过"打包再摊平等于什么都没做"以及"两种顺序摊平结果相同"。单子的定义要做的事，就是把这两个具体操作与它们满足的两条具体等式，翻译成对任意范畴、任意自函子都成立的一般语言：$$\eta$$ 与 $$\mu$$ 变成自然变换，两条等式变成下面的结合律与单位律。
 
 **定义 3.18（单子, monad）** $$\mathcal C$$ 上的**单子**是一个三元组 $$(T,\eta,\mu)$$：自函子 $$T:\mathcal C\to\mathcal C$$、自然变换 $$\eta:1_{\mathcal C}\Rightarrow T$$（**单位, unit**）与 $$\mu:T^2=T\circ T\Rightarrow T$$（**乘法, multiplication**），满足两条**一致性条件 (coherence conditions)**：
 $$\text{结合律：}\quad \mu\circ(T\mu)=\mu\circ(\mu T)\qquad(\text{两边都是 }T^3\Rightarrow T);$$

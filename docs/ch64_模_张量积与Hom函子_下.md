@@ -426,6 +426,8 @@ $$\dim(V\otimes_{\mathbb{R}}W)=\dim V\cdot\dim W,\qquad \dim\operatorname{Hom}_{
 
 ### 3.7 自由模与投射模的雏形
 
+3.3 节已经看到自由模是"最省"的模——从它出发的同态可以随意指定基上的取值。但自由模太少（例 3.9 三档反例都不自由），于是要问：**哪些模虽然不自由，却仍然继承了自由模那条最有用的性质——从它出发的同态能沿任何满射"抬"上去？** 这个性质本身，就足以撑起下面整节。
+
 **定义 3.22（投射模, projective module）** $$A$$-模 $$P$$ 称为**投射的**，若对任何满同态 $$g:M\twoheadrightarrow M''$$ 与任何同态 $$h:P\to M''$$，存在同态 $$\tilde h:P\to M$$ 使
 
 $$g\circ\tilde h=h .$$
@@ -753,6 +755,8 @@ $$\eta_M(m)$$ 落在 $$\operatorname{Hom}_A(N,M\otimes_AN)$$ 里：$$n\mapsto m\
 $$\varepsilon_P:N\otimes_A\operatorname{Hom}_A(N,P)\to P,\qquad \varepsilon_P\big(n\otimes\varphi\big):=\varphi(n).$$
 
 良定义：映射 $$(n,\varphi)\mapsto\varphi(n)$$ 是双线性的——对 $$n$$ 线性因为每个 $$\varphi$$ 线性，对 $$\varphi$$ 线性因为 $$\operatorname{Hom}$$ 上的加法与标量是逐点定义的（命题 3.17）；由定义 3.11 它唯一诱导出 $$\varepsilon_P$$。
+
+**记号上的一点提醒**：这里把 $$\varepsilon_P$$ 的定义域写成 $$N\otimes_A\operatorname{Hom}_A(N,P)$$（$$N$$ 在左），而 $$F=-\otimes_AN$$ 按定义会把 $$N$$ 放在右边；两者只差命题 3.14(2) 那条交换同构 $$M\otimes N\cong N\otimes M$$，下面凡是把 $$m\otimes n$$ 与 $$n\otimes m$$ 互换书写的地方，都是在隐式使用这条交换同构，不再逐次注明。
 
 **三角恒等式 (i)**：$$\varepsilon_{FM}\circ F\eta_M=\mathrm{id}_{FM}$$，其中 $$FM=M\otimes_AN$$。计算：$$F\eta_M=\mathrm{id}\otimes\eta_M$$ 把 $$m\otimes n$$ 送到 $$n\otimes\eta_M(m)$$；再作用 $$\varepsilon_{FM}$$：
 
