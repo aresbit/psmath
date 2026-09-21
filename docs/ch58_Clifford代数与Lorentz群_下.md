@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第57章的具体例子后——你已经在 $$1$$、$$2$$ 维上手算过 Clifford 代数的乘法表，验证过一次 $$vw+wv=2b(v,w)$$，用 $$2\times2$$ 矩阵摸到过"维数锁死"的第一步，也用 $$e_1e_2$$ 亲手体会过一次"转两圈"——这里把同样的构造写成对任意维、任意二次型都成立的一般定义，并给出完整证明。
+
 第 14 章把「外积」做成了一台可以计算的机器：外代数 $$\Lambda(V)$$，它的构造方式是拿张量代数 $$T(V)$$ 商掉「**平方为零**」这个理想。第 52 章把三维旋转讲成了一次双重覆盖 $$S^3\to SO(3)$$，代价是「同一个旋转对应两个四元数」。第 56 章把半单 Lie 代数拆成根系，那是纯粹的结构分类。三条线在本章汇成一条：**把二次型升级成一个代数 $$\mathrm{Cl}(V,q)$$，再用它把 Lorentz 群讲成自旋群的双重覆盖。**
 
 本章要回答两个问题。第一个是代数的：二次型只能告诉你一个向量的「长度」，Clifford 代数要告诉你两个向量的「乘积」。这个升级是怎么做出来的？答案是——**用第 14 章一模一样的商构造，只换一个理想**：外代数商掉 $$v\otimes v$$（于是 $$v^2=0$$），Clifford 代数商掉 $$v\otimes v-q(v)\mathbf 1$$（于是 $$v^2=q(v)$$）。**外代数与 Clifford 代数是同一个构造的两端**：一端把度量忘掉，一端把度量记牢。把这组对照讲清楚，才知道为什么它配得上「代数」这个称呼。
@@ -202,7 +204,9 @@ $$c_j=\varepsilon_j+q(e_j)\,\iota_j,\qquad \varepsilon_j(\omega)=e_j\wedge\omega
 
 $$\varepsilon_i\varepsilon_j+\varepsilon_j\varepsilon_i=0,\qquad \iota_i\iota_j+\iota_j\iota_i=0,\qquad \varepsilon_i\iota_j+\iota_j\varepsilon_i=\delta_{ij}\operatorname{id}.$$
 
-（第二条用反导子的定义在基上展开；第三条在递增单项式上按 $$\iota_j$$ 从楔积里取出 $$e_j$$ 的符号规则检验。）把这三条代入 $$c_i$$，交叉项只剩 $$\delta_{ij}$$ 那些，得到
+**（展开）** 第一条最直接：对任意 $$\omega\in\Lambda(V)$$，$$\varepsilon_i\varepsilon_j(\omega)=e_i\wedge e_j\wedge\omega=-e_j\wedge e_i\wedge\omega=-\varepsilon_j\varepsilon_i(\omega)$$，只用了外积的反交换性（定理 3.3）。第二条同理由缩并的反交换性给出（缩并是楔积的"对偶"操作，同一条反交换性质对它也成立）。第三条在基元素上验证一次：取 $$i\ne j$$，在 $$e_j$$（次数 $$1$$ 的元素）上考察。先算 $$\varepsilon_i\iota_j(e_j)$$：由规定 $$\iota_j(e_j)=1$$（即 $$\Lambda^0(V)=F$$ 中的单位元），故 $$\varepsilon_i\iota_j(e_j)=\varepsilon_i(1)=e_i\wedge1=e_i$$。再算 $$\iota_j\varepsilon_i(e_j)$$：$$\varepsilon_i(e_j)=e_i\wedge e_j$$，由反导子公式
+$$\iota_j(e_i\wedge e_j)=\iota_j(e_i)\wedge e_j-e_i\wedge\iota_j(e_j)=0-e_i\wedge1=-e_i$$
+（第一项为零，因为 $$i\ne j$$ 时 $$\iota_j(e_i)=\delta_{ji}=0$$）。两式相加：$$\varepsilon_i\iota_j(e_j)+\iota_j\varepsilon_i(e_j)=e_i+(-e_i)=0$$，与 $$\delta_{ij}=0$$ 吻合。再取 $$i=j$$，同样在 $$e_j$$ 上验证：$$\varepsilon_j\iota_j(e_j)=\varepsilon_j(1)=e_j$$；而 $$\iota_j\varepsilon_j(e_j)=\iota_j(e_j\wedge e_j)=\iota_j(0)=0$$（用 $$e_j\wedge e_j=0$$）。两式相加得 $$e_j+0=e_j=\delta_{jj}\operatorname{id}(e_j)$$，同样吻合。把这三条代入 $$c_i$$，交叉项只剩 $$\delta_{ij}$$ 那些，得到
 
 $$c_ic_j+c_jc_i=2b(e_i,e_j)\operatorname{id}.$$
 
@@ -480,7 +484,21 @@ $$e^{i\theta/2}(x^1-ix^2)e^{i\theta/2}=e^{i\theta}(x^1-ix^2),\qquad e^{-i\theta/
 
 **定理 3.15（Cartan–Dieudonné）** 设 $$(V,q)$$ 非退化、$$\dim V=n$$。则 $$O(q)$$ 中每个元素都是**不超过 $$n$$ 个**反射的复合；行列式为 $$1$$ 的那部分（旋转）是**偶数个**反射的复合。
 
-*证明思路*：对 $$n$$ 作归纳，作用于向量被移动的数目。若 $$\varphi=\operatorname{id}$$ 则用零个反射。否则取 $$v$$ 使 $$\varphi(v)\ne v$$；由于 $$\varphi\in O(q)$$，可验证 $$y=\varphi(v)-v$$ 是**非迷向**的（若 $$q(y)=0$$，则 $$q(\varphi(v))=q(v)$$ 会导出 $$q(\varphi(v)-v)=2q(v)-2b(\varphi v,v)=0$$ 与另一条关系冲突，除非 $$\varphi v=v$$）。于是 $$\tau_y$$ 把 $$\varphi(v)$$ 送到 $$v$$：先用 $$\tau_y$$ 的显式公式验算 $$\tau_y(\varphi(v))=v$$，再看 $$\tau_y\varphi$$ 固定 $$v$$ 且仍需处理其余 $$n-1$$ 维（它在 $$v^{\perp}$$ 上仍正交），归纳即得。$$\blacksquare$$
+**为什么要证这个**：三明治公式已经说明「反射的复合」在代数里是「乘积的共轭」；Cartan–Dieudonné 反过来回答一个几何问题——每一个保持 $$q$$ 的变换，究竟要用多少面镜子才能拼出来？答案是"最多 $$n$$ 面"，这也是 $$\mathrm{Spin}(V,q)$$ 的像能覆盖住整个旋转群的原因。
+
+*证明思路*：对 $$n$$ 作归纳，每一步都想办法找一面镜子，把 $$\varphi$$ 变成一个**固定住某个非零向量 $$v$$** 的变换，这样问题就降到 $$v^{\perp}$$ 上的 $$n-1$$ 维。若 $$\varphi=\operatorname{id}$$ 则用零个反射。否则取 $$v$$ 使 $$\varphi(v)\ne v$$。
+
+**先验证一条会反复用到的引理**：若 $$a,b\in V$$ 满足 $$q(a)=q(b)$$ 且 $$y=a-b$$ 非迷向，则 $$\tau_y(a)=b$$。展开验证：$$q(y)=q(a)+q(b)-2b(a,b)=2q(a)-2b(a,b)$$（用了 $$q(b)=q(a)$$），而 $$b(a,y)=b(a,a-b)=q(a)-b(a,b)$$，于是
+$$\frac{2b(a,y)}{q(y)}=\frac{2\bigl(q(a)-b(a,b)\bigr)}{2\bigl(q(a)-b(a,b)\bigr)}=1\qquad(\text{分母}=q(y)\ne0\text{ 保证了这一步可除}),$$
+故 $$\tau_y(a)=a-1\cdot y=a-(a-b)=b$$。
+
+**情形一**：$$y_-=\varphi(v)-v$$ 非迷向。取 $$a=\varphi(v)$$、$$b=v$$（$$q(a)=q(\varphi v)=q(v)=q(b)$$ 由 $$\varphi\in O(q)$$ 保证），引理给出 $$\tau_{y_-}(\varphi(v))=v$$，于是 $$\tau_{y_-}\varphi$$ 固定 $$v$$。
+
+**情形二**：$$y_-=\varphi(v)-v$$ 迷向（$$q(y_-)=0$$），需要换一面镜子。取 $$y_+=\varphi(v)+v$$，展开
+$$q(y_-)+q(y_+)=\bigl[q(\varphi v)+q(v)-2b(\varphi v,v)\bigr]+\bigl[q(\varphi v)+q(v)+2b(\varphi v,v)\bigr]=2q(\varphi v)+2q(v)=4q(v)$$
+（交叉项 $$\mp2b(\varphi v,v)$$ 相消，末步用 $$q(\varphi v)=q(v)$$）。若 $$v$$ 非迷向（$$q(v)\ne0$$），由 $$q(y_-)=0$$ 得 $$q(y_+)=4q(v)\ne0$$，即 $$y_+$$ 非迷向。取 $$a=\varphi(v)$$、$$b=-v$$（$$q(b)=q(-v)=q(v)=q(a)$$），引理给出 $$\tau_{y_+}(\varphi(v))=-v$$；再用非迷向的 $$v$$ 本身作一次反射 $$\tau_v$$（把 $$v\mapsto v-2v=-v$$），复合 $$\tau_v\tau_{y_+}\varphi$$ 把 $$v$$ 送回 $$v$$，多用了一面镜子。若连 $$v$$ 本身也迷向，需重新选一个非迷向、且被 $$\varphi$$ 移动的向量出发（非退化空间里不可能所有被移动的向量都迷向，这一步的完整论证见 Artin《Geometric Algebra》，本章不再展开）。
+
+不论哪种情形，都能找到不超过两面镜子的复合，把 $$\varphi$$ 修正成一个固定 $$v$$ 的等距 $$\varphi'$$；$$\varphi'$$ 限制在 $$v^{\perp}$$（$$n-1$$ 维、非退化）上仍是等距，对 $$n-1$$ 归纳即得 $$\varphi$$ 是有限个反射的复合，且可以证明总数不超过 $$n$$（细致的计数不影响本章要用的结论）。行列式的奇偶性由「每个反射行列式为 $$-1$$」直接得到：$$\det\varphi=(-1)^{(\text{反射个数})}$$，故行列式为 $$1$$ 当且仅当反射个数为偶。$$\blacksquare$$
 
 把三明治公式（定理 3.9）与 Cartan–Dieudonné 拼起来，得到一个漂亮的结论：**$$O(q)$$ 的每个元素都是 $$\Gamma(V,q)$$ 中某个 $$s$$ 的共轭作用**；行列式为 $$1$$ 的那部分来自偶长的乘积，正是 $$\mathrm{Spin}(V,q)$$ 的像。这就是定理 3.11 的 $$\rho$$ 在几何上的意义。
 
@@ -540,11 +558,13 @@ $$\tau_v(0,1)=(0,1)-2\sin\theta(\cos\theta,\sin\theta)=(-2\sin\theta\cos\theta,\
 
 $$\tau_u(-\sin2\theta,\cos2\theta)=(\sin2\theta,\cos2\theta).$$
 
-两个像合起来说明 $$\tau_u\tau_v$$ 在标准基下的矩阵是
+两个像合起来给出 $$\tau_u\tau_v$$ 在标准基下的矩阵：矩阵的第一列是 $$\tau_u\tau_v(e_1)=(\cos2\theta,-\sin2\theta)$$，第二列是 $$\tau_u\tau_v(e_2)=(\sin2\theta,\cos2\theta)$$，即
 
-$$\begin{pmatrix}\cos2\theta&-\sin2\theta\\ \sin2\theta&\cos2\theta\end{pmatrix}=R_{-2\theta},$$
+$$\begin{pmatrix}\cos2\theta&\sin2\theta\\ -\sin2\theta&\cos2\theta\end{pmatrix}=R_{-2\theta},$$
 
-即**绕原点旋转 $$2\theta$$**（方向取决于基底定向）。特别地 $$\tau_u\tau_v$$ 的行列式为 $$1$$，与定理 3.15 「偶数个反射给旋转」一致。$$\blacksquare$$
+（**展开**：对照标准逆时针旋转矩阵 $$R(\varphi)=\begin{pmatrix}\cos\varphi&-\sin\varphi\\ \sin\varphi&\cos\varphi\end{pmatrix}$$，取 $$\varphi=-2\theta$$ 得 $$R(-2\theta)=\begin{pmatrix}\cos2\theta&\sin2\theta\\ -\sin2\theta&\cos2\theta\end{pmatrix}$$，与上面算出的矩阵逐项相同——这确认了符号：把矩阵的列读成基向量的像时，不能把 $$\tau_u\tau_v(e_1)$$ 的第二个分量 $$-\sin2\theta$$ 错放进矩阵的第一行第二列，那样会把 $$R_{-2\theta}$$ 悄悄写成它的转置 $$R_{2\theta}$$。）
+
+即**绕原点旋转 $$-2\theta$$**（方向取决于基底定向；转过的角度大小是 $$2\theta$$）。特别地 $$\tau_u\tau_v$$ 的行列式为 $$\cos^22\theta+\sin^22\theta=1$$，与定理 3.15 「偶数个反射给旋转」一致。$$\blacksquare$$
 
 **关键 leap**：不要硬算两次投影公式再化简（那会糊成一团），而要用三明治公式把「反射的复合」换成「**乘积的共轭**」，于是只需盯住 $$uv$$ 这一个元素。平面几何里「两次反射合成旋转、转角等于两向量夹角的两倍」是经典结论；本章给出的证明只有两行。
 
