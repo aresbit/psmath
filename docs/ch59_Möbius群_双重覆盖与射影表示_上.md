@@ -176,24 +176,155 @@ Hermite 矩阵 $$X(x)$$ 把一个四维时空点变成一张 $$2\times2$$ 的表
 
 ## 五、经典问题精讲 (Classical Problems)
 
-（待填：2–4 道比第60章更基础的例题，逐题给完整解，为下一章的经典题打地基。）
+### 题 1：矩阵求逆，对应函数求逆
+
+**题目**：设 $$C=\begin{pmatrix}2&1\\ 1&1\end{pmatrix}$$。求 $$C^{-1}$$，写出 $$f_{C^{-1}}(z)$$，并验证 $$f_C\bigl(f_{C^{-1}}(z)\bigr)=z$$。
+
+**解**：$$\det C=2\cdot1-1\cdot1=1$$，故 $$C^{-1}=\begin{pmatrix}1&-1\\ -1&2\end{pmatrix}$$（$$2\times2$$ 矩阵求逆公式：交换主对角、副对角变号，再除以行列式；这里行列式是 $$1$$）。验算 $$CC^{-1}=\begin{pmatrix}2\cdot1+1\cdot(-1)&2\cdot(-1)+1\cdot2\\ 1\cdot1+1\cdot(-1)&1\cdot(-1)+1\cdot2\end{pmatrix}=\begin{pmatrix}1&0\\ 0&1\end{pmatrix}$$。
+
+$$f_C(z)=\dfrac{2z+1}{z+1}$$，$$f_{C^{-1}}(z)=\dfrac{z-1}{-z+2}$$。代入：
+
+$$f_C\bigl(f_{C^{-1}}(z)\bigr)=\dfrac{2\cdot\frac{z-1}{2-z}+1}{\frac{z-1}{2-z}+1}=\dfrac{2(z-1)+(2-z)}{(z-1)+(2-z)}=\dfrac{2z-2+2-z}{z-1+2-z}=\dfrac{z}{1}=z.$$
+
+$$\blacksquare$$ 这不是巧合：命题 3.1 与 $$CC^{-1}=I$$ 合起来就保证了 $$f_{C^{-1}}$$ 是 $$f_C$$ 的复合逆——第60章把"$$\mathrm{GL}(2,\mathbb C)$$ 模去标量" 组织成一个**群**，靠的正是这条。
+
+### 题 2：换一对光锥外的向量，再核验一次 $$\det=$$ 长度平方
+
+**题目**：取 $$x=(3,1,2,0)$$。写出 $$X(x)$$，算出 $$\det X(x)$$，并与 $$x_0^2-x_1^2-x_2^2-x_3^2$$ 比较。
+
+**解**：$$X(x)=\begin{pmatrix}x_0+x_3&x_1-ix_2\\ x_1+ix_2&x_0-x_3\end{pmatrix}=\begin{pmatrix}3&1-2i\\ 1+2i&3\end{pmatrix}$$（$$x_3=0$$，故对角两元都是 $$3$$）。
+
+$$\det X=3\cdot3-(1-2i)(1+2i)=9-(1-(2i)^2)=9-(1+4)=9-5=4.$$
+
+而 $$x_0^2-x_1^2-x_2^2-x_3^2=9-1-4-0=4$$。一致。$$\blacksquare$$（这个 $$x$$ 满足 $$x_0^2>x_1^2+x_2^2+x_3^2$$，即"类时"——练习基2 再核验一个"类空"的例子。）
+
+### 题 3：把 $$\mathbb Z/4$$ 上的上循环修好
+
+**题目**：3.3 节算出 $$\rho(k)=U(k\pi/2)$$ 满足 $$\rho(k)\rho(l)=c(k,l)\rho\bigl((k+l)\bmod4\bigr)$$，其中 $$c(k,l)=-1$$（当 $$k+l\ge4$$）或 $$1$$（否则）。找一组新的代表矩阵 $$\rho'(k)=\lambda_k\rho(k)$$（$$\lambda_k\ne0$$ 是标量，$$\lambda_0=1$$），使得 $$\rho'(k)\rho'(l)=\rho'\bigl((k+l)\bmod4\bigr)$$**恰好**成立（上循环变成恒 $$1$$）。
+
+**解**：**先猜 $$\lambda_k$$ 该满足什么方程。** 代入待定的 $$\rho'(k)=\lambda_k\rho(k)$$：
+
+$$\rho'(k)\rho'(l)=\lambda_k\lambda_l\,\rho(k)\rho(l)=\lambda_k\lambda_l\,c(k,l)\,\rho\bigl((k+l)\bmod4\bigr).$$
+
+要让这等于 $$\rho'\bigl((k+l)\bmod4\bigr)=\lambda_{(k+l)\bmod4}\,\rho\bigl((k+l)\bmod4\bigr)$$，只需
+
+$$\lambda_k\lambda_l\,c(k,l)=\lambda_{(k+l)\bmod4}. \tag{★}$$
+
+**试探 $$\lambda_k=e^{ik\pi/4}$$。** 逐一核验 (★)（$$k,l\in\{0,1,2,3\}$$，共 $$10$$ 组无序对，这里挑最关键的两组，其余同法）：
+
+- $$k=l=1$$：$$c(1,1)=1$$（$$1+1=2\le3$$）。左边 $$=e^{i\pi/4}e^{i\pi/4}\cdot1=e^{i\pi/2}$$；右边 $$\lambda_2=e^{i2\pi/4}=e^{i\pi/2}$$。相等。
+- $$k=l=2$$：$$c(2,2)=-1$$（$$4\ge4$$）。左边 $$=e^{i\pi/2}e^{i\pi/2}\cdot(-1)=e^{i\pi}\cdot(-1)=(-1)(-1)=1$$；右边 $$\lambda_0=1$$。相等。
+
+（其余 $$8$$ 组——$$(0,l)$$ 四组、$$(1,2),(1,3),(2,3),(3,3)$$——用完全相同的代入方式逐一核验，全部满足 (★)；读者可自行补完，这是 §六 竞1 的内容之一。）
+
+**化简 $$\rho'(k)$$，看清它的真面目。**
+
+$$\rho'(k)=e^{ik\pi/4}\begin{pmatrix}e^{-ik\pi/4}&0\\ 0&e^{ik\pi/4}\end{pmatrix}=\begin{pmatrix}1&0\\ 0&e^{ik\pi/2}\end{pmatrix}=\begin{pmatrix}1&0\\ 0&i^k\end{pmatrix}$$
+
+（用了 $$e^{i\pi/2}=i$$）。于是 $$\rho'(0)=I,\ \rho'(1)=\mathrm{diag}(1,i),\ \rho'(2)=\mathrm{diag}(1,-1),\ \rho'(3)=\mathrm{diag}(1,-i)$$——这正是 $$\mathbb Z/4$$ 的一个**普通**（非射影）表示：$$\rho'(k)\rho'(l)=\mathrm{diag}\bigl(1,i^{k+l}\bigr)=\mathrm{diag}\bigl(1,i^{(k+l)\bmod4}\bigr)=\rho'\bigl((k+l)\bmod4\bigr)$$，因为 $$i^4=1$$ 把多出来的整数圈自动吃掉了。$$\blacksquare$$
+
+**为什么这不违反物理直觉。** $$\rho(k)$$ 与 $$\rho'(k)$$ 描述的是**同一个**物理转动 $$R_{k\pi/2}$$——差一个标量的矩阵对应同一个 $$SO(3)$$ 元素（这正是 $$SU(2)\to SO(3)$$ 这类"双重覆盖"映射的核心机制：核是 $$\{\pm1\}$$ 或更一般的标量）。3.3 节选的 $$\rho(k)=U(k\pi/2)$$ 只是**恰好选了一组"坏"的代表**，换一组"好"的代表 $$\rho'(k)$$，射影现象就消失了——这正是"有限群的射影表示总能拉直"这条一般定理（练习研1 会把这个方法对任意 $$\mathbb Z/n$$ 重做一遍）在具体数字上的样子。
 
 ## 六、练习 (Exercises)
 ### 基础（巩固定义）
 
+**基1.** 设 $$D=\begin{pmatrix}1&2\\ 0&1\end{pmatrix}$$。写出 $$f_D(z)$$，并验证 $$f_{5D}(z)=f_D(z)$$。
+
+**基2.** 取 $$x=(1,2,0,0)$$（满足 $$x_1^2+x_2^2+x_3^2>x_0^2$$，即"类空"）。写出 $$X(x)$$，算出 $$\det X(x)$$，并与 $$x_0^2-x_1^2-x_2^2-x_3^2$$ 比较（结果应为负数）。
+
+**基3.** 直接验证 $$U(\pi/3)U(\pi/6)=U(\pi/2)$$（把两个对角矩阵相乘、比较指数）。
+
+**基4.** 用 3.3 节的公式，直接算出 $$\rho(1)\rho(3)$$（$$k=1,l=3$$），并验证结果是 $$-\rho(0)=-I$$。
 
 ### 竞赛（本课目标难度）
 
+**竞1.** 补完题3里没有验算的 $$8$$ 组 $$(k,l)$$，确认 $$\lambda_k=e^{ik\pi/4}$$ 对**一切** $$k,l\in\{0,1,2,3\}$$ 都满足 (★)。
+
+**竞2.** 取 $$A=\begin{pmatrix}e^{i\pi/4}&0\\ 0&e^{-i\pi/4}\end{pmatrix}$$（酉矩阵，$$\det A=1$$）。对 $$x=(0,1,0,0)$$（即 $$X=\begin{pmatrix}0&1\\ 1&0\end{pmatrix}$$），算出 $$AXA^*$$，读出新向量 $$x'$$，并指出这是绕哪个方向转了多少度（提示：与 §五 题2 对比，$$A$$ 是酉矩阵而非正定实矩阵，$$注 3.3$$ 说这会给出旋转而不是拉伸）。
+
+**竞3.** 取 $$A=\begin{pmatrix}2&0\\ 0&1\end{pmatrix}$$（**不属于** $$\mathrm{SL}(2,\mathbb C)$$，$$\det A=2$$）。对 $$x=(1,0,0,0)$$（$$X=I$$），算出 $$AXA^*$$ 与 $$\det(AXA^*)$$，并验证它等于 $$\lvert\det A\rvert^2\det X$$，而**不**等于 $$\det X$$——说明为什么 3.2 节要求 $$A\in\mathrm{SL}(2,\mathbb C)$$（而不是任意可逆矩阵）才能保长度。
 
 ### 研究（通向下一章）
 
+**研1.** 把题3的方法对一般的 $$\mathbb Z/n$$（$$n\ge2$$）重做一遍：取 $$\rho(k)=U(2\pi k/n)$$（$$k=0,\dots,n-1$$），写出对应的上循环 $$c(k,l)$$，猜出并验证一组 $$\lambda_k$$ 使 $$\rho'(k):=\lambda_k\rho(k)$$ 满足 $$\rho'(k)\rho'(l)=\rho'\bigl((k+l)\bmod n\bigr)$$ 恰好成立。
+
+**研2.** 把 3.2 节"$$\sqrt2$$"那个具体的 boost 换成一般参数：取 $$A(t)=\begin{pmatrix}e^{t/2}&0\\ 0&e^{-t/2}\end{pmatrix}$$（$$t\in\mathbb R$$），对 $$x=(1,0,0,1)$$（$$X=\begin{pmatrix}2&0\\ 0&0\end{pmatrix}$$），算出 $$A(t)XA(t)^*$$ 对应的新向量 $$x'(t)$$，并验证对**一切** $$t$$ 都有 $$x_0'^2-x_3'^2=x_0^2-x_3^2$$（$$0=0$$）。取 $$t=\ln2$$，核对是否与 3.2 节里 $$A=\mathrm{diag}(\sqrt2,1/\sqrt2)$$ 算出的 $$x'=(2,0,0,2)$$ 一致。
 
 ### 解答 (Solutions)
 
+**解 基1.** $$f_D(z)=\dfrac{z+2}{1}=z+2$$（$$c=0,d=1$$，分母恒为 $$1$$）。$$5D=\begin{pmatrix}5&10\\ 0&5\end{pmatrix}$$，$$f_{5D}(z)=\dfrac{5z+10}{5}=z+2=f_D(z)$$。$$\blacksquare$$
+
+**解 基2.** $$x=(x_0,x_1,x_2,x_3)=(1,2,0,0)$$，故 $$x_0+x_3=1$$，$$x_0-x_3=1$$，$$x_1-ix_2=2$$，$$x_1+ix_2=2$$（$$x_2=0$$，不出现虚部）。
+
+$$X(x)=\begin{pmatrix}1&2\\ 2&1\end{pmatrix},\qquad\det X=1\cdot1-2\cdot2=1-4=-3.$$
+
+而 $$x_0^2-x_1^2-x_2^2-x_3^2=1-4-0-0=-3$$。一致（负数，"类空"）。$$\blacksquare$$
+
+**解 基3.** $$U(\pi/3)=\mathrm{diag}(e^{-i\pi/6},e^{i\pi/6})$$，$$U(\pi/6)=\mathrm{diag}(e^{-i\pi/12},e^{i\pi/12})$$。乘积对角元相加：$$e^{-i\pi/6}e^{-i\pi/12}=e^{-i(\pi/6+\pi/12)}=e^{-i\pi/4}$$（$$\pi/6+\pi/12=2\pi/12+\pi/12=3\pi/12=\pi/4$$），同理另一元为 $$e^{i\pi/4}$$。而 $$U(\pi/2)=\mathrm{diag}(e^{-i\pi/4},e^{i\pi/4})$$，一致。$$\blacksquare$$
+
+**解 基4.** 由 3.3 节公式（$$k+l=4\ge4$$）：$$\rho(1)\rho(3)=U(\pi/2)U(3\pi/2)=U(2\pi)=\mathrm{diag}(e^{-i\pi},e^{i\pi})=\mathrm{diag}(-1,-1)=-I=-\rho(0)$$。$$\blacksquare$$
+
+**解 竞1.** 逐组代入 (★)（记 $$\omega:=e^{i\pi/4}$$，故 $$\lambda_k=\omega^k$$，$$\omega^8=1$$）：
+
+- $$(0,0),(0,1),(0,2),(0,3)$$：$$c(0,l)=1$$（$$0+l\le3$$），左边 $$=\omega^0\omega^l\cdot1=\omega^l$$，右边 $$=\lambda_l=\omega^l$$，恒等（$$\lambda_0=\omega^0=1$$ 自动满足）。
+- $$(1,2)$$：$$c=1$$（$$3\le3$$）。左边 $$\omega^1\omega^2=\omega^3$$；右边 $$\lambda_3=\omega^3$$。相等。
+- $$(1,3)$$：$$c=-1$$（$$4\ge4$$）。左边 $$\omega^1\omega^3\cdot(-1)=\omega^4\cdot(-1)$$；$$\omega^4=e^{i\pi}=-1$$，故左边 $$=(-1)(-1)=1$$；右边 $$\lambda_0=1$$（因为 $$(1+3)\bmod4=0$$）。相等。
+- $$(2,3)$$：$$c=-1$$（$$5\ge4$$）。左边 $$\omega^2\omega^3\cdot(-1)=\omega^5\cdot(-1)$$；$$\omega^5=\omega^4\cdot\omega=-\omega$$，故左边 $$=(-\omega)(-1)=\omega$$；右边 $$\lambda_1=\omega$$（$$(2+3)\bmod4=1$$）。相等。
+- $$(3,3)$$：$$c=-1$$（$$6\ge4$$）。左边 $$\omega^3\omega^3\cdot(-1)=\omega^6\cdot(-1)$$；$$\omega^6=\omega^4\omega^2=-\omega^2=-i$$，故左边 $$=(-i)(-1)=i=\omega^2$$；右边 $$\lambda_2=\omega^2=i$$（$$(3+3)\bmod4=2$$）。相等。
+
+连同正文已验的 $$(1,1),(2,2)$$，共 $$10$$ 组全部满足 (★)。$$\blacksquare$$
+
+**解 竞2.** $$A^*=\begin{pmatrix}e^{-i\pi/4}&0\\ 0&e^{i\pi/4}\end{pmatrix}$$（$$A$$ 对角，共轭转置就是逐元素取共轭）。
+
+$$AX=\begin{pmatrix}e^{i\pi/4}&0\\ 0&e^{-i\pi/4}\end{pmatrix}\begin{pmatrix}0&1\\ 1&0\end{pmatrix}=\begin{pmatrix}0&e^{i\pi/4}\\ e^{-i\pi/4}&0\end{pmatrix}.$$
+
+$$(AX)A^*=\begin{pmatrix}0&e^{i\pi/4}\\ e^{-i\pi/4}&0\end{pmatrix}\begin{pmatrix}e^{-i\pi/4}&0\\ 0&e^{i\pi/4}\end{pmatrix}=\begin{pmatrix}0&e^{i\pi/4}e^{i\pi/4}\\ e^{-i\pi/4}e^{-i\pi/4}&0\end{pmatrix}=\begin{pmatrix}0&e^{i\pi/2}\\ e^{-i\pi/2}&0\end{pmatrix}=\begin{pmatrix}0&i\\ -i&0\end{pmatrix}.$$
+
+读出 $$x'$$：$$x_0'+x_3'=0$$，$$x_0'-x_3'=0\Rightarrow x_0'=x_3'=0$$；$$x_1'-ix_2'=i\Rightarrow x_1'=0,\ x_2'=-1$$（验证 $$x_1'+ix_2'=0+i(-1)=-i$$，与矩阵左下角一致）。故 $$x'=(0,0,-1,0)$$。
+
+原向量 $$x=(0,1,0,0)$$ 指向 $$x_1$$ 轴，新向量指向 $$-x_2$$ 轴——**$$x_1$$ 轴转到了 $$-x_2$$ 轴**，这是 $$(x_1,x_2)$$ 平面里的 $$90°$$ 旋转（$$x_0,x_3$$ 分量始终为 $$0$$，不参与）。$$A$$ 的相位是 $$\pi/4$$（"半角"），对应的物理转角是 $$2\times45°=90°$$——与"半角"规律一致（§五 题2 的注 3.4 已经预告过这个倍角关系）。核验长度：$$\det X=0-1=-1$$；$$\det X'=0-i(-i)=0-1=-1$$，保持。$$\blacksquare$$
+
+**解 竞3.** $$X=I$$，$$A^*=A$$（$$A$$ 是实对角矩阵）。$$AXA^*=AA=\begin{pmatrix}4&0\\ 0&1\end{pmatrix}$$。$$\det(AXA^*)=4$$。
+
+而 $$\lvert\det A\rvert^2\det X=2^2\cdot1=4$$——两者相等，**但这个 $$4$$ 不等于 $$\det X=1$$**：$$X\mapsto AXA^*$$ 并没有保持行列式。读出对应向量：原 $$x=(1,0,0,0)$$（长度 $$1$$）；新向量由 $$AXA^*=\mathrm{diag}(4,1)$$ 读出 $$x_0'+x_3'=4,\ x_0'-x_3'=1$$，解得 $$x_0'=2.5,\ x_3'=1.5$$，长度 $$x_0'^2-x_3'^2=6.25-2.25=4\ne1$$——长度被放大了 $$4=\lvert\det A\rvert^2$$ 倍。**这正是命题 3.3 的证明里 $$\det(AXA^*)=\lvert\det A\rvert^2\det X$$ 这一步的意义**：只有 $$\lvert\det A\rvert=1$$（尤其是 $$\det A=1$$，$$A\in\mathrm{SL}(2,\mathbb C)$$）才能保证 Minkowski 长度不变；一般的可逆矩阵只保证长度按 $$\lvert\det A\rvert^2$$ 这个固定比例缩放。$$\blacksquare$$
+
+**解 研1.** 记 $$\zeta:=e^{2\pi i/n}$$（$$n$$ 次单位根）。$$\rho(k)=U(2\pi k/n)=\mathrm{diag}\bigl(\zeta^{-k/2},\zeta^{k/2}\bigr)$$——更方便的写法是直接用角度：$$\rho(k)=\mathrm{diag}\bigl(e^{-ik\pi/n},e^{ik\pi/n}\bigr)$$。同 3.3 节的推导：
+
+$$\rho(k)\rho(l)=U\Bigl(\frac{(k+l)\pi}n\Bigr)\qquad\text{（角度直接相加）}.$$
+
+若 $$k+l<n$$，这就是 $$\rho(k+l)$$；若 $$k+l\ge n$$，则 $$\dfrac{(k+l)\pi}n=\dfrac{(k+l-n)\pi}n+\pi$$，故
+
+$$\rho(k)\rho(l)=U\Bigl(\frac{(k+l-n)\pi}n\Bigr)U(\pi)=\rho\bigl((k+l)\bmod n\bigr)\cdot\mathrm{diag}(e^{-i\pi},e^{i\pi})=-\rho\bigl((k+l)\bmod n\bigr)$$
+
+（注意 $$U(\pi)=\mathrm{diag}(-1,-1)=-I$$——**和 $$n$$ 无关，这是因为 $$U$$ 的周期永远是 $$4\pi$$，与 $$n$$ 无关，$$n$$ 只决定"多大的 $$k$$ 才会跨过一圈"）。故 $$c(k,l)=1$$（$$k+l<n$$）或 $$-1$$（$$k+l\ge n$$）——与 3.3 节 $$n=4$$ 的情形逐字相同，只是判据里的 $$4$$ 换成了 $$n$$。
+
+**猜 $$\lambda_k$$。** 仿照题3，试 $$\lambda_k:=e^{ik\pi/n}$$。则
+
+$$\rho'(k):=\lambda_k\rho(k)=e^{ik\pi/n}\mathrm{diag}\bigl(e^{-ik\pi/n},e^{ik\pi/n}\bigr)=\mathrm{diag}\bigl(1,e^{2ik\pi/n}\bigr)=\mathrm{diag}(1,\zeta^k).$$
+
+验证：$$\rho'(k)\rho'(l)=\mathrm{diag}\bigl(1,\zeta^{k+l}\bigr)$$。由 $$\zeta^n=1$$，$$\zeta^{k+l}=\zeta^{(k+l)\bmod n}\cdot\zeta^{n\lfloor(k+l)/n\rfloor}=\zeta^{(k+l)\bmod n}\cdot1$$，故 $$\rho'(k)\rho'(l)=\mathrm{diag}\bigl(1,\zeta^{(k+l)\bmod n}\bigr)=\rho'\bigl((k+l)\bmod n\bigr)$$，**恰好**成立，上循环被拉直为恒 $$1$$。$$\blacksquare$$（$$n=4$$ 时 $$\zeta=i$$，$$\rho'(k)=\mathrm{diag}(1,i^k)$$，与题3完全一致——题3是本题的特例。）
+
+**解 研2.** $$A(t)^*=A(t)$$（实对角矩阵）。$$A(t)XA(t)^*=\mathrm{diag}(e^{t/2},e^{-t/2})\begin{pmatrix}2&0\\ 0&0\end{pmatrix}\mathrm{diag}(e^{t/2},e^{-t/2})=\begin{pmatrix}2e^{t/2}&0\\ 0&0\end{pmatrix}\mathrm{diag}(e^{t/2},e^{-t/2})=\begin{pmatrix}2e^{t}&0\\ 0&0\end{pmatrix}.$$
+
+读出：$$x_0'+x_3'=2e^t,\ x_0'-x_3'=0\Rightarrow x_0'=x_3'=e^t$$，$$x_1'=x_2'=0$$。即 $$x'(t)=(e^t,0,0,e^t)$$。
+
+验证长度不变：$$x_0'^2-x_3'^2=e^{2t}-e^{2t}=0$$，与原长度 $$x_0^2-x_3^2=1-1=0$$ 一致，对**一切** $$t\in\mathbb R$$ 成立（这条光线永远留在光锥上，只是沿着它被拉伸或压缩）。
+
+取 $$t=\ln2$$：$$e^t=2$$，$$x'(\ln2)=(2,0,0,2)$$——与 3.2 节用 $$A=\mathrm{diag}(\sqrt2,1/\sqrt2)$$（即 $$e^{t/2}=\sqrt2\Rightarrow t=\ln2$$）算出的结果完全一致。$$\blacksquare$$ 这就是 boost 参数 $$t$$（**快度, rapidity**）的由来：它比速度 $$v$$ 更自然的地方在于，两个 boost 复合时快度**直接相加**（$$A(t_1)A(t_2)=A(t_1+t_2)$$，与 $$U(\theta)$$ 的角度相加是同一个代数结构，只是 $$i\theta$$ 换成了实数 $$t$$）——第60章会把这个观察系统化。
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
-（待填：3–5 条核心洞察；明确交棒给第60章——"现在你已经有了直觉和具体计算经验，下一章把它变成严格陈述和证明"。）
+1. **"矩阵模去标量"这件事，贯穿了本章的每一节，不是孤立的技巧。** §3.1 说它让 Möbius 变换有歧义（题1 用求逆又核验了一次）；§3.2 说它恰好是 $$\mathrm{SL}(2,\mathbb C)$$（限定 $$\det=1$$）存在的理由（竞3 反过来演示了"不限定"会发生什么）；§3.3 说它是"射影表示"现象的根源。三处表面上不相关的"跳步"，其实是同一件事的三张脸——第60章会把它们统一成 $$\mathrm{PGL}(2,\mathbb C)$$、$$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$、$$H^2(G,\mathbb C^*)$$ 这三个看似不同的对象，但本章已经让你在数字层面看到它们共享的机制。
+
+2. **行列式不是任意选的公式，是"用代数量编码几何不变量"这个想法的具体实现。** $$\det X(x)=$$ Minkowski 长度平方（定理 3.2），$$\det(AXA^*)=\lvert\det A\rvert^2\det X$$（竞3 具体验证了 $$\det A\ne1$$ 时会发生什么），两条合在一起才逼出"为什么偏偏要 $$\mathrm{SL}(2,\mathbb C)$$"——这是"用一个好记号，让该证的定理自动成立"的典型例子。
+
+3. **上循环 $$c(g,h)$$ 不是抽象定义凭空冒出来的记号，它就是"选定的代表矩阵未能构成同态"这件事本身，写成了一个函数。** 题3、竞1、研1 把 $$\mathbb Z/4$$（以及一般的 $$\mathbb Z/n$$）上的这个"未能"**修好**了——这也是一条一般规律的具体样本：**有限群的射影表示，总能通过换一组代表消掉上循环**（因为 $$\mathbb C^*$$ "足够大、足够可除"）。第60章定理 3.12 会说明：这条规律对**连续**群（比如真正的 $$SO(3)$$）不成立，$$SU(2)\to SO(3)$$ 的"半整数自旋"现象正是这条规律失效之后剩下的东西。
+
+4. **快度（研2 里的参数 $$t$$）与角度 $$\theta$$ 是同一个代数结构的两个化身。** $$U(\theta)U(\varphi)=U(\theta+\varphi)$$ 与 $$A(t_1)A(t_2)=A(t_1+t_2)$$ 形式完全相同，只差 $$i\theta$$ 换成实数 $$t$$——这正是"旋转"与"boost"作为 $$\mathrm{SL}(2,\mathbb C)$$ 里两族单参数子群，代数上何其相似的原因，第60章会把两者统一在同一个 Lie 代数 $$\mathfrak{sl}(2,\mathbb C)$$ 里。
+
+5. **"转一整圈不回家、转两整圈才回家"（入口问题 B′）不是量子力学专属的怪现象，它是一个纯代数事实，在只有 $$4$$ 个元素的最小例子里就能看得一清二楚。** 这是本章最重要的直觉：读完第60章严格的覆叠空间论证之后，回头看这个 $$\mathbb Z/4$$ 的小例子，会发现那里的每一步——道路提升、同伦提升、核的计算——本章都已经用手算走过一遍了。
+
+**下一章的悬念。** 本章处理的都是**离散**或**具体单点**的情形：一对矩阵、几个具体向量、一个 $$4$$ 元素的循环群。第60章要问的是**一般**的问题：对**任意** $$A,B\in\mathrm{SL}(2,\mathbb C)$$，$$f_A=f_B$$ 到底何时成立（定理 3.2 的完整证明，不只是"如果"的方向）？$$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 是不是**处处**满射、核**恰好**是 $$\{\pm1\}$$（定理 3.6）？**连续**群 $$SU(2)$$ 的射影表示，是不是像 $$\mathbb Z/4$$ 一样总能修好（定理 3.10、3.12——答案是"不能"，这正是"自旋"存在的代数原因）？本章的每一个具体计算，都是第60章对应定理的一个样本点。
 
 ---
 
