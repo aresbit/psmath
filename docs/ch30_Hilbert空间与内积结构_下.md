@@ -379,11 +379,15 @@ $$\Phi:H\to H^*,\qquad \Phi(y)=\langle\cdot,y\rangle$$
 
 $$\Phi(\alpha y+\beta z)(x)=\langle x,\alpha y+\beta z\rangle=\overline{\alpha}\langle x,y\rangle+\overline{\beta}\langle x,z\rangle .$$
 
-**自反性（展开）。** 先说明 $$H^*$$ 本身也是 Hilbert 空间：$$\Phi:H\to H^*$$ 是等距（保范），而等距同构把柯西列送到柯西列、把收敛送到收敛，所以完备性沿着 $$\Phi$$ 从 $$H$$ 搬到 $$H^*$$。于是可以对 $$H^*$$ 重新套用定理 3.12/3.13 自己：存在共轭线性等距同构 $$\Psi:H^*\to H^{**}$$，$$\Psi(g)=\langle\cdot,g\rangle_{H^*}$$。要检查的是复合 $$\Psi\circ\Phi:H\to H^{**}$$ 是否就是"自然嵌入" $$J:H\to H^{**}$$，$$(Jx)(f):=f(x)$$（$$f\in H^*$$）。取 $$x\in H$$、$$f=\Phi(y)=\langle\cdot,y\rangle\in H^*$$（$$y\in H$$ 任意，因为 $$\Phi$$ 满射，$$f$$ 可以这样写），直接算两边在 $$f$$ 上的取值：
+**自反性（展开）。** 先说明 $$H^*$$ 本身也是 Hilbert 空间：$$\Phi:H\to H^*$$ 是等距（保范），而等距同构把柯西列送到柯西列、把收敛送到收敛，所以完备性沿着 $$\Phi$$ 从 $$H$$ 搬到 $$H^*$$；又因为 $$\Phi$$ 保范，$$H^*$$ 的范数自动继承 $$H$$ 的平行四边形法则（定理 3.5 的必要性方向），故由定理 3.5(ii) 可用极化恒等式在 $$H^*$$ 上还原出一个内积。**具体取法是**：
 
-$$\big(\Psi(\Phi(x))\big)(f)=\big\langle f,\Phi(x)\big\rangle_{H^*}=\overline{\Phi(x)(y)}\cdot(\text{按 }\Phi\text{ 的等距关系换算})=\overline{\langle y,x\rangle}=\langle x,y\rangle=f(x)=(Jx)(f)$$
+$$\langle f,g\rangle_{H^*}:=\big\langle\Phi^{-1}(g),\ \Phi^{-1}(f)\big\rangle_H\qquad(f,g\in H^*)$$
 
-（第二个等号是把 $$H^*$$ 上的内积 $$\langle\cdot,\cdot\rangle_{H^*}$$ 也用一次 Riesz 表示定理的定义展开，中间的共轭抵消恰好来自 $$\Phi$$ 与 $$\Psi$$ 各自的共轭线性）。两个复合线性映射 $$\Psi\circ\Phi$$ 与 $$J$$ 在每个 $$f$$ 上取值相同，故 $$\Psi\circ\Phi=J$$，即 $$J$$ 本身就是一个（等距）同构，这正是"$$H$$ 自反"的定义。弱拓扑与弱\*拓扑重合，是因为在自反空间上两者都是"使 $$H^*$$ 的元素连续"的最粗拓扑。$$\blacksquare$$
+（这里把变元顺序对调，是为了抵消 $$\Phi^{-1}$$ 的共轭线性——$$\Phi^{-1}$$ 与 $$\Phi$$ 一样是共轭线性双射，把它放进 $$H$$ 的内积的第二变元、同时把参与对调的那个变元放进第一变元，两次共轭恰好抵消，使 $$\langle\cdot,\cdot\rangle_{H^*}$$ 对第一变元线性；这与定理 3.5(ii) 由极化恒等式还原出的内积是同一个，逐条核对内积公理是常规展开，此处从略）。于是可以对 $$H^*$$ 重新套用定理 3.12/3.13：存在共轭线性等距同构 $$\Psi:H^*\to H^{**}$$，$$\Psi(g)=\langle\cdot,g\rangle_{H^*}$$。要检查的是复合 $$\Psi\circ\Phi:H\to H^{**}$$ 是否就是"自然嵌入" $$J:H\to H^{**}$$，$$(Jx)(f):=f(x)$$（$$f\in H^*$$）。取 $$x\in H$$、$$f\in H^*$$ 任意，直接算：
+
+$$\big(\Psi(\Phi(x))\big)(f)=\big\langle f,\Phi(x)\big\rangle_{H^*}=\big\langle\Phi^{-1}(\Phi(x)),\ \Phi^{-1}(f)\big\rangle_H=\big\langle x,\ \Phi^{-1}(f)\big\rangle_H$$
+
+（第一个等号是 $$\Psi$$ 的定义，第二个等号是 $$\langle\cdot,\cdot\rangle_{H^*}$$ 的定义，第三个等号用了 $$\Phi^{-1}(\Phi(x))=x$$）。而按 $$\Phi$$ 的定义，$$f=\Phi\big(\Phi^{-1}(f)\big)=\big\langle\cdot,\ \Phi^{-1}(f)\big\rangle$$，把它作用在 $$x$$ 上正是 $$f(x)=\langle x,\Phi^{-1}(f)\rangle_H$$——与上式右端逐字相同。于是 $$\big(\Psi(\Phi(x))\big)(f)=f(x)=(Jx)(f)$$ 对一切 $$f$$ 成立，即 $$\Psi\circ\Phi=J$$：$$J$$ 本身就是一个（等距）同构，这正是"$$H$$ 自反"的定义。弱拓扑与弱\*拓扑重合，是因为在自反空间上两者都是"使 $$H^*$$ 的元素连续"的最粗拓扑。$$\blacksquare$$
 
 **注 3.13（Riesz 表示把"泛函"换成了"向量"）。** 定理 3.12 可以一句话记住：**Hilbert 空间上的连续线性泛函就是"与某个固定向量做内积"。** 它的第一个用处是让**伴随算子** $$A^*$$ 能被定义成 $$A^*:H\to H$$ 而不是 $$H^*\to H^*$$：固定 $$y$$ 时 $$x\mapsto\langle Ax,y\rangle$$ 是连续线性泛函，由定理 3.12 它等于 $$\langle x,A^*y\rangle$$，这就定出了 $$A^*y\in H$$（第 32 章会用到；更系统的展开见知识库 `泛函分析/ch06.md` 与 `mit-18-102/ch10.md`）。第二个用处是让 **Dirac 符号**合法化：$$\langle\phi\mid\psi\rangle$$ 里的 $$\langle\phi\mid$$ 被理解为"$$H^*$$ 里的泛函"，而由 Riesz，它同时也就是 $$H$$ 里的一个向量——左矢与右矢可以互相搬运（见 MP39 与本章练习竞赛题 1）。
 
