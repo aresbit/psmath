@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 77 章的具体例子后（那里已经手算过 $$\mathbb{Q}(\sqrt2)$$、$$\mathbb{Q}(\sqrt2,\sqrt3)$$、$$\mathbb{Q}(\sqrt[3]2)$$ 上的自同构、固定域，以及一张具体的对应表），这里把同样的构造写成一般定义，并把「为什么」补成完整证明。
+
 本章要解决一个核心问题：**怎样把「对称性」变成一台可计算的机器**。
 
 第 76 章我们造出了扩域：给定多项式，可以构造出装下它全部根的域 $$L$$。但那个 $$L$$ 只是一个「装根的口袋」，我们对它的内部结构几乎一无所知。本章给它装上对称性——把 $$L$$ 中所有固定基域 $$K$$ 不动的自同构收集成群 $$\operatorname{Gal}(L/K)$$，然后证明一条惊人的定理：**$$L$$ 与 $$K$$ 之间的一切中间域，与这个群的一切子群一一对应，而且包含关系完全翻转**。这就是 Galois 对应。
@@ -45,6 +47,8 @@ layout: default
 
 ### 3.1 对称、群、固定域
 
+第 77 章已经手算过：把 $$\sqrt2\mapsto-\sqrt2$$ 这样的映射延拓到整个域上，得到的是一个「既保持域运算、又不动基域」的双射。这正是我们要固定下来的对象——先给它起名字，再问它们全体能不能构成群。
+
 **定义 3.1（$$K$$-自同构, $$K$$-automorphism）** 设 $$L/K$$ 是域扩张。$$L$$ 的域自同构 $$\sigma:L\to L$$ 称为 **$$K$$-自同构**，若它固定 $$K$$ 的每个元素，即 $$\sigma(a)=a$$ 对一切 $$a\in K$$ 成立。全体 $$K$$-自同构记作 $$\operatorname{Aut}_K(L)$$。
 
 自同构是「与域运算交换」的可逆映射：$$\sigma(a+b)=\sigma(a)+\sigma(b)$$，$$\sigma(ab)=\sigma(a)\sigma(b)$$，$$\sigma(1)=1$$。它对复合封闭：若 $$\sigma,\tau\in\operatorname{Aut}_K(L)$$，则 $$\sigma\circ\tau$$ 也是 $$K$$-自同构（$$\sigma(\tau(a))=\sigma(a)=a$$ 对 $$a\in K$$）；$$\mathrm{id}$$ 是单位元；$$\sigma^{-1}$$ 也是（因为 $$\sigma$$ 是双射，且 $$a=\sigma(\sigma^{-1}(a))$$ 配合 $$\sigma(a)=a$$ 给出 $$\sigma^{-1}(a)=a$$）。**所以 $$\operatorname{Aut}_K(L)$$ 在复合下自动成群。** 群结构不是外加的，它是「自同构」这个概念自身的产物。
@@ -63,7 +67,7 @@ $$L^H$$ 是 $$L$$ 的子域：若 $$a,b\in L^H$$ 且 $$\sigma\in H$$，则 $$\si
 
 $$L=\{a+b\sqrt2+c\sqrt3+d\sqrt6:\ a,b,c,d\in\mathbb{Q}\},\qquad [L:\mathbb{Q}]=4,$$
 
-因为 $$\sqrt2,\sqrt3,\sqrt6$$ 在 $$\mathbb{Q}$$ 上线性无关（若 $$(a+b\sqrt2)+(c+d\sqrt2)\sqrt3=0$$，则两个系数都为零，再对 $$\sqrt2\notin\mathbb{Q}$$ 用一次即得 $$a=b=c=d=0$$）。
+因为 $$1,\sqrt2,\sqrt3,\sqrt6$$ 在 $$\mathbb{Q}$$ 上线性无关：设 $$a+b\sqrt2+c\sqrt3+d\sqrt6=0$$（$$a,b,c,d\in\mathbb{Q}$$），按 $$\sqrt3$$ 的次数重新分组，写成 $$(a+b\sqrt2)+(c+d\sqrt2)\sqrt3=0$$。**若 $$c+d\sqrt2\ne0$$**，可解出 $$\sqrt3=-\dfrac{a+b\sqrt2}{c+d\sqrt2}\in\mathbb{Q}(\sqrt2)$$；但 $$\sqrt3\notin\mathbb{Q}(\sqrt2)$$——这可直接验证：若 $$\sqrt3=p+q\sqrt2$$（$$p,q\in\mathbb{Q}$$），两边平方得 $$3=p^2+2q^2+2pq\sqrt2$$，$$\sqrt2\notin\mathbb{Q}$$ 迫使 $$pq=0$$：$$q=0$$ 则 $$p^2=3$$ 无有理解，$$p=0$$ 则 $$2q^2=3$$ 也无有理解，两种取值都矛盾。于是矛盾，故必有 $$c+d\sqrt2=0$$。同样的理由（$$\sqrt2\notin\mathbb{Q}$$）迫使 $$c=d=0$$：若 $$d\ne0$$，则 $$\sqrt2=-c/d\in\mathbb{Q}$$，矛盾。剩下 $$a+b\sqrt2=0$$，同理给出 $$a=b=0$$。故 $$a=b=c=d=0$$。
 
 任何 $$\sigma\in\operatorname{Gal}(L/\mathbb{Q})$$ 由它在生成元上的取值决定：因为 $$\sigma$$ 保持有理数与运算，
 
@@ -94,6 +98,8 @@ $$\lvert\operatorname{Gal}(M/\mathbb{Q})\rvert=1<3=[M:\mathbb{Q}].$$
 **定义 3.5（正规扩张, normal extension）** 代数扩张 $$L/K$$ 称为**正规**，若 $$K[t]$$ 中每个在 $$L$$ 内有根的不可约多项式，在 $$L$$ 内**完全分裂**（所有根都在 $$L$$ 内）。等价地：$$L$$ 是 $$K$$ 上某一族多项式的（最小）分裂域。
 
 **例 3.5（正规性的失败与成功）** $$\mathbb{Q}(\sqrt[3]{2})/\mathbb{Q}$$ 不正规：$$t^3-2$$ 有根 $$\sqrt[3]{2}$$ 在其中，另两根 $$\sqrt[3]{2}\omega,\sqrt[3]{2}\omega^{2}$$（$$\omega=e^{2\pi i/3}$$）不在其中，因为它们非实而该域 $$\subseteq\mathbb{R}$$。而 $$\mathbb{Q}(\sqrt2)/\mathbb{Q}$$ 正规（$$t^2-2$$ 的两根 $$\pm\sqrt2$$ 都在），$$\mathbb{Q}(\sqrt2,\sqrt3)/\mathbb{Q}$$ 也正规（它是 $$(t^2-2)(t^2-3)$$ 的分裂域）。
+
+例 3.3 与例 3.5 已经看到：只有当「一个根在 $$L$$ 内，它的全部同类根也都在 $$L$$ 内」（正规）、且这些根彼此不重合（可分）时，自同构的个数才可能追上次数。把这两条同时要求，就是下面要专门命名的一类扩张——它是本章余下全部定理的舞台。
 
 **定义 3.6（Galois 扩张, Galois extension）** 有限扩张 $$L/K$$ 称为 **Galois 扩张**，若它**既可分又正规**。
 
@@ -150,7 +156,25 @@ $$\sum_{j=1}^{r}a_j\,\sigma(x_j)=0,\qquad \sigma\in H.$$
 
 于是 $$\operatorname{Hom}_K(L,\bar K)=\operatorname{Aut}_K(L)=G$$，只需数嵌入。数法：把 $$L/K$$ 拆成一串单扩张 $$K=K_0\subseteq K_1\subseteq\cdots\subseteq K_m=L$$，由可分性，每个 $$K$$-嵌入 $$K_i\hookrightarrow\bar K$$ 延拓到 $$K_{i+1}$$ 的方式数恰为 $$[K_{i+1}:K_i]$$（把新生成元送到其极小多项式的根，根互异故一个个数）；连乘由塔定理得 $$\lvert\operatorname{Hom}_K(L,\bar K)\rvert=[L:K]$$，故 $$\lvert G\rvert=[L:K]$$。∎
 
-**$$3\Rightarrow4$$：** 令 $$H=G$$，$$K\subseteq L^G\subseteq L$$。对扩张 $$L/L^G$$ 用 Artin 引理（定理 3.8）：$$[L:L^G]\le\lvert G\rvert=[L:K]$$。另一方面由塔定理 $$[L:K]=[L:L^G]\cdot[L^G:K]$$，而 $$[L^G:K]\ge1$$，故 $$[L:L^G]\ge[L:K]$$（有限扩张的次数为整数且 $$\ge1$$）。两边夹出 $$[L:L^G]=[L:K]$$，于是 $$[L^G:K]=1$$，即 $$L^G=K$$。∎
+**$$3\Rightarrow4$$：** 令 $$H=G$$，$$K\subseteq L^G\subseteq L$$。
+
+**第一步（恒等式 $$G=\operatorname{Gal}(L/L^G)$$）。** 一方面 $$G\subseteq\operatorname{Gal}(L/L^G)$$：这正是固定域的定义本身——$$G$$ 的每个元素依定义固定 $$L^G$$ 的每一点。另一方面 $$\operatorname{Gal}(L/L^G)\subseteq G$$：$$G=\operatorname{Gal}(L/K)$$ 的元素固定 $$K$$，故 $$K\subseteq L^G$$；于是任何固定 $$L^G$$（一个更大的集合）逐点的自同构，自动也固定 $$K$$ 逐点，即属于 $$\operatorname{Gal}(L/K)=G$$。两个包含合起来给出 $$G=\operatorname{Gal}(L/L^G)$$。
+
+**第二步（把 $$[L:L^G]$$ 两边夹死）。** 对扩张 $$L/L^G$$ 用 Artin 引理（定理 3.8，取 $$H=G=\operatorname{Gal}(L/L^G)$$）：$$[L:L^G]\le\lvert G\rvert$$。反过来，取 $$L$$ 作为 $$L^G$$-线性空间的一组基 $$x_1,\dots,x_r$$（$$r=[L:L^G]$$），考虑齐次线性方程组（未知量为 $$c_\sigma\in L$$，$$\sigma\in G$$，方程按 $$j=1,\dots,r$$ 编号）：
+
+$$\sum_{\sigma\in G}c_\sigma\,\sigma(x_j)=0,\qquad j=1,\dots,r.$$
+
+这是 $$r$$ 个方程、$$\lvert G\rvert$$ 个未知量。**若 $$\lvert G\rvert>r$$**，未知量多于方程，非零解 $$(c_\sigma)$$ 存在。任取 $$x\in L$$，写 $$x=\sum_jk_jx_j$$（$$k_j\in L^G$$）；因每个 $$\sigma\in G$$ 固定 $$L^G$$，$$\sigma(x)=\sum_jk_j\sigma(x_j)$$，故
+
+$$\sum_{\sigma\in G}c_\sigma\sigma(x)=\sum_jk_j\Bigl(\sum_{\sigma\in G}c_\sigma\sigma(x_j)\Bigr)=\sum_jk_j\cdot0=0$$
+
+对**一切** $$x\in L$$ 成立，且 $$(c_\sigma)$$ 不全为零——这与引理 3.7（Dedekind：互异自同构线性无关）矛盾。故 $$\lvert G\rvert\le r=[L:L^G]$$。两边夹出
+
+$$[L:L^G]=\lvert G\rvert=[L:K]$$
+
+（最后一步用了条件 (3)）。
+
+**第三步（结论）。** 由塔定理 $$[L:K]=[L:L^G]\cdot[L^G:K]$$，代入 $$[L:L^G]=[L:K]$$ 得 $$[L^G:K]=1$$，即 $$L^G=K$$。∎
 
 **$$4\Rightarrow1$$：** 设 $$K=L^{G}$$。对 $$L/K$$ 用 Artin 引理得 $$[L:K]=[L:L^G]\le\lvert G\rvert$$；又由注 3.10 给出的一般上界 $$\lvert G\rvert\le[L:K]$$。两边夹得 $$\lvert G\rvert=[L:K]$$，即条件 (3) 成立。
 
@@ -172,9 +196,9 @@ $$\lvert G\cdot\alpha_i\rvert=\frac{[L:K]}{[L:K(\alpha_i)]}=[K(\alpha_i):K]=\deg
 
 而极小多项式的全部根恰是这条轨道，故作用传递；再对 $$\alpha_i$$ 是 $$f$$ 任一根的情形取 $$m_{\alpha_i}\mid f$$，得 $$\deg f\mid\lvert G\rvert$$。这条事实正是后面「$$G$$ 嵌入 $$S_n$$」（定理 3.13）的来源。
 
-**注 3.10（一般的上界）** 对**任意**有限扩张 $$L/K$$ 都有 $$\lvert\operatorname{Gal}(L/K)\rvert\le[L:K]$$，且等号成立 $$\iff L^{\operatorname{Gal}(L/K)}=K$$。证明：设 $$H=\operatorname{Gal}(L/K)$$。取 $$L$$ 作为 $$K$$-线性空间的一组基 $$x_1,\dots,x_r$$，$$r=[L:K]$$。把引理 3.7 的证明逐字搬来（把那里的 $$L$$ 换成 $$K$$、把「$$H$$ 的固定域」换成 $$K$$）：若 $$\lvert H\rvert>r$$，则齐次方程组 $$\sum_j a_j\sigma(x_j)=0\ (\sigma\in H)$$ 有非零解，取非零分量最少者并归一化 $$a_1=1$$；由「解集在 $$H$$ 作用下封闭」推出全部 $$a_j\in K$$，代入 $$\sigma=\mathrm{id}$$ 得 $$\sum_j a_jx_j=0$$，与基的线性无关矛盾。故 $$\lvert H\rvert\le r=[L:K]$$。
+**注 3.10（一般的上界）** 对**任意**有限扩张 $$L/K$$ 都有 $$\lvert\operatorname{Gal}(L/K)\rvert\le[L:K]$$，且等号成立 $$\iff L^{\operatorname{Gal}(L/K)}=K$$。这正是定理 3.9 「$$3\Rightarrow4$$」证明第二步里用过的那条不等式，这里单独抽出、给出一般形式：证明：设 $$H=\operatorname{Gal}(L/K)$$，$$r=[L:K]$$，取 $$L$$ 作为 $$K$$-线性空间的一组基 $$x_1,\dots,x_r$$。**若 $$\lvert H\rvert>r$$**，考虑齐次方程组（未知量 $$c_\sigma\in L$$，$$\sigma\in H$$，方程按 $$j=1,\dots,r$$ 编号）：$$\sum_{\sigma\in H}c_\sigma\,\sigma(x_j)=0\ (j=1,\dots,r)$$——未知量（$$\lvert H\rvert$$ 个）多于方程（$$r$$ 个），非零解存在。任取 $$x=\sum_jk_jx_j\in L$$（$$k_j\in K$$），因每个 $$\sigma\in H$$ 固定 $$K$$，$$\sigma(x)=\sum_jk_j\sigma(x_j)$$，故 $$\sum_\sigma c_\sigma\sigma(x)=\sum_jk_j\bigl(\sum_\sigma c_\sigma\sigma(x_j)\bigr)=0$$ 对一切 $$x\in L$$ 成立且 $$(c_\sigma)$$ 不全为零，与引理 3.7（自同构线性无关）矛盾。故 $$\lvert H\rvert\le r=[L:K]$$。
 
-再由 Artin 引理，$$[L:L^H]\le\lvert H\rvert\le[L:K]$$，而 $$[L:K]=[L:L^H]\cdot[L^H:K]$$，故 $$[L^H:K]\le1$$，即 $$K=L^H$$ 时取等。
+再由 Artin 引理，$$[L:L^H]\le\lvert H\rvert\le[L:K]$$；又塔定理给 $$[L:K]=[L:L^H]\cdot[L^H:K]$$ 且 $$[L^H:K]\ge1$$（因 $$K\subseteq L^H$$），故 $$[L:L^H]\le[L:K]$$，与前一不等式合看：$$\lvert H\rvert=[L:K]\iff[L:L^H]=[L:K]\iff[L^H:K]=1\iff K=L^H$$。
 
 ### 3.4 主定理：Galois 对应
 
@@ -247,6 +271,8 @@ $$\mathbb{Z}/2\times\mathbb{Z}/2$$ 的子群恰有五个：$$\{1\}$$、$$\langle
 
 ### 3.5 Galois 群的格结构（MP149 的组合定理）
 
+例 3.11 里 $$\operatorname{Gal}(\mathbb{Q}(\sqrt2,\sqrt3)/\mathbb{Q})\cong\mathbb{Z}/2\times\mathbb{Z}/2$$ 不是巧合：它是两个「互不相干」的二次扩张 $$\mathbb{Q}(\sqrt2)$$、$$\mathbb{Q}(\sqrt3)$$ 拼起来的。下面把这条「拼接」规律写成一般定理，以后遇到多个独立根号叠在一起的域，就不必每次都重新数自同构。
+
 **定理 3.12（Galois 群与域的合成）** 设 $$K$$ 有两种 Galois 扩张 $$(L_1,G_1)$$、$$(L_2,G_2)$$，其中 $$G_i=\operatorname{Gal}(L_i/K)$$，并设 $$L_1,L_2$$ 落在同一个代数闭包中。记 $$L_1L_2$$ 为包含两者的最小子域（合成域，compositum）。则限制映射诱导**单射**
 
 $$\operatorname{Gal}(L_1L_2/K)\hookrightarrow G_1\times G_2,\qquad \sigma\mapsto(\sigma\vert_{L_1},\sigma\vert_{L_2}),$$
@@ -286,6 +312,8 @@ $$\operatorname{Gal}\bigl(\mathbb{Q}(\sqrt{p_1},\dots,\sqrt{p_n})/\mathbb{Q}\big
 且每个非平凡子群都对应一个由部分 $$\sqrt{p_i}$$ 生成的中间域——这正是 MP149 里那条「互不相等的素数的平方根给出 $$(\mathbb{Z}/2)^n$$」的结论，现在它是定理 3.12 的直接推论。
 
 ### 3.6 判别式：Galois 群嵌进 $$A_n$$ 的判据
+
+题 5 最终要判定 $$\operatorname{Gal}(f)$$ 是不是整个 $$S_n$$，而 $$S_n$$ 与它的指数-2 子群 $$A_n$$（偶置换）之间的差别，历史上第一次被算成了一个具体的数——判别式。这一节把「群是否落进 $$A_n$$」翻译成「一个数是否是平方」，是一条纯算术的判据，不需要先把整个群算出来。
 
 **定理 3.13（判别式与 $$A_n$$）** 设 $$f\in K[t]$$ 可分，$$\deg f=n$$，根为 $$\alpha_1,\dots,\alpha_n$$，$$L=K(\alpha_1,\dots,\alpha_n)$$ 为其分裂域，$$G=\operatorname{Gal}(L/K)\hookrightarrow S_n$$（$$G$$ 作用在 $$n$$ 个根上）。定义**判别式 (discriminant)**
 
@@ -352,6 +380,8 @@ $$\lvert\operatorname{Gal}(L/\mathbb{Q})\rvert=[L:\mathbb{Q}]=\deg\Phi_n=\varphi
 $$E$$ 是哪个二次域？对素数 $$p$$，$$\mathbb{Q}(\zeta_p)$$ 的唯一二次子域是 $$\mathbb{Q}\bigl(\sqrt{p^*}\bigr)$$，$$p^*=(-1)^{(p-1)/2}p$$（可由判别式 $$\Delta_{\mathbb{Q}(\zeta_p)}=(-1)^{(p-1)/2}p^{\,p-2}$$ 与导子-判别式关系读出，也可直接算，见竞 2）。取 $$p=7$$：$$p^*=(-1)^3\cdot7=-7$$，故 $$E=\mathbb{Q}(\sqrt{-7})$$。**注意**：$$\zeta_7+\zeta_7^{-1}=2\cos\frac{2\pi}{7}$$ 生成的是次数 $$3$$ 的**实**子域（它是 $$\mathbb{Q}(\sqrt{-7})$$ 之上的那个三次扩张），不要与二次子域混淆；真正的生成元是 $$\alpha=\zeta_7+\zeta_7^2+\zeta_7^4$$（完整计算见竞 2）。
 
 ### 3.8 可解群与根式解
+
+入口题 (5) 问的是「五次方程有没有求根公式」，而求根公式说到底就是一串加减乘除与开方的组合。要证明这样的公式不存在，第一步是先把「能用根式写出来」这件事本身说清楚——变成一条可以在域塔上检验的精确条件。
 
 **定义 3.16（根式可解, solvable by radicals）** 设 $$f\in K[t]$$（$$\operatorname{char}K=0$$）。称 $$f$$ **根式可解**，若它的全部根都落在某个域塔
 
