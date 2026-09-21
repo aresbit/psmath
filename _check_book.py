@@ -64,7 +64,7 @@ for p_ in sorted(D.glob("ch*.md")):
         num = m.group(2)
         if num in stmts:
             continue
-        before = txt[max(0, m.start() - 150):m.start()]
+        before = txt[max(0, m.start() - 400):m.start()]
         if re.search(r"第\s*\d+\s*章", before):
             continue                       # 跨章引用
         bad.append(num)
