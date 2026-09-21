@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 51 章的具体例子后（那里已经手算过四元数乘法、共轭作用 $$qxq^{-1}$$、以及"转一圈 vs 转两圈"这几件事的数字版本），这里把同样的构造写成一般定义，并给出完整证明。
+
 **从哪来**：第 02 章把「复数乘法就是平面旋转」讲成了一条**定理**，不是一句直观。第 04 章把同一个几何事实换了个说法：平面旋转全体构成群 $$SO(2)$$，它作为拓扑空间就是圆 $$S^1$$，而 $$\mathbb{R}$$ 沿整数点卷到圆上的那个覆叠结构（$$\pi_1(S^1)=\mathbb{Z}$$）解释了幅角的多值性。第 24、25 章开始问三维：$$SO(3)$$ 是什么形状？第 50 章给出了抽象答案——它是个连通紧 Lie 群，它的拓扑可以利用覆叠空间来读。但抽象的答案需要一个**拿在手里能转**的模型。
 
 **本章干什么**：把 $$SO(3)$$ 装进一个具体的代数对象——**单位四元数**。四元数不是"复数加了两个虚数"这种记号把戏；它是第 02 章那个构造**再走一遍**的产物：从 $$\mathbb{R}$$ 到 $$\mathbb{C}$$ 是走第一步，从 $$\mathbb{C}$$ 到 $$\mathbb{H}$$ 是走第二步，规则完全一样。走完之后我们发现单位四元数全体是一个**三维球面** $$S^3$$，它到 $$SO(3)$$ 有一个二对一的满同态 $$\rho$$，核是 $$\{\pm1\}$$。于是
@@ -92,6 +94,8 @@ $$\mathbb{H}:=\operatorname{span}_\mathbb{R}\{\,I_2,\ \mathbb I,\ \mathbb J,\ \m
 
 $$\mathbb{H}$$ 中的元素称为**四元数 (quaternion)**。
 
+这只是把"落点"写成了矩阵的样子；它是不是真的构成一个封闭的代数（矩阵乘出来还落在这四维张成里）、$$\mathbb I,\mathbb J,\mathbb K$$ 之间到底满足哪些乘法关系，都还没验证——这正是下面 定理 3.1 要做的事：把矩阵老老实实乘出来。
+
 注意 $$\mathbb I,\mathbb J,\mathbb K$$ 里都带因子 $$-i$$：$$\sigma_1,\sigma_2,\sigma_3$$ 都是 Hermite 矩阵（$$\sigma_k^*=\sigma_k$$），乘上 $$-i$$ 之后 $$\mathbb I,\mathbb J,\mathbb K$$ 变成**反 Hermite** 的（$$\mathbb I^*=-\mathbb I$$，其余同理）。这正是"纯虚"在矩阵里的对应物：下面的定理 3.3 会证明映射 $$q\mapsto q^*$$ 恰好就是矩阵的共轭转置，于是"纯虚四元数"（$$q^*=-q$$）恰好对应反 Hermite 矩阵。
 
 **定理 3.1（乘法表）** $$\mathbb{H}$$ 对矩阵乘法封闭，从而是 $$M_2(\mathbb{C})$$ 的 $$4$$ 维子代数；$$\{I_2,\mathbb I,\mathbb J,\mathbb K\}$$ 是它的一组基。在这组基下，乘法由下式完全决定：
@@ -114,9 +118,11 @@ $$\mathbb I\mathbb J=\begin{bmatrix}0&-i\\-i&0\end{bmatrix}\begin{bmatrix}0&-1\\
 $$\mathbb J\mathbb I=\begin{bmatrix}0&-1\\1&0\end{bmatrix}\begin{bmatrix}0&-i\\-i&0\end{bmatrix}
 =\begin{bmatrix}i&0\\0&-i\end{bmatrix}=-\mathbb K .$$
 
-用 $$\mathbb K^2=-I_2$$ 与已算出的 $$\mathbb I\mathbb J=\mathbb K$$ 得 $$\mathbb I\mathbb J\mathbb K=\mathbb K^2=-I_2$$。剩下三条从 $$\mathbb I\mathbb J=\mathbb K$$ 派生：两边左乘 $$\mathbb I$$ 得 $$\mathbb I^2\mathbb J=\mathbb I\mathbb K$$，即 $$\mathbb I\mathbb K=-\mathbb J$$；两边右乘 $$\mathbb J$$ 得 $$\mathbb I\mathbb J^2=\mathbb K\mathbb J$$，即 $$\mathbb K\mathbb J=-\mathbb I$$；再把两边左乘 $$\mathbb J$$ 得 $$\mathbb J\mathbb I\mathbb J=\mathbb J\mathbb K$$，即 $$(-\mathbb K)\mathbb J=\mathbb J\mathbb K$$，配合 $$\mathbb K\mathbb J=-\mathbb I$$ 得 $$\mathbb J\mathbb K=\mathbb I$$；最后把 $$\mathbb I\mathbb J=\mathbb K$$ 右乘 $$\mathbb I$$，用 $$\mathbb J\mathbb I=-\mathbb K$$ 与 $$\mathbb I\mathbb K=-\mathbb J$$ 得 $$\mathbb K\mathbb I=\mathbb J$$。所有乘积都落在 $$\{I_2,\mathbb I,\mathbb J,\mathbb K\}$$ 的 $$\mathbb R$$-张成里，所以对乘法封闭。
+用 $$\mathbb K^2=-I_2$$ 与已算出的 $$\mathbb I\mathbb J=\mathbb K$$ 得 $$\mathbb I\mathbb J\mathbb K=\mathbb K^2=-I_2$$。剩下三条从 $$\mathbb I\mathbb J=\mathbb K$$ 派生：两边左乘 $$\mathbb I$$ 得 $$\mathbb I^2\mathbb J=\mathbb I\mathbb K$$，即 $$\mathbb I\mathbb K=-\mathbb J$$；两边右乘 $$\mathbb J$$ 得 $$\mathbb I\mathbb J^2=\mathbb K\mathbb J$$，即 $$\mathbb K\mathbb J=-\mathbb I$$；再把两边左乘 $$\mathbb J$$ 得 $$\mathbb J\mathbb I\mathbb J=\mathbb J\mathbb K$$，即 $$(-\mathbb K)\mathbb J=\mathbb J\mathbb K$$，配合 $$\mathbb K\mathbb J=-\mathbb I$$ 得 $$\mathbb J\mathbb K=\mathbb I$$；最后把 $$\mathbb I\mathbb J=\mathbb K$$ 右乘 $$\mathbb I$$，用 $$\mathbb J\mathbb I=-\mathbb K$$ 与 $$\mathbb I\mathbb K=-\mathbb J$$ 得 $$\mathbb K\mathbb I=\mathbb J$$。所有乘积都落在 $$\{I_2,\mathbb I,\mathbb J,\mathbb K\}$$ 的 $$\mathbb R$$-张成里，所以对乘法封闭——这就把上面的疑问解决了：$$\mathbb H$$ 确实是一个四维代数，入口题 (c) 给出的那套符号规则不是随手规定的，而是这个矩阵代数的忠实写照。
 
 $$\{I_2,\mathbb I,\mathbb J,\mathbb K\}$$ 线性无关：设 $$x_0I_2+x_1\mathbb I+x_2\mathbb J+x_3\mathbb K=0$$，看 $$(1,1)$$ 元得 $$x_0-ix_3=0$$，看 $$(1,2)$$ 元得 $$-ix_1-x_2=0$$，虚部实部分离即得 $$x_0=x_1=x_2=x_3=0$$。故 $$\dim_\mathbb{R}\mathbb{H}=4$$。$$\blacksquare$$
+
+上面验证了乘法表本身自洽（对乘法封闭、维数是 4）。但这还没回答 §3.1 提出的问题：这套矩阵构造真的是"对 $$\mathbb C$$ 再走一遍 $$\mathbb R\to\mathbb C$$ 的构造"吗？下面把 $$j$$（即 $$\mathbb J$$）挑出来当"新元素"，看它和旧的 $$\mathbb C=\{I_2,\mathbb I\}$$ 是什么关系，正面回答这个问题。
 
 **定理 3.2（$$\mathbb{H}$$ 就是"模板的第二遍"：Cayley–Dickson 描述）** 每个 $$q\in\mathbb{H}$$ 可**唯一**地写成
 
@@ -140,6 +146,8 @@ $$jz=j(xI_2+y\mathbb I)=xj+y\,j i,\qquad \bar z\, j=(x-iy)j=xj-y\,ij .$$
 
 ### 3.3 共轭、模与可除性
 
+$$\mathbb{C}$$ 里"除以一个非零数"之所以总能做到，靠的是一套具体机关：共轭 $$\bar z$$ 与模 $$\lvert z\rvert$$，满足 $$z\bar z=\lvert z\rvert^2$$，于是 $$z^{-1}=\bar z/\lvert z\rvert^2$$。$$\mathbb H$$ 不交换，"除法"是否还成立并不是显然的事——下面就是照搬这套机关，装到 $$\mathbb H$$ 上，再验证它确实给出逆元。
+
 **定义 3.2（共轭与模, conjugate and modulus）** 对 $$q=x_0+x_1i+x_2j+x_3k\in\mathbb{H}$$，定义它的**共轭 (conjugate)**
 
 $$q^*:=x_0-x_1i-x_2j-x_3k,$$
@@ -153,6 +161,8 @@ $$\lvert q\rvert:=\sqrt{x_0^2+x_1^2+x_2^2+x_3^2}.$$
 $$\phi(q)=\begin{bmatrix}a&b\\-\bar b&\bar a\end{bmatrix}\qquad(a=x_0-ix_3,\ b=-x_2-ix_1),$$
 
 则 $$q^*$$ 对应 $$\phi(q)$$ 的**共轭转置 (conjugate transpose)**。这个形式上的对应不是巧合，它是下面 (i) 的来源——也因此 $$\mathbb{H}$$ 里"共轭"的记法与复数的完全兼容。
+
+有了共轭与模，就可以正面回答"$$\mathbb H$$ 能不能除"这个问题：下面证明每个非零四元数都可逆，且逆有和复数一样的显式公式 $$q^{-1}=q^*/\lvert q\rvert^2$$——这是后面一切"四元数代表旋转"的代数基础，因为共轭作用 $$q x q^{-1}$$ 要用到这个逆。
 
 **定理 3.3（$$\mathbb{H}$$ 是可除环, division ring）**
 
@@ -196,6 +206,8 @@ $$\phi(q)\phi(q)^*=\det\phi(q)\cdot I_2,\qquad \det\phi(q)=a\bar a+b\bar b=x_0^2
 （顺带解释定理 3.3 的"除环"一词：$$\mathbb{H}$$ 几乎是一个域，唯一缺的是交换性。由经典的 Frobenius 定理，有限维实结合可除代数只有 $$\mathbb{R}$$（一维）、$$\mathbb{C}$$（二维）、$$\mathbb{H}$$（四维）三个，$$\mathbb{H}$$ 是其中唯一**非交换**的。八维的 Cayley 八元数已不满足结合律——模板走到第三步就出事了。）
 
 ### 3.4 单位四元数、$$S^3$$ 与 $$SU(2)$$
+
+下面 §3.5 要用四元数的共轭作用 $$qxq^{-1}$$ 表示旋转，而定理 3.3(iii) 告诉我们只有 $$\lvert q\rvert=1$$ 时这个作用才"不缩放"（模保持不变）。所以第一件事是把"模为 $$1$$ 的四元数全体"这个几何对象（一个三维球面）单独摘出来看它是什么样的群，并且验证它与矩阵群里最自然的"单位、行列式为 $$1$$"的对象——$$SU(2)$$——是同一件事。
 
 **定理 3.4（$$S^3\cong SU(2)$$）** 记
 
@@ -267,6 +279,8 @@ $$\langle x,y\rangle=\frac{\lvert x+y\rvert^2-\lvert x\rvert^2-\lvert y\rvert^2}
 
 (iv) (ii) 说 $$\rho(q)$$ 保内积，即 $$\rho(q)^{\mathsf T}\rho(q)=I$$，故 $$\rho(q)\in O(3)$$。要证明行列式为 $$+1$$：矩阵元是 $$q=(x_0,x_1,x_2,x_3)$$ 的多项式，故 $$\det\circ\rho:S^3\to\{\pm1\}$$ 连续；而 $$S^3$$ 连通（它是球面），连续函数把连通集送到连通集，$$\{\pm1\}$$ 的连通子集只有单点集，故 $$\det\rho$$ 是常数；由 $$\rho(1)=\operatorname{id}$$ 得该常数为 $$\det I=1$$。所以 $$\rho(q)\in SO(3)$$。$$\blacksquare$$
 
+定理 3.5 只说明 $$\rho$$ 把 $$S^3$$ **送进** $$SO(3)$$；要说 $$S^3$$（折叠后）"就是" $$SO(3)$$，还差两件事：$$\rho$$ 有没有漏掉一些旋转（满射性），以及有没有把不同的四元数送到同一个旋转（这是下一节 §3.6 的核的问题）。下面先处理满射性——这需要反过来说明：任给一个旋转，都能配出一个四元数使 $$\rho$$ 作用到它。
+
 **定理 3.6（$$\rho$$ 是满射：每个旋转都是某个四元数的共轭）**
 
 **(Euler 旋转定理)** 每个 $$R\in SO(3)$$ 都存在**单位**向量 $$n\in\mathbb{R}^3$$ 与角 $$\theta\in[0,2\pi)$$，使 $$R$$ 是"绕 $$n$$ 逆时针转 $$\theta$$"的旋转。
@@ -296,7 +310,19 @@ $$xy=-\langle x,y\rangle+x\times y\qquad(x,y\in\operatorname{Im}\mathbb{H})$$
 $$q\,u\,q^*=\Big(\cos\tfrac\theta2+\sin\tfrac\theta2\,n\Big)u\Big(\cos\tfrac\theta2-\sin\tfrac\theta2\,n\Big)
 =\cos^2\tfrac\theta2\,u+\cos\tfrac\theta2\sin\tfrac\theta2\,(nu-un)+\sin^2\tfrac\theta2\,(-nun).$$
 
-逐项化简：$$nu=v$$，$$un=-v$$，而 $$nun=n(n\times u)=n\langle n,u\rangle-u\lvert n\rvert^2=-u$$（叉积恒等式 $$a\times(a\times b)=a\langle a,b\rangle-b\lvert a\rvert^2$$）。代回：
+逐项化简：$$nu=v$$，$$un=-v$$。$$nun$$ 这一项要小心：叉积**不满足结合律**，$$(n\times u)\times n$$ 与 $$n\times(n\times u)$$ 一般不相等，所以不能把 $$nun$$ 直接套进恒等式 $$a\times(a\times b)=a\langle a,b\rangle-b\lvert a\rvert^2$$——那是 $$n\times(n\times u)$$，不是 $$nun$$ 本身。稳妥的办法是回到四元数乘法的结合律，借助刚算出的 $$un=-v$$：
+
+$$nun=n(un)=n(-v)=-(nv).$$
+
+再单独算 $$nv$$：由纯虚元乘积公式，$$\langle n,n\times u\rangle=0$$（$$n\times u$$ 恒与 $$n$$ 垂直），故
+
+$$nv=n(n\times u)=-\langle n,\,n\times u\rangle+n\times(n\times u)=0+\big(n\langle n,u\rangle-u\lvert n\rvert^2\big)=-u,$$
+
+这一步才是恒等式 $$a\times(a\times b)=a\langle a,b\rangle-b\lvert a\rvert^2$$ 的正确用法（取 $$a=n,\,b=u$$，并用 $$\langle n,u\rangle=0,\ \lvert n\rvert=1$$）。于是
+
+$$nun=-(nv)=-(-u)=u .$$
+
+代回：
 
 $$q\,u\,q^*=\big(\cos^2\tfrac\theta2-\sin^2\tfrac\theta2\big)u+2\sin\tfrac\theta2\cos\tfrac\theta2\,v=\cos\theta\,u+\sin\theta\,(n\times u).$$
 
@@ -305,6 +331,8 @@ $$q\,u\,q^*=\big(\cos^2\tfrac\theta2-\sin^2\tfrac\theta2\big)u+2\sin\tfrac\theta
 （**注**：上式 $$q\,u\,q^*=\cos\theta\,u+\sin\theta\,(n\times u)$$ 就是四元数版的 Rodrigues 公式；第 54 章会对 $$\rho$$ 求导得到 $$\mathfrak{so}(3)$$，那里会从另一个方向再遇见它。）
 
 ### 3.6 核与像：$$SO(3)\cong S^3/\{\pm1\}\cong\mathbb{RP}^3$$
+
+定理 3.6 证明了 $$\rho$$ 满射，但入口题 (c)(ii) 已经露出苗头：$$\theta=2\pi$$ 与 $$\theta=4\pi$$ 给出的四元数不同（一个是 $$-1$$，一个是 $$1$$），而它们对应的旋转应该是同一个（转整数圈都是恒等）。也就是说 $$\rho$$ 大概率不是单射。要精确知道"重复了几次"，标准做法是算核：$$\rho(q)=\operatorname{id}$$ 的解集有多大。
 
 **定理 3.7（核）** $$\ker\rho=\{\pm1\}=\{1,-1\}$$。也就是说，方程 $$\rho(q)=\operatorname{id}$$ 只有两个解 $$q=1$$ 和 $$q=-1$$；于是**每个旋转恰好对应两个四元数** $$q$$ 与 $$-q$$。
 
@@ -348,7 +376,7 @@ $$\ell\ \longmapsto\ \{q,-q\}=\ell\cap S^3$$
 
 ### 3.7 「转 360° 不是恒等、转 720° 才是」的严格表述
 
-入口题 (a)(b) 现在可以彻底清算了。先精确说明"提升"是什么意思。
+入口题 (a)(b) 现在可以彻底清算了。要严格谈"闭路能不能连续收缩"，标准工具是覆叠空间理论里的**道路提升**与**同伦提升**性质；要用这两条性质，先要确认 $$\rho$$ 确实是一个覆叠映射——这不是自动的，需要证明。先精确说明"提升"是什么意思。
 
 **定理 3.9（$$\rho$$ 是覆叠映射）** $$\rho:S^3\to SO(3)$$ 是**覆叠映射 (covering map)**，其覆叠变换群是 $$\mathbb{Z}/2=\{1,-1\}$$（即 $$\rho(q)=\rho(-q)$$，且这两点局部上是 $$\rho^{-1}\big(\rho(q)\big)$$ 的全部）。
 
@@ -513,7 +541,7 @@ $$-wuv=w\langle u,v\rangle-w\,(u\times v),\qquad wvu=-w\langle u,v\rangle+w\,(v\
 
 两项相加为 $$2w(v\times u)$$（用了 $$u\times v=-v\times u$$）。又
 
-$$vuv=v\big({-\langle u,v\rangle+u\times v}\big)=-\langle u,v\rangle v+v(u\times v)=-\langle u,v\rangle v+\Big(u\lvert v\rvert^{2}-v\langle v,u\rangle\Big)=2\langle u,v\rangle v-\lvert v\rvert^{2}u,$$
+$$vuv=v\big({-\langle u,v\rangle+u\times v}\big)=-\langle u,v\rangle v+v(u\times v)=-\langle u,v\rangle v+\Big(u\lvert v\rvert^{2}-v\langle v,u\rangle\Big)=\lvert v\rvert^{2}u-2\langle u,v\rangle v,$$
 
 其中用了 $$\langle u,v\rangle=\langle v,u\rangle$$、$$v\cdot(u\times v)=0$$，以及三重积公式 $$v\times(u\times v)=u\lvert v\rvert^{2}-v\langle v,u\rangle$$。合并三项即得公式。$$\square$$
 
@@ -560,7 +588,7 @@ $$w$$ 的符号待定（这正是二重覆盖）。又由题 1 的矩阵，非�
 
 $$R_{32}-R_{23}=4wx,\qquad R_{13}-R_{31}=4wy,\qquad R_{21}-R_{12}=4wz .$$
 
-（逐项相减即可验证，例如 $$R_{32}=2(yz+wx)$$、$$R_{23}=2(yz-wx)$$。）于是当 $$w\neq0$$——
+（逐项相减即可验证：由题 1 的矩阵，$$R_{32}=2(yz+wx)$$、$$R_{23}=2(yz-wx)$$，两式相减，$$yz$$ 项抵消，剩下 $$R_{32}-R_{23}=2(yz+wx)-2(yz-wx)=4wx$$；另两式同法，$$R_{13}-R_{31}=2(xz+wy)-2(xz-wy)=4wy$$，$$R_{21}-R_{12}=2(xy+wz)-2(xy-wz)=4wz$$。）于是当 $$w\neq0$$——
 
 $$x=\frac{R_{32}-R_{23}}{4w},\qquad y=\frac{R_{13}-R_{31}}{4w},\qquad z=\frac{R_{21}-R_{12}}{4w}.$$
 

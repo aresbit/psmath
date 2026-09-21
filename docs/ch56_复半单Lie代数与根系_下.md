@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第55章的具体例子——三维表示里的权链、一个退化与一个非退化的 Killing 型、$$\mathfrak{sl}(3,\mathbb C)$$ 的六个根、一对不等长向量的 Cartan 整数——之后，这里把同样的构造写成一般定义，并给出完整证明。
+
 上一章把 Lie 代数从 Lie 群的切空间里生出来，并给出了指数映射。可是拿到一个 Lie 代数之后，能用它做什么？本章回答的是结构问题：**哪些 Lie 代数是「原子的」，以及这些原子能不能被列成一张表。**
 
 答案是能，而且表小得惊人。本章要把「半单」这个词从一个否定性定义（「没有可解理想」）变成一个**可分类的结构**：用 Cartan 判据判定半单性，用 Cartan 子代数把 $$\operatorname{ad}$$ 同时对角化，把整个代数拆成根空间 $$L = H \oplus \bigoplus_{\alpha} L_\alpha$$，再把根的集合抽出来当成一个独立的欧氏几何对象（根系），最后压成一张**只能有九种形状**的图（Dynkin 图）。这条链的终点是一条分类定理：复单 Lie 代数恰有 $$A_n,B_n,C_n,D_n$$ 四族与 $$E_6,E_7,E_8,F_4,G_2$$ 五个例外。
@@ -176,6 +178,8 @@ $$\operatorname{ad}x\,(L^{i}) = [x,L^{i}]\subseteq [L,L^{i}] = L^{i+1},$$
 
 ### 3.2 Killing 型与 Cartan 判据
 
+**为什么要定义"半单"**：可解与幂零描述的是"坏"的一端（一路做换位子最终归零）；我们真正想研究的是它们的对立面——完全没有可解理想拖后腿的代数。直接说"没有可解理想"是一句否定性描述，不方便下手，所以先给它起名字，再想办法把它变成可计算的条件（下面的 Cartan 第二判据）。
+
 **定义 3.9（根与半单, radical and semisimple）**。$$L$$ 的**根** (radical) $$\operatorname{Rad}(L)$$ 是 $$L$$ 的最大可解理想（全体可解理想之和仍是可解理想，故最大者存在）。$$L$$ 称为**半单**的 (semisimple)，若 $$\operatorname{Rad}(L)=0$$。
 
 **定义 3.10（单）**。$$L$$ 称为**单**的 (simple)，若 $$L$$ 非交换且不含非平凡真理想（即 $$\{0\}$$ 与 $$L$$ 之外的理想）。
@@ -191,6 +195,8 @@ $$L = L_1\oplus L_2\oplus\cdots\oplus L_t,\qquad L_i\ \text{单}.$$
 并且 $$L$$ 的每个理想都是其中若干个 $$L_i$$ 之和。
 
 *证明思路*：由 $$L$$ 非可解知存在极小非零理想。若 $$I,J$$ 是两个不同的极小理想，则 $$I\cap J=0$$ 且 $$[I,J]\subseteq I\cap J=0$$，故 $$I\oplus J$$ 是理想；对正交补 $$I^\perp$$（关于 $$\kappa$$）用同一套论证，最后用 $$I\cap I^\perp=0$$（下面的 定理 3.17）拼出直和。每个极小非零理想自动是单的：若 $$J\lhd I$$ 且 $$J\neq I,0$$，则 $$I$$ 中任何其他理想与之正交，矛盾于极小性。$$\blacksquare$$
+
+**为什么这样定义 Killing 型**：$$\operatorname{ad}x$$ 是 $$L\to L$$ 的线性变换，两个线性变换复合再取迹，是从一对元素 $$(x,y)$$ 榨出一个数字最朴素的办法（比行列式线性、比特征值好计算），而且第55章 3.2 节已经在两个最小的例子里验证过：这样定义出的双线性型，退化与否恰好对应"可解/不可解"这类结构性质。下面先证明它有一个关键的代数性质（结合不变性），再用它推出两条可计算的判据。
 
 **定义 3.13（Killing 型, Killing form）**。$$L$$ 上的双线性型
 
@@ -244,7 +250,7 @@ $$x = x_s+x_n,\qquad \operatorname{ad}x_s\ \text{半单},\quad \operatorname{ad}
 
 ### 3.3 Cartan 子代数与根空间分解
 
-从这一段起，假设 $$L$$ 是半单复 Lie 代数。
+从这一段起，假设 $$L$$ 是半单复 Lie 代数。**目标是什么**：$$\operatorname{ad}x$$ 对单个 $$x$$ 不一定能对角化（它可能有幂零部分），但我们想找一族"够大、又能同时对角化"的元素，把 $$L$$ 整体按共同本征空间拆开（第55章 3.3 节已经用两个具体的对角矩阵 $$h_1,h_2$$ 在 $$\mathfrak{sl}(3,\mathbb C)$$ 里做过一次）。下面的定义就是在精确化"够大"与"能同时对角化"这两个要求。
 
 **定义 3.19（环面子代数与 Cartan 子代数, toral subalgebra and Cartan subalgebra）**。称子代数 $$H\subseteq L$$ 是**环面的** (toral)，若每个 $$h\in H$$ 的 $$\operatorname{ad}_L h$$ 半单（可对角化）。称 $$H$$ 是 **Cartan 子代数** (Cartan subalgebra, CSA)，若 $$H$$ 幂零且自正规化，即
 
@@ -267,6 +273,8 @@ $$N_L(H) := \{x\in L : [x,H]\subseteq H\} = H .$$
 $$\kappa(h,x) = \operatorname{tr}(\operatorname{ad}h\operatorname{ad}x) = 0 .$$
 
 又由假设 $$\kappa(h,H)=0$$，而 $$L=H\oplus\bigoplus_{\alpha\neq0}L_\alpha$$，故 $$\kappa(h,L)=0$$。由 定理 3.16 的 $$\kappa$$ 非退化得 $$h=0$$。$$\blacksquare$$
+
+**从"同时对角化"到"根"**：定理 3.20(i) 说全体 $$\operatorname{ad}h$$（$$h\in H$$）可以同时对角化，于是 $$L$$ 的每个共同本征空间由"每个 $$h$$ 上取值多少"这一整条规则决定，而不是由单个数字决定——这条规则本身就是 $$H$$ 上的一个线性泛函。第55章 3.3 节用两个具体的对角矩阵 $$h_1,h_2$$ 给 $$\mathfrak{sl}(3,\mathbb C)$$ 的六个方向各配了一对坐标 $$(c_1,c_2)$$；这里把"配一对坐标"精确化成"配一个线性泛函 $$\alpha\in H^*$$"。
 
 **定义 3.21（根与根空间, roots and root spaces）**。对 $$\alpha\in H^*$$ 定义
 
@@ -350,7 +358,7 @@ $$[h,E_{ij}] = (a_i-a_j)E_{ij} = (\varepsilon_i-\varepsilon_j)(h)\,E_{ij},\qquad
 
 ### 3.4 根系：把根抽成独立的几何对象
 
-现在做本章最关键的一次「抽象」：把 $$H$$ 和 $$\kappa$$ 丢掉，只留下 $$\Phi$$ 与它上面由 $$\kappa$$ 诱导的内积。
+现在做本章最关键的一次「抽象」：把 $$H$$ 和 $$\kappa$$ 丢掉，只留下 $$\Phi$$ 与它上面由 $$\kappa$$ 诱导的内积。**为什么可以丢掉 $$L$$ 本身**：下面四条公理只谈论一个有限向量集合与它的内积，不再提到 Lie 括号；这是因为定理 3.23、3.24 已经把 $$L$$ 的全部结构信息（哪些和是根、每个根空间多大、根的相反数是不是根）翻译成了纯几何陈述。第55章 3.4 节用一对具体的不等长向量算过 Cartan 整数与反射，这里把那次具体计算里用到的全部规则收进四条公理，使它们对任意根系都成立。
 
 **定义 3.26（根系, root system）**。设 $$E$$ 是有限维实欧氏空间（内积记 $$(\cdot,\cdot)$$）。称有限集合 $$\Phi\subset E$$ 为**根系**，若
 
@@ -426,7 +434,7 @@ $$90^\circ,\ 60^\circ,\ 120^\circ,\ 45^\circ,\ 135^\circ,\ 30^\circ,\ 150^\circ 
 
 若 $$\lvert\alpha\rvert\le\lvert\beta\rvert$$，则对应的 $$\langle\beta,\alpha\rangle,\langle\alpha,\beta\rangle$$ 依次为
 
-$$\frac{\lvert\beta\rvert}{\lvert\alpha\rvert}\in\{1,\sqrt2,\sqrt3\}\ \text{按角度分配}:\quad (\theta=90^\circ):(0,0);\quad(\theta=120^\circ,60^\circ):(-1,-1);\quad(\theta=135^\circ,45^\circ):(-1,-2);\quad(\theta=150^\circ,30^\circ):(-1,-3).$$
+$$\frac{\lvert\beta\rvert}{\lvert\alpha\rvert}\in\{1,\sqrt2,\sqrt3\}\ \text{按角度分配}:\quad (\theta=90^\circ):(0,0);\quad(\theta=120^\circ,60^\circ):(-1,-1);\quad(\theta=135^\circ,45^\circ):(-2,-1);\quad(\theta=150^\circ,30^\circ):(-3,-1).$$
 
 （符号由「$$\alpha\neq\beta$$ 非共线时可取二者夹角为钝角」的约定给出；交换 $$\alpha,\beta$$ 则两个整数互换。）
 
@@ -457,6 +465,8 @@ $$4\cos^2\theta = nm,\qquad r = \sqrt{\frac{n}{m}},\qquad r\ge 1\Rightarrow n\ge
 
 ### 3.5 单根、Dynkin 图与分类定理
 
+**为什么要从 $$\Phi$$ 里再挑出一个"基"**：$$\Phi$$ 本身有 $$n(n+1)$$ 个（甚至更多）根，直接罗列所有根很冗余——第55章 3.3 节的六个根里，其实只要两个（$$\alpha_1=\varepsilon_1-\varepsilon_2,\ \alpha_2=\varepsilon_2-\varepsilon_3$$）就能把其余四个（包括它们各自的相反数）用整系数组合表示出来。下面的定义把"最省的一组生成元"精确化。
+
 **定义 3.30（基与单根, base and simple roots）**。$$\Phi$$ 的子集 $$\Delta$$ 称为一个**基** (base)，若
 
 **(B1)** $$\Delta$$ 是 $$E$$ 的一组基；
@@ -483,11 +493,15 @@ $$\Phi^+(\gamma) = \{\alpha\in\Phi : (\alpha,\gamma)>0\},\qquad \Delta(\gamma) =
 
 **(ii)** 是 (B2) 与 $$\Phi=\Phi^+\sqcup\Phi^-$$ 的直接重述。$$\blacksquare$$
 
+**为什么把单根的两两配对写成一个矩阵**：命题 3.32 说单根两两之间只剩下有限几种可能的 Cartan 整数（$$0,-1,-2,-3$$），而单根的个数就是秩 $$\ell$$——把这 $$\ell^2$$ 个数排成一个方阵，是把"全部结构信息"打包成一个能直接判定正定性、从而驱动分类定理（3.36）的对象，这正是下面要做的事。
+
 **定义 3.33（Cartan 矩阵, Cartan matrix）**。取 $$\Delta=\{\alpha_1,\dots,\alpha_\ell\}$$ 并任意编号。矩阵
 
 $$A = \bigl(\langle\alpha_i,\alpha_j\rangle\bigr)_{i,j=1}^{\ell}$$
 
 称为 $$\Phi$$（或 $$L$$）的 **Cartan 矩阵**。由 命题 3.32，对角元恒为 $$2$$，非对角元取自 $$\{0,-1,-2,-3\}$$。
+
+**为什么再把矩阵画成图**：Cartan 矩阵已经是有限的数据，但矩阵的具体数值——$$0,-1,-2,-3$$——比读者真正需要记住的信息更细：分类定理只关心"连不连"、"连几条边"、"哪端短"。把矩阵翻译成一张图（每个数值对应边的重数），比矩阵更直观，也是 Killing、Cartan、Dynkin 分类九加五型时实际使用的语言。
 
 **定义 3.34（Dynkin 图, Dynkin diagram）**。$$\Phi$$ 的 Dynkin 图构造如下：每个单根 $$\alpha_i$$ 画一个顶点；顶点 $$i\neq j$$ 之间连
 

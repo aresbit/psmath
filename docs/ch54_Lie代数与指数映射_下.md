@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 53 章的具体例子后——矩阵指数在对角矩阵与幂零矩阵上怎么算、$$e^{tA}e^{tB}$$ 与 $$e^{t(A+B)}$$ 差多少、怎样对约束方程求导得到 $$\mathfrak{so}(2)$$ 与 $$\mathfrak{so}(3)$$、$$\exp$$ 为什么会"撞车"——这里把同样的构造写成一般定义，并给出完整证明。
+
 第 48 章已经把骨架搭好：Lie 群是「群 + 光滑流形 + 相容性」，在单位元处求导得到它的 Lie 代数 $$\mathfrak{g}=T_eG$$，括号是左不变向量场的对易子，矩阵情形就是换位子 $$[A,B]=AB-BA$$。本章要让这条链**动起来**——把 $$\mathfrak{g}$$ 里的直线积分成 $$G$$ 上的曲线，即给出指数映射 $$\exp:\mathfrak{g}\to G$$，并说清它什么时候是「群与代数之间的桥」、什么时候不是。
 
 三个问题串起全章。**第一，求导丢掉了什么？** 把 $$G$$ 在单位元处线性化，得到的只是一个向量空间；第 48 章的定理 3.22 说每个切向量都唯一地积分成一条单参数子群，于是每个 $$X\in\mathfrak{g}$$ 都给出 $$G$$ 上的一整条曲线 $$t\mapsto\exp(tX)$$。**第二，丢掉的东西能不能补回来？** BCH 公式给出 $$e^Xe^Y=e^{\,X+Y+\frac12[X,Y]+\cdots}$$，它说明括号 $$[X,Y]$$ 恰是「指数映射与加法之间的失配」；于是 Lie 代数决定群的**局部**结构，一点不多也一点不少。**第三，局部够不够用？** 不够：$$\mathfrak{su}(2)\cong\mathfrak{so}(3)$$ 是同构的 Lie 代数，可 $$SU(2)$$ 与 $$SO(3)$$ 是覆叠比为二的不同的群（第 52 章），而且 $$\exp$$ 连满射都不一定成立。局部与整体之间隔着一层拓扑。
@@ -152,7 +154,7 @@ $$X^{\mathsf T}\Omega+\Omega X=0\iff X^{\mathsf T}\Omega=-\Omega X\iff (\Omega X
 
 $$\dim\mathfrak{sp}(2n,\mathbb R)=\frac{2n(2n+1)}2=n(2n+1).$$
 
-反向：若 $$S=\Omega X$$ 对称，则 $$\Omega X=X^{\mathsf T}\Omega$$，代入即得 $$X^{\mathsf T}\Omega+\Omega X=-X^{\mathsf T}\Omega+X^{\mathsf T}\Omega=0$$。取 $$X=\Omega^{-1}S$$，对 $$\Phi(t)=\exp(tX)^{\mathsf T}\Omega\exp(tX)$$ 求导（用 $$\frac{d}{dt}\exp(tX)^{\mathsf T}=\exp(tX)^{\mathsf T}X^{\mathsf T}$$）：
+反向：若 $$S=\Omega X$$ 对称，则 $$S^{\mathsf T}=S$$，即 $$(\Omega X)^{\mathsf T}=\Omega X$$；展开左边 $$(\Omega X)^{\mathsf T}=X^{\mathsf T}\Omega^{\mathsf T}=-X^{\mathsf T}\Omega$$，于是 $$-X^{\mathsf T}\Omega=\Omega X$$，即 $$\Omega X=-X^{\mathsf T}\Omega$$（**注意符号**：不是 $$\Omega X=X^{\mathsf T}\Omega$$）。代入即得 $$X^{\mathsf T}\Omega+\Omega X=X^{\mathsf T}\Omega+(-X^{\mathsf T}\Omega)=0$$。取 $$X=\Omega^{-1}S$$，对 $$\Phi(t)=\exp(tX)^{\mathsf T}\Omega\exp(tX)$$ 求导（用 $$\frac{d}{dt}\exp(tX)^{\mathsf T}=\exp(tX)^{\mathsf T}X^{\mathsf T}$$）：
 
 $$\Phi'(t)=\exp(tX)^{\mathsf T}\bigl(X^{\mathsf T}\Omega+\Omega X\bigr)\exp(tX)=0,$$
 

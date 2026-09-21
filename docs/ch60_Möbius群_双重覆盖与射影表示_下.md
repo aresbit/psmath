@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第59章的具体例子后——那里已经用手算验证过"矩阵相差一个标量给出同一个变换"、"Hermite 矩阵的行列式就是 Minkowski 长度"、以及一个有限循环群上的"上循环"长什么样——这里把同样的构造写成一般定义，并给出完整证明。
+
 本章只做一件事：把「一个群作用在**射影**空间上」这件事讲透。
 
 前三章各埋了一个伏笔，这里是它们的收口。第 52 章算出 $$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$，并证明「转一整圈」不是零伦闭路；第 44 章发现Heisenberg群 $$H_3(\mathbb R)$$ 是相空间平移群的**中心扩张**，而 Stone–von Neumann 定理的真正含义是「上循环不平凡时，射影表示反而被中心扩张的唯一不可约表示锁死」；第 58 章造出旋量并把 $$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$ 这笔账记在了「存在一个连通双层覆叠」上。这三件事是同一件事。
@@ -58,6 +60,8 @@ $$U(\theta)=\begin{pmatrix}e^{-i\theta/2}&0\\ 0&e^{i\theta/2}\end{pmatrix}$$
 
 ### 3.1 Möbius 变换与 $$\mathrm{PSL}(2,\mathbb C)$$
 
+入口问题 A 已经让你手算过：不同的矩阵（例如某个 $$A$$ 与 $$2A$$，或 $$A$$ 与 $$-A$$）可以给出完全相同的分式线性变换。这就提出了两个必须先回答的问题：这样的变换全体是否构成一个群（复合两个分式线性变换还是分式线性变换吗）？哪些矩阵会给出同一个变换（这决定了"矩阵"与"变换"之间到底差了多少）？下面先把对象钉死。
+
 **定义 3.1（Möbius 变换, Möbius transformation）** 设 $$a,b,c,d\in\mathbb C$$ 满足 $$ad-bc\ne0$$。由
 $$f(z)=\frac{az+b}{cz+d}$$
 给出的扩充复平面 $$\widehat{\mathbb C}=\mathbb C\cup\{\infty\}$$ 上的变换称为一个 **Möbius 变换**（也叫分式线性变换）。在端点处按连续延拓理解：
@@ -83,7 +87,10 @@ $$f_A\bigl(f_B(z)\bigr)=\frac{a\frac{pz+q}{rz+s}+b}{c\frac{pz+q}{rz+s}+d}=\frac{
 $$(az+b)(rz+s)=(pz+q)(cz+d).$$
 这是 $$z$$ 的多项式恒等式，比较系数得三个方程
 $$ar=pc,\qquad as+br=qc+pd,\qquad bs=qd.$$
-把 $$A$$ 的两列与 $$B$$ 的两列分别看作 $$\mathbb C^2$$ 的向量。上面三式等价于
+把 $$A$$ 的两列与 $$B$$ 的两列分别看作 $$\mathbb C^2$$ 的向量，即 $$\mathrm{col}_1A=(a,c)$$、$$\mathrm{col}_2A=(b,d)$$、$$\mathrm{col}_1B=(p,r)$$、$$\mathrm{col}_2B=(q,s)$$（都写成列向量）。**（展开）** 两个列向量 $$(u_1,u_2)$$、$$(v_1,v_2)$$ 排成一个 $$2\times2$$ 矩阵的行列式是 $$u_1v_2-u_2v_1$$。逐个算：
+$$\det\bigl(\mathrm{col}_1A,\mathrm{col}_1B\bigr)=\det\begin{pmatrix}a&p\\ c&r\end{pmatrix}=ar-pc,\qquad \det\bigl(\mathrm{col}_2A,\mathrm{col}_2B\bigr)=\det\begin{pmatrix}b&q\\ d&s\end{pmatrix}=bs-qd,$$
+$$\det\bigl(\mathrm{col}_1A,\mathrm{col}_2B\bigr)=\det\begin{pmatrix}a&q\\ c&s\end{pmatrix}=as-qc,\qquad \det\bigl(\mathrm{col}_2A,\mathrm{col}_1B\bigr)=\det\begin{pmatrix}b&p\\ d&r\end{pmatrix}=br-pd.$$
+第一式 $$ar-pc=0$$ 正是 $$ar=pc$$；第二式 $$bs-qd=0$$ 正是 $$bs=qd$$；而 $$as-qc=-(br-pd)$$ 展开即 $$as+br=qc+pd$$。三个方程与三个行列式条件逐一对应，所以上面三式等价于
 $$\det\bigl(\mathrm{col}_1A,\ \mathrm{col}_1B\bigr)=0,\qquad \det\bigl(\mathrm{col}_2A,\ \mathrm{col}_2B\bigr)=0,\qquad \det\bigl(\mathrm{col}_1A,\ \mathrm{col}_2B\bigr)=-\det\bigl(\mathrm{col}_2A,\ \mathrm{col}_1B\bigr).$$
 因为 $$A$$ 可逆，$$\mathrm{col}_1A,\mathrm{col}_2A$$ 是一组基，把 $$B$$ 的两列在这组基下展开：
 $$\mathrm{col}_1B=\alpha\,\mathrm{col}_1A+\beta\,\mathrm{col}_2A,\qquad \mathrm{col}_2B=\gamma\,\mathrm{col}_1A+\delta\,\mathrm{col}_2A.$$
@@ -97,6 +104,8 @@ $$\mathrm{SL}(2,\mathbb C)\cap\mathbb C^*I=\{cI: c^2=1\}=\{\pm I\}.$$
 **注 3.2（这条同构是复数域的恩赐）** $$\mathrm{PSL}\cong\mathrm{PGL}$$ 依赖「$$\mathbb C^*$$ 中每个元素都是平方」。在实数域上这不成立：$$\mathrm{PGL}(2,\mathbb R)\big/\mathrm{PSL}(2,\mathbb R)\cong\mathbb R^*/\mathbb R_{>0}^*\cong\mathbb Z/2$$，两者相差一个行列式的符号。所以定理 3.2(iii) 是复数的特殊性，不是一般现象；阅读时不要把 $$\mathrm{PSL}$$ 与 $$\mathrm{PGL}$$ 在任何域上都等同。
 
 ### 3.2 圆到圆与交比
+
+Möbius 群不只是"某个抽象群"——它是**圆几何的对称群**：分式线性变换把圆变成圆（把直线看成半径无穷大的圆），这件事解释了为什么这个群会在复分析、双曲几何、共形场论里反复出现。要把"把圆变成圆"这句话变成可以计算的陈述，需要两样工具：一是把圆和直线统一写成同一种二次方程，二是找到一个在变换下绝对不变的数值不变量（交比），使"是否共圆"能通过算一个数来判定，而不必每次解圆的方程。
 
 **定理 3.3（圆到圆、三点传递、交比不变）**
 
@@ -120,10 +129,13 @@ $$\lvert cw-a\rvert^2\,z\bar z=\lvert b-dw\rvert^2,\qquad \lvert cw-a\rvert^2\, 
 $$A\lvert b-dw\rvert^2+\bar B(b-dw)(\bar c\bar w-\bar a)+B(\bar b-\bar d\bar w)(cw-a)+C(cw-a)(\bar c\bar w-\bar a).$$
 展开后按 $$w\bar w,\ \bar w,\ w,\ 1$$ 整理，得到
 $$A' w\bar w+\bar B'w+B'\bar w+C'=0$$
-的形状，其中 $$A',C'$$ 是实数（共轭对称），$$B'\in\mathbb C$$。再把这一式看成一个矩阵恒等式：记
-$$H=\begin{pmatrix}A&\bar B\\ B&C\end{pmatrix},\qquad M=\begin{pmatrix}d&-b\\ c&-a\end{pmatrix}\ \ (\text{即把 }(z,1)\text{ 送上 }(w,1)\text{ 的线性部分}),$$
-则展开的结果正是 $$H'=M^*HM$$（直接比对系数即可），其中 $$H'=\begin{pmatrix}A'&\bar B'\\ B'&C'\end{pmatrix}$$。$$M$$ 可逆（$$\det M=bc-ad=-1\ne0$$），故
-$$\det H'=\lvert\det M\rvert^2\det H=\det H ,$$
+的形状，其中 $$A',C'$$ 是实数（共轭对称），$$B'\in\mathbb C$$。再把这一式看成一个矩阵恒等式，从而不必重新展开就能读出 $$\det H$$ 怎么变。**（展开：为什么这是矩阵恒等式）** 用 $$v=(1,z)^{\mathsf T}$$ 把二次型写成 $$v^*Hv$$ 的形状：取
+$$H=\begin{pmatrix}A&\bar B\\ B&C\end{pmatrix},$$
+直接算 $$v^*Hv=(1,\bar z)\begin{pmatrix}A&\bar B\\ B&C\end{pmatrix}\begin{pmatrix}1\\ z\end{pmatrix}=(1,\bar z)\begin{pmatrix}A+\bar Bz\\ B+Cz\end{pmatrix}=A+\bar Bz+B\bar z+Cz\bar z,$$
+恰好是原方程左边（把加法项重新排一下序）。一般地，若把变量按 $$v=Nv'$$ 代换（$$N$$ 是某个 $$2\times2$$ 复矩阵，$$v'$$ 是新变量），代入得
+$$v^*Hv=(Nv')^*H(Nv')=v'^*(N^*HN)v',$$
+即新变量下的矩阵就是 $$N^*HN$$。这里 $$N$$ 是把 $$(1,w)^{\mathsf T}$$ 送到"与 $$(1,z)^{\mathsf T}$$ 只差一个非零标量"的那个线性部分（标量差是因为 $$z=\dfrac{b-dw}{cw-a}$$ 分母不为 $$1$$，需要通分——这正是上面乘以 $$\lvert cw-a\rvert^2$$ 清分母的原因，清完分母后 $$v=(1,z)^{\mathsf T}$$ 与 $$v'=(1,w)^{\mathsf T}$$ 之间就只差矩阵 $$N$$，不再有标量）。把 $$H'=\begin{pmatrix}A'&\bar B'\\ B'&C'\end{pmatrix}$$ 记作新方程的矩阵，上述原理给出 $$H'=N^*HN$$ 这个矩阵恒等式（记号上把 $$N$$ 写成 $$M$$）。关键的一点是：不需要求出 $$M$$ 的每个具体元素，只需要 $$\det M$$——而 $$M$$ 的构造过程始终只用到 $$a,b,c,d$$ 与 $$ad-bc=1$$，故 $$\det M=\pm(ad-bc)=\pm1\ne0$$，$$M$$ 可逆。于是
+$$\det H'=\det(M^*HM)=\det M^*\cdot\det H\cdot\det M=\overline{\det M}\cdot\det M\cdot\det H=\lvert\det M\rvert^2\det H=\det H ,$$
 于是 $$\det H=AC-\lvert B\rvert^2$$ 只乘了一个正数，符号不变。若原来是圆（$$A\ne0$$、$$\det H<0$$），则新方程表示一条半径为正的圆；若原来是直线（$$A=0$$），则新方程或是直线（$$A'=0$$），或是圆（$$A'\ne0$$）。两种情形都属于「圆或直线」。$$\square$$
 
 **(iii)** 先设 $$z_1,z_2,z_3$$ 互异。由 (ii)（下文将独立证明其存在性）先承认：以 $$g(z):=[z,z_1,z_2,z_3]$$ 记交比，直接代入得 $$g(z_1)=0$$、$$g(z_2)=1$$、$$g(z_3)=\infty$$，且 $$g$$ 作为 $$z$$ 的函数是分式线性的（分子分母都是 $$z$$ 的一次式，分母为 $$(z-z_3)(z_2-z_1)$$ 不为零多项式），故 $$g$$ 是 Möbius 变换。于是 $$g$$ 是**把 $$(z_1,z_2,z_3)$$ 送到 $$(0,1,\infty)$$ 的**那个 Möbius 变换。
@@ -140,6 +152,8 @@ $$[f(z),f(z_1),f(z_2),f(z_3)]=h(f(z))=g(z)=[z,z_1,z_2,z_3].\qquad\square$$
 **注 3.3（交比是「圆的坐标」）** 由定理 3.3(iii)，四点共圆（含共线）这一性质在 Möbius 变换下不变：因为「共圆或共线」等价于交比为实数（这一点在第五节题 2 中证明）。所以 Möbius 变换不只是「把圆映成圆」，它还是**圆几何的对称群**——这正是它出现在双曲几何与共形场论里的原因。
 
 ### 3.3 从球面到光锥：$$\mathrm{PSL}(2,\mathbb C)\cong\mathrm{SO}^+(1,3)$$
+
+入口问题 A 第 (4) 问已经具体算过一次：把 $$(x_0,x_1,x_2,x_3)$$ 编进一个 $$2\times2$$ Hermite 矩阵之后，矩阵的行列式恰好就是 Minkowski 长度平方，而 $$A$$ 作用在矩阵上（$$X\mapsto AXA^*$$）诱导出的四维实变换保持这个长度——这已经是 Lorentz 变换的定义。这里的诀窍是：Hermite 矩阵天生是"复数世界"与"实四维世界"之间的一座桥（一个 $$2\times2$$ Hermite 矩阵恰好有 $$4$$ 个独立实参数），而矩阵乘法的行列式乘法律 $$\det(AXA^*)=\det A\det X\det A^*$$ 自动把"体积"变成"长度平方"的陈述。下面把这套编码写成正式定义，再证明它确实给出 $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 的一个满同态，核恰为 $$\{\pm I\}$$——这正是"$$A$$ 与 $$-A$$ 给出同一个变换"这件事在 Lorentz 一侧的翻版。
 
 **定义 3.4（Hermite 矩阵实现, Hermitian matrix realization）** 对 $$x=(x_0,x_1,x_2,x_3)\in\mathbb R^4$$ 记
 $$X(x)=\begin{pmatrix}x_0+x_3&x_1-ix_2\\ x_1+ix_2&x_0-x_3\end{pmatrix}.$$
@@ -177,7 +191,7 @@ $$\Phi(AB)(X)=(AB)X(AB)^*=A\bigl(BXB^*\bigr)A^*=\Phi(A)\bigl(\Phi(B)X\bigr).$$
 $$(Av)(Av)^*=vv^* .$$
 两个秩一 Hermite 矩阵相等当且仅当它们的非零列向量只差一个单位模的标量：由 $$(Av)(Av)^*=vv^*$$ 两边作用得 $$Av$$ 与 $$v$$ 生成的是一维同一子空间，故 $$Av=\lambda_v v$$ 且 $$\lvert\lambda_v\rvert^2=1$$。于是 $$A$$ 把每一条复直线（每个一维子空间）映到自身。取线性无关的 $$u,w$$：由 $$Au=\lambda_u u$$、$$Aw=\lambda_w w$$、$$A(u+w)=\lambda_{u+w}(u+w)$$ 及 $$A(u+w)=Au+Aw$$，比较 $$u,w$$ 的系数得 $$\lambda_u=\lambda_w=\lambda_{u+w}$$。所以一切 $$\lambda_v$$ 都等于同一个 $$\lambda$$，即 $$A=\lambda I$$。再由 $$\det A=1$$ 得 $$\lambda^2=1$$，$$\lambda=\pm1$$。反之 $$\pm I$$ 显然在核里。$$\square$$
 
-**(iii)** 两个群的维数都是 $$6$$（$$\dim_{\mathbb R}\mathrm{SL}(2,\mathbb C)=3\cdot2=6$$；$$\dim\mathrm{SO}(1,3)=\binom42=6$$）。由 (ii)，$$\ker\Phi$$ 是离散的（$$\{\pm I\}$$ 是有限集），故切映射 $$d\Phi_I:\mathfrak{sl}(2,\mathbb C)\to\mathfrak{so}(1,3)$$ 是单射：若不然，某个非零 $$X\in\mathfrak{sl}(2,\mathbb C)$$ 被送成 $$0$$，则单参数子群 $$t\mapsto\exp(tX)$$ 整个落在核里，与核离散矛盾。单射的两边同维线性映射是同构，故由反函数定理，$$\Phi$$ 在单位元附近是局部微分同胚：$$\Phi(\mathrm{SL}(2,\mathbb C))$$ 包含 $$\mathrm{SO}^+(1,3)$$ 的一个单位邻域 $$U$$。
+**(iii)** 两个群的维数都是 $$6$$（$$\dim_{\mathbb R}\mathrm{SL}(2,\mathbb C)=3\cdot2=6$$；$$\dim\mathrm{SO}(1,3)=\binom42=6$$）。由 (ii)，$$\ker\Phi$$ 是离散的（$$\{\pm I\}$$ 是有限集），故切映射 $$d\Phi_I:\mathfrak{sl}(2,\mathbb C)\to\mathfrak{so}(1,3)$$ 是单射：若不然，某个非零 $$X\in\mathfrak{sl}(2,\mathbb C)$$ 被送成 $$0$$，即 $$d\Phi_I(X)=0$$。李群同态与指数映射可交换（第54章：$$\Phi(\exp(tX))=\exp\bigl(t\,d\Phi_I(X)\bigr)$$ 对一切 $$t\in\mathbb R$$），故此时 $$\Phi(\exp(tX))=\exp(0)=I$$ 对一切 $$t$$ 成立，即单参数子群 $$t\mapsto\exp(tX)$$（$$X\ne0$$，故这条子群不是常值 $$I$$）整个落在核里，核因此包含无穷多个元素，与核离散（只有 $$\{\pm I\}$$ 两个元素）矛盾。单射的两边同维线性映射是同构，故由反函数定理，$$\Phi$$ 在单位元附近是局部微分同胚：$$\Phi(\mathrm{SL}(2,\mathbb C))$$ 包含 $$\mathrm{SO}^+(1,3)$$ 的一个单位邻域 $$U$$。
 
 群论收尾：$$\Phi(\mathrm{SL}(2,\mathbb C))$$ 是 $$\mathrm{SO}^+(1,3)$$ 的子群且含 $$U$$，故含由 $$U$$ 生成的子群；一个拓扑群的单位邻域生成的子群是**开**子群，而开子群同时是闭的（它的补是其余陪集的并，也是开集）。$$\mathrm{SO}^+(1,3)$$ 连通且非空，故没有非平凡的开闭子集，于是 $$\Phi(\mathrm{SL}(2,\mathbb C))=\mathrm{SO}^+(1,3)$$。$$\blacksquare$$
 
@@ -186,6 +200,8 @@ $$\mathrm{Möb}=\mathrm{PSL}(2,\mathbb C)=\mathrm{SL}(2,\mathbb C)/\{\pm I\}\con
 $$\pm A$$ 在 Möbius 侧是同一个 $$f_A$$，在 Lorentz 侧是同一个 $$\Phi(A)$$。更具体地，取 $$z=x+iy$$，则 $$X(x_0,x,y,x_3)$$ 的行列式为零恰好对应 $$\lvert z\rvert^2=x_0^2-x_3^2$$，即 **Riemann 球面 = 光锥的截面**：扩充复平面就是 Minkowski 空间的光锥在 $$\mathbb R^3$$ 上的投影（更准确地说，$$\widehat{\mathbb C}$$ 是 $$\mathbb R^{1,3}$$ 的**天球 (celestial sphere)**，即光锥中的射线方向之集）。于是 Möbius 群作用在 $$\widehat{\mathbb C}$$ 上，正是 Lorentz 群作用在光锥上——「分式线性变换把圆变成圆」与「Lorentz 变换把光锥变成光锥」是同一句话。
 
 ### 3.4 双重覆叠与中心扩张
+
+上一节证明了 $$\Phi:\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 是满同态且核为 $$\{\pm I\}$$——这与第52章 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 的核 $$\{\pm I\}$$、以及入口问题B里"$$U(2\pi)=-I\ne I$$"是同一个"二对一"现象反复出现。现在把这个反复出现的模式本身命名：一个连通群把另一个群"二对一"地盖住，而多出来的那个 $$\mathbb Z/2$$（或更一般的某个交换群）恰好落在盖住它的群的中心——这就是双重覆叠与中心扩张。先把名字钉死，再在下一节问"这对表示论意味着什么"。
 
 **定义 3.7（覆叠群、双重覆叠与中心扩张, covering group, double cover, central extension）**
 
