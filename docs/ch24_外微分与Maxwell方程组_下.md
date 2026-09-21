@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第23章的具体例子后——手算过镜面反射下叉乘多出的负号、解方程组解出过 $$\star dx=dy\wedge dz$$、对具体向量场验证过 $$\nabla\times\vec F=\star\,d\omega_F$$、也验证过几个"系数和为零"的场自动满足 $$\nabla\cdot\vec B=0$$——这里把同样的构造写成一般定义，并给出完整证明：不再是某一个具体的 $$P$$、某一个具体的 $$\vec F$$，而是任意镜像、任意光滑向量场、任意（伪）黎曼流形。
+
 第 14 章造出了外微分 $$d$$，并证明了全书最重要的一条恒等式 $$d^2=0$$。当时它只是一个代数事实：**分析里的对称（二阶偏导可交换）与代数里的反对称（楔积变号）精确配对，凑出零**。本章要给这条恒等式一个物理名字。
 
 要做三件事。其一，说清**为什么电场 $$\vec E$$ 是 1-形式、磁感应 $$\vec B$$ 是 2-形式**——这不是记号游戏，而是"镜子里左右颠倒"这条中学常识的严格后果（MP25）。其二，引入 **Hodge 星算子 $$\star$$ (Hodge star)**，把 $$\mathbb R^3$$ 上的 grad / curl / div **三个算子统一成同一个 $$d$$**，并证明 $$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 就是 $$d^2=0$$ 的两种写法（MP26）。其三，把 Maxwell 方程组**从四个压成两个**：
@@ -57,7 +59,7 @@ $$\begin{cases} \nabla\cdot\vec B=0,\\[3pt] \nabla\times\vec E+\dfrac{\partial\v
 
 ### 3.1 极向量与轴向量：镜像判据 (Polar and axial vectors)
 
-先解决入口题 (a)。
+先解决入口题 (a)。第23章 3.1 节已经用两组具体数字（$$P=\operatorname{diag}(1,1,-1)$$ 配 $$\vec a=(1,2,0),\vec b=(0,1,3)$$ 与另一组）验证过 $$(P\vec a)\times(P\vec b)=-P(\vec a\times\vec b)$$；这里要做的，是把"镜子"本身从一个具体的对角矩阵，扩展成一般的定义，好让接下来的命题对**任意**镜像、**任意**极向量都成立，而不只是对我们挑的那一个例子。
 
 **定义 3.1（镜像变换 / reflection）**。设 $$P$$ 是 $$\mathbb R^3$$ 的一个正交变换（相对于标准内积保持长度），且 $$\det P=-1$$。称这样的 $$P$$ 为一个**镜像**（更一般地，一个**反常正交变换**）。
 
@@ -71,9 +73,11 @@ $$\begin{cases} \nabla\cdot\vec B=0,\\[3pt] \nabla\times\vec E+\dfrac{\partial\v
 
 $$(P\vec a)\times(P\vec b)=(\det P)\,P(\vec a\times\vec b),\qquad \forall P\in O(3). \tag{24.1}$$
 
-一步步来。对任意正交 $$P$$、任意 $$\vec u\in\mathbb R^3$$，叉乘满足"二阶外积"的变换律：$$(P\vec a)\times(P\vec b)=\det(P)\,P^{-T}(\vec a\times\vec b)$$。这一条可如下验证：两边都是 $$\vec a,\vec b$$ 的双线性反对称映射，取标准基 $$\vec a=\vec e_i,\vec b=\vec e_j$$ 验证即可（此时左边 $$=(P\vec e_i)\times(P\vec e_j)$$ 是 $$P$$ 的第 $$i,j$$ 列的叉乘，正是 $$P$$ 的三个列的任意两列叉乘等于第三列乘行列式，即 $$\det(P)P^{-T}\vec e_k$$）。对 $$P\in O(3)$$ 有 $$P^{-T}=P$$，于是 (24.1) 成立。
+一步步来。对任意正交 $$P$$、任意 $$\vec u\in\mathbb R^3$$，叉乘满足"二阶外积"的变换律：$$(P\vec a)\times(P\vec b)=\det(P)\,P^{-T}(\vec a\times\vec b)$$。这一条可如下验证：两边都是 $$\vec a,\vec b$$ 的双线性反对称映射（固定 $$\vec b$$ 时对 $$\vec a$$ 线性，交换 $$\vec a,\vec b$$ 变号——左边由叉乘的双线性反对称性给出，右边由 $$P^{-T}$$ 线性、叉乘反对称给出），而 $$\mathbb R^3\times\mathbb R^3$$ 上的双线性反对称映射由它在基向量对 $$(\vec e_i,\vec e_j)$$（$$i<j$$）上的取值完全确定（任意 $$\vec a=\sum a_i\vec e_i,\vec b=\sum b_j\vec e_j$$ 按双线性展开、再用反对称抵消掉 $$i=j$$ 项，就化归成这些基本情形的线性组合）。所以只需取标准基 $$\vec a=\vec e_i,\vec b=\vec e_j$$ 验证即可（此时左边 $$=(P\vec e_i)\times(P\vec e_j)$$ 是 $$P$$ 的第 $$i,j$$ 列的叉乘，正是 $$P$$ 的三个列的任意两列叉乘等于第三列乘行列式，即 $$\det(P)P^{-T}\vec e_k$$）。**（展开，具体验证一例）** 取 $$P=\begin{pmatrix}0&-1&0\\1&0&0\\0&0&1\end{pmatrix}$$（绕 $$z$$ 轴转 $$90^\circ$$，正交且 $$\det P=1$$），$$i=1,j=2$$。$$P$$ 的第一列是 $$\vec e_2$$，第二列是 $$-\vec e_1$$，第三列是 $$\vec e_3$$。直接算 $$(P\vec e_1)\times(P\vec e_2)=\vec e_2\times(-\vec e_1)=-(\vec e_2\times\vec e_1)=-(-\vec e_3)=\vec e_3$$；而 $$\det(P)\,P^{-T}\vec e_3$$：$$P$$ 正交故 $$P^{-T}=P$$，$$P\vec e_3=\vec e_3$$（第三列），$$\det P=1$$，故 $$\det(P)P^{-T}\vec e_3=\vec e_3$$——与左边一致，验证了 $$i=1,j=2$$ 这一个基本情形。对 $$P\in O(3)$$ 有 $$P^{-T}=P$$，于是 (24.1) 成立。
 
 现在设 $$P$$ 是镜像（$$\det P=-1$$）。由 (24.1)，$$\vec a\times\vec b$$ 在镜像下变为 $$-P(\vec a\times\vec b)$$，正是定义 3.2 的轴向量要求。$$\square$$
+
+第23章 3.1 节已经在具体的镜像 $$P=\operatorname{diag}(1,1,-1)$$ 下验证过命题 3.3；下面把"轴向量"这个还只是"多一个负号的向量"的说法，进一步翻译成一个具体的几何对象——2-形式。
 
 **命题 3.4（轴向量 $$\leftrightarrow$$ 2-形式）**。在 $$\mathbb R^3$$ 中，轴向量与 2-形式有一一对应；极向量与 1-形式有一一对应。
 
@@ -273,7 +277,7 @@ $$\boxed{\ \text{"边界的边界为空" }(\partial\partial=\varnothing,\ d^2=0)
 
 ### 3.7 另外两个方程：$$d\star F=J$$
 
-后两个方程含 $$\rho$$ 与 $$\vec j$$，右边不为零，所以不能是 $$d(\text{某物})=0$$。补救：**夹一个 $$\star$$**，把"散度"变成"升次后的导数"，右边再配一个对偶次数的形式。
+后两个方程含 $$\rho$$ 与 $$\vec j$$，右边不为零，所以不能是 $$d(\text{某物})=0$$。补救：**夹一个 $$\star$$**，把"散度"变成"升次后的导数"，右边再配一个对偶次数的形式。具体地，$$F\in\Omega^2(\mathbb R^{3,1})$$，$$\star F\in\Omega^2$$（四维中 $$2=4-2$$，次数不变），$$d(\star F)\in\Omega^3$$，再 $$\star$$ 一次落回 $$\Omega^1$$（$$1=4-3$$）——所以等式右边必须是一个 1-形式，这就是为什么下面要专门定义一个把 $$\rho,\vec j$$ 装在一起的 1-形式 $$J$$，而不能直接写 $$\rho,\vec j$$ 本身。
 
 **定义 3.12（电流 1-形式 / current one-form）**。在 $$\mathbb R^{3,1}$$ 上取
 
@@ -314,7 +318,7 @@ $$d(\star F)=-d_S\tilde E+\bigl(\partial_t\tilde E+d_S\tilde B\bigr)\wedge dt. \
 再作用 $$\star$$。两块：
 
 - $$-d_S\tilde E$$ 是空间 3-形式，$$d_S\tilde E=(\nabla\cdot\vec E)\,dx\wedge dy\wedge dz$$，而 $$\star(dx\wedge dy\wedge dz)=\langle dxdydz,dxdydz\rangle\star_w(dxdydz)=(-1)(-dt)=dt$$（其中 $$\star_w$$ 取互补指标并算置换符号：$$(1,2,3,0)$$ 是 3 个对换，符号 $$-1$$）。故 $$\star(-d_S\tilde E)=(\nabla\cdot\vec E)\,dt$$。
-- $$\bigl(\partial_t\tilde E+d_S\tilde B\bigr)\wedge dt$$：对空间 2-形式 $$\alpha$$ 有 $$\star(\alpha\wedge dt)=\star_S\alpha$$（$$\star_S$$ 为 3.3 节的空间 $$\star$$，逐项可验证，如 $$\star(dx\wedge dy\wedge dt)=dz=\star_S(dx\wedge dy)$$）。故 $$\star\bigl((\partial_t\tilde E+d_S\tilde B)\wedge dt\bigr)=\partial_t\star_S\tilde E+\star_Sd_S\tilde B=\partial_t\vec E+\nabla\times\vec B$$（把 1-形式与向量认同）。
+- $$\bigl(\partial_t\tilde E+d_S\tilde B\bigr)\wedge dt$$：对空间 2-形式 $$\alpha$$ 有 $$\star(\alpha\wedge dt)=\star_S\alpha$$（$$\star_S$$ 为 3.3 节的空间 $$\star$$）。**（展开）** 验证一项：取 $$\alpha=dx\wedge dy$$，要证 $$\star(dx\wedge dy\wedge dt)=dz$$。先把 $$dx\wedge dy\wedge dt$$ 换成标准顺序 $$dt\wedge dx\wedge dy$$：$$dx\wedge dy\wedge dt=dx\wedge(dy\wedge dt)=dx\wedge(-dt\wedge dy)=-dx\wedge dt\wedge dy=-(-dt\wedge dx)\wedge dy=dt\wedge dx\wedge dy$$（两次反交换，符号抵消）。指标 $$I=(0,1,2)$$（即 $$t,x,y$$），互补指标 $$J=(3)$$（即 $$z$$），$$(0,1,2,3)$$ 本身已递增，置换符号 $$\varepsilon(I,J)=+1$$；又 $$\langle dt\wedge dx\wedge dy,\,dt\wedge dx\wedge dy\rangle_g=g^{00}g^{11}g^{22}=(+1)(-1)(-1)=+1$$。代入 (24.3)：$$\star(dt\wedge dx\wedge dy)=(+1)(+1)\,dz=dz$$。故 $$\star(dx\wedge dy\wedge dt)=dz$$，而 $$\star_S(dx\wedge dy)=dz$$（3.3 节的表），两者相等，验证了 $$\star(\alpha\wedge dt)=\star_S\alpha$$ 在这一项上成立；其余五项（$$\alpha=dy\wedge dz$$ 与 $$dz\wedge dx$$，以及反过来 $$\star_S$$ 作用在 1-形式上的三项）按同样的步骤逐条核对。于是 $$\star\bigl((\partial_t\tilde E+d_S\tilde B)\wedge dt\bigr)=\partial_t\star_S\tilde E+\star_Sd_S\tilde B=\partial_t\vec E+\nabla\times\vec B$$（把 1-形式与向量认同）。
 
 合起来：
 
@@ -354,6 +358,8 @@ $$dA'=dA+d^2f=dA+0=dA,$$
 - **Coulomb 规范 (Coulomb gauge)**：$$\nabla\cdot\vec A=0$$；
 - 时间规范、Feynman 规范、Landau 规范等。
 
+这些"规范"都只是**挑一个方便的代表元**，而"能不能挑到"本身需要证明——规范自由度只保证 $$A+df$$（$$f$$ 任意）都给出同一个 $$F$$，并不保证其中**存在**一个满足特定附加条件（比如 $$d\star A=0$$）的代表。下面证明 Lorentz 规范这个代表总能找到，方法是把"找 $$f$$ 使 $$A+df$$ 满足条件"翻译成一个关于 $$f$$ 的方程，再说明这个方程总有解。
+
 **命题 3.14（Lorentz 规范可达）**。设 $$A$$ 是任一势。若 $$A$$ 与 $$A+df$$ 视为等价，则可选 $$f$$ 使 $$\square\,f=-d\star A$$，从而 $$d\star(A+df)=0$$。
 
 **证明**。$$\star(A+df)=\star A+\star df$$，故 $$d\star(A+df)=d\star A+d\star df$$。标量函数 $$f$$ 的余微分是 $$\square f:=\star d\star df$$（Laplace–de Rham 算子作用在 0-形式上，见第 28 章延伸）。于是条件 $$d\star(A+df)=0$$ 即
@@ -366,7 +372,7 @@ $$\star d\star df=-\star d\star A\ \Longleftrightarrow\ \square f=\star d\star A
 
 ### 3.9 四维 Hodge 星算子与自对偶分解（接 MP37）
 
-(24.6) 说：在 $$\mathbb R^{3,1}$$ 的 2-形式上 $$\star^2=-1$$。这带来一个漂亮的结论。把 $$\star$$ 线性延拓到**复化**的 2-形式上，则 $$\star$$ 的极小多项式是 $$t^2+1$$，**特征值为 $$\pm i$$**，对应的特征子空间是
+(24.6) 说：在 $$\mathbb R^{3,1}$$ 的 2-形式上 $$\star^2=-1$$。这带来一个漂亮的结论：$$\star$$ 作为实向量空间 $$\Omega^2(\mathbb R^{3,1})$$ 上的线性算子，满足 $$t^2+1=0$$ 这条多项式关系（把 $$t=\star$$ 代入，$$\star^2+1=0$$ 正是 (24.6)），却没有实的一次因子——因为若 $$\star\omega=\lambda\omega$$（$$\lambda\in\mathbb R$$，$$\omega\ne0$$），两边再作用一次 $$\star$$ 得 $$-\omega=\star^2\omega=\lambda^2\omega$$，即 $$\lambda^2=-1$$，无实数解。所以 $$\star$$ 在实数域上没有特征值，要找特征向量就必须把系数域扩大到复数：把 $$\star$$ 线性延拓到**复化**的 2-形式上，则 $$\star$$ 的极小多项式是 $$t^2+1=(t-i)(t+i)$$，**特征值为 $$\pm i$$**，对应的特征子空间是
 
 $$\Omega^2_+=\{\omega:\ \star\omega=i\omega\}\ (\text{自对偶 / self-dual}),\qquad \Omega^2_-=\{\omega:\ \star\omega=-i\omega\}\ (\text{反自对偶 / anti-self-dual}).$$
 
