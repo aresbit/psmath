@@ -212,15 +212,30 @@ $$f'(z-z')=b(y-y')=b(f(w))=f'(a(w)),$$
 **定理 3.16（长正合列, long exact sequence）** 设 $$0\to A_\bullet\xrightarrow{f}B_\bullet\xrightarrow{g}C_\bullet\to 0$$ 是 $$\mathbf{Ch}(\mathcal A)$$ 中的短正合列（即每个 $$n$$ 上 $$0\to A_n\to B_n\to C_n\to 0$$ 短正合，且三个映射是链映射）。则存在**长正合列**
 $$\cdots\to H_{n+1}(C)\xrightarrow{\ \partial\ }H_n(A)\xrightarrow{H_n(f)}H_n(B)\xrightarrow{H_n(g)}H_n(C)\xrightarrow{\ \partial\ }H_{n-1}(A)\to\cdots$$
 
-*证明思路*：把定理 3.15 逐列应用于
+*证明*（$$R\text{-}\mathbf{Mod}$$ 情形，一般阿贝尔范畴逐句在"广义元素"层面成立）。先说明一个容易踩的坑，再给出正确构造：把定理 3.15 直接应用于
 $$\begin{array}{c}
 0\to A_n\to B_n\to C_n\to 0\\[3pt]
-{\scriptstyle d^A}\big\downarrow\quad\ {\scriptstyle d^B}\big\downarrow\quad\ {\scriptstyle d^C}\big\downarrow\\[3pt]
+{\scriptstyle d^A_n}\big\downarrow\quad\ {\scriptstyle d^B_n}\big\downarrow\quad\ {\scriptstyle d^C_n}\big\downarrow\\[3pt]
 0\to A_{n-1}\to B_{n-1}\to C_{n-1}\to 0
 \end{array}$$
-（两行正合、方块交换，因为 $$f,g$$ 是链映射），得到六项正合列
-$$\operatorname{Ker}d^A_n\to\operatorname{Ker}d^B_n\to\operatorname{Ker}d^C_n\xrightarrow{\ \delta\ }\operatorname{Coker}d^A_n\to\operatorname{Coker}d^B_n\to\operatorname{Coker}d^C_n .$$
-再用 $$\operatorname{Coker}d^A_n=A_n/\operatorname{Im}d^A_n$$ 到 $$H_{n-1}(A)=\operatorname{Ker}d^A_{n-1}/\operatorname{Im}d^A_n$$ 的分解把两端接上：$$A_n/\operatorname{Im}d^A_n$$ 夹在 $$H_{n-1}(A)$$ 与中间项之间，把 $$A_n$$ 那一层整体抹掉后，剩下的一串正是定理中的长正合列，而那个连接同态 $$\partial$$ 就是每列蛇引理的 $$\delta$$。$$\blacksquare$$
+（两行正合、方块交换，因为 $$f,g$$ 是链映射）确实给出六项正合列
+$$\operatorname{Ker}d^A_n\to\operatorname{Ker}d^B_n\to\operatorname{Ker}d^C_n\xrightarrow{\ \delta\ }\operatorname{Coker}d^A_n\to\operatorname{Coker}d^B_n\to\operatorname{Coker}d^C_n ,\tag{$$\ast$$}$$
+但这**不是**定理要的序列：$$\operatorname{Ker}d^A_n$$ 只是 $$n$$ 层闭链 $$Z_n(A)$$，还没模掉边缘；$$\operatorname{Coker}d^A_n=A_{n-1}/\operatorname{Im}d^A_n$$ 是 $$A_{n-1}$$ 模掉边缘后的**全体**，比 $$H_{n-1}(A)=\operatorname{Ker}d^A_{n-1}/\operatorname{Im}d^A_n$$ 大得多——后者还要求元素落在 $$\operatorname{Ker}d^A_{n-1}$$ 里。例如取 $$A_2=\mathbb Z\xrightarrow{\times2}A_1=\mathbb Z\xrightarrow{\bmod2}A_0=\mathbb Z/2$$，则 $$\operatorname{Coker}(d_2^A)=\mathbb Z/2\mathbb Z\ne0=H_1(A)$$（$$H_1(A)=\operatorname{Ker}(\bmod2)/\operatorname{Im}(\times2)=2\mathbb Z/2\mathbb Z=0$$）：$$(\ast)$$ 里的 $$\operatorname{Coker}d_n^A$$ 与 $$H_{n-1}(A)$$ 是两个不同的对象，不能直接"抹掉一层"就互相等同。正确的构造要把"取核""取商"这两步**同时**做，具体如下。
+
+设 $$[z]\in H_n(C)$$，代表元 $$z\in C_n$$ 满足 $$d_n^Cz=0$$。构造 $$\partial[z]\in H_{n-1}(A)$$，手法与定理 3.15 的 ①②③ 相同，只是这次从**闭链**出发，且要多验一步"象仍是闭链"：
+① 由 $$g_n$$ 满，取 $$y\in B_n$$ 使 $$g_n(y)=z$$；
+② $$g_{n-1}(d_n^By)=d_n^C(g_ny)=d_n^Cz=0$$（链映射交换性，加上 $$z$$ 是闭链），故 $$d_n^By\in\operatorname{Ker}g_{n-1}=\operatorname{Im}f_{n-1}$$（第 $$n-1$$ 层正合），取 $$w\in A_{n-1}$$ 使 $$f_{n-1}(w)=d_n^By$$；
+③ **（这一步是 $$(\ast)$$ 的六项序列里没有、却是本定理成立的关键）** 验证 $$w$$ 本身是闭链：
+$$f_{n-2}\bigl(d_{n-1}^Aw\bigr)=d_{n-1}^B\bigl(f_{n-1}w\bigr)=d_{n-1}^B\bigl(d_n^By\bigr)=\bigl(d_{n-1}^Bd_n^B\bigr)(y)=0,$$
+第一步用左方块交换性 $$f_{n-2}d_{n-1}^A=d_{n-1}^Bf_{n-1}$$，第二步代入 $$w$$ 的定义，第三步用 $$B_\bullet$$ 是复形（$$d^2=0$$）。而 $$f_{n-2}$$ 单（第 $$n-2$$ 层正合），故 $$d_{n-1}^Aw=0$$，即 $$w\in\operatorname{Ker}d_{n-1}^A$$：这正是 $$(\ast)$$ 里被漏掉的限制，$$w$$ 不只是 $$A_{n-1}$$ 的任意元素，而确实落在闭链里，$$[w]\in H_{n-1}(A)$$ 才有意义。定义 $$\partial[z]:=[w]$$。
+
+*良定义性*：与 ①② 中 $$y,w$$ 的选择无关，逐字同定理 3.15。再验证换一个闭链代表元 $$z'=z+d_{n+1}^Cc$$（$$c\in C_{n+1}$$）不改变结果：由 $$g_{n+1}$$ 满取 $$b\in B_{n+1}$$ 使 $$g_{n+1}b=c$$，则 $$y':=y+d_{n+1}^Bb$$ 满足 $$g_n(y')=g_n(y)+d_{n+1}^C(g_{n+1}b)=z+d_{n+1}^Cc=z'$$，是 $$z'$$ 的合法原像；而
+$$d_n^By'=d_n^By+d_n^Bd_{n+1}^Bb=d_n^By+0=d_n^By$$
+（用了 $$B_\bullet$$ 的复形条件），故按 ② 得到的 $$w'$$ 满足 $$f_{n-1}(w')=d_n^By'=d_n^By=f_{n-1}(w)$$，而 $$f_{n-1}$$ 单，故 $$w'=w$$ 逐字相等，$$[w']=[w]$$。于是 $$\partial:H_n(C)\to H_{n-1}(A)$$ 良定义。
+
+*正合性*：在 $$H_n(A),H_n(B),H_n(C),H_{n-1}(A)$$ 四处的正合性，把问题 5.1 对 $$\delta$$ 的两段追图逐字重做一遍——把其中的元素换成同调类、把"$$=0$$"换成"是边缘"即可，此处不重复；每个 $$n$$ 上得到的六项 $$H_{n+1}(C)\to H_n(A)\to H_n(B)\to H_n(C)\xrightarrow{\partial}H_{n-1}(A)\to\cdots$$ 首尾相接，拼成定理中的无穷长正合列。$$\blacksquare$$
+
+**注 3.16（$$(\ast)$$ 错在哪、为什么这处修正是必需的）** $$(\ast)$$ 本身作为一条正合列是**对**的——它只是回答了错误的问题。它比较的是"$$d_n$$ 的核"与"$$d_n$$ 的余核"，而同调比较的是"$$d_n$$ 的核"与"$$d_{n-1}$$ 的核模掉 $$d_n$$ 的像"，后者比前者多一层限制（$$w$$ 必须是闭链）。这层限制不是自动满足的：一般的 $$w\in A_{n-1}$$（满足 $$f_{n-1}(w)=d_n^By$$）未必有 $$d_{n-1}^Aw=0$$，③ 的验证恰恰是**用了 $$B_\bullet$$ 的复形条件 $$d^2=0$$** 才把它保证下来。跳过这一步、直接把 $$\operatorname{Coker}d_n^A$$ 说成 $$H_{n-1}(A)$$，正是"一个等式看似显然、实则悄悄用掉一条没写出来的前提"的典型例子——这也是第67章反复强调"先手算、再抽象"的原因：具体例子（如上面 $$\times2,\bmod2$$ 的例子）能立刻把这种大小不一致的错误暴露出来。
 
 ### 3.6 单子
 
