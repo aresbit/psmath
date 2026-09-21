@@ -191,6 +191,8 @@ $$z\cdot w=(rs)\,X(\alpha+\beta)\quad\text{当 } z=rX(\alpha),\ w=sX(\beta).$$
 
 **定义 3.5（模与幅角）** $$r=\lvert z\rvert$$ 称 $$z$$ 的**模 (modulus)**，$$\theta$$ 称 $$z$$ 的**幅角 (argument)**，记 $$\theta=\arg z$$。注意 $$\arg$$ 只在模 $$2\pi$$ 的意义下确定。
 
+下面这个记号会在几乎每一条后续证明里出现——原因很简单：模的平方 $$a^2+b^2$$ 无法直接从 $$z$$ 一个数写出来，但如果配上"把虚部变号"的搭档，$$z$$ 与搭档相乘就正好凑出 $$a^2+b^2$$（见推论 3.6 之后的注）。
+
 **定义 3.6（共轭, conjugate）** $$\bar z:=(a,-b)$$，即 $$\overline{a+bi}=a-bi$$。
 
 **推论 3.6（模的乘性——一个免费礼物）** $$\lvert zw\rvert=\lvert z\rvert\lvert w\rvert$$。
@@ -206,6 +208,8 @@ $$z\cdot w=(rs)\,X(\alpha+\beta)\quad\text{当 } z=rX(\alpha),\ w=sX(\beta).$$
 **定义 3.7（复指数, complex exponential）** 对 $$z\in\mathbb{C}$$，规定
 $$e^z:=\sum_{n=0}^{\infty}\frac{z^n}{n!}.$$
 
+写下这个级数只是第一步——一个无穷和要能用，先得确认它真的加得起来（收敛），否则后面"逐项求导""指数律"这些操作全都没有立足点。下面这条引理把这件事一次性确认掉。
+
 **引理 3.7（收敛性）** 上述级数对每个 $$z\in\mathbb{C}$$ 绝对收敛；在任意紧集上一致收敛，故定义一个连续函数 $$\mathbb{C}\to\mathbb{C}$$。
 
 **证明思路**：与实数情形逐字相同——把每一项取模，跟 $$\sum \lvert z\rvert^n/n!$$ 比，后者收敛。要的只是"三角不等式"和"实指数级数收敛"这两件事。
@@ -215,6 +219,8 @@ $$\left\lvert\sum_{n=N}^{M}\frac{z^n}{n!}\right\rvert\le\sum_{n=N}^{M}\frac{\lve
 右边是收敛级数 $$\sum\lvert z\rvert^n/n!$$（实指数级数）的尾段，随 $$N\to\infty$$ 趋于 $$0$$。故部分和是 Cauchy 序列，$$\mathbb{C}$$ 完备（$$\mathbb{C}$$ 与 $$\mathbb{R}^2$$ 同构，$$\mathbb{R}^2$$ 完备），故收敛。一致收敛：若 $$\lvert z\rvert\le R$$，则 $$\lvert z^n/n!\rvert\le R^n/n!$$，而 $$\sum R^n/n!$$ 与 $$z$$ 无关且收敛，由 Weierstrass 判别法一致收敛。连续性是"一致收敛保持连续"的直接推论。$$\blacksquare$$
 
 > **注 3.2** 完整的复级数理论（幂级数的收敛半径、逐项求导、Cauchy 乘积的严格处理）见**第 06 章**。本章只用到"$$\theta$$ 是实数"这一情形，因此下面的逐项求导可以在**实分析**的框架内完成，读者已有的工具（Gap1、Gap2）足够。
+
+有了收敛性，$$e^z$$ 才是一个诚实的函数；但本章真正要用的不是"$$e^z$$ 存在"，而是"指数律"——因为 3.2 节的主线是"角相加对应乘法"，如果 $$e^ze^w\ne e^{z+w}$$，$$e^{i\theta}$$ 就不可能承担起"把加法翻译成乘法"的角色，整条主线会断掉。
 
 **定理 3.7（指数律）** 对任意 $$z,w\in\mathbb{C}$$，$$e^{z}e^{w}=e^{z+w}$$。
 
