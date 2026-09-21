@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第13章: Stokes 定理 (Stokes' Theorem)
+# 第26章: Stokes 定理·下：完整推导 (Stokes' Theorem · Part II: Full Derivation)
+
+> 配套预备: 见 第25章 Stokes 定理·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP27–MP28
 > 专家依据: `_experts/algebra/homological-algebra.md`（主）+ `_experts/algebra/_SKILL.md`
@@ -19,9 +21,9 @@ $$\int_{\partial M}\omega=\int_M d\omega$$
 
 在不同维数、不同舞台上的同一句话。
 
-**从哪来**：第 07 章造出了外微分 $$d$$ 并证明了 $$d^2=0$$；第 09–10 章造出了链群、边界算子 $$\partial$$ 与同调群，并证明了 $$\partial^2=0$$；第 12 章把 $$d$$ 落到了 Maxwell 方程组上。本章把这两条线接起来——拓扑那一侧的 $$\partial$$ 与分析这一侧的 $$d$$，在这里第一次被写在同一个等式的两边。
+**从哪来**：第 14 章造出了外微分 $$d$$ 并证明了 $$d^2=0$$；第 09–10 章造出了链群、边界算子 $$\partial$$ 与同调群，并证明了 $$\partial^2=0$$；第 24 章把 $$d$$ 落到了 Maxwell 方程组上。本章把这两条线接起来——拓扑那一侧的 $$\partial$$ 与分析这一侧的 $$d$$，在这里第一次被写在同一个等式的两边。
 
-**到哪去**：第 14 章会指出，这条等式不只是在说"两个算子配了对"。它把 $$M$$ 上的微分形式与 $$M$$ 的同调**配对成一个双线性型**，而这个配对是非退化的——那就是 de Rham 定理。
+**到哪去**：第 28 章会指出，这条等式不只是在说"两个算子配了对"。它把 $$M$$ 上的微分形式与 $$M$$ 的同调**配对成一个双线性型**，而这个配对是非退化的——那就是 de Rham 定理。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -76,14 +78,14 @@ $$(N_p,u_1,\dots,u_{n-1})$$
 
 是 $$T_pM$$ 的正基（即"外法向排在第一位"）。
 
-**注 3.3（约定必须和符号一起定）**。若把 3.2 改成"内法向在前"，则本章主定理的右端要整体多一个负号。这不是可以随手改的记号，因为它必须和第 09 章已经用过的边界公式 $$\partial=\sum_i(-1)^i f_i$$ 相容——3.2 正是被那个公式逼出来的约定，下面 定理 3.8 会当场验证。
+**注 3.3（约定必须和符号一起定）**。若把 3.2 改成"内法向在前"，则本章主定理的右端要整体多一个负号。这不是可以随手改的记号，因为它必须和第 18 章已经用过的边界公式 $$\partial=\sum_i(-1)^i f_i$$ 相容——3.2 正是被那个公式逼出来的约定，下面 定理 3.8 会当场验证。
 
 **例 3.4（两个低维核对）**。
 
 - $$n=1$$：$$M=[a,b]\subset\mathbb{R}$$，定向取 $$x$$ 轴正方向。$$\partial M=\{a,b\}$$ 是 0 维流形，其定向就是给每个点一个 $$\pm1$$。在 $$b$$ 处外法向是 $$+e_1$$，它本身是 $$\mathbb{R}^1$$ 的正基，故 $$b$$ 取 $$+1$$；在 $$a$$ 处外法向是 $$-e_1$$，是 $$\mathbb{R}^1$$ 的负基，故 $$a$$ 取 $$-1$$。于是 $$\partial[a,b]=[b]-[a]$$。
 - $$n=2$$：$$M$$ 是平面区域，定向取标准定向（$$x$$ 轴在前、$$y$$ 轴在后）。沿边界逆时针行走时外法向指向行进方向的右手边——于是 3.2 给出的正是逆时针定向。
 
-这两个例子的结论，恰好就是第 09 章里 $$\partial$$ 的那个 $$\sum_i(-1)^i$$ 的符号来源。这不是巧合，定理 3.8 会把它算实。
+这两个例子的结论，恰好就是第 18 章里 $$\partial$$ 的那个 $$\sum_i(-1)^i$$ 的符号来源。这不是巧合，定理 3.8 会把它算实。
 
 ### 3.2 标准单形、面映射与边界 (Standard simplex, face maps, boundary)
 
@@ -95,7 +97,7 @@ $$\sigma_n=\Bigl\{x\in\mathbb{R}^n:\ x_1\ge0,\ \dots,\ x_n\ge0,\ \sum_{i=1}^n x_
 
 $$dx^1\wedge\cdots\wedge dx^n$$
 
-为正体积形式（于是第 07 章意义下的积分 $$\int_{\sigma_n}dx^1\wedge\cdots\wedge dx^n$$ 就是 $$\sigma_n$$ 的通常体积 $$1/n!$$）。
+为正体积形式（于是第 14 章意义下的积分 $$\int_{\sigma_n}dx^1\wedge\cdots\wedge dx^n$$ 就是 $$\sigma_n$$ 的通常体积 $$1/n!$$）。
 
 **定义 3.6（面映射 / face map）**。对 $$i=0,1,\dots,n$$，第 $$i$$ 个**面映射** $$f_i:\sigma_{n-1}\to\sigma_n$$ 把 $$\sigma_{n-1}$$ 的顶点按顺序映到 $$\sigma_n$$ 去掉 $$p_i$$ 后剩下的 $$n$$ 个顶点上。写成坐标（$$u=(u_1,\dots,u_{n-1})$$ 是 $$\sigma_{n-1}$$ 的坐标）：
 
@@ -108,7 +110,7 @@ $$f_0$$ 的像落在"斜面" $$x_1+\cdots+x_n=1$$ 上（它去掉的是 $$p_0$$�
 
 $$\partial\sigma_n=\sum_{i=0}^{n}(-1)^i\,f_i .$$
 
-这是第 09 章的 $$\partial$$ 在单个单形上的写法，它的意义要到 3.5 才完整（那时我们看到它是一个"降一维的链"）。第 09 章已经证明过 $$\partial^2=0$$，即 $$\partial(\partial\sigma_n)=0$$；这个代数事实正是 $$f_i$$ 前那些 $$\pm1$$ 被设计出来的原因。
+这是第 18 章的 $$\partial$$ 在单个单形上的写法，它的意义要到 3.5 才完整（那时我们看到它是一个"降一维的链"）。第 18 章已经证明过 $$\partial^2=0$$，即 $$\partial(\partial\sigma_n)=0$$；这个代数事实正是 $$f_i$$ 前那些 $$\pm1$$ 被设计出来的原因。
 
 **定理 3.8（$$\partial$$ 的符号 = 诱导定向）**。定义 3.7 里的 $$\partial\sigma_n=\sum_i(-1)^if_i$$ 与 定义 3.2 的"外法向在前"诱导定向完全相容：按 $$\sum_i(-1)^if_i$$ 读出的边界定向，正是外法向在前的定向。
 
@@ -146,17 +148,17 @@ $$\partial\sigma_2=f_0-f_1+f_2=(p_1\to p_2)-(p_0\to p_2)+(p_0\to p_1)=(p_0\to p_
 
 $$\int_{\sigma_n}\omega=\int_{\sigma_n}W(x)\,dx_1\cdots dx_n,$$
 
-右端是 $$\sigma_n$$ 上的通常（$$n$$ 重）积分。这是全书第一次真刀真枪地定义"形式的积分"：一个 $$n$$-形式配上一个 $$n$$ 维的区域，用第 07 章的楔积语言说，就是把 $$n$$ 个 $$dx$$ 全用掉。
+右端是 $$\sigma_n$$ 上的通常（$$n$$ 重）积分。这是全书第一次真刀真枪地定义"形式的积分"：一个 $$n$$-形式配上一个 $$n$$ 维的区域，用第 14 章的楔积语言说，就是把 $$n$$ 个 $$dx$$ 全用掉。
 
-**一个准备**。设 $$\psi$$ 是 $$\sigma_n$$ 邻域上的 $$(n-1)$$-形式。用第 07 章 3.17 的基把它写开：
+**一个准备**。设 $$\psi$$ 是 $$\sigma_n$$ 邻域上的 $$(n-1)$$-形式。用第 14 章 3.17 的基把它写开：
 
 $$\psi=\sum_{j=1}^{n}\Psi_j(x)\,dx^1\wedge\cdots\wedge\widehat{dx^j}\wedge\cdots\wedge dx^n,$$
 
-其中 $$\widehat{dx^j}$$ 表示"删去这一项"（即第 $$j$$ 个基 1-形式不出现）。由第 07 章定理 3.17 的公式 $$(\ast)$$，直接算外微分：
+其中 $$\widehat{dx^j}$$ 表示"删去这一项"（即第 $$j$$ 个基 1-形式不出现）。由第 14 章定理 3.17 的公式 $$(\ast)$$，直接算外微分：
 
 $$d\psi=\sum_{j=1}^{n}(-1)^{\,j-1}\,\frac{\partial \Psi_j}{\partial x^j}\,dx^1\wedge\cdots\wedge dx^n .$$
 
-（这里的 $$(-1)^{j-1}$$ 来源要说清楚，不能跳过：把 $$d\Psi_j$$ 楔到 $$dx^1\wedge\cdots\widehat{dx^j}\cdots\wedge dx^n$$ 时，$$d\Psi_j=\sum_k\partial_k\Psi_j\,dx^k$$ 中的 $$dx^k$$ 要穿过前面 $$j-1$$ 个因子抵达它"原来属于的第 $$j$$ 位"，于是出一个 $$(-1)^{j-1}$$；而求和只留下 $$k=j$$ 的项，因为其它 $$k$$ 会让同一个 $$dx^k$$ 出现两次。**这里用了 $$d(dx^i)=0$$，即第 07 章的 $$d^2=0$$。**）
+（这里的 $$(-1)^{j-1}$$ 来源要说清楚，不能跳过：把 $$d\Psi_j$$ 楔到 $$dx^1\wedge\cdots\widehat{dx^j}\cdots\wedge dx^n$$ 时，$$d\Psi_j=\sum_k\partial_k\Psi_j\,dx^k$$ 中的 $$dx^k$$ 要穿过前面 $$j-1$$ 个因子抵达它"原来属于的第 $$j$$ 位"，于是出一个 $$(-1)^{j-1}$$；而求和只留下 $$k=j$$ 的项，因为其它 $$k$$ 会让同一个 $$dx^k$$ 出现两次。**这里用了 $$d(dx^i)=0$$，即第 14 章的 $$d^2=0$$。**）
 
 **定理 3.11（标准单形上的 Stokes 定理 / Stokes on the standard simplex）**。对 $$\sigma_n$$ 邻域上任意光滑的 $$(n-1)$$-形式 $$\psi$$，
 
@@ -239,7 +241,7 @@ $$\int_{\sigma_n}d\psi=\sum_{j}(-1)^{j-1}A_j-\sum_{j}(-1)^{j-1}B_j
 
 | 符号来源 | 出现在 | 它的数学身份 |
 |---|---|---|
-| $$(-1)^{j-1}$$（第 07 章 $$d$$ 的公式里） | 右端 $$d\psi$$ 的系数 | 把 $$d\Psi_j$$ 楔回第 $$j$$ 位时的**反对称** |
+| $$(-1)^{j-1}$$（第 14 章 $$d$$ 的公式里） | 右端 $$d\psi$$ 的系数 | 把 $$d\Psi_j$$ 楔回第 $$j$$ 位时的**反对称** |
 | $$(-1)^{j+1}$$（换元的 Jacobi） | 第四步 | 斜面两组坐标之间的**定向翻转** |
 
 在第四步 (c) 里，这两者相乘为 $$+1$$——**这是"边界的定向约定"与"$$d$$ 的符号约定"精确对齐的唯一方式**。如果 3.2 里把诱导定向换成内法向在前，这个 $$+1$$ 就会变成 $$-1$$，于是定理右端整体多一个负号。这就是注 3.3 说的"约定必须和符号一起定"。
@@ -264,7 +266,7 @@ $$\langle F^{*}\omega,\ v\rangle_M=\langle \omega,\ F_{*}v\rangle_N .$$
 
 $$F^{*}(d\omega)=d(F^{*}\omega).$$
 
-**证明**。这是第 07 章定理 3.19，那里已用链式法则证过：只需对函数 $$\omega=f$$ 验证（因为 $$d$$ 被第 07 章的 3.17 逼死，而 $$F^{*}$$ 与楔积交换），而 $$F^{*}(df)$$ 与 $$d(F^{*}f)$$ 都等于"$$f\circ F$$ 的方向导数"这同一个东西。$$\square$$
+**证明**。这是第 14 章定理 3.19，那里已用链式法则证过：只需对函数 $$\omega=f$$ 验证（因为 $$d$$ 被第 14 章的 3.17 逼死，而 $$F^{*}$$ 与楔积交换），而 $$F^{*}(df)$$ 与 $$d(F^{*}f)$$ 都等于"$$f\circ F$$ 的方向导数"这同一个东西。$$\square$$
 
 **为什么这条是搬家的关键**。它说的是：**$$F^{*}$$ 把 $$d$$ 整个抬过来，一步不多一步不少**。于是"先在 $$M$$ 上取 $$d$$，再拉回"与"先拉回，再在 $$\sigma_n$$ 上取 $$d$$"是同一件事——这正是下面把定理 3.11 搬到流形上时唯一需要的性质。
 
@@ -319,7 +321,7 @@ $$\int_{\partial s}\omega=\sum_{i=0}^{r}(-1)^i\int_{s\circ f_i}\omega
 
 第三步用了 $$(s\circ f_i)^{*}=f_i^{*}\circ s^{*}$$（拉回是反变的函子），第四步回到定义 3.7 与 3.10 的写法。两端都是 $$\int_{\partial\sigma_r}s^{*}\omega$$，故相等。$$\square$$
 
-**这条证明值得停下来看一眼**。它把第 09 章的 $$\partial$$ 与第 07 章的 $$d$$ 各自的作用照原样"抬"到了流形上，中间没有任何新的几何输入——只用了定理 3.15 一条。原专栏的整个 MP28 就在做这一件事。
+**这条证明值得停下来看一眼**。它把第 18 章的 $$\partial$$ 与第 14 章的 $$d$$ 各自的作用照原样"抬"到了流形上，中间没有任何新的几何输入——只用了定理 3.15 一条。原专栏的整个 MP28 就在做这一件事。
 
 ### 3.7 带边流形上的 Stokes 定理 (Stokes on manifolds with boundary)
 
@@ -377,8 +379,8 @@ $$\bigl\langle \partial c,\ \omega\bigr\rangle=\bigl\langle c,\ d\omega\bigr\ran
 
 **这就是入口题 (b) 的答案**：三处"差一"是**同一件事**的三个投影。
 
-- 右边是 $$(k+1)$$-形式，因为 $$d:\Omega^{k}\to\Omega^{k+1}$$ **升**一格（第 07 章）；
-- 左边是 $$k$$-形式，因为 $$\partial$$ 把 $$k$$ 维的积分域**降**一格（第 09 章）；
+- 右边是 $$(k+1)$$-形式，因为 $$d:\Omega^{k}\to\Omega^{k+1}$$ **升**一格（第 14 章）；
+- 左边是 $$k$$-形式，因为 $$\partial$$ 把 $$k$$ 维的积分域**降**一格（第 18 章）；
 - 两边能对上，正是因为升与降在配对里彼此抵消——$$\langle\partial c,\omega\rangle$$ 与 $$\langle c,d\omega\rangle$$ 里出现的都是"一个 $$k$$-形式配一个 $$k$$ 维的域"。
 
 而这条陪伴关系还有一处呼应，必须点明：
@@ -387,13 +389,13 @@ $$\bigl\langle \partial c,\ \omega\bigr\rangle=\bigl\langle c,\ d\omega\bigr\ran
 
 | 章 | 式子 | 它说的是 |
 |---|---|---|
-| 第 07 章 | $$d^2=d\circ d=0$$ | 分析侧：连续取两次"无穷小边界"归零 |
+| 第 14 章 | $$d^2=d\circ d=0$$ | 分析侧：连续取两次"无穷小边界"归零 |
 | 第 09–10 章 | $$\partial^2=\partial\circ\partial=0$$ | 拓扑侧：连续取两次"宏观边界"归零 |
 | **本章** | $$\displaystyle\int_{\partial}\omega=\int d\omega$$ | **两侧互为伴随——$$d$$ 是 $$\partial$$ 的转置** |
 
-第 07 章末尾那句"$$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 和 $$\partial^2=0$$ 是同一句话、只是分别写在形式世界和链世界"，到这一章才真正兑现：把它们焊在一起的，就是 定理 3.23 这一个等式。而且对偶一旦成立，$$d^2=0$$ 与 $$\partial^2=0$$ 也立刻成为彼此的转置——同一个零，两副面孔。
+第 14 章末尾那句"$$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 和 $$\partial^2=0$$ 是同一句话、只是分别写在形式世界和链世界"，到这一章才真正兑现：把它们焊在一起的，就是 定理 3.23 这一个等式。而且对偶一旦成立，$$d^2=0$$ 与 $$\partial^2=0$$ 也立刻成为彼此的转置——同一个零，两副面孔。
 
-**向前一步**。定理 3.21 只用了 $$M$$ 的定向与 $$\omega$$ 的紧支性，完全没有用到度量的概念：积分、$$d$$、$$\partial$$ 都是"不需要尺子"的算子。于是定理 3.23 会自动给出一个纯代数的推论（第五节经典题 5 会证明它）：**闭形式在闭流形上的积分只依赖它的"上同调类"**。把这个配对往深处推一层——证明它非退化、并把 $$\Omega^{\bullet}$$ 的同调算出来——就是第 14 章的 de Rham 定理。
+**向前一步**。定理 3.21 只用了 $$M$$ 的定向与 $$\omega$$ 的紧支性，完全没有用到度量的概念：积分、$$d$$、$$\partial$$ 都是"不需要尺子"的算子。于是定理 3.23 会自动给出一个纯代数的推论（第五节经典题 5 会证明它）：**闭形式在闭流形上的积分只依赖它的"上同调类"**。把这个配对往深处推一层——证明它非退化、并把 $$\Omega^{\bullet}$$ 的同调算出来——就是第 28 章的 de Rham 定理。
 
 
 ## 四、几何与物理直觉 (Intuition)
@@ -427,12 +429,12 @@ N–L 定理断言两者相等。把它当作 Stokes 定理的 $$n=1$$ 特例，
 | 层面 | 对象 | 算子 | 关系 |
 |---|---|---|---|
 | 几何 | 区域 $$D$$ / 边界 $$\partial D$$ | $$\partial$$（取边界） | $$\partial^2=0$$（边界的边界是空） |
-| 分析 | 形式 $$\omega$$ / $$d\omega$$ | $$d$$（外微分） | $$d^2=0$$（第 07 章） |
+| 分析 | 形式 $$\omega$$ / $$d\omega$$ | $$d$$（外微分） | $$d^2=0$$（第 14 章） |
 | 物理 | 通量 / 环量 / 源 / 旋 | $$\nabla\cdot,\ \nabla\times$$ | $$\int_{\partial D}\omega=\int_D d\omega$$ 统一全部积分定理 |
 
 第三条正是本章把前两条焊在一起的地方：**$$\partial$$ 是宏观的边界算子，$$d$$ 是无穷小的边界算子，Stokes 定理说它们是同一个算子在两个尺度上的样子，互为转置**。
 
-**一个反直觉但重要的点**。定理 3.21 的证明从头到尾没有用过长度、角度、内积。$$d$$ 不需要尺子（第 07 章的公理只有线性和 Leibniz），$$\partial$$ 更不需要（第 09 章只数顶点）。所以 Stokes 定理是一条**纯拓扑 + 纯代数**的定理，它不讲"曲面有多大"，只讲"区域里发生了什么、边界上流出了多少"。也正因为它不依赖度量，才能作 de Rham 定理的基石——第 14 章会把这个配对抬成一个关于同调群与上同调群的非退化双线性型。
+**一个反直觉但重要的点**。定理 3.21 的证明从头到尾没有用过长度、角度、内积。$$d$$ 不需要尺子（第 14 章的公理只有线性和 Leibniz），$$\partial$$ 更不需要（第 18 章只数顶点）。所以 Stokes 定理是一条**纯拓扑 + 纯代数**的定理，它不讲"曲面有多大"，只讲"区域里发生了什么、边界上流出了多少"。也正因为它不依赖度量，才能作 de Rham 定理的基石——第 28 章会把这个配对抬成一个关于同调群与上同调群的非退化双线性型。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -450,7 +452,7 @@ $$\oint_{\partial D}P\,dx+Q\,dy=\iint_D\Bigl(\frac{\partial Q}{\partial x}-\frac
 
 $$\omega=P\,dx+Q\,dy .$$
 
-**第一步算 $$d\omega$$。** 由第 07 章 3.17 的公理 1 与 3：
+**第一步算 $$d\omega$$。** 由第 14 章 3.17 的公理 1 与 3：
 
 $$d\omega=dP\wedge dx+dQ\wedge dy .$$
 
@@ -475,7 +477,7 @@ $$\int_{\partial D}\omega=\oint_{\partial D}(P\,dx+Q\,dy),\qquad
 
 由定理 3.21 两端相等，Green 公式得证。$$\square$$
 
-**关键 leap**：$$d(P\,dx+Q\,dy)$$ 的两个交叉项，一个出 $$+$$、一个出 $$-$$，差别全部来自楔积的反交换 $$dy\wedge dx=-dx\wedge dy$$。Green 公式里那个"$$\partial Q/\partial x-\partial P/\partial y$$"的减号，不是人为约定，而是**外积的反对称性**。这与第 07 章 $$d^2=0$$ 的证明里"一正一负相乘为零"是同一台机器。
+**关键 leap**：$$d(P\,dx+Q\,dy)$$ 的两个交叉项，一个出 $$+$$、一个出 $$-$$，差别全部来自楔积的反交换 $$dy\wedge dx=-dx\wedge dy$$。Green 公式里那个"$$\partial Q/\partial x-\partial P/\partial y$$"的减号，不是人为约定，而是**外积的反对称性**。这与第 14 章 $$d^2=0$$ 的证明里"一正一负相乘为零"是同一台机器。
 
 ### 经典题 2：入口题 (c) —— 球面上的积分（考点：用 Stokes 换掉积分域；位置：定理 3.21 + 定理 3.23 对偶）
 
@@ -532,7 +534,7 @@ $$d\omega_{\vec F}=\Bigl(\frac{\partial F^z}{\partial y}-\frac{\partial F^y}{\pa
 +\Bigl(\frac{\partial F^x}{\partial z}-\frac{\partial F^z}{\partial x}\Bigr)dz\wedge dx
 +\Bigl(\frac{\partial F^y}{\partial x}-\frac{\partial F^x}{\partial y}\Bigr)dx\wedge dy .$$
 
-三个系数恰好是 $$\nabla\times\vec F$$ 的三个分量：第一分量 $$\partial_yF^z-\partial_zF^y$$、第二分量 $$\partial_zF^x-\partial_xF^z$$、第三分量 $$\partial_xF^y-\partial_yF^x$$。而 $$dy\wedge dz,\ dz\wedge dx,\ dx\wedge dy$$ 正是"面积元向量"的三个分量（第 12 章 Hodge 星算子的对应）。于是 $$d\omega_{\vec F}$$ 就是 $$(\nabla\times\vec F)\cdot d\vec S$$。代入定理 3.21：
+三个系数恰好是 $$\nabla\times\vec F$$ 的三个分量：第一分量 $$\partial_yF^z-\partial_zF^y$$、第二分量 $$\partial_zF^x-\partial_xF^z$$、第三分量 $$\partial_xF^y-\partial_yF^x$$。而 $$dy\wedge dz,\ dz\wedge dx,\ dx\wedge dy$$ 正是"面积元向量"的三个分量（第 24 章 Hodge 星算子的对应）。于是 $$d\omega_{\vec F}$$ 就是 $$(\nabla\times\vec F)\cdot d\vec S$$。代入定理 3.21：
 
 $$\oint_{\partial S}\vec F\cdot d\vec r=\int_{\partial S}\omega_{\vec F}=\int_S d\omega_{\vec F}=\iint_S(\nabla\times\vec F)\cdot d\vec S .\ \square$$
 
@@ -546,7 +548,7 @@ $$\oint_C(x\,dy-y\,dx)=\int_D 2\,dx\wedge dy=2\iint_D dx\,dy=2\pi .$$
 
 **核对**：令 $$x=\cos t,\ y=\sin t$$，$$t:0\to2\pi$$，则 $$x\,dy-y\,dx=\cos^2t\,dt+\sin^2t\,dt=dt$$，积分 $$\int_0^{2\pi}dt=2\pi$$，一致。$$\square$$
 
-**关键 leap**：把 $$\vec F\cdot d\vec r$$ 认成 $$\omega_{\vec F}$$ 的积分，于是 $$\nabla\times$$ 不再是"行列式记法"，而是 $$d$$ 在 1-形式上的作用。**Kelvin–Stokes 公式里的旋度，就是外微分**——这是第 12 章"$$d$$ 与 $$\nabla$$ 对齐"的直接兑现。
+**关键 leap**：把 $$\vec F\cdot d\vec r$$ 认成 $$\omega_{\vec F}$$ 的积分，于是 $$\nabla\times$$ 不再是"行列式记法"，而是 $$d$$ 在 1-形式上的作用。**Kelvin–Stokes 公式里的旋度，就是外微分**——这是第 24 章"$$d$$ 与 $$\nabla$$ 对齐"的直接兑现。
 
 ### 经典题 4：Gauss 散度定理与"通量只认边界"（考点：$$d$$ 与散度的词典、拓扑不变量；位置：定理 3.11 的 $$n=3$$、$$\omega\in\Omega^{2}$$）
 
@@ -586,7 +588,7 @@ $$\Phi(S_1)-\Phi(S_2)=\int_{S_1-S_2}\omega=\int_{\partial R}\omega=\int_R d\omeg
 
 **关键 leap**：这一问是本章"拓扑"味道最重的地方。通量相等**没有用到 $$\Omega$$ 的任何度量信息**，只用到了 $$S_1-S_2$$ 是某个区域的边界（同调）与 $$d\omega=0$$。把 $$S_2$$ 形变到 $$S_1$$ 的整个过程中，通量不变——**通量是定义在同调类上的量**。这正是原专栏 MP19–MP22 那四讲拓扑的兑现点。
 
-### 经典题 5：闭形式的积分只依赖上同调类（考点：配对降落到同调/上同调上；位置：定理 3.23 的推论，通向第 14 章）
+### 经典题 5：闭形式的积分只依赖上同调类（考点：配对降落到同调/上同调上；位置：定理 3.23 的推论，通向第 28 章）
 
 **题**。设 $$M$$ 是定向 $$n$$ 维流形（可带边），$$\omega\in\Omega^{k}(M)$$，$$c\in C_k(M)$$。(i) 若 $$\omega=d\eta$$ 且 $$\partial c=0$$，证明 $$\int_c\omega=0$$。(ii) 若 $$d\omega=0$$ 且 $$c-c'=\partial b$$，证明 $$\int_c\omega=\int_{c'}\omega$$。(iii) 解释这两个结论为什么说明"配对 $$\langle c,\omega\rangle\mapsto\int_c\omega$$ 只依赖 $$[c]\in H_k$$ 与 $$[\omega]\in H^{k}$$"。
 
@@ -607,9 +609,9 @@ $$\int_{c-c'}\omega=\int_{\partial b}\omega=\int_b d\omega=\int_b 0=0,$$
 $$\langle\,\cdot\,,\,\cdot\,\rangle:\ H^{k}_{dR}(M)\times H_k(M)\longrightarrow\mathbb{R},\qquad
 \bigl([\omega],[c]\bigr)\longmapsto\int_c\omega .$$
 
-**注意这里出现的两个商**：$$\ker d/\operatorname{im}d$$（第 07 章的 $$d$$）与 $$\ker\partial/\operatorname{im}\partial$$（第 09–10 章的 $$\partial$$）。它们是本章 定理 3.23 那个伴随关系在对偶空间上留下的痕迹——**$$d$$ 与 $$\partial$$ 互为转置，于是它们的核与像也互为转置**。
+**注意这里出现的两个商**：$$\ker d/\operatorname{im}d$$（第 14 章的 $$d$$）与 $$\ker\partial/\operatorname{im}\partial$$（第 09–10 章的 $$\partial$$）。它们是本章 定理 3.23 那个伴随关系在对偶空间上留下的痕迹——**$$d$$ 与 $$\partial$$ 互为转置，于是它们的核与像也互为转置**。
 
-**接到下一章**。(iii) 证明了这个配对良定义，但一个字也没说它**非退化**。事实是：当 $$M$$ 是光滑紧流形时，这个配对非退化，对应地有 $$H^{k}_{dR}(M)\cong H^k(M;\mathbb{R})$$——**微分形式的同调与拓扑的同调算了同一件事**。这就是 de Rham 定理，也正是第 14 章的标题。本章到此为止地把 $$\partial$$ 与 $$d$$ 配成对；第 14 章会把这对配对做成一个同构。
+**接到下一章**。(iii) 证明了这个配对良定义，但一个字也没说它**非退化**。事实是：当 $$M$$ 是光滑紧流形时，这个配对非退化，对应地有 $$H^{k}_{dR}(M)\cong H^k(M;\mathbb{R})$$——**微分形式的同调与拓扑的同调算了同一件事**。这就是 de Rham 定理，也正是第 28 章的标题。本章到此为止地把 $$\partial$$ 与 $$d$$ 配成对；第 28 章会把这对配对做成一个同构。
 
 
 ## 六、练习 (Exercises)
@@ -694,9 +696,9 @@ $$\partial[0,1]^2=(0,0)\to(1,0)\to(1,1)\to(0,1)\to(0,0),$$
 
 **解 基4.**
 
-**$$\alpha=x\,dy-y\,dx$$**：$$d\alpha=dx\wedge dy-dy\wedge dx=2\,dx\wedge dy\ne0$$，故 $$\alpha$$ **不闭**，因此也**不恰当**（恰当必闭，见第 07 章）。沿单位圆的积分即经典题 3 的 (ii)：$$\oint\alpha=2\pi$$。
+**$$\alpha=x\,dy-y\,dx$$**：$$d\alpha=dx\wedge dy-dy\wedge dx=2\,dx\wedge dy\ne0$$，故 $$\alpha$$ **不闭**，因此也**不恰当**（恰当必闭，见第 14 章）。沿单位圆的积分即经典题 3 的 (ii)：$$\oint\alpha=2\pi$$。
 
-**$$\beta=\dfrac{x\,dy-y\,dx}{x^2+y^2}$$**：记 $$r^2=x^2+y^2$$。直接用第 07 章的商法则（对函数 $$\frac1{r^2}$$ 与形式 $$\alpha$$ 用 Leibniz）。计算
+**$$\beta=\dfrac{x\,dy-y\,dx}{x^2+y^2}$$**：记 $$r^2=x^2+y^2$$。直接用第 14 章的商法则（对函数 $$\frac1{r^2}$$ 与形式 $$\alpha$$ 用 Leibniz）。计算
 
 $$d\Bigl(\frac1{r^2}\Bigr)=-\frac{2x\,dx+2y\,dy}{r^4},\qquad
 d\beta=d\Bigl(\frac1{r^2}\Bigr)\wedge\alpha+\frac1{r^2}d\alpha .$$
@@ -817,7 +819,7 @@ $$\int_{S^1}d\theta=\int_0^{2\pi}dt=2\pi\ne0 .$$
 
 所以 $$d\theta$$ **闭但不恰当**。这与 $$\mathbb{R}^2\setminus\{0\}$$ **不单连通**是一回事：Poincaré 引理说"在可缩（特别地，单连通的开星形）区域上，闭 1-形式必恰当"；$$\mathbb{R}^2\setminus\{0\}$$ 中间有个洞，围绕洞的闭曲线 $$S^1$$ 不是任何二维区域的边界，上面的论证就无从启动。**这个洞就是 $$H_1(\mathbb{R}^2\setminus\{0\})\cong\mathbb{Z}$$ 的生成元。**
 
-**接下一章**：(b)(c) 合起来说明，$$\int$$ 这个配对在 $$\ker d$$ 与 $$\ker\partial$$ 上只读出"商掉像之后"的信息——它定义在 $$H^{k}_{dR}\times H_k$$ 上。第 14 章要证的 de Rham 定理说：这个配对非退化，故 $$H^{k}_{dR}(M)\cong H^{k}(M;\mathbb{R})$$。
+**接下一章**：(b)(c) 合起来说明，$$\int$$ 这个配对在 $$\ker d$$ 与 $$\ker\partial$$ 上只读出"商掉像之后"的信息——它定义在 $$H^{k}_{dR}\times H_k$$ 上。第 28 章要证的 de Rham 定理说：这个配对非退化，故 $$H^{k}_{dR}(M)\cong H^{k}(M;\mathbb{R})$$。
 
 **解 研2.**
 
@@ -837,13 +839,13 @@ $$H_0(M)\cong\mathbb{Z}^{m}.$$
 
 **(c)** 由 (a)(b)：右侧 $$H_0(M)$$ 是纯拓扑的量（只数"$$M$$ 分成几块"），左侧 $$H^{0}_{dR}(M)$$ 是用微分方程 $$df=0$$ 解出来的量，两者同构。这说明**微分形式解出的方程，算出了流形的拓扑**——这是本课第一次看到"分析算拓扑"。
 
-**接下一章**：(a) 用的是 $$df=0$$ 这个具体方程，只算出了第 0 层。把同一套 $$H^{k}_{dR}=\ker d/\operatorname{im}d$$ 对每个 $$k$$ 都算一遍，再证明它与奇异同调 $$H_k$$ 配对非退化——这就是 de Rham 定理，也是第 14 章的起点。
+**接下一章**：(a) 用的是 $$df=0$$ 这个具体方程，只算出了第 0 层。把同一套 $$H^{k}_{dR}=\ker d/\operatorname{im}d$$ 对每个 $$k$$ 都算一遍，再证明它与奇异同调 $$H_k$$ 配对非退化——这就是 de Rham 定理，也是第 28 章的起点。
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
 1. **一条定理，四个公式。** $$\int_{\partial M}\omega=\int_M d\omega$$ 在 $$n=1$$ 是 Newton–Leibniz，$$n=2$$ 平面是 Green，$$n=3$$ 把 $$\omega$$ 取 1-形式得 Kelvin–Stokes、取 2-形式得 Gauss。它们不是"四条相似的定理"，而是同一条定理在四个维数上的投影。判断依据不在公式长相，而在**$$\omega$$ 的次数**与**区域维数**是否配套。
 
-2. **$$\partial$$ 与 $$d$$ 互为伴随。** 定理 3.23：$$\langle\partial c,\omega\rangle=\langle c,d\omega\rangle$$。第 07 章的 $$d^2=0$$（分析侧）与第 09–10 章的 $$\partial^2=0$$（拓扑侧）在这里被焊在一起——它们是同一台算子的两个尺度，互为转置。**这是全书暗线的正式闭合点。**
+2. **$$\partial$$ 与 $$d$$ 互为伴随。** 定理 3.23：$$\langle\partial c,\omega\rangle=\langle c,d\omega\rangle$$。第 14 章的 $$d^2=0$$（分析侧）与第 09–10 章的 $$\partial^2=0$$（拓扑侧）在这里被焊在一起——它们是同一台算子的两个尺度，互为转置。**这是全书暗线的正式闭合点。**
 
 3. **三处"差一"是同一件事。** $$d$$ 升一格、$$\partial$$ 降一格、$$\partial M$$ 比 $$M$$ 低一维——这不是三个巧合。它说的正是"升与降在配对里抵消"，从而积分只能定义在"$$k$$-形式配 $$k$$ 维域"上。
 
@@ -851,7 +853,7 @@ $$H_0(M)\cong\mathbb{Z}^{m}.$$
 
 5. **定理不需要度量。** 定理 3.21 的证明没有用到长度、角度、内积。所以 Stokes 定理是纯拓扑 + 纯代数的：它只讲"区域里发生了什么、边界上流出了多少"。正因如此，它才能作 de Rham 定理的基石。
 
-**下一章的悬念。** 经典题 5 与研1 证明了一个"降落到商空间"的配对：$$\int$$ 只依赖 $$[c]\in H_k$$ 与 $$[\omega]\in H^{k}_{dR}$$。可我们**只证明了它良定义**，一个字也没说它非退化——即：会不会有一整类非零的 $$[\omega]$$ 对所有 $$[c]$$ 都给出零？答案是"不会"（当 $$M$$ 是紧光滑流形时），而这需要一整章的机器去证：Poincaré 引理、Mayer–Vietoris 序列、de Rham 复形的同伦不变性。**第 14 章 de Rham 上同调**会把本章的这条配对做成一个同构
+**下一章的悬念。** 经典题 5 与研1 证明了一个"降落到商空间"的配对：$$\int$$ 只依赖 $$[c]\in H_k$$ 与 $$[\omega]\in H^{k}_{dR}$$。可我们**只证明了它良定义**，一个字也没说它非退化——即：会不会有一整类非零的 $$[\omega]$$ 对所有 $$[c]$$ 都给出零？答案是"不会"（当 $$M$$ 是紧光滑流形时），而这需要一整章的机器去证：Poincaré 引理、Mayer–Vietoris 序列、de Rham 复形的同伦不变性。**第 28 章 de Rham 上同调**会把本章的这条配对做成一个同构
 
 $$H^{k}_{dR}(M)\cong H^{k}(M;\mathbb{R}),$$
 
@@ -862,14 +864,12 @@ $$H^{k}_{dR}(M)\cong H^{k}(M;\mathbb{R}),$$
 - 原专栏：MP27（标准单形上的 Stokes 定理）、MP28（奇异同调及微分形式在其上的积分）——本章第三节两站的直接来源。
 - 教材：M. Spivak《Calculus on Manifolds》，第四章（半空间证明）；M. Nakahara《Geometry, Topology and Physics》，第 5–6 章（原专栏提到的"详细证明"出处）；R. Bott & L. Tu《Differential Forms in Algebraic Topology》，第 1 章（奇异链版本，与本章 3.6 同一路线）。
 - 向量分析的经典对照：任何一本《高等数学》下册的 Gauss / Stokes / Green 三节，可以拿来逐条对照第五节经典题 1、3、4 的翻译表。
-- 后续：第 14 章 de Rham 上同调（本章配对的非退化性）；第 12 章 Hodge 星算子（$$d$$ 与 $$\nabla\cdot,\nabla\times$$ 的词典）。
-
-
-
+- 后续：第 28 章 de Rham 上同调（本章配对的非退化性）；第 24 章 Hodge 星算子（$$d$$ 与 $$\nabla\cdot,\nabla\times$$ 的词典）。
 ---
+
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch12_外微分与Maxwell方程组.md">← 第12章 外微分与 Maxwell 方程组</a></div>
+  <div><a href="ch25_Stokes定理_上.md">← 第25章 Stokes 定理·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch14_de_Rham上同调.md">第14章 de Rham 上同调 →</a></div>
+  <div><a href="ch27_de_Rham上同调_上.md">第27章 de Rham 上同调·上 →</a></div>
 </div>

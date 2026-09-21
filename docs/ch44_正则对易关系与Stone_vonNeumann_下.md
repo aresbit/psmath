@@ -2,17 +2,19 @@
 layout: default
 ---
 
-# 第22章: 正则对易关系与 Stone–von Neumann (Canonical Commutation Relations and Stone–von Neumann)
+# 第44章: 正则对易关系与 Stone–von Neumann·下：完整推导 (Canonical Commutation Relations and Stone–von Neumann · Part II: Full Derivation)
+
 > 对应原专栏: MP57–MP58
 > 专家依据: `_experts/analysis/spectral-theory.md`（主）+ `_experts/analysis/functional-analysis.md`（主）；`_experts/algebra/lie-algebra-root-systems.md`（对易子的代数侧）
 > 知识库依据: `opc2/knowledge/math/泛函分析/`、`opc2/knowledge/math/李代数/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第43章 正则对易关系与 Stone–von Neumann·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
-本章只做一件事：把 $$[X,P]=i\hbar$$ 这一条关系**当成全部**，追问它究竟决定了什么。三个结论依次出现：这个关系不可能被一对有界算子承载（第 21 章的无界世界是它的天然居所）；指数化之后它只涉及酉算子，成为 Weyl 关系，而 Weyl 关系正是Heisenberg群——一个 Lie 群——的群律；满足 Weyl 关系的不可约实现，在酉等价意义下只有一种，就是 $$L^2(\mathbb R)$$ 上"乘以 $$x$$"与"$$-i\hbar$$ 求导"这一对，这就是 Stone–von Neumann 定理。
+本章只做一件事：把 $$[X,P]=i\hbar$$ 这一条关系**当成全部**，追问它究竟决定了什么。三个结论依次出现：这个关系不可能被一对有界算子承载（第 42 章的无界世界是它的天然居所）；指数化之后它只涉及酉算子，成为 Weyl 关系，而 Weyl 关系正是Heisenberg群——一个 Lie 群——的群律；满足 Weyl 关系的不可约实现，在酉等价意义下只有一种，就是 $$L^2(\mathbb R)$$ 上"乘以 $$x$$"与"$$-i\hbar$$ 求导"这一对，这就是 Stone–von Neumann 定理。
 
-逻辑上本章是卷三的收官：第 16 章的对易子、第 17 章的谐振子升降算子、第 21 章的 Stone 定理，在这里合流成一句话——**对易关系是一个 Lie 代数，指数化后是它的 Lie 群，而唯一性是表示论的第一条定理**。这条线在卷四会以完全一般的 Lie 群表示论（第 27 章）与射影表示（第 30 章）形式回来。
+逻辑上本章是卷三的收官：第 32 章的对易子、第 34 章的谐振子升降算子、第 42 章的 Stone 定理，在这里合流成一句话——**对易关系是一个 Lie 代数，指数化后是它的 Lie 群，而唯一性是表示论的第一条定理**。这条线在卷四会以完全一般的 Lie 群表示论（第 54 章）与射影表示（第 60 章）形式回来。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -42,7 +44,7 @@ $$[A,B]:=AB-BA .$$
 
 **(iii) Jacobi 恒等式** $$[A,[B,C]]+[B,[C,A]]+[C,[A,B]]=0$$。
 
-(i)(ii)(iii) 恰好就是第 27 章将要定义的 **Lie 代数 (Lie algebra)** 的三条公理：对易子就是算子代数上的 Lie 括号。这是本章把"对易关系"抽象成"Lie 代数"的全部理由。
+(i)(ii)(iii) 恰好就是第 54 章将要定义的 **Lie 代数 (Lie algebra)** 的三条公理：对易子就是算子代数上的 Lie 括号。这是本章把"对易关系"抽象成"Lie 代数"的全部理由。
 
 三条的验证都是直接展开。以 (iii) 为例：把六个乘积项 $$ABC-ACB-BCA+CBA+CAB-CBA-\cdots$$ 完全展开，每一个形如 $$AXY$$ 的项都在 $$[A,[B,C]]$$ 与 $$[B,[C,A]]$$ 里各出现一次而符号相反，故总和为零。∎
 
@@ -50,7 +52,7 @@ $$[A,B]:=AB-BA .$$
 $$[X,P]\psi=XP\psi-PX\psi=i\hbar\,\psi\qquad(\psi\in D),$$
 即 $$[X,P]=i\hbar I$$ 在 $$D$$ 上成立，则称 $$X$$ 为**位置算子 (position operator)**、$$P$$ 为**动量算子 (momentum operator)**，称 $$D$$ 为关系的一个**定义域 (domain)**，上式称为**正则对易关系**。
 
-这里必须交代定义域：由引理 3.4 知 $$X,P$$ 不可能同时有界，而两个无界算子的复合 $$XP$$ 只在 $$\operatorname{Dom}(XP)$$ 上有意义，所以"$$[X,P]=i\hbar$$"这句话只有在指定了公共不变定义域 $$D$$ 之后才是一个数学命题。第 21 章的无界算子语言在这里第一次被真正用上。
+这里必须交代定义域：由引理 3.4 知 $$X,P$$ 不可能同时有界，而两个无界算子的复合 $$XP$$ 只在 $$\operatorname{Dom}(XP)$$ 上有意义，所以"$$[X,P]=i\hbar$$"这句话只有在指定了公共不变定义域 $$D$$ 之后才是一个数学命题。第 42 章的无界算子语言在这里第一次被真正用上。
 
 **定义 3.3（Heisenberg代数, Heisenberg algebra）** 设 $$\mathfrak h$$ 是复向量空间，以 $$X,P,Z$$ 为基，其上括号由
 $$[X,P]=Z,\qquad [X,Z]=0,\qquad [P,Z]=0$$
@@ -62,7 +64,7 @@ Heisenberg代数是本章的"代数骨架"：**把具体的算子忘掉，只留
 
 **证明** $$\mathfrak h$$ 的基中两两括号里，只有 $$[X,P]=Z$$ 非零，故 $$[\mathfrak h,\mathfrak h]=\mathbb C Z$$。于是
 $$\mathfrak h^1:=\mathfrak h,\qquad \mathfrak h^2:=[\mathfrak h,\mathfrak h]=\mathbb C Z,\qquad \mathfrak h^3:=[\mathfrak h,\mathfrak h^2]=[\mathfrak h,\mathbb C Z]=0,$$
-下中心列归零，故幂零。又 $$[\mathfrak h,\mathfrak h]=\mathbb C Z\neq\mathfrak h$$；而第 28 章将证明半单李代数必须满足 $$[L,L]=L$$，所以 $$\mathfrak h$$ 不半单。维数最小的非交换 Lie 代数是二维的 $$[x,y]=x$$（它可解而非幂零），故非交换幂零的最小维数是 $$3$$。∎
+下中心列归零，故幂零。又 $$[\mathfrak h,\mathfrak h]=\mathbb C Z\neq\mathfrak h$$；而第 56 章将证明半单李代数必须满足 $$[L,L]=L$$，所以 $$\mathfrak h$$ 不半单。维数最小的非交换 Lie 代数是二维的 $$[x,y]=x$$（它可解而非幂零），故非交换幂零的最小维数是 $$3$$。∎
 
 **引理 3.4（有界情形的不可能性, Wielandt–Wintner）** 设 $$\mathcal A$$ 是含单位元的巴拿赫代数。则不存在 $$A,B\in\mathcal A$$ 满足 $$AB-BA=I$$。
 
@@ -121,7 +123,7 @@ $$U(s)U(s')=e^{isX}e^{is'X}=e^{i(s+s')X}=U(s+s')$$ 等三条同理。∎
 
 **证明思路**：在"可微向量"集合 $$\mathcal D=\{ \xi: \lim_{t\to0}\frac{U(t)\xi-\xi}{t}\ \text{存在}\}$$ 上定义 $$iX\xi=\lim_{t\to0}\frac{U(t)\xi-\xi}{t}$$；用 $$U(t)$$ 的酉性与群律证明 $$\mathcal D$$ 稠密、$$X$$ 对称；再用 $$(X\pm i)$$ 值域封闭（这是把 $$e^{\pm i t X}$$ 与谱定理接上的关键一步）得到 $$X$$ 自伴；唯一性来自生成元的定义本身。
 
-**这是第 21 章的核心结论，此处引用而不重证**（完整证明见第 21 章）。它在这里的作用是把通道打通成双向：命题 3.6 从自伴算子造出单参数酉群，Stone 定理反过来从单参数酉群找回唯一的自伴算子。于是"Weyl 系统"与"一对自伴算子 $$X,P$$"是同一件事的两种说法，可以自由往返。
+**这是第 42 章的核心结论，此处引用而不重证**（完整证明见第 42 章）。它在这里的作用是把通道打通成双向：命题 3.6 从自伴算子造出单参数酉群，Stone 定理反过来从单参数酉群找回唯一的自伴算子。于是"Weyl 系统"与"一对自伴算子 $$X,P$$"是同一件事的两种说法，可以自由往返。
 
 **定义 3.8（Schrödinger 表示, Schrödinger representation）** 取 $$\mathcal H=L^2(\mathbb R)$$，定义
 $$(\mathsf X\psi)(x)=x\,\psi(x),\qquad \operatorname{Dom}\mathsf X=\Bigl\{\psi\in L^2:\int_{\mathbb R}x^{2}\lvert\psi(x)\rvert^{2}\,dx<\infty\Bigr\},$$
@@ -197,7 +199,7 @@ $$\mathsf X'=\mathcal U\mathsf X\mathcal U^{-1},\qquad \mathsf P'=\mathcal U\mat
 
 同一件事有三组语言：几何（相空间与辛结构）、物理（测不准与图景）、代数（Lie 代数与表示）。本节把三者摆到一起。
 
-**一、相空间与辛结构。** 经典力学里位置与动量张成相空间 $$\mathbb R^{2}$$，其上辛形式是 $$\omega\bigl((x,p),(x',p')\bigr)=xp'-px'$$（第 04 章）。在相空间坐标下，Poisson 括号给出 $$\{x,p\}=1$$。正则对易关系就是它的量子化影子：
+**一、相空间与辛结构。** 经典力学里位置与动量张成相空间 $$\mathbb R^{2}$$，其上辛形式是 $$\omega\bigl((x,p),(x',p')\bigr)=xp'-px'$$（第 08 章）。在相空间坐标下，Poisson 括号给出 $$\{x,p\}=1$$。正则对易关系就是它的量子化影子：
 $$\{x,p\}=1\qquad\longmapsto\qquad [X,P]=i\hbar\,I .$$
 也就是说，把 Poisson 括号换成 $$\frac1{i\hbar}[\cdot,\cdot]$$。**整个量子运动学的输入只有这一条关系**，本章剩下的全部工作都是在问：这一条能推出多少？答案分两半——推出的东西很多（Weyl 关系、测不准原理、谐振子能谱、时间演化的群结构），但**实现只有一种**（定理 3.11）。
 
@@ -207,15 +209,15 @@ $$\{x,p\}=1\qquad\longmapsto\qquad [X,P]=i\hbar\,I .$$
 
 要把它变回真正的表示，就得把 $$\mathbb R^{2}$$ 扩大成**Heisenberg群** $$H_3(\mathbb R)$$：
 $$(s,t,\theta)\cdot(s',t',\theta')=\Bigl(s+s',\ t+t',\ \theta+\theta'+\tfrac{\hbar}{2}(st'-s't)\Bigr).$$
-这是一个中心扩张：$$1\to\mathbb R\to H_3(\mathbb R)\to\mathbb R^{2}\to1$$，中心是 $$\{(0,0,\theta)\}$$，而 $$W(s,t)=e^{i\hbar st/2}U(s)V(t)$$ 给出它的一个酉表示。于是 Stone–von Neumann 定理有了几何说法：**固定中心特征（即固定 $$\hbar$$）之后，$$H_3(\mathbb R)$$ 的不可约酉表示在等价意义下唯一。** 这是第 30 章"射影表示"的第一个、也是最著名的例子——上循环不平凡时，射影表示"提升"为中心扩张的真实表示，而提升后的不可约表示反而变唯一了。这条链（辛结构 $$\to$$ 射影表示 $$\to$$ 中心扩张 $$\to$$ 唯一性）是"几何 ↔ 物理 ↔ 代数"在本课程的又一处合流。
+这是一个中心扩张：$$1\to\mathbb R\to H_3(\mathbb R)\to\mathbb R^{2}\to1$$，中心是 $$\{(0,0,\theta)\}$$，而 $$W(s,t)=e^{i\hbar st/2}U(s)V(t)$$ 给出它的一个酉表示。于是 Stone–von Neumann 定理有了几何说法：**固定中心特征（即固定 $$\hbar$$）之后，$$H_3(\mathbb R)$$ 的不可约酉表示在等价意义下唯一。** 这是第 60 章"射影表示"的第一个、也是最著名的例子——上循环不平凡时，射影表示"提升"为中心扩张的真实表示，而提升后的不可约表示反而变唯一了。这条链（辛结构 $$\to$$ 射影表示 $$\to$$ 中心扩张 $$\to$$ 唯一性）是"几何 ↔ 物理 ↔ 代数"在本课程的又一处合流。
 
-**四、谐振子 = 一条半有界的权链。** 第 17 章用 $$[X,P]=i\hbar$$ 造出升降算子
+**四、谐振子 = 一条半有界的权链。** 第 34 章用 $$[X,P]=i\hbar$$ 造出升降算子
 $$a=\sqrt{\frac{m\omega}{2\hbar}}\Bigl(X+\frac{iP}{m\omega}\Bigr),\qquad a^{\dagger}=\sqrt{\frac{m\omega}{2\hbar}}\Bigl(X-\frac{iP}{m\omega}\Bigr),$$
 并且只用对易关系就得到 $$[a,a^{\dagger}]=I$$。记 $$N=a^{\dagger}a$$（粒子数算子），则
 $$[N,a]=-a,\qquad [N,a^{\dagger}]=a^{\dagger}.$$
-把 $$N,a,a^{\dagger},I$$ 放在一起，它们张成一个四维 Lie 代数 $$\mathfrak{osc}=\operatorname{span}\{N,a,a^{\dagger},I\}$$，其导出代数是 $$[\mathfrak{osc},\mathfrak{osc}]=\operatorname{span}\{a,a^{\dagger},I\}$$，恰是Heisenberg代数；再做一次导出得 $$[\operatorname{span}\{a,a^{\dagger},I\},\operatorname{span}\{a,a^{\dagger},I\}]=\mathbb C I$$，第二次就归零，故 $$\mathfrak{osc}$$ 可解。也就是说，**第 17 章那套升降算子的代数结构，就是"Heisenberg代数 + 一个测权算子 $$N$$"**。
+把 $$N,a,a^{\dagger},I$$ 放在一起，它们张成一个四维 Lie 代数 $$\mathfrak{osc}=\operatorname{span}\{N,a,a^{\dagger},I\}$$，其导出代数是 $$[\mathfrak{osc},\mathfrak{osc}]=\operatorname{span}\{a,a^{\dagger},I\}$$，恰是Heisenberg代数；再做一次导出得 $$[\operatorname{span}\{a,a^{\dagger},I\},\operatorname{span}\{a,a^{\dagger},I\}]=\mathbb C I$$，第二次就归零，故 $$\mathfrak{osc}$$ 可解。也就是说，**第 34 章那套升降算子的代数结构，就是"Heisenberg代数 + 一个测权算子 $$N$$"**。
 
-$$N$$ 的本征值是 $$\mathbb N=\{0,1,2,\dots\}$$；$$a^{\dagger}$$ 升 $$1$$、$$a$$ 降 $$1$$，所以谱是等差阶梯。第 28 章会看到，$$\mathfrak{sl}(2)$$ 的不可约表示 $$V(m)$$ 也有一条这样的阶梯：$$h$$ 测权、$$x$$ 升权、$$y$$ 降权，权重是 $$m,m-2,\dots,-m$$。两处的代数机制完全一样，差别只在**阶梯的形态**：$$\mathfrak{sl}(2)$$ 的阶梯是有限的（$$m+1$$ 级），谐振子的阶梯是半有界无限的。这个差别决定了两者的表示论走向不同的结局——$$\mathfrak{sl}(2)$$ 的不可约表示由最高权 $$\mathbb N$$ 分类（第 28 章），而Heisenberg代数的不可约表示在固定 $$\hbar$$ 之后**只有一个**（定理 3.11）。
+$$N$$ 的本征值是 $$\mathbb N=\{0,1,2,\dots\}$$；$$a^{\dagger}$$ 升 $$1$$、$$a$$ 降 $$1$$，所以谱是等差阶梯。第 56 章会看到，$$\mathfrak{sl}(2)$$ 的不可约表示 $$V(m)$$ 也有一条这样的阶梯：$$h$$ 测权、$$x$$ 升权、$$y$$ 降权，权重是 $$m,m-2,\dots,-m$$。两处的代数机制完全一样，差别只在**阶梯的形态**：$$\mathfrak{sl}(2)$$ 的阶梯是有限的（$$m+1$$ 级），谐振子的阶梯是半有界无限的。这个差别决定了两者的表示论走向不同的结局——$$\mathfrak{sl}(2)$$ 的不可约表示由最高权 $$\mathbb N$$ 分类（第 56 章），而Heisenberg代数的不可约表示在固定 $$\hbar$$ 之后**只有一个**（定理 3.11）。
 
 **五、物理上的三句总结。** 其一，测不准原理（推论 3.12）不是独立公理，它是对易关系的直接推论。其二，位置表象与动量表象之间的变换是 Fourier 变换（第六节竞 1），它是酉变换，所以是"换视角"而不是"换物理"。其三，Schrödinger 图景（态随时间演化、算符不动）与 Heisenberg 图景（算符演化、态不动）由 $$A_H(t)=U(t)^{-1}AU(t)$$ 联系，二者物理等价——这正是 MP57 的标题"从 Schrödinger 图景看酉变换"想说的：**图景是记账方式，不是不同的物理**。
 
@@ -255,7 +257,7 @@ $$a=\sqrt{\frac{m\omega}{2\hbar}}\Bigl(X+\frac{iP}{m\omega}\Bigr),\quad a^{\dagg
 **(a)** 证明 $$[a,a^{\dagger}]=I$$，并证明 $$\dfrac{P^{2}}{2m}+\dfrac12 m\omega^{2}X^{2}=\hbar\omega\bigl(N+\tfrac12\bigr)$$。
 **(b)** 证明 $$[N,a]=-a$$、$$[N,a^{\dagger}]=a^{\dagger}$$，并由此推出 $$N$$ 的谱恰为 $$\mathbb N=\{0,1,2,\dots\}$$。
 
-**考点**：定义 3.3（Heisenberg代数的表示）与第四节的"权链"直觉。**位置**：这是第 17 章的谐振子结果在本章代数语言下的重述——它为"对易关系决定了一个 Lie 代数的表示"提供最具体的证据，也预告第 28 章 $$\mathfrak{sl}(2)$$ 的权链。
+**考点**：定义 3.3（Heisenberg代数的表示）与第四节的"权链"直觉。**位置**：这是第 34 章的谐振子结果在本章代数语言下的重述——它为"对易关系决定了一个 Lie 代数的表示"提供最具体的证据，也预告第 56 章 $$\mathfrak{sl}(2)$$ 的权链。
 
 **解 (a)** 记 $$c=\sqrt{\frac{m\omega}{2\hbar}}$$，则 $$a=c(\alpha)$$、$$a^{\dagger}=c(\beta)$$，其中 $$\alpha=X+\frac{i}{m\omega}P$$、$$\beta=X-\frac{i}{m\omega}P$$。先算 $$\alpha,\beta$$ 的对易子（用双线性与 $$[X,P]=i\hbar$$）：
 $$[\alpha,\beta]=\Bigl[X+\frac{i}{m\omega}P,\ X-\frac{i}{m\omega}P\Bigr]=\Bigl[X,-\frac{i}{m\omega}P\Bigr]+\Bigl[\frac{i}{m\omega}P,X\Bigr]$$
@@ -286,7 +288,7 @@ $$0=\lVert ax\rVert^{2}=\langle x,a^{\dagger}ax\rangle=\langle x,Nx\rangle=(n-k_
 $$\lVert\psi_k\rVert^{2}=\langle a^{\dagger}\psi_{k-1},a^{\dagger}\psi_{k-1}\rangle=\langle\psi_{k-1},aa^{\dagger}\psi_{k-1}\rangle=\langle\psi_{k-1},(N+I)\psi_{k-1}\rangle=k\lVert\psi_{k-1}\rVert^{2}>0,$$
 （用了 $$aa^{\dagger}=a^{\dagger}a+I$$），故 $$\psi_k\neq0$$。于是每个 $$k\in\mathbb N$$ 都是本征值。结合上一段，$$N$$ 的本征值集恰为 $$\mathbb N$$（更精确地说，$$N$$ 的谱恰为 $$\mathbb N$$，每个点为单重本征值）。$$\blacksquare$$
 
-**注（与第 28 章的接口）** 这条阶梯 $$0\to1\to2\to\cdots$$ 与 $$\mathfrak{sl}(2)$$ 的权链 $$m\to m-2\to\cdots\to-m$$ 是同一套机制（一个测权算子 + 一对升降算子），但前者半有界无限、后者有限。**正是"半有界无限"使得Heisenberg代数的不可约表示唯一（定理 3.11），而 $$\mathfrak{sl}(2)$$ 的不可约表示要由一个最高权参数来分类。** 卷四第 28 章会把这条对照讲透。
+**注（与第 56 章的接口）** 这条阶梯 $$0\to1\to2\to\cdots$$ 与 $$\mathfrak{sl}(2)$$ 的权链 $$m\to m-2\to\cdots\to-m$$ 是同一套机制（一个测权算子 + 一对升降算子），但前者半有界无限、后者有限。**正是"半有界无限"使得Heisenberg代数的不可约表示唯一（定理 3.11），而 $$\mathfrak{sl}(2)$$ 的不可约表示要由一个最高权参数来分类。** 卷四第 56 章会把这条对照讲透。
 
 **题 4（von Neumann 投影的显式计算）** 证明第三节引理 3.11：
 $$P_0=\frac{1}{2\pi}\iint_{\mathbb R^{2}}e^{-(s^{2}+t^{2})/4}\,e^{-i(s\mathsf X+t\mathsf P)}\,ds\,dt$$
@@ -453,9 +455,9 @@ $$T\,W(a,b)\,W(s,t)\xi=T\bigl(e^{i\psi}W(a+s,b+t)\xi\bigr)=e^{i\psi}W'(a+s,b+t)\
 
 **(iii)** 竞 3 说：Schrödinger 表示的真空 $$\Omega$$ 满足 $$\langle\Omega,W(s,t)\Omega\rangle=e^{-(s^{2}+t^{2})/4}$$。于是由 (ii)：**只要另一个不可约 Weyl 系统里也能找到一个单位向量 $$\xi'$$ 使矩阵元同为 $$e^{-(s^{2}+t^{2})/4}$$，唯一性立刻成立**。定理 3.11 第二步构造的 $$P_0$$ 正是为了在任意 Weyl 系统里造出这样一个"抽象真空"——它的存在性（$$P_0\neq0$$）是全部困难；引理 3.11 是它在 Schrödinger 表示中的显式验证。
 
-**接下一章前的伏笔**：上面 (ii) 的论证只用到"矩阵元相同"，这对**不可约**系统足够。若系统可约，"矩阵元相同"就只是必要条件——一般的 Weyl 系统要写成不可约分量的直和，分量个数（多重数）成了唯一的等价不变量。描述这个多重数需要 **von Neumann 代数 (von Neumann algebra)** 与**因子 (factor)** 的类型理论，那是第 27 章 Lie 代数表示论与第 30 章射影表示的一般框架；届时本章的 $$H_3(\mathbb R)$$ 会成为"中心扩张的不可约表示由中心特征完全决定"这一现象的第一个范例。$$\blacksquare$$
+**接下一章前的伏笔**：上面 (ii) 的论证只用到"矩阵元相同"，这对**不可约**系统足够。若系统可约，"矩阵元相同"就只是必要条件——一般的 Weyl 系统要写成不可约分量的直和，分量个数（多重数）成了唯一的等价不变量。描述这个多重数需要 **von Neumann 代数 (von Neumann algebra)** 与**因子 (factor)** 的类型理论，那是第 54 章 Lie 代数表示论与第 60 章射影表示的一般框架；届时本章的 $$H_3(\mathbb R)$$ 会成为"中心扩张的不可约表示由中心特征完全决定"这一现象的第一个范例。$$\blacksquare$$
 
-**解 研2.** **(i)** $$H$$ 自伴，故由谱定理（第 19 章）$$f(H)=\int f(\lambda)\,dE(\lambda)$$ 对 Borel 函数 $$f$$ 有定义，且 $$\lVert f(H)\rVert\le\lVert f\rVert_{\infty}$$。取 $$f_t(\lambda)=e^{-i\lambda t/\hbar}$$，则 $$\lvert f_t\rvert\equiv1$$，故 $$U(t)=e^{-iHt/\hbar}$$ 是酉算子，且
+**解 研2.** **(i)** $$H$$ 自伴，故由谱定理（第 38 章）$$f(H)=\int f(\lambda)\,dE(\lambda)$$ 对 Borel 函数 $$f$$ 有定义，且 $$\lVert f(H)\rVert\le\lVert f\rVert_{\infty}$$。取 $$f_t(\lambda)=e^{-i\lambda t/\hbar}$$，则 $$\lvert f_t\rvert\equiv1$$，故 $$U(t)=e^{-iHt/\hbar}$$ 是酉算子，且
 $$U(t)U(s)=e^{-iHt/\hbar}e^{-iHs/\hbar}=e^{-iH(t+s)/\hbar}=U(t+s),\qquad U(0)=I,$$
 群律成立（函数演算是 \*-同态，相乘即函数相乘）。强连续性由控制收敛定理（对 $$d\mu_\psi=\langle E(\cdot)\psi,\psi\rangle$$）给出。对 $$\psi\in\operatorname{Dom}H$$，
 $$\frac{U(t)\psi-\psi}{t}=\frac{e^{-iHt/\hbar}-1}{t}\psi\ \longrightarrow\ -\frac{i}{\hbar}H\psi,$$
@@ -465,39 +467,36 @@ $$\frac{U(t)\psi-\psi}{t}=\frac{e^{-iHt/\hbar}-1}{t}\psi\ \longrightarrow\ -\fra
 
 **(iii)** 差别只在 $$f_t(\lambda)=e^{-i\lambda t/\hbar}$$ 与 $$g_t(\lambda)=e^{-\lambda t/\hbar}$$ 的**模**：前者的模恒为 $$1$$，所以每个 $$U(t)$$ 可逆（逆是 $$U(-t)$$），$$t$$ 可以取负值，构成群；后者在 $$\lambda>0$$ 处模小于 $$1$$，$$T(t)$$ 不可逆，于是只能在 $$t\ge0$$ 上定义，群律退化成半群律。**"群"与"半群"的界线，就是生成元的谱是否被限制在一条射线的一侧**——这里 $$H\ge0$$ 把谱压在 $$[0,\infty)$$，虚数方向的指数 $$e^{-i\lambda t}$$ 可以双向流动，实方向的指数 $$e^{-\lambda t}$$ 只能单向衰减。
 
-**接下一章**：$$T(t)=e^{-tH/\hbar}$$ 是热传导/扩散型演化，而物理上真正需要的 $$\langle x'\rvert U(t)\lvert x\rangle$$（Schrödinger 演化的积分核）可以形式地写成对路径的积分 $$\int e^{\frac{i}{\hbar}S[\text{路径}]}\mathcal D x$$。把这条路径积分**严格化**，标准路线正是先用 Trotter 乘积公式把 $$U(t)$$ 拆成许多小步，再借算子半群的理论取极限——那正是第 23 章《算子半群与 Feynman 路径积分》的起点。$$\blacksquare$$
+**接下一章**：$$T(t)=e^{-tH/\hbar}$$ 是热传导/扩散型演化，而物理上真正需要的 $$\langle x'\rvert U(t)\lvert x\rangle$$（Schrödinger 演化的积分核）可以形式地写成对路径的积分 $$\int e^{\frac{i}{\hbar}S[\text{路径}]}\mathcal D x$$。把这条路径积分**严格化**，标准路线正是先用 Trotter 乘积公式把 $$U(t)$$ 拆成许多小步，再借算子半群的理论取极限——那正是第 46 章《算子半群与 Feynman 路径积分》的起点。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
-**1. 一条关系，一个 Lie 代数。** $$[X,P]=i\hbar$$ 的全部代数内容，是说"三维Heisenberg代数 $$\mathfrak h$$ 的一个表示把中心元 $$Z$$ 送到 $$i\hbar I$$"。第 16 章的"对易子"在第 27 章会被正式命名为 Lie 括号；本章提前用上了这个视角，于是"量子化"这句话有了精确含义：**把 Poisson 括号 $$\{x,p\}=1$$ 换成 $$[\cdot,\cdot]/(i\hbar)$$，就是把相空间平移群的交换 Lie 代数换成了Heisenberg代数**。
+**1. 一条关系，一个 Lie 代数。** $$[X,P]=i\hbar$$ 的全部代数内容，是说"三维Heisenberg代数 $$\mathfrak h$$ 的一个表示把中心元 $$Z$$ 送到 $$i\hbar I$$"。第 32 章的"对易子"在第 54 章会被正式命名为 Lie 括号；本章提前用上了这个视角，于是"量子化"这句话有了精确含义：**把 Poisson 括号 $$\{x,p\}=1$$ 换成 $$[\cdot,\cdot]/(i\hbar)$$，就是把相空间平移群的交换 Lie 代数换成了Heisenberg代数**。
 
 **2. 无界性是必然的，不是技术缺陷。** 引理 3.4（Wielandt–Wintner）证明含单位元的巴拿赫代数里 $$AB-BA=I$$ 无解，所以位置与动量不可能同时有界。这不是"数学家偷懒不去处理无界算子"，而是关系式本身拒绝有界实现。补救办法是**指数化**：Weyl 形式只用到酉算子，把"无穷小"的困难换成了"有限"的群律。
 
 **3. 唯一性 = 只被一个参数（$$\hbar$$）标记。** Stone–von Neumann 定理说：不可约的 Weyl 系统在酉等价意义下只有 Schrödinger 表示一种。也就是说，$$\hbar$$ 是唯一自由参数；给定 $$\hbar$$，量子运动学被完全确定。**对比**：$$\mathfrak{sl}(2)$$ 的不可约表示由最高权分类（一个离散参数族），Heisenberg代数的不可约表示却只有一个——差别来自谐振子权链是半有界无限的（第四节、经典题 3）。这正是"Lie 代数表示论"里两种典型结局的第一次正面相遇。
 
-**4. 几何 ↔ 物理 ↔ 代数的又一次三合一。** 同一个对象有四种面孔：相空间上的 $$90^{\circ}$$ 旋转（辛结构）、相空间平移的射影表示（上循环）、Heisenberg群的中心扩张、以及一个 Lie 代数的唯一不可约表示。第 30 章的"射影表示"会把这四句话变成一般定理。
+**4. 几何 ↔ 物理 ↔ 代数的又一次三合一。** 同一个对象有四种面孔：相空间上的 $$90^{\circ}$$ 旋转（辛结构）、相空间平移的射影表示（上循环）、Heisenberg群的中心扩张、以及一个 Lie 代数的唯一不可约表示。第 60 章的"射影表示"会把这四句话变成一般定理。
 
 **5. 图景是记账方式。** 推论 3.13：Schrödinger 图景与 Heisenberg 图景由酉变换 $$A_H(t)=U(t)^{-1}AU(t)$$ 联系，二者物理等价。定理 3.11 给了这句话一个更强的版本：**不只是两个图景之间，而是满足对易关系的一切实现之间，都只差一个酉变换**——"换视角"穷尽了一切可能性。
 
-**下一章（第 23 章）的悬念。** 本章把时间演化写成 $$U(t)=e^{-iHt/\hbar}$$，一个单参数酉群；由 Stone 定理，它的生成元 $$H$$ 必须自伴。可物理上有大量重要过程**不是群**：热方程 $$\partial_t u=-Hu$$、扩散、以及 Feynman 路径积分里那种"半群取极限"的构造。把 $$e^{-iHt/\hbar}$$ 换成 $$e^{-tH/\hbar}$$ 时，酉群退化成半群（研 2 已经看到机制）；问题于是变成：**半群的生成元要满足什么条件（Hille–Yosida / Lumer–Phillips），Trotter 乘积公式如何把路径积分严格化？** 这是第 23 章《算子半群与 Feynman 路径积分》要回答的。
+**下一章（第 46 章）的悬念。** 本章把时间演化写成 $$U(t)=e^{-iHt/\hbar}$$，一个单参数酉群；由 Stone 定理，它的生成元 $$H$$ 必须自伴。可物理上有大量重要过程**不是群**：热方程 $$\partial_t u=-Hu$$、扩散、以及 Feynman 路径积分里那种"半群取极限"的构造。把 $$e^{-iHt/\hbar}$$ 换成 $$e^{-tH/\hbar}$$ 时，酉群退化成半群（研 2 已经看到机制）；问题于是变成：**半群的生成元要满足什么条件（Hille–Yosida / Lumer–Phillips），Trotter 乘积公式如何把路径积分严格化？** 这是第 46 章《算子半群与 Feynman 路径积分》要回答的。
 
-**再往后看（卷四）。** 本章的对易关系在卷四会以完全一般的面貌回来：第 27 章把"对易子"抽象为 Lie 代数并研究 $$\exp$$ 映射（本章的 $$e^{isX}$$ 只是它的一例），第 30 章用中心扩张与上同调处理"射影表示"，届时本章的 $$H_3(\mathbb R)$$ 会成为整个理论的原型。
+**再往后看（卷四）。** 本章的对易关系在卷四会以完全一般的面貌回来：第 54 章把"对易子"抽象为 Lie 代数并研究 $$\exp$$ 映射（本章的 $$e^{isX}$$ 只是它的一例），第 60 章用中心扩张与上同调处理"射影表示"，届时本章的 $$H_3(\mathbb R)$$ 会成为整个理论的原型。
 
 **延伸阅读**（对应原专栏与参考书）：
 - MP57《从 Schrödinger 图景看量子力学中的酉变换》（时间演化算子、算子指数、单参数半群）；
 - MP58《正则对易关系、Stone–von Neumann 定理、后继学习的展望》（本章主线）；
 - MP43（正则对易关系与 Poisson 括号的首次出现）、MP46（谐振子与升降算子）；
-- Hall, *Quantum Theory for Mathematicians* (GTM 267)，第 14 章（Heisenberg 群与 Stone–von Neumann 的完整证明）；
+- Hall, *Quantum Theory for Mathematicians* (GTM 267)，第 28 章（Heisenberg 群与 Stone–von Neumann 的完整证明）；
 - Reed & Simon, *Methods of Modern Mathematical Physics I*，§VIII.5（Weyl 关系与唯一性）；
 - Weyl, *The Theory of Groups and Quantum Mechanics*（Weyl 形式的原始出处）。
-
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch21_无界算子与Cayley变换.md">← 第21章 无界算子与 Cayley 变换</a></div>
+  <div><a href="ch43_正则对易关系与Stone_vonNeumann_上.md">← 第43章 正则对易关系与 Stone–von Neumann·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch23_算子半群与Feynman路径积分.md">第23章 算子半群与 Feynman 路径积分 →</a></div>
+  <div><a href="ch45_算子半群与Feynman路径积分_上.md">第45章 算子半群与 Feynman 路径积分·上 →</a></div>
 </div>

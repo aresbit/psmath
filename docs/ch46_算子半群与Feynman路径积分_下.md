@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第23章: 算子半群与 Feynman 路径积分 (Operator Semigroups and Feynman Path Integrals)
+# 第46章: 算子半群与 Feynman 路径积分·下：完整推导 (Operator Semigroups and Feynman Path Integrals · Part II: Full Derivation)
+
+> 配套预备: 见 第45章 算子半群与 Feynman 路径积分·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP101–MP103
 > 专家依据: `_experts/analysis/functional-analysis.md`(主) + `_experts/analysis/measure-integration.md`
@@ -15,9 +17,9 @@ layout: default
 
 答案会落在同一处：那个积分不对应任何测度，它是一个**算子极限**的记号。而算子极限的定义，靠的是把 $$t\mapsto e^{-tH}$$ 看成一个**半群**。
 
-**从哪来**：第 21 章的 Stone 定理说单参数酉群一一对应自伴算子，第 22 章的 Stone–von Neumann 定理说位置与动量的表示在酉等价下唯一。第 17 章写下了 Schrödinger 方程，但当时把 $$e^{-itH}$$ 当作形式记号。本章补上的是：这个记号什么时候真的有定义、为什么唯一、以及它如何长成路径积分。
+**从哪来**：第 42 章的 Stone 定理说单参数酉群一一对应自伴算子，第 44 章的 Stone–von Neumann 定理说位置与动量的表示在酉等价下唯一。第 34 章写下了 Schrödinger 方程，但当时把 $$e^{-itH}$$ 当作形式记号。本章补上的是：这个记号什么时候真的有定义、为什么唯一、以及它如何长成路径积分。
 
-**到哪去**：把指数映射从"时间"这条轴上解放出来——换成任意有限维结合代数的元素，就是 Lie 群的指数映射。那是第 24 章的起点，卷三到此收束。
+**到哪去**：把指数映射从"时间"这条轴上解放出来——换成任意有限维结合代数的元素，就是 Lie 群的指数映射。那是第 48 章的起点，卷三到此收束。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -87,7 +89,7 @@ $$\lVert T(t)\rVert\le Me^{\omega t},\qquad t\ge0 .$$
 
 特别地，$$t\mapsto\lVert T(t)\rVert$$ 在紧区间 $$[0,t_0]$$ 上有界。
 
-*证明*：对每个 $$x$$，$$t\mapsto\lVert T(t)x\rVert$$ 是 $$[0,1]$$ 上的连续函数，故有界：算子族 $$\{T(t):0\le t\le1\}$$ **逐点有界**。由一致有界原理（第 03 章），
+*证明*：对每个 $$x$$，$$t\mapsto\lVert T(t)x\rVert$$ 是 $$[0,1]$$ 上的连续函数，故有界：算子族 $$\{T(t):0\le t\le1\}$$ **逐点有界**。由一致有界原理（第 06 章），
 
 $$M:=\sup_{0\le t\le1}\lVert T(t)\rVert<\infty,\qquad M\ge1\ (\text{因}\ T(0)=I).$$
 
@@ -164,7 +166,7 @@ $$\frac{T(t)x_h-x_h}{t}=\frac{1}{th}\Bigl[\int_{t}^{t+h}T(u)x\,du-\int_{0}^{h}T(
 
 $$T(t)x-x=\int_0^{t}T(s)Ax\,ds. \qquad(\ast)$$
 
-由 (S2)，$$\frac{T(t+s)x-T(s)x}{t}=T(s)\frac{T(t)x-x}{t}\to T(s)Ax$$（$$T(s)$$ 有界可与极限交换：$$\lVert T(s)(\text{差商}-Ax)\rVert\le\lVert T(s)\rVert\lVert\text{差商}-Ax\rVert$$，而 $$\lVert T(s)\rVert\le Me^{\omega s}$$ 在紧区间上有界）。故 $$s\mapsto T(s)x$$ 在 $$[0,t]$$ 上右导数处处存在、等于 $$T(s)Ax$$，且这个右导数连续，于是在 $$[0,t]$$ 上可导。把 $$\frac{d}{ds}T(s)x=T(s)Ax$$ 在 $$[0,t]$$ 上积分——这是取值于 Banach 空间 $$X$$ 的 $$C^1$$ 函数的牛顿-莱布尼茨公式：先用连续线性泛函把两边送回 $$\mathbb R$$，由 Hahn–Banach 的保范延拓（第 02 章）让 $$\mathbb R$$ 上的等式对一切泛函成立，从而推出向量等式——即得 $$(\ast)$$。
+由 (S2)，$$\frac{T(t+s)x-T(s)x}{t}=T(s)\frac{T(t)x-x}{t}\to T(s)Ax$$（$$T(s)$$ 有界可与极限交换：$$\lVert T(s)(\text{差商}-Ax)\rVert\le\lVert T(s)\rVert\lVert\text{差商}-Ax\rVert$$，而 $$\lVert T(s)\rVert\le Me^{\omega s}$$ 在紧区间上有界）。故 $$s\mapsto T(s)x$$ 在 $$[0,t]$$ 上右导数处处存在、等于 $$T(s)Ax$$，且这个右导数连续，于是在 $$[0,t]$$ 上可导。把 $$\frac{d}{ds}T(s)x=T(s)Ax$$ 在 $$[0,t]$$ 上积分——这是取值于 Banach 空间 $$X$$ 的 $$C^1$$ 函数的牛顿-莱布尼茨公式：先用连续线性泛函把两边送回 $$\mathbb R$$，由 Hahn–Banach 的保范延拓（第 04 章）让 $$\mathbb R$$ 上的等式对一切泛函成立，从而推出向量等式——即得 $$(\ast)$$。
 
 **(ii) 现在有了。** 设 $$x_n\to x$$、$$Ax_n\to y$$，对每个 $$n$$ 用 $$(\ast)$$：$$T(t)x_n-x_n=\int_0^{t}T(s)Ax_n\,ds$$。左端 $$\to T(t)x-x$$；右端由 $$\lVert T(s)(Ax_n-y)\rVert\le Me^{\omega s}\lVert Ax_n-y\rVert$$ 对 $$s\in[0,t]$$ 一致小，积分 $$\to\int_0^tT(s)y\,ds$$。于是
 
@@ -188,7 +190,7 @@ $$\frac{d}{dt}T(t)x=T(t)Ax=AT(t)x .$$
 
 $$\rho(A)=\{\lambda\in\mathbb C:\ \lambda I-A:D(A)\to X\ \text{是双射}\}$$
 
-为 $$A$$ 的**预解集**，$$\sigma(A)=\mathbb C\setminus\rho(A)$$ 为**谱**。对 $$\lambda\in\rho(A)$$，由开映射定理（第 03 章；此处 $$\lambda I-A$$ 闭且双射，逆算子自动有界）定义
+为 $$A$$ 的**预解集**，$$\sigma(A)=\mathbb C\setminus\rho(A)$$ 为**谱**。对 $$\lambda\in\rho(A)$$，由开映射定理（第 06 章；此处 $$\lambda I-A$$ 闭且双射，逆算子自动有界）定义
 
 $$R(\lambda,A)=(\lambda I-A)^{-1}\in\mathcal B(X),$$
 
@@ -362,7 +364,7 @@ $$\bigl\lVert(\lambda I-A)^{-k}\bigr\rVert\le\frac{M}{(\lambda-\omega)^{k}}\qqua
 
 ### 3.5 Stone 定理：半群语言的单参数酉群
 
-第 21 章的 Stone 定理说"单参数强连续酉群一一对应自伴算子"。用本节的生成元语言，它可以重新表述为一条关于半群的命题。
+第 42 章的 Stone 定理说"单参数强连续酉群一一对应自伴算子"。用本节的生成元语言，它可以重新表述为一条关于半群的命题。
 
 **定理 3.6（Stone 定理, 半群表述）**。设 $$\{U(t)\}_{t\in\mathbb R}\subset\mathcal B(H)$$ 是 Hilbert 空间 $$H$$ 上的强连续单参数酉群（即 $$U(s+t)=U(s)U(t)$$ 对一切 $$s,t\in\mathbb R$$ 成立、$$U(t)^{*}U(t)=I$$、$$t\mapsto U(t)\psi$$ 连续）。则存在唯一自伴算子 $$A:D(A)\subset H\to H$$ 使
 
@@ -370,7 +372,7 @@ $$U(t)=e^{-itA},\qquad t\in\mathbb R .$$
 
 反之，每个自伴算子 $$A$$ 通过这个公式生成强连续单参数酉群。
 
-*证明*：定理本身在第 21 章已证，这里只做与本章语言的接驳。
+*证明*：定理本身在第 42 章已证，这里只做与本章语言的接驳。
 
 **从群到半群。** 把 $$\{U(t)\}$$ 限制到 $$t\ge0$$，得到强连续半群 $$\{U(t)\}_{t\ge0}$$（(S1)(S2)(S3) 逐条继承）。由定理 3.2 它有生成元 $$B$$，且对 $$\psi\in D(B)$$ 有 $$\frac{d}{dt}U(t)\psi=BU(t)\psi$$。$$B$$ 的形状被酉性锁死：对 $$\psi\in D(B)$$，
 
@@ -463,7 +465,7 @@ $$\Bigl(e^{-tH_0/m}e^{-tV/m}\Bigr)^{m}\psi\ \xrightarrow[m\to\infty]{}\ e^{-t\,\
 
 **定理 3.9（Trotter–Kato 收敛定理；作为已知结论引用）**。设 $$\{S_n(t)\}_{t\ge0}$$ 是 Banach 空间 $$X$$ 上一族压缩半群，生成元为 $$C_n$$（不要求有界）。若存在 $$\lambda_0>0$$ 使 $$R(\lambda_0,C_n)\to R(\lambda_0,C)$$ 强收敛（$$C$$ 闭稠定），则 $$C$$ 生成压缩半群，且 $$S_n(t)x\to e^{tC}x$$ 对一切 $$x\in X$$、$$t$$ 在紧区间上一致。证明见 Kato《Perturbation Theory for Linear Operators》第 IX 章；本课程用它把"有限维 Lie 乘积公式"提升为"无界算子 Trotter 公式"，两个定理的**代数核心是同一个对易子估计**。
 
-**Kato–Rellich 判据（回顾）**。若 $$A$$ 自伴、$$B$$ 对称且存在 $$a<\tfrac12$$、$$b\ge0$$ 使 $$\lVert B\psi\rVert\le a\lVert A\psi\rVert+b\lVert\psi\rVert$$（$$\psi\in D(A)$$），则 $$A+B$$（定义域取 $$D(A)$$）自伴。这是定理 3.8 中"$$A+B$$ 本质自伴"的前提，例如 $$V\in L^2(\mathbb R^n)+L^\infty(\mathbb R^n)$$ 且无穷远处趋于零时成立，于是 $$H$$ 自伴、Trotter 公式可用。第 22 章的 Stone–von Neumann 定理在这里的作用是保证"$$H_0+V$$"这个写法没有隐藏的表示自由度。
+**Kato–Rellich 判据（回顾）**。若 $$A$$ 自伴、$$B$$ 对称且存在 $$a<\tfrac12$$、$$b\ge0$$ 使 $$\lVert B\psi\rVert\le a\lVert A\psi\rVert+b\lVert\psi\rVert$$（$$\psi\in D(A)$$），则 $$A+B$$（定义域取 $$D(A)$$）自伴。这是定理 3.8 中"$$A+B$$ 本质自伴"的前提，例如 $$V\in L^2(\mathbb R^n)+L^\infty(\mathbb R^n)$$ 且无穷远处趋于零时成立，于是 $$H$$ 自伴、Trotter 公式可用。第 44 章的 Stone–von Neumann 定理在这里的作用是保证"$$H_0+V$$"这个写法没有隐藏的表示自由度。
 
 ### 3.7 高潮：Feynman 路径积分是 Trotter 公式的极限
 
@@ -471,13 +473,13 @@ $$\Bigl(e^{-tH_0/m}e^{-tV/m}\Bigr)^{m}\psi\ \xrightarrow[m\to\infty]{}\ e^{-t\,\
 
 $$i\hbar\frac{\partial}{\partial t}\psi=H\psi,\qquad H=H_0+V,\qquad H_0=-\frac{\hbar^{2}}{2m}\Delta,$$
 
-即动量算子 $$P=-i\hbar\nabla$$、动能 $$H_0=\dfrac{P^{2}}{2m}$$（第 22 章的正则对易关系 $$[Q_j,P_k]=i\hbar\delta_{jk}$$ 正是把 $$P$$ 取成 $$-i\hbar\nabla$$ 的那条约束）。$$H$$ 在 $$D(H_0)\cap D(V)$$ 上本质自伴（Kato–Rellich），故解算子 $$e^{-itH/\hbar}$$ 由定理 3.6 存在。
+即动量算子 $$P=-i\hbar\nabla$$、动能 $$H_0=\dfrac{P^{2}}{2m}$$（第 44 章的正则对易关系 $$[Q_j,P_k]=i\hbar\delta_{jk}$$ 正是把 $$P$$ 取成 $$-i\hbar\nabla$$ 的那条约束）。$$H$$ 在 $$D(H_0)\cap D(V)$$ 上本质自伴（Kato–Rellich），故解算子 $$e^{-itH/\hbar}$$ 由定理 3.6 存在。
 
 **定理 3.10（自由传播子的核）**。对 $$f\in L^2(\mathbb R^n)$$ 与 $$t\ne0$$，
 
 $$\bigl(e^{-itH_0/\hbar}f\bigr)(x)=\Bigl(\frac{m}{2\pi i\hbar t}\Bigr)^{n/2}\int_{\mathbb R^n}e^{\frac{im\lvert x-y\rvert^{2}}{2\hbar t}}f(y)\,dy . \tag{3.6}$$
 
-*证明*：取归一化 $$\hat f(k)=(2\pi)^{-n/2}\int_{\mathbb R^n}f(y)e^{-ik\cdot y}dy$$、$$f(x)=(2\pi)^{-n/2}\int_{\mathbb R^n}\hat f(k)e^{ik\cdot x}dk$$。在谱表示下 $$H_0$$ 是乘子 $$\dfrac{\hbar^{2}\lvert k\rvert^{2}}{2m}$$（第 19 章的谱定理：$$H_0=\int\frac{\hbar^2\lvert k\rvert^2}{2m}dE(k)$$，因为 $$P=-i\hbar\nabla$$ 在 Fourier 侧乘 $$\hbar k$$），故 $$e^{-itH_0/\hbar}$$ 是乘 $$e^{-\frac{i\hbar t\lvert k\rvert^{2}}{2m}}$$：
+*证明*：取归一化 $$\hat f(k)=(2\pi)^{-n/2}\int_{\mathbb R^n}f(y)e^{-ik\cdot y}dy$$、$$f(x)=(2\pi)^{-n/2}\int_{\mathbb R^n}\hat f(k)e^{ik\cdot x}dk$$。在谱表示下 $$H_0$$ 是乘子 $$\dfrac{\hbar^{2}\lvert k\rvert^{2}}{2m}$$（第 38 章的谱定理：$$H_0=\int\frac{\hbar^2\lvert k\rvert^2}{2m}dE(k)$$，因为 $$P=-i\hbar\nabla$$ 在 Fourier 侧乘 $$\hbar k$$），故 $$e^{-itH_0/\hbar}$$ 是乘 $$e^{-\frac{i\hbar t\lvert k\rvert^{2}}{2m}}$$：
 
 $$\bigl(e^{-itH_0/\hbar}f\bigr)(x)=(2\pi)^{-n/2}\int_{\mathbb R^n}e^{ik\cdot x}e^{-\frac{i\hbar t\lvert k\rvert^{2}}{2m}}\hat f(k)\,dk .$$
 
@@ -498,7 +500,7 @@ $$\frac1{2\pi}\int_{\mathbb R}e^{ikz}e^{-ak^{2}}dk=\frac{1}{2\sqrt{\pi a}}e^{-\f
 
 $$e^{-itV/\hbar}=\text{乘}\ e^{-\frac{i}{\hbar}tV(x)} .$$
 
-（对无界 $$V$$ 由函数演算定义，见第 19 章。）
+（对无界 $$V$$ 由函数演算定义，见第 38 章。）
 
 **定理 3.11（Feynman 路径积分 = Trotter 极限）**。设 $$V$$ 有界且实值。则对 $$f\in L^2(\mathbb R^n)$$ 与 $$t>0$$，
 
@@ -582,7 +584,7 @@ $$\sum_{k=1}^{N}\frac{t}{N}V\bigl(b(\tfrac{(k-1)t}{N})\bigr)\longrightarrow\int_
 
 > **路径积分在实时间下是极限的记号（Trotter 公式），在虚时间下是 Wiener 测度上的积分（Feynman–Kac 公式）；两者由 $$t\mapsto-it$$ 相连。**
 
-**三条线的合流。** 至此可以把这一章与前两章接上。第 21 章的 Stone 定理说：时间演化 $$t\mapsto U(t)$$ 与它的一阶导数（生成元）一一对应，而 $$U(t)$$ 酉、生成元为 $$-iH/\hbar$$、$$H$$ 自伴；本章把这条对应扩成"半群 ↔ 生成元"，覆盖了 Stone 定理（酉群是两侧都有定义的半群，见定理 3.6）。第 22 章的 Stone–von Neumann 定理说：位置与动量的表示在酉等价下唯一。它在这里承担两件事——$$H_0=\frac{P^{2}}{2m}$$ 里 $$P=-i\hbar\nabla$$ 的形状被正则对易关系锁死，于是 $$(3.6)$$ 的核不是"某一种 Fourier 反变换"而是唯一的一种；$$H=H_0+V$$ 的表示没有隐藏自由度，于是路径积分讨论的始终是同一个 $$H$$。本章的 Trotter 公式则说：$$H_0$$ 与 $$V$$ 分别能写成核，而它们乘积的极限恢复 $$e^{-itH/\hbar}$$。
+**三条线的合流。** 至此可以把这一章与前两章接上。第 42 章的 Stone 定理说：时间演化 $$t\mapsto U(t)$$ 与它的一阶导数（生成元）一一对应，而 $$U(t)$$ 酉、生成元为 $$-iH/\hbar$$、$$H$$ 自伴；本章把这条对应扩成"半群 ↔ 生成元"，覆盖了 Stone 定理（酉群是两侧都有定义的半群，见定理 3.6）。第 44 章的 Stone–von Neumann 定理说：位置与动量的表示在酉等价下唯一。它在这里承担两件事——$$H_0=\frac{P^{2}}{2m}$$ 里 $$P=-i\hbar\nabla$$ 的形状被正则对易关系锁死，于是 $$(3.6)$$ 的核不是"某一种 Fourier 反变换"而是唯一的一种；$$H=H_0+V$$ 的表示没有隐藏自由度，于是路径积分讨论的始终是同一个 $$H$$。本章的 Trotter 公式则说：$$H_0$$ 与 $$V$$ 分别能写成核，而它们乘积的极限恢复 $$e^{-itH/\hbar}$$。
 
 三句话合起来给出路径积分的**严格身份**：它是**自伴算子 $$H$$（由 Stone 定理）生成的时间演化，用 Trotter 公式把 $$H_0$$ 与 $$V$$ 拆成两步、取强极限**得到的对象。它不含新的公理，也不含新的测度；只是"无界算子的指数"在位置表示下的展开。
 
@@ -590,7 +592,7 @@ $$\sum_{k=1}^{N}\frac{t}{N}V\bigl(b(\tfrac{(k-1)t}{N})\bigr)\longrightarrow\int_
 
 **一、时间的方向画在谱上。** 半群与群的区别是**可逆性**，而在算子侧，可逆性被翻译成生成元的谱落在哪里：生成元**反自伴**（$$\sigma(B)\subset i\mathbb R$$）$$\Rightarrow$$ $$e^{tB}$$ 是酉群，两侧有定义、信息不丢，这描述**波**；生成元**自伴半正定**（$$\sigma(A)\subset[0,\infty)$$）$$\Rightarrow$$ $$e^{-tA}$$ 是压缩半群，$$t<0$$ 一侧不存在，这描述**扩散**。几何图景：热核是宽度 $$\sim\sqrt t$$ 的一团，$$t\to0^{+}$$ 缩成一点、$$t\to\infty$$ 摊平，而摊平不可逆——倒放要求把无穷远的信息精确收回。判据不在核的公式里，在生成元的自伴性里。
 
-**二、生成元是单位元处的切向量。** 把 $$t\mapsto T(t)$$ 看成过 $$I$$ 的曲线，$$A=\lim_{t\to0^{+}}\frac{T(t)-I}{t}$$ 是它在 $$I$$ 处的**切向量**；于是 $$A\mapsto e^{tA}$$ 是"切向量 → 曲线"的**指数映射**，(S2) 是曲线的群律，定理 3.2(iii) 说"曲线每一点的切向量都是 $$A$$ 的搬运"。这套语言不必限于算子：换成有限维结合代数就是矩阵 Lie 群的指数映射，换成流形上的向量场就是流。第 24 章把它展开成一般的 Lie 群与 Lie 代数，本章已搭好半步——**生成元集合在对易子下封闭**（定理 3.7 里的 $$[A,B]$$ 就是"两个生成元的乘积之差"），这正是 Lie 代数那条公理的来源。
+**二、生成元是单位元处的切向量。** 把 $$t\mapsto T(t)$$ 看成过 $$I$$ 的曲线，$$A=\lim_{t\to0^{+}}\frac{T(t)-I}{t}$$ 是它在 $$I$$ 处的**切向量**；于是 $$A\mapsto e^{tA}$$ 是"切向量 → 曲线"的**指数映射**，(S2) 是曲线的群律，定理 3.2(iii) 说"曲线每一点的切向量都是 $$A$$ 的搬运"。这套语言不必限于算子：换成有限维结合代数就是矩阵 Lie 群的指数映射，换成流形上的向量场就是流。第 48 章把它展开成一般的 Lie 群与 Lie 代数，本章已搭好半步——**生成元集合在对易子下封闭**（定理 3.7 里的 $$[A,B]$$ 就是"两个生成元的乘积之差"），这正是 Lie 代数那条公理的来源。
 
 **三、路径空间上为什么没有测度。** $$(3.11)$$ 的 $$\mathcal P$$ 是无穷维的，而**无穷维空间上不存在平移不变的 $$\sigma$$-有限测度**：若 $$\mu$$ 平移不变并把某个球测成有限正数，就能塞进无穷多个两两不交的等大球（并的测度是 $$\infty$$），而整个空间又能被有限多个这样的球盖住，矛盾。替代品有二：**有限维截断**（$$(3.7)$$ 的右端对每个 $$N$$ 都是老实的 $$nN$$ 维 Lebesgue 积分，"路径积分"是这样一串积分的强极限）与 **Wiener 测度**（时间转到虚轴，增量变成独立高斯，Kolmogorov 延拓给出真正的路径测度，代价是 $$e^{iS/\hbar}$$ 变成 $$e^{-S_E/\hbar}$$）。
 
@@ -781,7 +783,7 @@ $$\lim_{m\to\infty}\Bigl(e^{A/2m}\,e^{B/m}\,e^{A/2m}\Bigr)^{m}=e^{A+B},$$
 **研2.**（生成元、对易子与 Lie 代数）设 $$\mathfrak g$$ 是一个有限维实向量空间，$$\{A_1,\dots,A_n\}$$ 是它的一组基，且每个 $$A_j$$ 是 Hilbert 空间 $$H$$ 上的反自伴算子，并设 $$H$$ 上有一个由这些算子生成的单参数酉群 $$\{U_j(t)=e^{tA_j}\}$$。设所有这些群的乘积（任意顺序、任意有限次）在复合下构成群 $$G$$。
 (i) 证明 $$[A_j,A_k]$$ 仍落在所有 $$A_j$$ 张成的线性空间中（即该线性空间在对易子下封闭）；
 (ii) 由此说明 $$\mathfrak g$$ 是一个 Lie 代数，且 $$e^{\mathfrak g}$$ 给出的元素属于 $$G$$；
-(iii) 说明本章的 $$[A,B]$$ 与第 22 章的正则对易关系 $$[Q_j,P_k]=i\hbar\delta_{jk}$$ 是同一件事的两个实例。
+(iii) 说明本章的 $$[A,B]$$ 与第 44 章的正则对易关系 $$[Q_j,P_k]=i\hbar\delta_{jk}$$ 是同一件事的两个实例。
 
 ### 解答 (Solutions)
 
@@ -996,7 +998,7 @@ $$\bigl(e^{-tH/\hbar}f\bigr)(x_0)=\lim_{N\to\infty}\mathbb E\Bigl[e^{-\frac{1}{\
 
 **第三层：实时间为什么没有测度。** 把 $$(\star)$$ 当期望来读时，那个"密度"是 $$\bigl(\frac{mN}{2\pi i\hbar t}\bigr)^{n/2}e^{\frac{imN\lvert x_k-x_{k-1}\rvert^{2}}{2\hbar t}}$$，其模处处恒为 $$\bigl(\frac{mN}{2\pi\hbar t}\bigr)^{n/2}$$——**不衰减、不非负、积分不为 $$1$$**；$$N$$ 个相乘后总模正是 $$(3.7)$$ 里那个随 $$N\to\infty$$ 发散的前因子，而除掉它之后剩下的 $$e^{i\frac{mN}{2\hbar t}\lvert\cdot\rvert^{2}}$$ 有振荡符号、总质量不为 $$1$$，仍不是概率密度。于是实时间下那些"有限维分布"根本不是概率分布，相容性、延拓、控制收敛全部无从谈起。Cameron 定理（1960）把这条障碍提升为定理：**不存在 $$C([0,t])$$ 上 $$\sigma$$-可加、使 $$e^{\frac i\hbar S}$$ 可积的复测度**能让 $$(3.11)$$ 成立。所以实时间路径积分的唯一严格形态是 $$(3.7)$$ 那条算子强极限。$$\blacksquare$$
 
-注意与下一章的接口：**这正是第 24 章的起点**——那里的变换群由任意有限维 Lie 代数 $$\mathfrak g$$ 的指数映射给出，本章的 $$t\mapsto e^{tA}$$ 只是 $$G=\mathbb R$$ 的特殊情形。
+注意与下一章的接口：**这正是第 48 章的起点**——那里的变换群由任意有限维 Lie 代数 $$\mathfrak g$$ 的指数映射给出，本章的 $$t\mapsto e^{tA}$$ 只是 $$G=\mathbb R$$ 的特殊情形。
 
 **解 研2.** 三问分三步。
 
@@ -1012,15 +1014,15 @@ $$C(t)=I+t^{2}\Bigl[2\Bigl(\frac{A_j^{2}}2+A_jA_k+\frac{A_k^{2}}2\Bigr)-(A_j+A_k
 
 于是 $$t^{-2}\bigl(C(t)-I\bigr)\to[A_j,A_k]$$。这是**群元素组合的极限**，其"无穷小方向"必须落在 $$\mathfrak g$$ 的闭包中——否则换位子会产生 $$\{A_j\}$$ 张成之外的新方向，与 $$G$$ 只由这些单参数群生成矛盾。故 $$[A_j,A_k]=\sum_{\ell}c_{jk}^{\ \ \ell}A_\ell$$：对易子封闭，且给出了 $$\mathfrak g$$ 上的**括号运算** $$[\cdot,\cdot]:\mathfrak g\times\mathfrak g\to\mathfrak g$$。
 
-**(ii) 它是一个 Lie 代数。** 这三条性质都由 $$[X,Y]=XY-YX$$ 直接得到（见第 16 章 定理 3.2）：双线性、反对称 $$[X,Y]=-[Y,X]$$、**Jacobi 恒等式**
+**(ii) 它是一个 Lie 代数。** 这三条性质都由 $$[X,Y]=XY-YX$$ 直接得到（见第 32 章 定理 3.2）：双线性、反对称 $$[X,Y]=-[Y,X]$$、**Jacobi 恒等式**
 
 $$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$$
 
 （把括号写成 $$XY-YX$$ 展开，六项两两抵消）。带这三条性质的实向量空间就是**实 Lie 代数**。于是 $$\mathfrak g$$ 是 Lie 代数，$$G$$ 是它的 Lie 群，而指数映射 $$\exp:\mathfrak g\to G$$ 由 $$e^{tA_j}$$ 的乘积实现。定理 3.7 与 3.8 正是这个指数映射的两条结构定理：$$e^{A+B}=\lim(e^{A/m}e^{B/m})^{m}$$ 说的就是"**$$\mathfrak g$$ 中的向量加法，在 $$G$$ 里要经过乘积与极限才能实现**"。
 
-**(iii) 与正则对易关系的关系。** 第 22 章的 $$[Q_j,P_k]=i\hbar\delta_{jk}$$、$$[Q_j,Q_k]=[P_j,P_k]=0$$ 是 (i) 的实例：$$\{Q_j,P_k\}$$ 张成的（$$2n+1$$ 维，含中心元 $$i\hbar I$$）向量空间对对易子封闭且满足 Jacobi 恒等式——这是 **Heisenberg 代数**。本章的 $$[A,B]$$ 出现在 Trotter 公式的误差主项 (3.5) 里，位置与 CCR 出现在正则量子化里的位置相同：**对易子是"两次无穷小操作的顺序差"的度量**。第 22 章用它刻画位置与动量（代数侧），本章用它刻画时间演化的两步拆分（分析侧）——同一件代数的两面。
+**(iii) 与正则对易关系的关系。** 第 44 章的 $$[Q_j,P_k]=i\hbar\delta_{jk}$$、$$[Q_j,Q_k]=[P_j,P_k]=0$$ 是 (i) 的实例：$$\{Q_j,P_k\}$$ 张成的（$$2n+1$$ 维，含中心元 $$i\hbar I$$）向量空间对对易子封闭且满足 Jacobi 恒等式——这是 **Heisenberg 代数**。本章的 $$[A,B]$$ 出现在 Trotter 公式的误差主项 (3.5) 里，位置与 CCR 出现在正则量子化里的位置相同：**对易子是"两次无穷小操作的顺序差"的度量**。第 44 章用它刻画位置与动量（代数侧），本章用它刻画时间演化的两步拆分（分析侧）——同一件代数的两面。
 
-**下一章的任务**：本章的 $$A,B$$ 都作用在同一个 Hilbert 空间上、且群参数只有一维（时间）。第 24 章要把"空间"也换掉——不再有固定的原点与固定的内积，而是**仿射空间**（丢掉原点，保留平移）上的**变换群**，以及描述它们无穷小结构的 **Lie 群与 Lie 代数**。本章的 $$e^{tA}$$ 在那里会变成 $$\exp:\mathfrak g\to G$$ 的一般公式，而定理 3.7 会变成 Baker–Campbell–Hausdorff 公式的第一项。**这正是第 24 章的起点。**
+**下一章的任务**：本章的 $$A,B$$ 都作用在同一个 Hilbert 空间上、且群参数只有一维（时间）。第 48 章要把"空间"也换掉——不再有固定的原点与固定的内积，而是**仿射空间**（丢掉原点，保留平移）上的**变换群**，以及描述它们无穷小结构的 **Lie 群与 Lie 代数**。本章的 $$e^{tA}$$ 在那里会变成 $$\exp:\mathfrak g\to G$$ 的一般公式，而定理 3.7 会变成 Baker–Campbell–Hausdorff 公式的第一项。**这正是第 48 章的起点。**
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -1034,20 +1036,19 @@ $$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$$
 
 **5. 路径积分没有测度，它是算子极限。** (3.11) 的 $$\mathcal D x(\cdot)$$ 不是测度记号：路径空间是无穷维的，平移不变的 $$\sigma$$-有限测度不存在，而 Cameron 定理排除了把它做成 $$\sigma$$-可加复测度。它的严格身份是定理 3.11——**有限维 Lebesgue 积分序列的强极限**；转到虚时间后测度真的出现（Wiener 测度），即 Feynman–Kac 公式 (3.12)。**路径积分不含新公理：它是 Stone 定理 + Stone–von Neumann + Trotter 公式的合成。**
 
-**下一章的悬念。** 本章的 $$A,B$$ 作用在同一个 Hilbert 空间上，群参数只有一维（时间），且有固定的原点与内积。第 24 章要把这两条都拿掉：**仿射空间**丢掉原点但保留平移，**变换群**让"空间"本身动起来，描述它们无穷小结构的就是 **Lie 群与 Lie 代数**；本章的 $$e^{tA}$$ 在那里一般化为 $$\exp:\mathfrak g\to G$$，定理 3.7 的 $$[A,B]$$ 会成为 Baker–Campbell–Hausdorff 公式的第一项。卷三到此收束，卷四从仿射空间重新出发去讲对称性本身。
+**下一章的悬念。** 本章的 $$A,B$$ 作用在同一个 Hilbert 空间上，群参数只有一维（时间），且有固定的原点与内积。第 48 章要把这两条都拿掉：**仿射空间**丢掉原点但保留平移，**变换群**让"空间"本身动起来，描述它们无穷小结构的就是 **Lie 群与 Lie 代数**；本章的 $$e^{tA}$$ 在那里一般化为 $$\exp:\mathfrak g\to G$$，定理 3.7 的 $$[A,B]$$ 会成为 Baker–Campbell–Hausdorff 公式的第一项。卷三到此收束，卷四从仿射空间重新出发去讲对称性本身。
 
 **延伸阅读。**
 
 - **半群与生成元**：K.-J. Engel, R. Nagel, *One-Parameter Semigroups for Linear Evolution Equations*（GTM 194）第 II、III 章（定理 3.5 与定理 3.9 的完整证明）；T. Kato, *Perturbation Theory for Linear Operators*（GTM 132）第 IX 章（Trotter–Kato）；原始文献 H. F. Trotter, *On the product of semi-groups of operators*, Proc. AMS 10 (1959)。
 - **路径积分的数学构造**：B. Simon, *Functional Integration and Quantum Physics*；J. Glimm, A. Jaffe, *Quantum Physics: A Functional Integral Point of View*。Feynman–Kac 公式与 Wiener 测度是这两本的主线。
 - **无穷维测度**：Bogachev, *Measure Theory* 中关于无穷维测度的章节——"无穷维没有平移不变测度"与测度论里"可数可加性只在可测集上成立"是同一类现象（把"太大"的族限制掉）。
-- **本课程内部**：第 21、22 章是本章的两条输入，第 19 章的谱定理是全部积分的计算工具，第 17 章给出 $$H$$ 的来源。物理侧对照 QFT 的路径积分表述（知识库 `opc2/knowledge/physics/量子场论/`）——那里从 $$(3.11)$$ 出发的大量形式操作，正是本章要分辨"哪些有严格含义、哪些只是渐近展开"的对象。
-
+- **本课程内部**：第 21、22 章是本章的两条输入，第 38 章的谱定理是全部积分的计算工具，第 34 章给出 $$H$$ 的来源。物理侧对照 QFT 的路径积分表述（知识库 `opc2/knowledge/physics/量子场论/`）——那里从 $$(3.11)$$ 出发的大量形式操作，正是本章要分辨"哪些有严格含义、哪些只是渐近展开"的对象。
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch22_正则对易关系与Stone_vonNeumann.md">← 第22章 正则对易关系与 Stone–von Neumann 定理</a></div>
+  <div><a href="ch45_算子半群与Feynman路径积分_上.md">← 第45章 算子半群与 Feynman 路径积分·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch24_仿射空间_变换群与Lie群.md">第24章 仿射空间、变换群与 Lie 群 →</a></div>
+  <div><a href="ch47_仿射空间_变换群与Lie群_上.md">第47章 仿射空间、变换群与 Lie 群·上 →</a></div>
 </div>

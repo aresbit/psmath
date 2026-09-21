@@ -2,23 +2,25 @@
 layout: default
 ---
 
-# 第29章: Clifford 代数与 Lorentz 群 (Clifford Algebras and the Lorentz Group)
+# 第58章: Clifford 代数与 Lorentz 群·下：完整推导 (Clifford Algebras and the Lorentz Group · Part II: Full Derivation)
+
 > 对应原专栏: MP104–MP106
 > 专家依据: `_experts/algebra/representation-theory.md`（主）+ `_experts/algebra/lie-algebra-root-systems.md`
 > 知识库依据: `opc2/knowledge/physics/量子场论/tong-qft/`、`opc2/knowledge/math/李代数/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第57章 Clifford 代数与 Lorentz 群·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
-第 07 章把「外积」做成了一台可以计算的机器：外代数 $$\Lambda(V)$$，它的构造方式是拿张量代数 $$T(V)$$ 商掉「**平方为零**」这个理想。第 26 章把三维旋转讲成了一次双重覆盖 $$S^3\to SO(3)$$，代价是「同一个旋转对应两个四元数」。第 28 章把半单 Lie 代数拆成根系，那是纯粹的结构分类。三条线在本章汇成一条：**把二次型升级成一个代数 $$\mathrm{Cl}(V,q)$$，再用它把 Lorentz 群讲成自旋群的双重覆盖。**
+第 14 章把「外积」做成了一台可以计算的机器：外代数 $$\Lambda(V)$$，它的构造方式是拿张量代数 $$T(V)$$ 商掉「**平方为零**」这个理想。第 52 章把三维旋转讲成了一次双重覆盖 $$S^3\to SO(3)$$，代价是「同一个旋转对应两个四元数」。第 56 章把半单 Lie 代数拆成根系，那是纯粹的结构分类。三条线在本章汇成一条：**把二次型升级成一个代数 $$\mathrm{Cl}(V,q)$$，再用它把 Lorentz 群讲成自旋群的双重覆盖。**
 
-本章要回答两个问题。第一个是代数的：二次型只能告诉你一个向量的「长度」，Clifford 代数要告诉你两个向量的「乘积」。这个升级是怎么做出来的？答案是——**用第 07 章一模一样的商构造，只换一个理想**：外代数商掉 $$v\otimes v$$（于是 $$v^2=0$$），Clifford 代数商掉 $$v\otimes v-q(v)\mathbf 1$$（于是 $$v^2=q(v)$$）。**外代数与 Clifford 代数是同一个构造的两端**：一端把度量忘掉，一端把度量记牢。把这组对照讲清楚，才知道为什么它配得上「代数」这个称呼。
+本章要回答两个问题。第一个是代数的：二次型只能告诉你一个向量的「长度」，Clifford 代数要告诉你两个向量的「乘积」。这个升级是怎么做出来的？答案是——**用第 14 章一模一样的商构造，只换一个理想**：外代数商掉 $$v\otimes v$$（于是 $$v^2=0$$），Clifford 代数商掉 $$v\otimes v-q(v)\mathbf 1$$（于是 $$v^2=q(v)$$）。**外代数与 Clifford 代数是同一个构造的两端**：一端把度量忘掉，一端把度量记牢。把这组对照讲清楚，才知道为什么它配得上「代数」这个称呼。
 
 第二个是几何与物理的：相对论的转动群 $$SO(1,3)$$ 为什么有一个「转两圈才回来」的双重覆盖？那个多出来的、不属于任何向量的东西（旋量）究竟是什么？
 
-**从哪来**：第 07 章的商构造（同一个模板，换一个理想）；第 04 章的双线性形式与迷向向量；第 26 章的 $$SU(2)\cong S^3$$ 与 $$S^3\to SO(3)$$（本章把它升级成四维时空版 $$\mathrm{SL}(2,\mathbb C)\to SO(1,3)^{\uparrow}$$）；第 27–28 章的 Lie 代数（$$\gamma$$ 矩阵的反对易关系就是 $$\mathfrak{so}(1,3)$$ 的复化在旋量空间上的一个实现）。
+**从哪来**：第 14 章的商构造（同一个模板，换一个理想）；第 08 章的双线性形式与迷向向量；第 52 章的 $$SU(2)\cong S^3$$ 与 $$S^3\to SO(3)$$（本章把它升级成四维时空版 $$\mathrm{SL}(2,\mathbb C)\to SO(1,3)^{\uparrow}$$）；第 27–28 章的 Lie 代数（$$\gamma$$ 矩阵的反对易关系就是 $$\mathfrak{so}(1,3)$$ 的复化在旋量空间上的一个实现）。
 
-**到哪去**：第 30 章用本章的旋量讲 Möbius 群与射影表示——那里会看到，「多出一层」在量子力学里的名字叫「态矢差一个相位」。
+**到哪去**：第 60 章用本章的旋量讲 Möbius 群与射影表示——那里会看到，「多出一层」在量子力学里的名字叫「态矢差一个相位」。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -52,7 +54,7 @@ $$\gamma^\mu\gamma^\nu+\gamma^\nu\gamma^\mu=2\eta^{\mu\nu}I,\qquad \eta=\operato
 
 $$R(\theta)=\begin{pmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{pmatrix},\qquad \theta\in[0,2\pi].$$
 
-**(B1)** 用第 26 章的四元数语言（或直接用复数）把这条道路**提升**到 $$S^3$$ 上：找一个连续道路 $$q(\theta)\in S^3$$ 使 $$\rho(q(\theta))=R(\theta)$$ 且 $$q(0)=1$$。问 $$q(2\pi)$$ 等于什么？
+**(B1)** 用第 52 章的四元数语言（或直接用复数）把这条道路**提升**到 $$S^3$$ 上：找一个连续道路 $$q(\theta)\in S^3$$ 使 $$\rho(q(\theta))=R(\theta)$$ 且 $$q(0)=1$$。问 $$q(2\pi)$$ 等于什么？
 
 **(B2)** 现在换到四维时空。取 Minkowski 坐标 $$x=(x^0,x^1,x^2,x^3)$$，定义
 
@@ -86,7 +88,7 @@ $$q(x+y)=b(x+y,x+y)=b(x,x)+b(x,y)+b(y,x)+b(y,y)=q(x)+q(y)+2b(x,y).$$
 
 两边解出 $$b(x,y)$$ 即得。**这里用到了 $$2\ne0$$ 这条特征假设**：特征 $$2$$ 时「对称双线性」与「二次型」不再一一对应，整门课会变形，本书不予处理。$$\blacksquare$$
 
-于是「二次型」与「对称双线性形式」在特征 $$\ne2$$ 时是同一份数据的两种说法。**定义 3.1 是第 04 章那个「内积」的放松版**：那里要求 $$q(x)>0$$（正定），这里只要求 $$q$$ 是二次型，允许负值、允许零。
+于是「二次型」与「对称双线性形式」在特征 $$\ne2$$ 时是同一份数据的两种说法。**定义 3.1 是第 08 章那个「内积」的放松版**：那里要求 $$q(x)>0$$（正定），这里只要求 $$q$$ 是二次型，允许负值、允许零。
 
 一个向量 $$x\ne0$$ 若满足 $$q(x)=0$$，称为**迷向向量 (isotropic vector)**；含迷向向量的二次空间称为**迷向的 (isotropic)**。这正是入口题 B 里 $$\det X=0$$ 对应的情形——光锥上的向量和自己正交。若恒有：$$q(x)=0\Longrightarrow x=0$$，则称 $$q$$ 是**非退化的 (nondegenerate)**。
 
@@ -108,7 +110,7 @@ $$T(V)=\bigoplus_{k\ge0}T^k(V),$$
 
 $$T(V)$$ 是「以 $$V$$ 的向量为生成元、除双线性外不附加任何关系」的自由结合代数：它是所有含 $$V$$ 的含幺结合代数里「最松」的那一个。**本章的技术核心只有一句话：想要一个代数，就在 $$T(V)$$ 里挑一个理想商掉它。**
 
-**定理 3.3（外代数 = 商掉「平方为零」；回顾第 07 章的定义 3.4）** 记 $$I_{\wedge}$$ 为 $$T(V)$$ 中由一切 $$v\otimes v\ (v\in V)$$ 生成的**双边理想**（即由这些元素与 $$T(V)$$ 中任意元素的乘积线性张成的最小子空间，它对左乘、右乘封闭）。定义
+**定理 3.3（外代数 = 商掉「平方为零」；回顾第 14 章的定义 3.4）** 记 $$I_{\wedge}$$ 为 $$T(V)$$ 中由一切 $$v\otimes v\ (v\in V)$$ 生成的**双边理想**（即由这些元素与 $$T(V)$$ 中任意元素的乘积线性张成的最小子空间，它对左乘、右乘封闭）。定义
 
 $$\Lambda(V)=T(V)/I_{\wedge}.$$
 
@@ -142,7 +144,7 @@ $$\mathrm{Cl}(V,q)=T(V)/I_q,$$
 
 其乘法称为 **Clifford 积 (Clifford product)**，习惯上省去乘号，写成 $$vw$$。
 
-**必须显式点出的一步——两条路的并排对照。** 第 07 章和本章用的是**同一个模板** $$T(V)/I$$，唯一的区别是理想：
+**必须显式点出的一步——两条路的并排对照。** 第 14 章和本章用的是**同一个模板** $$T(V)/I$$，唯一的区别是理想：
 
 | | 外代数 $$\Lambda(V)$$ | Clifford 代数 $$\mathrm{Cl}(V,q)$$ |
 |---|---|---|
@@ -192,11 +194,11 @@ $$(v+w)^2-(v-w)^2=2(vw+wv),\qquad q(v+w)-q(v-w)=4b(v,w),$$
 
 $$\dim\mathrm{Cl}(V,q)\le 2^n.$$
 
-**再证「线性无关」**。我们用第 07 章已经证过的结论：递增楔积 $$e_{i_1}\wedge\cdots\wedge e_{i_k}$$ 构成 $$\Lambda(V)$$ 的一组基（第 07 章的定理 3.8）。在向量空间 $$\Lambda(V)$$ 上，对每个指标 $$j$$ 定义线性算子
+**再证「线性无关」**。我们用第 14 章已经证过的结论：递增楔积 $$e_{i_1}\wedge\cdots\wedge e_{i_k}$$ 构成 $$\Lambda(V)$$ 的一组基（第 14 章的定理 3.8）。在向量空间 $$\Lambda(V)$$ 上，对每个指标 $$j$$ 定义线性算子
 
 $$c_j=\varepsilon_j+q(e_j)\,\iota_j,\qquad \varepsilon_j(\omega)=e_j\wedge\omega,$$
 
-其中 $$\iota_j$$ 是缩并（内乘）：它是 $$\Lambda(V)$$ 上唯一的反导子（antiderivation，即满足 $$\iota_j(\omega\wedge\eta)=\iota_j(\omega)\wedge\eta+(-1)^{\deg\omega}\omega\wedge\iota_j(\eta)$$），并规定 $$\iota_j(e_k)=\delta_{jk}$$。由第 07 章的定理 3.6（分次反交换），直接验证得三条关系：
+其中 $$\iota_j$$ 是缩并（内乘）：它是 $$\Lambda(V)$$ 上唯一的反导子（antiderivation，即满足 $$\iota_j(\omega\wedge\eta)=\iota_j(\omega)\wedge\eta+(-1)^{\deg\omega}\omega\wedge\iota_j(\eta)$$），并规定 $$\iota_j(e_k)=\delta_{jk}$$。由第 14 章的定理 3.6（分次反交换），直接验证得三条关系：
 
 $$\varepsilon_i\varepsilon_j+\varepsilon_j\varepsilon_i=0,\qquad \iota_i\iota_j+\iota_j\iota_i=0,\qquad \varepsilon_i\iota_j+\iota_j\varepsilon_i=\delta_{ij}\operatorname{id}.$$
 
@@ -212,7 +214,7 @@ $$\rho:\ \mathrm{Cl}(V,q)\longrightarrow\operatorname{End}\bigl(\Lambda(V)\bigr)
 
 $$\sum_{\#I=k}\lambda_I\,(\pm e_I).$$
 
-它是 $$0$$（因为总和是零算子）。由第 07 章的定理 3.8，$$k$$ 次楔积 $$e_I$$ 线性无关，故所有 $$\#I=k$$ 的 $$\lambda_I$$ 都是 $$0$$，与 $$I$$ 的选取矛盾。既然 $$\rho(e_I)$$ 线性无关，而 $$\rho$$ 是定义在整个 $$\mathrm{Cl}(V,q)$$ 上的同态，$$e_I$$ 本身也线性无关。结合上界的 $$\dim\le 2^n$$，得 $$\dim=2^n$$，且 $$e_I$$ 是一组基。$$\blacksquare$$
+它是 $$0$$（因为总和是零算子）。由第 14 章的定理 3.8，$$k$$ 次楔积 $$e_I$$ 线性无关，故所有 $$\#I=k$$ 的 $$\lambda_I$$ 都是 $$0$$，与 $$I$$ 的选取矛盾。既然 $$\rho(e_I)$$ 线性无关，而 $$\rho$$ 是定义在整个 $$\mathrm{Cl}(V,q)$$ 上的同态，$$e_I$$ 本身也线性无关。结合上界的 $$\dim\le 2^n$$，得 $$\dim=2^n$$，且 $$e_I$$ 是一组基。$$\blacksquare$$
 
 **定理 3.5 读法**：Clifford 代数的大小只由 $$\dim V$$ 决定（$$2^n$$），与二次型的数值无关。**「反对易」这件事本身是硬的，二次型的数值只是松弛的部分。**入口题 A 的维数锁死，本质就在这里。
 
@@ -422,9 +424,9 @@ $$\langle AXA^*u,u\rangle=\langle XA^*u,A^*u\rangle>0\ \ (\text{因 }X\text{ 正
 
 这里用到 $$\mathrm{SO}(1,3)^{\uparrow}$$ 连通：任一 $$\Lambda\in\mathrm{SO}(1,3)^{\uparrow}$$ 唯一地分解为 $$\Lambda=B\cdot R$$（$$B$$ 是沿某个时间方向的 boost，$$R\in\mathrm{SO}(3)$$），boost 全体同胚于 $$\mathbb R^3$$（可缩），$$\mathrm{SO}(3)$$ 连通，故整体连通。$$\blacksquare$$
 
-*证明 (iv)*：极分解把可逆矩阵写成 $$A=UP$$（$$U$$ 酉、$$P$$ 正定 Hermite）；$$\det A=1$$ 时 $$\det U=1$$，$$U\in \mathrm{SU}(2)$$，而这样的 $$P$$ 全体是 $$\mathbb R^3$$ 中一个凸集（对数映射下是迹为 $$0$$ 的实对称矩阵，凸）。于是 $$\mathrm{SL}(2,\mathbb C)$$ 沿 $$P$$ 收缩到 $$\mathrm{SU}(2)\cong S^3$$（第 26 章的定理 3.4），而 $$S^3$$ 单连通，故 $$\mathrm{SL}(2,\mathbb C)$$ 单连通、连通。由 (iii)，$$\Lambda$$ 是两层覆叠（每点纤维恰两个元素）；单连通的覆叠空间是万有覆叠，覆叠变换群 $$\{\pm I_2\}\cong\mathbb Z/2$$ 同构于底空间的基本群，故 $$\pi_1(\mathrm{SO}(1,3)^{\uparrow})=\mathbb Z/2$$。$$\blacksquare$$
+*证明 (iv)*：极分解把可逆矩阵写成 $$A=UP$$（$$U$$ 酉、$$P$$ 正定 Hermite）；$$\det A=1$$ 时 $$\det U=1$$，$$U\in \mathrm{SU}(2)$$，而这样的 $$P$$ 全体是 $$\mathbb R^3$$ 中一个凸集（对数映射下是迹为 $$0$$ 的实对称矩阵，凸）。于是 $$\mathrm{SL}(2,\mathbb C)$$ 沿 $$P$$ 收缩到 $$\mathrm{SU}(2)\cong S^3$$（第 52 章的定理 3.4），而 $$S^3$$ 单连通，故 $$\mathrm{SL}(2,\mathbb C)$$ 单连通、连通。由 (iii)，$$\Lambda$$ 是两层覆叠（每点纤维恰两个元素）；单连通的覆叠空间是万有覆叠，覆叠变换群 $$\{\pm I_2\}\cong\mathbb Z/2$$ 同构于底空间的基本群，故 $$\pi_1(\mathrm{SO}(1,3)^{\uparrow})=\mathbb Z/2$$。$$\blacksquare$$
 
-**注（与定义 3.10 的对应）**：定理 3.11 的抽象自旋群与本节这个 $$\mathrm{SL}(2,\mathbb C)$$ 是同一个群：在定理 3.8(iii) 的 Dirac 表示下，偶子代数 $$\mathrm{Cl}^0$$ 的元素恰是分块对角矩阵 $$\operatorname{diag}(A,B)$$，其中自旋群的那部分形如 $$\operatorname{diag}\bigl(A,(A^*)^{-1}\bigr)$$，$$A\in\mathrm{SL}(2,\mathbb C)$$；对两个生成元（旋转 $$e_1e_2$$ 与 boost $$e_0e_3$$）直接验证，再由「$$B=(A^*)^{-1}$$」对乘法封闭推广到全群。故 $$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$。**这一步的完整展开需要把 $$\mathrm{Cl}(1,3)$$ 的偶部分与 $$M_2(\mathbb C)$$ 的矩阵结构逐块对上，本章只用到它的结论**；第 30 章的射影表示只需要「存在一个连通双层覆叠」这一事实。
+**注（与定义 3.10 的对应）**：定理 3.11 的抽象自旋群与本节这个 $$\mathrm{SL}(2,\mathbb C)$$ 是同一个群：在定理 3.8(iii) 的 Dirac 表示下，偶子代数 $$\mathrm{Cl}^0$$ 的元素恰是分块对角矩阵 $$\operatorname{diag}(A,B)$$，其中自旋群的那部分形如 $$\operatorname{diag}\bigl(A,(A^*)^{-1}\bigr)$$，$$A\in\mathrm{SL}(2,\mathbb C)$$；对两个生成元（旋转 $$e_1e_2$$ 与 boost $$e_0e_3$$）直接验证，再由「$$B=(A^*)^{-1}$$」对乘法封闭推广到全群。故 $$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$。**这一步的完整展开需要把 $$\mathrm{Cl}(1,3)$$ 的偶部分与 $$M_2(\mathbb C)$$ 的矩阵结构逐块对上，本章只用到它的结论**；第 60 章的射影表示只需要「存在一个连通双层覆叠」这一事实。
 
 **定理 3.13（旋量空间与手征分解, spinor space and chirality）** 记 $$S=\mathbb C^4$$ 为 $$\mathrm{Cl}(1,3)\otimes_{\mathbb R}\mathbb C\cong M_4(\mathbb C)$$ 的唯一不可约模。定义
 
@@ -496,23 +498,23 @@ $$(V,q)\cong(H_1\perp H_2\perp\cdots\perp H_m)\perp(W,q),$$
 
 *证明思路 (ii)*：若 $$(V,q)$$ 不含非零迷向向量，取 $$m=0,\ W=V$$。否则取迷向 $$x\ne0$$，因 $$q$$ 非退化存在 $$y$$ 使 $$b(x,y)\ne0$$，把 $$y$$ 减去 $$x$$ 的倍数使 $$q(y)=0$$，则 $$H_1=\operatorname{span}(x,y)$$ 是双曲平面且 $$(V,q)\cong(H_1)\perp(H_1^{\perp})$$；对 $$H_1^{\perp}$$ 重复（维数下降），有限步停止。唯一性由 (i) 与维数计数给出。$$\blacksquare$$
 
-在 $$\mathbb R^{1,3}$$ 里，$$m=1$$：Minkowski 空间恰由一个双曲平面（由两个光向量的组合给出）加上一个 $$2$$ 维非迷向部分构成——这就是「光锥的存在」在代数上的精确表达。这正是第 04 章的迷向向量与本章的 Clifford 代数在同一个地方碰头。
+在 $$\mathbb R^{1,3}$$ 里，$$m=1$$：Minkowski 空间恰由一个双曲平面（由两个光向量的组合给出）加上一个 $$2$$ 维非迷向部分构成——这就是「光锥的存在」在代数上的精确表达。这正是第 08 章的迷向向量与本章的 Clifford 代数在同一个地方碰头。
 
 ## 四、几何与物理直觉 (Intuition)
 
-**一幅图：同一个模板的两端。** 把本章与第 07 章并排放在一起看：
+**一幅图：同一个模板的两端。** 把本章与第 14 章并排放在一起看：
 
 $$T(V)\ \xrightarrow{\ \text{商掉 }v\otimes v\ }\ \Lambda(V)\quad(\text{度量被遗忘}),\qquad T(V)\ \xrightarrow{\ \text{商掉 }v\otimes v-q(v)\mathbf 1\ }\ \mathrm{Cl}(V,q)\quad(\text{度量被记住}).$$
 
-外代数的乘法是「有向面积」的乘法：它只关心**次序**（交换变号），不关心长度。Clifford 乘法则同时记住次序与长度：$$vw+wv=2b(v,w)$$ 里的 $$b(v,w)$$ 就是长度与夹角。**「为什么叫代数」在这里有了答案**：因为它有乘法、有单位元、满足结合律，而且乘法规则里整个二次型都封存进去了。第 07 章的 $$\Lambda(V)$$ 与本章的 $$\mathrm{Cl}(V,q)$$ 是同一台机器装了两个不同的「关系模块」——把它们并排看，才看出「外代数」这个名字其实是一族结构里最松的那一端。
+外代数的乘法是「有向面积」的乘法：它只关心**次序**（交换变号），不关心长度。Clifford 乘法则同时记住次序与长度：$$vw+wv=2b(v,w)$$ 里的 $$b(v,w)$$ 就是长度与夹角。**「为什么叫代数」在这里有了答案**：因为它有乘法、有单位元、满足结合律，而且乘法规则里整个二次型都封存进去了。第 14 章的 $$\Lambda(V)$$ 与本章的 $$\mathrm{Cl}(V,q)$$ 是同一台机器装了两个不同的「关系模块」——把它们并排看，才看出「外代数」这个名字其实是一族结构里最松的那一端。
 
 **反射是几何进入代数的通道。** 定理 3.9 说，反射这个最朴素的几何操作，在 Clifford 代数里就是一次共轭 $$-y\,x\,y^{-1}$$。于是「一串反射」变成「一个积」，而「偶长串」构成的集合就是自旋群。**几何的反射群与代数的可逆元群在这一行公式上对上了**；Cartan–Dieudonné 反过来告诉你，这个群的像已经覆盖了旋转的全部。这不是巧合，而是三明治公式的必然。
 
-**物理：为什么自旋 $$1/2$$ 的粒子要「绕两圈」。** 一个自旋 $$1/2$$ 的粒子（电子、中子）的**态**不是由空间转动直接作用的，而是由它的双层覆叠中的元素（第 26 章的 $$q\in S^3$$、本章的 $$A\in\mathrm{SL}(2,\mathbb C)$$）作用的；$$A$$ 与 $$-A$$ 给出同一个转动，但在态上**作用差一个符号**。所以把粒子转 $$360^\circ$$ 会让态变成相反数，只有转 $$720^\circ$$ 才真正复原。中子干涉仪把这个符号测了出来——这是「多出的一层」在实验室里被看见的少数例子之一。
+**物理：为什么自旋 $$1/2$$ 的粒子要「绕两圈」。** 一个自旋 $$1/2$$ 的粒子（电子、中子）的**态**不是由空间转动直接作用的，而是由它的双层覆叠中的元素（第 52 章的 $$q\in S^3$$、本章的 $$A\in\mathrm{SL}(2,\mathbb C)$$）作用的；$$A$$ 与 $$-A$$ 给出同一个转动，但在态上**作用差一个符号**。所以把粒子转 $$360^\circ$$ 会让态变成相反数，只有转 $$720^\circ$$ 才真正复原。中子干涉仪把这个符号测了出来——这是「多出的一层」在实验室里被看见的少数例子之一。
 
 **Lorentz 群的分量。** $$O(1,3)$$ 由两个不变量切成四块：$$\det$$ 的符号（$$\pm1$$）与是否保持时间方向（把前向锥映到自身还是相反）。$$\mathrm{SO}(1,3)^{\uparrow}$$ 是含单位元的那一块，是连通的，也是物理上唯一可实现的部分（时间不能倒流）。本章的覆叠正是它的覆叠：$$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}(1,3)^{\uparrow}$$。**光锥对应「迷向锥」**——$$\det X=0$$ 的 $$x$$ 全体，也就是与自己正交的非零向量，即定理 3.16 里那个双曲平面 $$H_1$$ 张成的对象。
 
-**三段对应的第四条链。** 几何：等距群 $$O(q)$$、反射、双曲平面与 Witt 分解；物理：Lorentz 不变性、$$\gamma$$ 矩阵、Dirac 旋量、手征；代数：$$\mathrm{Cl}(V,q)$$、$$\mathrm{Spin}(V,q)$$、偶子代数 $$\mathrm{Cl}^0$$。第 26 章那条链（$$SO(2)\cong S^1$$ 与 $$SO(3)\cong S^3/\{\pm1\}$$）在这里升级成第四条、也是最后一条：$$SO(1,3)^{\uparrow}\cong\mathrm{SL}(2,\mathbb C)/\{\pm I\}$$——**同一个「对径折叠」动作，第四个维度**。
+**三段对应的第四条链。** 几何：等距群 $$O(q)$$、反射、双曲平面与 Witt 分解；物理：Lorentz 不变性、$$\gamma$$ 矩阵、Dirac 旋量、手征；代数：$$\mathrm{Cl}(V,q)$$、$$\mathrm{Spin}(V,q)$$、偶子代数 $$\mathrm{Cl}^0$$。第 52 章那条链（$$SO(2)\cong S^1$$ 与 $$SO(3)\cong S^3/\{\pm1\}$$）在这里升级成第四条、也是最后一条：$$SO(1,3)^{\uparrow}\cong\mathrm{SL}(2,\mathbb C)/\{\pm I\}$$——**同一个「对径折叠」动作，第四个维度**。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -642,7 +644,7 @@ $$s(\gamma(2\pi))=\varepsilon A(2\pi)=-\varepsilon I_2.$$
 
 **竞4.** 用定理 3.12 的 Hermite 矩阵模型证明：$$x\in\mathbb R^{1,3}$$ 满足 $$q(x)>0$$ 当且仅当 $$X(x)$$ 正定或负定；进一步，$$q(x)>0$$ 且 $$x^0>0$$ 当且仅当 $$X(x)$$ 正定。
 
-**竞5.** 证明定理 3.12 的覆叠限制在 $$\mathrm{SU}(2)=\{A\in M_2(\mathbb C):AA^*=I,\ \det A=1\}$$ 上，给出第 26 章的双重覆叠 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$。也就是说，第 26 章是本章在 $$x^0=0$$ 截面上的特例。
+**竞5.** 证明定理 3.12 的覆叠限制在 $$\mathrm{SU}(2)=\{A\in M_2(\mathbb C):AA^*=I,\ \det A=1\}$$ 上，给出第 52 章的双重覆叠 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$。也就是说，第 52 章是本章在 $$x^0=0$$ 截面上的特例。
 
 ### 研究（通向下一章）
 
@@ -774,7 +776,7 @@ $$\omega^2=(-1)^{6}\,e_0^2e_1^2e_2^2e_3^2=1\cdot1\cdot(-1)\cdot(-1)\cdot(-1)=-1.
 
 **第六步：满射。** $$R_\bullet:\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 的像是连通闭子群。$$\mathrm{SU}(2)$$ 与 $$\mathrm{SO}(3)$$ 都是 $$3$$ 维；由第五步，$$\ker R_\bullet=\{\pm I\}$$ 是 $$0$$ 维的，故 $$\dim\operatorname{im}R_\bullet=\dim\mathrm{SU}(2)-\dim\ker=3$$（同态基本定理在 Lie 群层面的维数形式）。$$\mathrm{SO}(3)$$ 是连通的 $$3$$ 维 Lie 群，它唯一的 $$3$$ 维连通子群是它自己（同维数的闭子群是开子群，连通群的非常数开子群不存在），故 $$R_\bullet$$ 满射。
 
-综上，$$A\mapsto R_A$$ 是连续满同态 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$，核 $$\{\pm I\}$$——这正是第 26 章的定理 3.7 与定理 3.9。**第 26 章是本章在时间坐标冻结时的截面。**$$\blacksquare$$
+综上，$$A\mapsto R_A$$ 是连续满同态 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$，核 $$\{\pm I\}$$——这正是第 52 章的定理 3.7 与定理 3.9。**第 52 章是本章在时间坐标冻结时的截面。**$$\blacksquare$$
 
 **解 研1.** (a) 设 $$T$$ 全迷向。则 $$q\vert_T\equiv0$$，由极化恒等式 $$b\vert_T\equiv0$$，即 $$T\subseteq T^{\perp}$$。于是
 
@@ -816,7 +818,7 @@ $$\bar\sigma:\ \mathrm{SL}(2,\mathbb C)\longrightarrow\mathrm{PGL}(S),\qquad A\l
 
 **为什么这正是量子力学的「相位」**：$$\rho$$ 与 $$\bar\rho$$ 的差别恰好是每个元素被允许附上一个非零标量。物理上，量子态由 $$\mathbb C^4$$ 中的**射线**（一维子空间）描述，而不是矢量；把 $$v$$ 与 $$\lambda v$$ 视为同一个态，正是从 $$\mathrm{GL}(S)$$ 走到 $$\mathrm{PGL}(S)$$ 的那一步商。旋量表示只下降为 $$\mathrm{SO}(1,3)^{\uparrow}$$ 的射影表示，而「多出来的符号」就是 $$\mathrm{SL}(2,\mathbb C)$$ 这个双层覆叠的指纹。
 
-注意 $$\bar\rho$$ 的非平凡性来自 $$\sigma$$ 的核：$$\sigma(A)=I_4$$ 只在 $$A=I_2$$ 时成立（对 $$A=-I_2$$ 有 $$\sigma=-I_4\ne I_4$$），所以这个射影表示不是从任何一个普通表示「贴着」来的——它只活在这一层。**一般地，一个群的射影表示由它的万有覆叠的中心扩张来分类，这正是第 30 章（Möbius 群、双重覆盖与射影表示）的起点。**$$\blacksquare$$
+注意 $$\bar\rho$$ 的非平凡性来自 $$\sigma$$ 的核：$$\sigma(A)=I_4$$ 只在 $$A=I_2$$ 时成立（对 $$A=-I_2$$ 有 $$\sigma=-I_4\ne I_4$$），所以这个射影表示不是从任何一个普通表示「贴着」来的——它只活在这一层。**一般地，一个群的射影表示由它的万有覆叠的中心扩张来分类，这正是第 60 章（Möbius 群、双重覆盖与射影表示）的起点。**$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -830,15 +832,14 @@ $$\bar\sigma:\ \mathrm{SL}(2,\mathbb C)\longrightarrow\mathrm{PGL}(S),\qquad A\l
 
 5. **旋量只承载射影表示。** $$-I_2\in\mathrm{SL}(2,\mathbb C)$$ 在向量上作用平凡、在旋量上作用为 $$-I_4$$，于是旋量不能给出 $$\mathrm{SO}(1,3)^{\uparrow}$$ 的普通表示，只能给出射影表示（研究题 2）。
 
-**下一章的悬念**：第 30 章把这一层「多出来的相位」独立出来讲——Möbius 群怎么把 $$\mathrm{SL}(2,\mathbb C)$$ 的作用看成球面上的共形变换？为什么「射影表示」是量子力学里唯一合理的表示概念？本章的 $$\mathrm{Spin}(1,3)$$ 与覆叠，将在那里升级为任意维的 Möbius 群与它的双重覆叠。
+**下一章的悬念**：第 60 章把这一层「多出来的相位」独立出来讲——Möbius 群怎么把 $$\mathrm{SL}(2,\mathbb C)$$ 的作用看成球面上的共形变换？为什么「射影表示」是量子力学里唯一合理的表示概念？本章的 $$\mathrm{Spin}(1,3)$$ 与覆叠，将在那里升级为任意维的 Möbius 群与它的双重覆叠。
 
 **延伸阅读**：Lawson–Michelsohn《Spin Geometry》第一、二章（Clifford 代数与自旋群的系统处理）；Woit《Quantum Theory, Groups and Representations》第 12–15 讲（旋量与射影表示，与本章接口最直接）；Tong《Quantum Field Theory》第 4–5 章（$$\gamma$$ 矩阵与 Dirac 方程的物理用法）。
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch28_复半单Lie代数与根系.md">← 第28章 复半单 Lie 代数与根系</a></div>
+  <div><a href="ch57_Clifford代数与Lorentz群_上.md">← 第57章 Clifford 代数与 Lorentz 群·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch30_Möbius群_双重覆盖与射影表示.md">第30章 Möbius 群、双重覆盖与射影表示 →</a></div>
+  <div><a href="ch59_Möbius群_双重覆盖与射影表示_上.md">第59章 Möbius 群、双重覆盖与射影表示·上 →</a></div>
 </div>

@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第16章: 从 Hamilton 到量子：可观测量与本征态 (From Hamilton to Quantum Mechanics: Observables and Eigenstates)
+# 第32章: 从 Hamilton 到量子：可观测量与本征态·下：完整推导 (From Hamilton to Quantum Mechanics: Observables and Eigenstates · Part II: Full Derivation)
+
+> 配套预备: 见 第31章 从 Hamilton 到量子：可观测量与本征态·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP40–MP43
 > 专家依据: `_experts/analysis/spectral-theory.md`（主）+ `_experts/analysis/_SKILL.md`
@@ -15,9 +17,9 @@ layout: default
 
 流行说法是"把数换成算子"。这句话不算错，但它没指出动手的位置，于是位置算符为什么是"乘 $$x$$"、动量算符为什么是"$$-i\hbar\frac{d}{dx}$$"，就都成了要背下来的约定。本章要说明：真正被换掉的是**括号**——量子力学保存了相空间上光滑函数全体所带的整个括号代数，只把 Poisson 括号 $$\{F,G\}$$ 换成了对易子的 $$\frac{1}{i\hbar}[\hat F,\hat G]$$。位置与动量两个算符之所以必须长成那样，是这条要求逼出来的，不是灵感。
 
-**从哪来**：第 03、04 章造出了对偶与辛结构，相空间 $$T^*M$$ 上的典范二形式 $$\omega=dq\wedge dp$$ 在那里露面；本章要从堆里重新读出 Hamilton 方程与 Poisson 括号。第 15 章把波函数装进了 Hilbert 空间 $$L^2\langle\cdot,\cdot\rangle$$，但那个空间上还什么都没有发生——本章把算子放到它上面去。第 02 章那句"求导给出谱"，当时只是 $$SO(2)$$ 上的一个小例子；本章里它长成了量子力学的核心：动量算符就是求导算符乘上 $$-i\hbar$$，它的谱就是全部允许的动量读数。
+**从哪来**：第 03、04 章造出了对偶与辛结构，相空间 $$T^*M$$ 上的典范二形式 $$\omega=dq\wedge dp$$ 在那里露面；本章要从堆里重新读出 Hamilton 方程与 Poisson 括号。第 30 章把波函数装进了 Hilbert 空间 $$L^2\langle\cdot,\cdot\rangle$$，但那个空间上还什么都没有发生——本章把算子放到它上面去。第 04 章那句"求导给出谱"，当时只是 $$SO(2)$$ 上的一个小例子；本章里它长成了量子力学的核心：动量算符就是求导算符乘上 $$-i\hbar$$，它的谱就是全部允许的动量读数。
 
-**到哪去**：第 17 章会把这些算子组装成一条演化方程，即 Schrödinger 方程。
+**到哪去**：第 34 章会把这些算子组装成一条演化方程，即 Schrödinger 方程。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -25,7 +27,7 @@ layout: default
 
 **入口题（自编；风格取自教材经典例题与 Квант 口径，(b)(c) 取自 [Hall 2013] 第一章习题）。**
 
-一根无重力、无阻尼、悬浮的橡皮筋被拉成一个周长 $$2\pi$$ 的圆环，环上可以驻留频率唯一的单色波。用 $$x\in[0,2\pi)$$ 表示环上一点的弧长坐标，设环上的光滑复值函数全体为一个函数空间 $$\mathscr X$$（本章后面会说明，再加上一个内积它就是第 15 章的 Hilbert 空间）。
+一根无重力、无阻尼、悬浮的橡皮筋被拉成一个周长 $$2\pi$$ 的圆环，环上可以驻留频率唯一的单色波。用 $$x\in[0,2\pi)$$ 表示环上一点的弧长坐标，设环上的光滑复值函数全体为一个函数空间 $$\mathscr X$$（本章后面会说明，再加上一个内积它就是第 30 章的 Hilbert 空间）。
 
 **(a) 求导给出的谱。** 把求导算子 $$D=\dfrac{d}{dx}$$ 作用在单色波 $$\psi_k(x)=e^{ikx}$$ 上：
 
@@ -56,11 +58,11 @@ $$[AB,C]=A[B,C]+[A,C]B.$$
 
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
-本节分两半。前半（3.1–3.6）是经典那一侧：把第 04 章的辛结构翻译成 Hamilton 方程与 Poisson 括号，看清"经典可观测量"到底是什么对象。后半（3.7–3.15）是量子那一侧：造出两个算子，算清它们的括号，然后论证为什么量子可观测量必须是**自伴**算子。
+本节分两半。前半（3.1–3.6）是经典那一侧：把第 08 章的辛结构翻译成 Hamilton 方程与 Poisson 括号，看清"经典可观测量"到底是什么对象。后半（3.7–3.15）是量子那一侧：造出两个算子，算清它们的括号，然后论证为什么量子可观测量必须是**自伴**算子。
 
 ### 3.1 经典一侧：相空间、Hamilton 方程与 Poisson 括号
 
-**定义 3.1（相空间与 Hamilton 量, phase space and Hamiltonian）**。设 $$M$$ 是 $$n$$ 维光滑流形，称它为**位形空间 (configuration space)**——在本课程后面的物理章节里它取 $$\mathbb{R}^3$$ 或 $$\mathbb{R}^{3N}$$。它的**余切丛 (cotangent bundle, 见第 06 章)** $$T^*M$$ 上的点写作
+**定义 3.1（相空间与 Hamilton 量, phase space and Hamiltonian）**。设 $$M$$ 是 $$n$$ 维光滑流形，称它为**位形空间 (configuration space)**——在本课程后面的物理章节里它取 $$\mathbb{R}^3$$ 或 $$\mathbb{R}^{3N}$$。它的**余切丛 (cotangent bundle, 见第 12 章)** $$T^*M$$ 上的点写作
 
 $$(q,p)=\bigl(q^1,\dots,q^n,\,p_1,\dots,p_n\bigr),\qquad q\in M,\ \ p\in T_q^*M,$$
 
@@ -70,7 +72,7 @@ $$(q,p)=\bigl(q^1,\dots,q^n,\,p_1,\dots,p_n\bigr),\qquad q\in M,\ \ p\in T_q^*M,
 
 $$p_i=\frac{\partial L}{\partial \dot q^i},\qquad i=1,\dots,n.$$
 
-（这一步是把切丛上的速度换成余切丛上的动量，正是第 03 章"对偶"在物理里的实例。）对 $$L$$ 作 **Legendre 变换 (Legendre transform)**，得到相空间上的实值光滑函数
+（这一步是把切丛上的速度换成余切丛上的动量，正是第 06 章"对偶"在物理里的实例。）对 $$L$$ 作 **Legendre 变换 (Legendre transform)**，得到相空间上的实值光滑函数
 
 $$H(q,p)=\sum_{i=1}^n p_i\dot q^i-L(q,\dot q)
 =\frac{1}{2m}\sum_{i=1}^n p_i^2+V(q),$$
@@ -169,7 +171,7 @@ $$\dot q^i=\{q^i,H\},\qquad \dot p_i=\{p_i,H\}.$$
 
 ### 3.3 量子一侧：状态与可观测量的替换
 
-第 15 章把波函数装进了复 Hilbert 空间 $$L^2\langle\cdot,\cdot\rangle$$：内积由 Hermite 共轭的积分给出，
+第 30 章把波函数装进了复 Hilbert 空间 $$L^2\langle\cdot,\cdot\rangle$$：内积由 Hermite 共轭的积分给出，
 
 $$\langle\phi,\psi\rangle=\int_\Omega\overline{\phi(x)}\,\psi(x)\,dx,$$
 
@@ -185,7 +187,7 @@ $$\mathscr H=L^2\langle\cdot,\cdot\rangle .$$
 
 $$\langle\phi,\hat A\psi\rangle=\langle\hat A\phi,\psi\rangle\qquad\text{对一切 }\phi,\psi\in\mathscr H .$$
 
-（严格地说自伴还要求定义域与共轭算子的定义域相同，见 3.15 与第 21 章；本章先用上面这条"对称性"条件，它已经足够承载全部物理论证。）
+（严格地说自伴还要求定义域与共轭算子的定义域相同，见 3.15 与第 42 章；本章先用上面这条"对称性"条件，它已经足够承载全部物理论证。）
 
 经典与量子两侧的对象就这样一一对上：
 
@@ -198,7 +200,7 @@ $$\langle\phi,\hat A\psi\rangle=\langle\hat A\phi,\psi\rangle\qquad\text{对一�
 
 **这张表里只有第四行是"真的定义"，前三行都是类比**。本章的全部力气都花在第四行：它是唯一能同时解释"为什么是 $$-i\hbar$$"和"为什么必须自伴"的那一条。下一小节起，我们从最具体的驻波问题开始，看它怎样逼出这些替换。
 
-### 3.4 求导给出谱：第 02 章线索的升级
+### 3.4 求导给出谱：第 04 章线索的升级
 
 现在正式解入口题 (a)。
 
@@ -214,7 +216,7 @@ $$D e^{ikx}=ik\,e^{ikx},$$
 
 特征值全是**纯虚数** $$ik$$（$$k\ne0$$ 时虚部非零，$$k=0$$ 时等于 $$0$$）。按定义 3.3 的精神——可观测量的读数必须是实数——$$D$$ 不能代表任何可观测量。
 
-但请停在这里看一眼这个尴尬处的"来源"。$$D$$ 本身没有任何毛病，它是这座函数空间上最自然的算子；有毛病的是"$$D$$ 的特征值恰好是纯虚的"。而在第 02 章我们恰恰见过这套结构：那里 $$SO(2)$$ 的生成元 $$J$$ 是反对称矩阵，其特征值也是纯虚的 $$\{\pm i\}$$，并且 $$i$$ 在那里从"一个被假设存在的数"变成了"求导算子谱上的一条线"。本章要做的，是把那条线再往下推一步：**给纯虚的谱乘一个数，让它落到实轴上**。这件事一旦做成，代价就是那个乘数，而那个乘数就是 $$\hbar$$ 与 $$-i$$。
+但请停在这里看一眼这个尴尬处的"来源"。$$D$$ 本身没有任何毛病，它是这座函数空间上最自然的算子；有毛病的是"$$D$$ 的特征值恰好是纯虚的"。而在第 04 章我们恰恰见过这套结构：那里 $$SO(2)$$ 的生成元 $$J$$ 是反对称矩阵，其特征值也是纯虚的 $$\{\pm i\}$$，并且 $$i$$ 在那里从"一个被假设存在的数"变成了"求导算子谱上的一条线"。本章要做的，是把那条线再往下推一步：**给纯虚的谱乘一个数，让它落到实轴上**。这件事一旦做成，代价就是那个乘数，而那个乘数就是 $$\hbar$$ 与 $$-i$$。
 
 ### 3.5 动量算子
 
@@ -366,7 +368,7 @@ $$\bigl(\alpha[\hat F,\hat G]\bigr)^{*}=\bar\alpha\,[\hat F,\hat G]^{*}=\bar\alp
 $$\dot q^i=\{q^i,H\}\ \longleftrightarrow\ \frac{d\hat q^i}{dt}=\frac{1}{i\hbar}[\hat q^i,\hat H],\qquad
 \dot p_i=\{p_i,H\}\ \longleftrightarrow\ \frac{d\hat p_i}{dt}=\frac{1}{i\hbar}[\hat p_i,\hat H].$$
 
-右边两个方程即 **Heisenberg 运动方程**（第 17 章展开）。若系数不匹配（比如取实数系数），两侧的反对称性与 Jacobi 律就会打架，翻译出来的等式不再自洽。所以 (c) 不是"一种选择"，是**唯一**能让经典—量子两侧代数同步的取法。
+右边两个方程即 **Heisenberg 运动方程**（第 34 章展开）。若系数不匹配（比如取实数系数），两侧的反对称性与 Jacobi 律就会打架，翻译出来的等式不再自洽。所以 (c) 不是"一种选择"，是**唯一**能让经典—量子两侧代数同步的取法。
 
 **第三步：尺度由典范关系锁定。** 把 $$F=q^i,G=p_j$$ 代入 (c)：左边是 $$\widehat{\{q^i,p_j\}}=\widehat{\delta^i_j}=\delta^i_j I$$（常数函数对应标量算子）；右边是 $$\frac{1}{i\hbar}[X^i,\hat p_j]$$。于是
 
@@ -424,7 +426,7 @@ $$\lambda\langle\psi\vert\psi\rangle=\langle\psi\vert\lambda\psi\rangle=\langle\
 
 $$\hat A\lvert e_i\rangle=\lambda_i\lvert e_i\rangle,\qquad \langle e_i\verte_j\rangle=\delta_{ij}.$$
 
-（"存在这样一组基"正是**谱定理 (spectral theorem)** 的内容；有限维情形总有，无限维情形要加条件，见第 19 章。）于是任一量子态 $$\lvert\psi\rangle$$ 可唯一展开为
+（"存在这样一组基"正是**谱定理 (spectral theorem)** 的内容；有限维情形总有，无限维情形要加条件，见第 38 章。）于是任一量子态 $$\lvert\psi\rangle$$ 可唯一展开为
 
 $$\lvert\psi\rangle=\sum_i c_i\lvert e_i\rangle,\qquad c_i=\langle e_i\vert\psi\rangle .$$
 
@@ -581,13 +583,13 @@ $$\langle\phi,P\psi\rangle=\int\overline{\phi(x)}\bigl(-i\hbar\psi'(x)\bigr)dx=\
 
 对 $$P$$：$$\ker(P^{*}-i)$$ 中的元素是方程 $$-i\hbar\psi'=i\psi$$ 的 $$L^2$$ 解，即 $$\psi'=-\psi/\hbar$$，故 $$\psi(x)=Ce^{-x/\hbar}$$；它在 $$x\le0$$ 一侧不平方可积，被排除，故 $$n_+=0$$；同理 $$n_-=0$$。对 $$X$$：$$\ker(X^{*}\mp i)$$ 中元素满足 $$(x\mp i)\psi=0$$，即 $$\psi$$ 只在 $$x=\pm i\notin\mathbb{R}$$ 处可能非零；但 $$\pm i$$ 不是实数，故 $$\psi=0$$，$$n_\pm=0$$。
 
-（完整的亏指数判定与自伴扩张的分类见第 19 章；这里我们只用到"$$\mathcal S$$ 是 $$\mathrm{Dom}$$ 的子集且是核 (core)"这一条，它使 $$P,X$$ 被 $$\mathbb{R}$$ 上的实参数唯一确定。）$$\blacksquare$$
+（完整的亏指数判定与自伴扩张的分类见第 38 章；这里我们只用到"$$\mathcal S$$ 是 $$\mathrm{Dom}$$ 的子集且是核 (core)"这一条，它使 $$P,X$$ 被 $$\mathbb{R}$$ 上的实参数唯一确定。）$$\blacksquare$$
 
 **为什么这一段不是技术洁癖**。把 (a) 与定义 3.11 并排读：定义 3.11 里那个漂亮的展开 $$\lvert\psi\rangle=\sum_i c_i\lvert e_i\rangle$$ 假设了"本征向量构成一组基"。可是 (a) 说 $$X$$、$$P$$ 是无界的；更具体地说，动量算子在 $$\mathbb{R}$$ 上的"特征函数" $$e^{ikx}$$ 根本不属于 $$L^2(\mathbb{R})$$（$$\int\lvert e^{ikx}\rvert^2dx=\infty$$）！所以 $$P$$ 在 $$\mathbb{R}$$ 上**没有**一个平方可积的本征函数。这正是无限维与有限维的分水岭：有限维里"自伴 = 可对角化"是天经地义，无限维里必须把求和升级成对**投影算子值测度 (projection-valued measure, p.v.m.)** 的积分
 
 $$\hat A=\int_{\sigma(\hat A)}\lambda\,dE(\lambda),$$
 
-用谱投影代替本征投影、用积分代替求和。$$e^{ikx}$$ 这类"广义本征函数"由此获得严格的地位（它们生成的是连续谱的谱测度）。这条升级是本课程卷三后半的主线，也是第 19 章（谱定理与投影算子值测度）与第 21 章（无界算子与 Cayley 变换）的主题。第 17 章先走一步：它不去纠缠定义域，而是直接把这些算子组装成一条演化方程。
+用谱投影代替本征投影、用积分代替求和。$$e^{ikx}$$ 这类"广义本征函数"由此获得严格的地位（它们生成的是连续谱的谱测度）。这条升级是本课程卷三后半的主线，也是第 38 章（谱定理与投影算子值测度）与第 42 章（无界算子与 Cayley 变换）的主题。第 34 章先走一步：它不去纠缠定义域，而是直接把这些算子组装成一条演化方程。
 
 ## 四、几何与物理直觉 (Intuition)
 
@@ -601,7 +603,7 @@ $$\{F,G\}=X_G(F),$$
 
 也就是说：**Poisson 括号 $$\{F,G\}$$ 就是"沿 $$G$$ 生成的流，对 $$F$$ 求方向导数"**。这条读法把定理 3.3（$$dA/dt=\{H,A\}$$）解释成一句几何话：时间演化就是沿 Hamilton 向量场 $$X_H$$ 的流。
 
-有了这条读法，定理 3.8 (iv) 的 Jacobi 恒等式就有了形状：两个向量场的**流的交换子** $$[X_F,X_G]$$ 一般不为零，而 Jacobi 恒等式说的正是"先沿 $$F$$ 的流、再沿 $$G$$ 的流，与反过来的次序，两者的差仍然是一个 Hamilton 流"。Lie 括号的引入（第 27 章）会把这句话写成一行：对应 $$F\mapsto X_F$$ 是 Lie 代数同态。**量子化保住的就是这个同态结构**——只不过流换成了算子、交换子换成了 $$[\,,\,]$$。
+有了这条读法，定理 3.8 (iv) 的 Jacobi 恒等式就有了形状：两个向量场的**流的交换子** $$[X_F,X_G]$$ 一般不为零，而 Jacobi 恒等式说的正是"先沿 $$F$$ 的流、再沿 $$G$$ 的流，与反过来的次序，两者的差仍然是一个 Hamilton 流"。Lie 括号的引入（第 54 章）会把这句话写成一行：对应 $$F\mapsto X_F$$ 是 Lie 代数同态。**量子化保住的就是这个同态结构**——只不过流换成了算子、交换子换成了 $$[\,,\,]$$。
 
 **$$[X,P]=i\hbar$$ 的几何读法。** 作为一个算子，$$[X,P]$$ 就是"乘以 $$i\hbar$$"。把 $$i=e^{i\pi/2}$$ 认出来，这条式子说的是：位置与动量这两个操作交换失败留下的余量，是**在每个点上把波函数的值旋转 $$\pi/2$$、再按 $$\hbar$$ 缩放**。它既不是零（那意味着两个量可以同时确定），也不是实数（那意味着它不是自伴算子）；它恰好是"一个纯虚数倍恒等"——这正是 3.9 第一步算出的、保括号对应所允许的唯一形状。
 
@@ -613,9 +615,9 @@ $$i\hbar\lvert e\rangle=(XP-PX)\lvert e\rangle=(xp-px)\lvert e\rangle=0,$$
 
 $$\Delta\hat A\cdot\Delta\hat B\ge\frac{1}{2}\bigl\lvert\langle[\hat A,\hat B]\rangle\bigr\rvert$$
 
-会在卷三的算子谱章节（第 18 章起）给出，届时 $$[X,P]=i\hbar$$ 立刻给出 $$\Delta x\,\Delta p\ge\hbar/2$$。本章只需记住：**不确定性的来源就是那条不为零的括号**。
+会在卷三的算子谱章节（第 36 章起）给出，届时 $$[X,P]=i\hbar$$ 立刻给出 $$\Delta x\,\Delta p\ge\hbar/2$$。本章只需记住：**不确定性的来源就是那条不为零的括号**。
 
-**Fourier 对偶的几何。** 定理 3.14 说 $$\mathcal F$$ 把 $$X$$ 换成（几乎）$$P$$、把 $$P$$ 换成 $$X$$。所以"位置表象"与"动量表象"不是两个理论，而是同一个 Hilbert 空间上的两种坐标；$$\mathcal F$$ 是它们之间的酉变换。这条对偶在抽象调和分析里的名字是 Pontryagin 对偶，它的三种面孔——$$\mathbb{R}$$ 上的 Fourier 变换、$$\mathbb{Z}$$ 上的 Fourier 级数、有限循环群上的离散 Fourier 变换——是同一个定理（第 17 章的波包展开与第 22 章的 Stone–von Neumann 定理都会用到它）。
+**Fourier 对偶的几何。** 定理 3.14 说 $$\mathcal F$$ 把 $$X$$ 换成（几乎）$$P$$、把 $$P$$ 换成 $$X$$。所以"位置表象"与"动量表象"不是两个理论，而是同一个 Hilbert 空间上的两种坐标；$$\mathcal F$$ 是它们之间的酉变换。这条对偶在抽象调和分析里的名字是 Pontryagin 对偶，它的三种面孔——$$\mathbb{R}$$ 上的 Fourier 变换、$$\mathbb{Z}$$ 上的 Fourier 级数、有限循环群上的离散 Fourier 变换——是同一个定理（第 34 章的波包展开与第 44 章的 Stone–von Neumann 定理都会用到它）。
 
 **三线合一。** 本章的主线可以压成一张表：
 
@@ -848,7 +850,7 @@ $$(\Delta x)^{2}=\frac{\sigma^{2}}{2},\qquad(\Delta\lambda)^{2}=\frac{1}{2\sigma
 
 $$\Delta x\,\Delta p=\frac{\sigma}{\sqrt2}\cdot\frac{\hbar}{\sigma\sqrt2}=\frac{\hbar}{2},$$
 
-与 $$\sigma$$ 无关，与例题 5.1 的结果一致。这说明 $$\Delta x\,\Delta p$$ 里的 $$\hbar/2$$ 不是某个波包的巧合，而是 $$\mathcal F$$ 把 $$X$$ 换成 $$\hbar M_\lambda$$ 这条**尺度对偶**的直接读数：位置越窄（$$\sigma$$ 越小），动量就越宽（$$1/\sigma$$ 越大），两者恰被 Fourier 变换互换（定理 3.14）。对 Gauss 族，这个乘积取到等号而从不严格大于——这正是第 18 章 Robertson 不等式 $$\Delta\hat A\,\Delta\hat B\ge\frac{1}{2}\bigl\lvert\langle[\hat A,\hat B]\rangle\bigr\rvert$$ 的等号情形（最小不确定态）；至于"为什么只有 Gauss 族取等号"，要用到证明该不等式时 Cauchy–Schwarz 的取等条件。
+与 $$\sigma$$ 无关，与例题 5.1 的结果一致。这说明 $$\Delta x\,\Delta p$$ 里的 $$\hbar/2$$ 不是某个波包的巧合，而是 $$\mathcal F$$ 把 $$X$$ 换成 $$\hbar M_\lambda$$ 这条**尺度对偶**的直接读数：位置越窄（$$\sigma$$ 越小），动量就越宽（$$1/\sigma$$ 越大），两者恰被 Fourier 变换互换（定理 3.14）。对 Gauss 族，这个乘积取到等号而从不严格大于——这正是第 36 章 Robertson 不等式 $$\Delta\hat A\,\Delta\hat B\ge\frac{1}{2}\bigl\lvert\langle[\hat A,\hat B]\rangle\bigr\rvert$$ 的等号情形（最小不确定态）；至于"为什么只有 Gauss 族取等号"，要用到证明该不等式时 Cauchy–Schwarz 的取等条件。
 
 **解 竞1.** 关键 leap：不算 $$[X,P^n]$$ 的展开，而是用 Leibniz 律**把 $$P^n$$ 拆出一个 $$P$$** 再归纳。把定理 3.8 (iii) 用反对称性换成第二变量形式：
 
@@ -895,7 +897,7 @@ $$\lambda_1\langle e_1\vert e_2\rangle=\langle\hat A e_1\vert e_2\rangle=\langle
 
 第二式用了 $$\hat A^{*}=\hat A$$，末式用了定理 3.10 (c) 的 $$\lambda_2\in\mathbb{R}$$。于是 $$(\lambda_1-\lambda_2)\langle e_1\vert e_2\rangle=0$$，因 $$\lambda_1\ne\lambda_2$$ 得 $$\langle e_1\vert e_2\rangle=0$$。
 
-简并时结论变弱：只有**不同**本征值对应的本征空间相互正交；同一本征值的特征子空间内部两向量未必正交。补救是在该子空间内做 Gram–Schmidt 正交化（第 15 章）。这解释了定义 3.11 为什么要额外声明"$$\{\lvert e_i\rangle\}$$ 是正交归一基"——它不是定理 3.10 的自动推论，而是一条需要单独建立的条件；无限维情形下把它与连续谱一起统一处理，就是谱定理（第 19 章）。
+简并时结论变弱：只有**不同**本征值对应的本征空间相互正交；同一本征值的特征子空间内部两向量未必正交。补救是在该子空间内做 Gram–Schmidt 正交化（第 30 章）。这解释了定义 3.11 为什么要额外声明"$$\{\lvert e_i\rangle\}$$ 是正交归一基"——它不是定理 3.10 的自动推论，而是一条需要单独建立的条件；无限维情形下把它与连续谱一起统一处理，就是谱定理（第 38 章）。
 
 **解 研1.** 无界性：取 $$\psi_n(x)=\frac{1}{x}$$（$$1\le x\le n$$）、$$0$$（其余）。则
 
@@ -912,9 +914,9 @@ $$\lVert e^{ikx}\rVert^2=\int_{\mathbb{R}}\lvert e^{ikx}\rvert^2dx=\int_{\mathbb
 $$\hat A=\int_{\sigma(\hat A)}\lambda\,dE(\lambda),\qquad
 \langle\hat A\rangle=\langle\psi\vert\hat A\psi\rangle=\int_{\sigma(\hat A)}\lambda\,d\mu_\psi(\lambda),$$
 
-其中 $$\mu_\psi(\Delta)=\langle\psi\vert E(\Delta)\psi\rangle$$ 是普通概率测度。$$e^{ikx}$$ 在这套语言下获得合法地位：它不生成特征向量，而生成连续谱上的谱测度。连续的 $$\lambda$$ 积分与离散的求和在这里第一次被同一个框架收编，而这正是第 17 章要走的第一步——Schrödinger 方程在 $$\mathbb{R}$$ 上的解也不再是有限和，而是对连续谱的积分（波包）。
+其中 $$\mu_\psi(\Delta)=\langle\psi\vert E(\Delta)\psi\rangle$$ 是普通概率测度。$$e^{ikx}$$ 在这套语言下获得合法地位：它不生成特征向量，而生成连续谱上的谱测度。连续的 $$\lambda$$ 积分与离散的求和在这里第一次被同一个框架收编，而这正是第 34 章要走的第一步——Schrödinger 方程在 $$\mathbb{R}$$ 上的解也不再是有限和，而是对连续谱的积分（波包）。
 
-**解 研2.** 先说明 $$\hat U(t)=e^{-i\hat Ht/\hbar}$$ 有定义且酉：由 $$\hat H$$ 自伴，谱定理（第 19 章）给出 $$e^{-i\hat Ht/\hbar}$$ 并保证 $$\hat U(t)^{*}=e^{+i\hat Ht/\hbar}=\hat U(t)^{-1}$$。于是 $$\hat A(t)=\hat U(t)^{*}\hat A\hat U(t)$$。
+**解 研2.** 先说明 $$\hat U(t)=e^{-i\hat Ht/\hbar}$$ 有定义且酉：由 $$\hat H$$ 自伴，谱定理（第 38 章）给出 $$e^{-i\hat Ht/\hbar}$$ 并保证 $$\hat U(t)^{*}=e^{+i\hat Ht/\hbar}=\hat U(t)^{-1}$$。于是 $$\hat A(t)=\hat U(t)^{*}\hat A\hat U(t)$$。
 
 求导。对幂级数逐项求导得 $$\dfrac{d}{dt}\hat U(t)=\dfrac{-i}{\hbar}\hat H\hat U(t)$$（$$\hat H$$ 与它的幂交换，故可与求和交换）。取共轭：$$\dfrac{d}{dt}\hat U^{*}=\dfrac{i}{\hbar}\hat U^{*}\hat H$$。代入：
 
@@ -926,7 +928,7 @@ $$\frac{d\hat A}{dt}=\Bigl(\frac{d}{dt}\hat U^{*}\Bigr)\hat A\hat U+\hat U^{*}\h
 
 酉群：由指数律 $$\hat U(t+s)=\hat U(t)\hat U(s)$$、$$\hat U(0)=I$$、$$\hat U(t)^{*}\hat U(t)=I$$，三条都成立，故 $$t\mapsto\hat U(t)$$ 是单参数酉群。
 
-这条解答把"演化 = 与 $$\hat H$$ 作括号"从无穷小（一个微分方程）升级成整体（一个群）。把同一件事写回随时间变化的态上，即 $$\lvert\psi(t)\rangle=\hat U(t)\lvert\psi(0)\rangle$$，就得到 $$i\hbar\dfrac{\partial}{\partial t}\lvert\psi(t)\rangle=\hat H\lvert\psi(t)\rangle$$——**这正是第 17 章 Schrödinger 方程的起点**：那里不再把演化挂在算子上（Heisenberg 绘景），而是挂在态上（Schrödinger 绘景）。
+这条解答把"演化 = 与 $$\hat H$$ 作括号"从无穷小（一个微分方程）升级成整体（一个群）。把同一件事写回随时间变化的态上，即 $$\lvert\psi(t)\rangle=\hat U(t)\lvert\psi(0)\rangle$$，就得到 $$i\hbar\dfrac{\partial}{\partial t}\lvert\psi(t)\rangle=\hat H\lvert\psi(t)\rangle$$——**这正是第 34 章 Schrödinger 方程的起点**：那里不再把演化挂在算子上（Heisenberg 绘景），而是挂在态上（Schrödinger 绘景）。
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -938,25 +940,23 @@ $$\frac{d\hat A}{dt}=\Bigl(\frac{d}{dt}\hat U^{*}\Bigr)\hat A\hat U+\hat U^{*}\h
 
 4. **可观测量的三个"必须"由自伴性一肩挑起**（定理 3.10）：期望恒实、本征值恒实、不同本征值的本征向量正交。丢掉自伴，概率诠释立刻塌掉。
 
-5. **第 02 章那条"求导给出谱"的线索在这里完成了升级。** 当时它是 $$SO(2)$$ 上的一个例子；现在它是动量算子的谱：$$Pe^{ikx}=\hbar ke^{ikx}$$，离散的 $$k$$ 来自环的拓扑、连续的 $$\lambda$$ 来自 $$\mathbb{R}$$ 的拓扑。
+5. **第 04 章那条"求导给出谱"的线索在这里完成了升级。** 当时它是 $$SO(2)$$ 上的一个例子；现在它是动量算子的谱：$$Pe^{ikx}=\hbar ke^{ikx}$$，离散的 $$k$$ 来自环的拓扑、连续的 $$\lambda$$ 来自 $$\mathbb{R}$$ 的拓扑。
 
-**下一章的悬念**：本章把演化放在算子上（Heisenberg 绘景），得到 $$d\hat A/dt=\frac{i}{\hbar}[\hat H,\hat A]$$（研2 的形式解）。如果把同一件事写回态上，$$\lvert\psi(t)\rangle=\hat U(t)\lvert\psi(0)\rangle$$，会得到一个关于 $$\lvert\psi\rangle$$ 的一阶偏微分方程。它长什么样？它的解为什么可以按本征态展开、而展开的系数恰好是本章的"概率幅"？——这就是第 17 章 Schrödinger 方程。
+**下一章的悬念**：本章把演化放在算子上（Heisenberg 绘景），得到 $$d\hat A/dt=\frac{i}{\hbar}[\hat H,\hat A]$$（研2 的形式解）。如果把同一件事写回态上，$$\lvert\psi(t)\rangle=\hat U(t)\lvert\psi(0)\rangle$$，会得到一个关于 $$\lvert\psi\rangle$$ 的一阶偏微分方程。它长什么样？它的解为什么可以按本征态展开、而展开的系数恰好是本章的"概率幅"？——这就是第 34 章 Schrödinger 方程。
 
 **延伸阅读**：
 
 - B. C. Hall, *Quantum Theory for Mathematicians* (GTM 267), 第 1、3、8 章：$$X,P$$ 的对称性与本质自伴性、谱定理的物理应用。
 - G. Teschl, *Mathematical Methods in Quantum Mechanics* (GSM 157), 第 1、2 章：无界算子与谱测度的标准处理。
-- V. I. Arnold, *Mathematical Methods of Classical Mechanics*：Poisson 括号与辛几何（对应第 04 章的进一步展开）。
-- 本课程第 02 章（求导与谱）、第 04 章（辛结构）、第 15 章（Hilbert 空间）是本章的三条直接前置。
+- V. I. Arnold, *Mathematical Methods of Classical Mechanics*：Poisson 括号与辛几何（对应第 08 章的进一步展开）。
+- 本课程第 04 章（求导与谱）、第 08 章（辛结构）、第 30 章（Hilbert 空间）是本章的三条直接前置。
 
-**留一个未收的问题**：定理 3.9 说的是"保括号"这一条形式要求，但物理学还要求 $$\hat H$$ 的谱有下界（否则系统会无限下坠）。这条要求把哪些哈密顿量排除在外？它是第 19 章（谱定理）与第 21 章（无界算子）的交界处。
-
-
+**留一个未收的问题**：定理 3.9 说的是"保括号"这一条形式要求，但物理学还要求 $$\hat H$$ 的谱有下界（否则系统会无限下坠）。这条要求把哪些哈密顿量排除在外？它是第 38 章（谱定理）与第 42 章（无界算子）的交界处。
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch15_Hilbert空间与内积结构.md">← 第15章 Hilbert 空间与内积结构</a></div>
+  <div><a href="ch31_从Hamilton到量子_可观测量与本征态_上.md">← 第31章 从 Hamilton 到量子：可观测量与本征态·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch17_Schrödinger方程.md">第17章 Schrödinger 方程 →</a></div>
+  <div><a href="ch33_Schrödinger方程_上.md">第33章 Schrödinger 方程·上 →</a></div>
 </div>

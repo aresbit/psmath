@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第40章: 尾声：从 Galois 到现代数学 (Epilogue: From Galois to Modern Mathematics)
+# 第80章: 尾声：从 Galois 到现代数学·下：完整推导 (Epilogue: From Galois to Modern Mathematics · Part II: Full Derivation)
+
+> 配套预备: 见 第79章 尾声：从 Galois 到现代数学·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: 补（原专栏 MP149 结束于 Galois 群；本章是本书收束章）
 > 专家依据: `_experts/algebra/algebraic-geometry-topology-k.md` + `_experts/algebra/category-universal-properties.md` + `_experts/numbertheory/analytic-number-theory.md`
@@ -15,7 +17,7 @@ layout: default
 
 具体做三件事。**第一**，指出全书里反复出现、却被分在六卷里的四条主线——对偶与反变、$$D^2=0$$ 的两副面孔、谱与表示、几何—物理—代数的三角，并逐条列出每条主线经过哪几章。**第二**，把这四条主线背后的四条**共同定理**写出来并证明：它们才是 39 章里那些"巧合"的真正原因（第 3 节）。**第三**，指出现代数学的四个入口，每个三五句话，点到即止（第 7 节）。
 
-**从哪来**：第 39 章的 Galois 对应是全书的最后一块拼图，也是最古老的一块——Galois 在 1832 年写下它时 20 岁，遗稿里留下的是**群与域的对应**，也就是本章定义 3.4 与定理 3.4 的最初形态。
+**从哪来**：第 78 章的 Galois 对应是全书的最后一块拼图，也是最古老的一块——Galois 在 1832 年写下它时 20 岁，遗稿里留下的是**群与域的对应**，也就是本章定义 3.4 与定理 3.4 的最初形态。
 **到哪去**：本书没有第 41 章。这一章的第 7 节是一封给读者的信。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
@@ -24,12 +26,12 @@ layout: default
 
 下面的六个箭头来自六章，它们都是同一个构造的化身。请对每一个回答：把谁映到谁？
 
-(a) 第 03 章：有限维 $$k$$-向量空间 $$V\mapsto V^*=\operatorname{Hom}_k(V,k)$$；
-(b) 第 15 章：Hilbert 空间 $$H\mapsto H^*$$（Riesz 表示）；
-(c) 第 20 章：交换 $$\mathrm{C}^*$$ 代数 $$A\mapsto\widehat A=\operatorname{Hom}_{\text{alg}}(A,\mathbb C)$$（Gelfand 谱）；
-(d) 第 31 章：范畴 $$\mathcal C\mapsto\mathcal C^{\mathrm{op}}$$；
-(e) 第 36 章：交换环 $$A\mapsto\operatorname{Spec} A$$（素理想集，带 Zariski 拓扑）；
-(f) 第 37 章：开覆盖 $$\mathfrak U\mapsto\check H^\bullet(\mathfrak U;\mathbb Z)$$。
+(a) 第 06 章：有限维 $$k$$-向量空间 $$V\mapsto V^*=\operatorname{Hom}_k(V,k)$$；
+(b) 第 30 章：Hilbert 空间 $$H\mapsto H^*$$（Riesz 表示）；
+(c) 第 40 章：交换 $$\mathrm{C}^*$$ 代数 $$A\mapsto\widehat A=\operatorname{Hom}_{\text{alg}}(A,\mathbb C)$$（Gelfand 谱）；
+(d) 第 62 章：范畴 $$\mathcal C\mapsto\mathcal C^{\mathrm{op}}$$；
+(e) 第 72 章：交换环 $$A\mapsto\operatorname{Spec} A$$（素理想集，带 Zariski 拓扑）；
+(f) 第 74 章：开覆盖 $$\mathfrak U\mapsto\check H^\bullet(\mathfrak U;\mathbb Z)$$。
 
 **(i)** 六个箭头里，哪些在"自然"意义下是同构，哪些只是配对（有配对但不一一对应）？
 
@@ -43,7 +45,7 @@ $$\operatorname{Spec}\varphi:\operatorname{Spec} B\to\operatorname{Spec} A,\qqua
 
 **题面为什么这样设计。** 这一题不要求新工具，它要求"回想"。四个问各自的落点：
 
-- **(i)(iv)** 对应第 3 节的定义 3.1 与定理 3.1：六个箭头的共同名字是**反变函子 (contravariant functor)**；"是同构还是配对"取决于它有没有逆——这正是第 31 章 Yoneda 的立场：一个对象由它与所有对象的关系决定。
+- **(i)(iv)** 对应第 3 节的定义 3.1 与定理 3.1：六个箭头的共同名字是**反变函子 (contravariant functor)**；"是同构还是配对"取决于它有没有逆——这正是第 62 章 Yoneda 的立场：一个对象由它与所有对象的关系决定。
 - **(ii)** 对应定义 3.1 与定理 3.1：$$V\cong V^*$$ 依赖选基（不自然），而 $$V\mapsto V^{**}$$ 才是自然的；$$\mathcal C^{\mathrm{op}}$$ 是一个货真价实的范畴，不是"$$V$$ 的翻版"。
 - **(iii)** 对应第 3.4 节的 Galois 连接：环同态掉头成谱的连续映射，与"扩域掉头成群"是同一台机器的两个输出。
 
@@ -84,13 +86,13 @@ $$S\ \text{在}\ \mathcal C\ \text{中成立}\iff S^{\mathrm{op}}\ \text{在}\ \
 
 **例 3.1（对偶原理的四个化身）**
 
-(1) **积 ↔ 余积**（第 31 章）。积的万有性质是"存在唯一的 $$h$$ 使一切投影图交换"；把这句里的箭头全部掉头，得到的正是余积的万有性质。所以"积在同构意义下唯一"与"余积在同构意义下唯一"只需要证一遍。
+(1) **积 ↔ 余积**（第 62 章）。积的万有性质是"存在唯一的 $$h$$ 使一切投影图交换"；把这句里的箭头全部掉头，得到的正是余积的万有性质。所以"积在同构意义下唯一"与"余积在同构意义下唯一"只需要证一遍。
 
 (2) **同调 ↔ 上同调**（第 09、14、35 章）。同调 $$H_n=\ker\partial_n/\operatorname{im}\partial_{n+1}$$ 关于链映射是协变的；把链复形整体送进 $$\operatorname{Hom}_A(-,M)$$ 这一反变函子，得到的是**上同调** $$H^n=\ker\delta^n/\operatorname{im}\delta^{n-1}$$。定理 3.2 的证明掉头之后逐字给出上同调的函子性。
 
-(3) **$$\operatorname{Spec}$$ 的反变性**（第 36 章）。见入口题 (iii)：$$\varphi:A\to B$$ 掉头成连续映射 $$\operatorname{Spec} B\to\operatorname{Spec} A$$。
+(3) **$$\operatorname{Spec}$$ 的反变性**（第 72 章）。见入口题 (iii)：$$\varphi:A\to B$$ 掉头成连续映射 $$\operatorname{Spec} B\to\operatorname{Spec} A$$。
 
-(4) **Galois 对应**（第 39 章）。中间域越大，Galois 群越小；两个偏序集之间是**反序**对应。把偏序集看成范畴（$$x\le y$$ 即一条态射），这也是一个反变函子。
+(4) **Galois 对应**（第 78 章）。中间域越大，Galois 群越小；两个偏序集之间是**反序**对应。把偏序集看成范畴（$$x\le y$$ 即一条态射），这也是一个反变函子。
 
 ### 3.2 $$D^2=0$$ 与"两副面孔"
 
@@ -125,11 +127,11 @@ $$H_n(g\circ f)[c]=[(g\circ f)_nc]=[g_nf_nc]=H_n(g)[f_nc]=\big(H_n(g)\circ H_n(f
 
 **注 3.2（为什么这一条是"$$D^2=0$$ 的三副面孔"）** 定理 3.2 的全部内容其实只有一句话：**$$\partial^2=0$$ 使"闭链模边界"可以定义，"与 $$\partial$$ 交换"使它可被搬运。** 全书至少三处是它的原样复述：
 
-- 第 07 章：外微分满足 $$d^2=0$$（因为混合偏导可交换、而楔积反交换），于是有 de Rham 复形与 $$H^\bullet_{dR}$$；
-- 第 09 章：边界算子满足 $$\partial^2=0$$（"边界的边界为零"），于是有同调群 $$H_n$$；
-- 第 35 章：内射消解 $$0\to M\to I^0\to I^1\to\cdots$$ 是链复形，对它取反变 $$\operatorname{Hom}$$ 后再取同调，得导出函子 $$\operatorname{Ext}^n$$。
+- 第 14 章：外微分满足 $$d^2=0$$（因为混合偏导可交换、而楔积反交换），于是有 de Rham 复形与 $$H^\bullet_{dR}$$；
+- 第 18 章：边界算子满足 $$\partial^2=0$$（"边界的边界为零"），于是有同调群 $$H_n$$；
+- 第 70 章：内射消解 $$0\to M\to I^0\to I^1\to\cdots$$ 是链复形，对它取反变 $$\operatorname{Hom}$$ 后再取同调，得导出函子 $$\operatorname{Ext}^n$$。
 
-三处的差别只在"$$D$$ 是谁"：$$d$$ 是导子、$$\partial$$ 是组合算子、$$\delta$$ 是上边界。构造逐字相同。至于"另一副面孔"——第 07 章的 $$v^2=0$$ 与第 29 章的 $$v^2=q(v)$$——关系是：**外代数是 Clifford 代数在 $$q\equiv0$$ 时的特例**，因为两者的泛性质只差一个关系式（见精讲 2）。
+三处的差别只在"$$D$$ 是谁"：$$d$$ 是导子、$$\partial$$ 是组合算子、$$\delta$$ 是上边界。构造逐字相同。至于"另一副面孔"——第 14 章的 $$v^2=0$$ 与第 58 章的 $$v^2=q(v)$$——关系是：**外代数是 Clifford 代数在 $$q\equiv0$$ 时的特例**，因为两者的泛性质只差一个关系式（见精讲 2）。
 
 ### 3.3 谱
 
@@ -165,11 +167,11 @@ $$\lVert R(\mu)\rVert\le\lVert R(\lambda)\rVert+\tfrac12\lVert R(\lambda)\rVert\
 
 **例 3.3（三个谱）**
 
-(a) 第 02 章。$$R_\theta\in SO(2)$$（看作 $$\mathbb C^2$$ 上的实线性算子，或 $$\mathbb C$$ 上的乘 $$e^{i\theta}$$）的特征值是 $$e^{\pm i\theta}$$，故 $$\sigma(R_\theta)=\{e^{i\theta},e^{-i\theta}\}$$；而 $$t\mapsto R_t$$ 在 $$0$$ 处的导数给出 $$\mathfrak{so}(2)$$ 的生成元。这是"谱"在全书中最早出现的地方。
+(a) 第 04 章。$$R_\theta\in SO(2)$$（看作 $$\mathbb C^2$$ 上的实线性算子，或 $$\mathbb C$$ 上的乘 $$e^{i\theta}$$）的特征值是 $$e^{\pm i\theta}$$，故 $$\sigma(R_\theta)=\{e^{i\theta},e^{-i\theta}\}$$；而 $$t\mapsto R_t$$ 在 $$0$$ 处的导数给出 $$\mathfrak{so}(2)$$ 的生成元。这是"谱"在全书中最早出现的地方。
 
-(b) 第 20 章。取 $$A=C(S^1)$$、$$f\in A$$、$$T=M_f$$（乘 $$f$$）。则 $$\sigma(M_f)=f(S^1)$$：算子 $$M_f-\lambda I=M_{f-\lambda}$$ 可逆当且仅当 $$f-\lambda$$ 在 $$S^1$$ 上无处为零（此时 $$1/(f-\lambda)$$ 连续）。而 Gelfand 谱 $$\widehat A=\operatorname{Hom}_{\text{alg}}(A,\mathbb C)$$ 与 $$S^1$$ 一一对应——每个特征就是某个赋值 $$\mathrm{ev}_z$$。谱集与参数集在这里第一次合而为一。
+(b) 第 40 章。取 $$A=C(S^1)$$、$$f\in A$$、$$T=M_f$$（乘 $$f$$）。则 $$\sigma(M_f)=f(S^1)$$：算子 $$M_f-\lambda I=M_{f-\lambda}$$ 可逆当且仅当 $$f-\lambda$$ 在 $$S^1$$ 上无处为零（此时 $$1/(f-\lambda)$$ 连续）。而 Gelfand 谱 $$\widehat A=\operatorname{Hom}_{\text{alg}}(A,\mathbb C)$$ 与 $$S^1$$ 一一对应——每个特征就是某个赋值 $$\mathrm{ev}_z$$。谱集与参数集在这里第一次合而为一。
 
-(c) 第 19 章。自伴算子 $$T=T^*$$ 的谱是 $$\mathbb R$$ 中的非空紧集（定理 3.3 保证非空）；谱定理进一步把它写成 $$\sigma(T)$$ 上某个**投影算子值测度**的积分。这是"谱"从有限个特征值长成一般对象的那一步。
+(c) 第 38 章。自伴算子 $$T=T^*$$ 的谱是 $$\mathbb R$$ 中的非空紧集（定理 3.3 保证非空）；谱定理进一步把它写成 $$\sigma(T)$$ 上某个**投影算子值测度**的积分。这是"谱"从有限个特征值长成一般对象的那一步。
 
 ### 3.4 Galois 连接：一条定理，两门学科
 
@@ -197,10 +199,10 @@ $$G(F(x))=G(F(G(y)))=G(y)=x,$$
 
 - **Galois 理论**（第 38、39 章）。设 $$k\subseteq K$$ 是**有限** Galois 扩张。令 $$P$$ 为中间域 $$\{E:k\subseteq E\subseteq K\}$$ 按包含序，$$Q$$ 为子群 $$\{H:H\le\operatorname{Gal}(K/k)\}$$ 按**反**包含序，取
 $$F(E)=\operatorname{Gal}(K/E),\qquad G(H)=K^H\ \text{（}H\ \text{的固定域）}.$$
-$$F,G$$ 都反序：域越大，保持它不动的自同构越少。恒等式 $$G(F(E))=E$$ 与 $$F(G(H))=H$$ 由度数的乘法性与 $$\lvert\operatorname{Gal}(K/k)\rvert=[K:k]$$ 给出。定理 3.4 (iii) 于是成为：**中间域与子群的一一对应**。顺带解释了第 39 章那句"$$K/k$$ 是 Galois 的 $$\iff$$ 固定域恰为 $$k$$"：它说的是 $$H$$ 是闭元。
+$$F,G$$ 都反序：域越大，保持它不动的自同构越少。恒等式 $$G(F(E))=E$$ 与 $$F(G(H))=H$$ 由度数的乘法性与 $$\lvert\operatorname{Gal}(K/k)\rvert=[K:k]$$ 给出。定理 3.4 (iii) 于是成为：**中间域与子群的一一对应**。顺带解释了第 78 章那句"$$K/k$$ 是 Galois 的 $$\iff$$ 固定域恰为 $$k$$"：它说的是 $$H$$ 是闭元。
 - **覆叠理论**（第 08、25 章）。把 $$P$$ 换成连通覆盖空间、$$Q$$ 换成基本群的子群（按反包含序），$$F$$ = 取覆盖对应的子群、$$G$$ = 由子群构造覆盖。完全相同的推理给出"子群的共轭类 ↔ 连通覆盖的同构类"，其中正规子群对应 Galois 覆盖。
 
-一个证明，两门学科。**这正是本书把 Galois 理论放在最后的理由**：它不是一块新领地，而是那条从第 08 章就开始的"拓扑 ↔ 代数"对应线的终点站。
+一个证明，两门学科。**这正是本书把 Galois 理论放在最后的理由**：它不是一块新领地，而是那条从第 16 章就开始的"拓扑 ↔ 代数"对应线的终点站。
 
 ### 3.5 三角：几何、物理、代数在同一行公式里
 
@@ -228,7 +230,7 @@ $$\partial_tB_z=-\,(\operatorname{curl}\mathbf E)_z.$$
 
 四式合起来正是 $$\operatorname{div}\mathbf B=0$$ 与 $$\partial_t\mathbf B+\operatorname{curl}\mathbf E=0$$。$$\blacksquare$$
 
-**例 3.5（同一个 $$\Lambda^\bullet$$，三个学科）** 命题 3.5 里的 $$d$$ 是第 07 章的外微分；把 $$\Lambda^\bullet$$ 整体当作链复形、取它的同调，就是第 14 章的 de Rham 上同调（而 $$H^2_{dR}(\mathbb R^4)=0$$ 恰好说明"闭的 2-形式必是恰当的"，即齐次方程组的解都来自势 $$A$$，$$F=dA$$）；而第 29 章告诉我们，把外代数"$$q$$-变形"$$\Lambda^\bullet\rightsquigarrow \operatorname{Cl}(V,q)$$，同一个 $$d$$ 就变成 Dirac 算子的平方。物理（Maxwell）、几何（形式与 Stokes）、代数（分次代数与其导子）在同一行公式里会齐——这就是本课程反复出现的那条三角线。
+**例 3.5（同一个 $$\Lambda^\bullet$$，三个学科）** 命题 3.5 里的 $$d$$ 是第 14 章的外微分；把 $$\Lambda^\bullet$$ 整体当作链复形、取它的同调，就是第 28 章的 de Rham 上同调（而 $$H^2_{dR}(\mathbb R^4)=0$$ 恰好说明"闭的 2-形式必是恰当的"，即齐次方程组的解都来自势 $$A$$，$$F=dA$$）；而第 58 章告诉我们，把外代数"$$q$$-变形"$$\Lambda^\bullet\rightsquigarrow \operatorname{Cl}(V,q)$$，同一个 $$d$$ 就变成 Dirac 算子的平方。物理（Maxwell）、几何（形式与 Stokes）、代数（分次代数与其导子）在同一行公式里会齐——这就是本课程反复出现的那条三角线。
 
 ## 四、几何与物理直觉 (Intuition)
 
@@ -247,24 +249,24 @@ $$\partial_tB_z=-\,(\operatorname{curl}\mathbf E)_z.$$
 | 36 | $$\operatorname{Spec} A$$ | 环同态掉头成连续映射；Zariski 闭集 $$V(\mathfrak a)$$ 与理想 $$\mathfrak a$$ 反序对应 |
 | 37 | Čech 上同调 $$\check H^\bullet(\mathfrak U;\mathbb Z)$$ | 开集的包含 $$\iota:U\hookrightarrow V$$ 给出反向的限制映射 $$\iota^*:\mathcal F(V)\to\mathcal F(U)$$ |
 
-**几何直觉**：对偶是"从函数看空间"。给一个空间 $$X$$，我们实际上只能通过它上面的函数（$$C(X)$$、$$\mathcal O_X$$）去了解它；而"函数"天然是反变的——空间之间的映射，把函数拉回来。第 20 章与第 36 章把这件事推到极致：**空间可以由它的函数代数完全重建**（Gelfand–Naimark 与仿射概形）。这也是为什么 $$\operatorname{Spec}$$ 必须反变：它不是一个"几何实现"，而是一个**等价**——两个范畴反向相等。
+**几何直觉**：对偶是"从函数看空间"。给一个空间 $$X$$，我们实际上只能通过它上面的函数（$$C(X)$$、$$\mathcal O_X$$）去了解它；而"函数"天然是反变的——空间之间的映射，把函数拉回来。第 40 章与第 72 章把这件事推到极致：**空间可以由它的函数代数完全重建**（Gelfand–Naimark 与仿射概形）。这也是为什么 $$\operatorname{Spec}$$ 必须反变：它不是一个"几何实现"，而是一个**等价**——两个范畴反向相等。
 
-**物理直觉**：第 03 章的"逆变/协变"在物理里就是**坐标变换下的两类量**：切向量按 $$\partial/\partial x^i$$ 变，余切向量（如梯度 $$\partial f/\partial x^i$$）按相反的方向变。物理定律必须把这两类指标配成一对才写出不变量，这就是"上下指标求和"的真正内容。
+**物理直觉**：第 06 章的"逆变/协变"在物理里就是**坐标变换下的两类量**：切向量按 $$\partial/\partial x^i$$ 变，余切向量（如梯度 $$\partial f/\partial x^i$$）按相反的方向变。物理定律必须把这两类指标配成一对才写出不变量，这就是"上下指标求和"的真正内容。
 
 ### 4.3 地图二：同一个构造的两副面孔
 
 **面孔对 1：$$v^2=0$$ 与 $$v^2=q(v)$$。**
-第 07 章的外代数 $$\Lambda^\bullet V$$ 满足 $$v\wedge v=0$$；第 29 章的 Clifford 代数 $$\operatorname{Cl}(V,q)$$ 满足 $$v^2=q(v)\cdot1$$。把它们写成同一句话：
+第 14 章的外代数 $$\Lambda^\bullet V$$ 满足 $$v\wedge v=0$$；第 58 章的 Clifford 代数 $$\operatorname{Cl}(V,q)$$ 满足 $$v^2=q(v)\cdot1$$。把它们写成同一句话：
 
 $$\operatorname{Cl}(V,q)=T(V)\ /\ \langle\ v\otimes v-q(v)\ \rangle,\qquad \Lambda^\bullet V=T(V)\ /\ \langle\ v\otimes v\ \rangle=\operatorname{Cl}(V,0).$$
 
 取 $$q\equiv0$$ 就退回外代数。这不是类比，是同一条商构造的两个参数值（见精讲 2）。物理上这对应**费米子与玻色子**：$$q=0$$ 的反对易关系给出外代数（Pauli 不相容），$$q\ne0$$ 的 Clifford 关系给出 Dirac 代数（相对论性电子）。
 
 **面孔对 2：三个"平方为零"。**
-第 07 章的 $$d^2=0$$、第 09 章的 $$\partial^2=0$$、第 35 章导出函子里的 $$\delta^2=0$$——它们各自的第一条定理都是定理 3.2，差别只在"$$D$$ 是谁"。物理上 $$d^2=0$$ 还有一层含义：$$F=dA$$ 自动满足 $$dF=0$$，所以**齐次 Maxwell 方程组不是物理假设，而是 $$d^2=0$$ 的推论**（命题 3.5）。
+第 14 章的 $$d^2=0$$、第 18 章的 $$\partial^2=0$$、第 70 章导出函子里的 $$\delta^2=0$$——它们各自的第一条定理都是定理 3.2，差别只在"$$D$$ 是谁"。物理上 $$d^2=0$$ 还有一层含义：$$F=dA$$ 自动满足 $$dF=0$$，所以**齐次 Maxwell 方程组不是物理假设，而是 $$d^2=0$$ 的推论**（命题 3.5）。
 
 **面孔对 3：对称与反对称的同一个来源。**
-第 04 章的辛形式 $$\omega$$ 反对称，第 11 章的度量 $$g$$ 对称；两者都是 $$V\otimes V\to k$$ 的双线性型，只差一个符号。第 22 章的正则对易关系 $$[p,q]=\mathrm i\hbar$$ 与第 29 章 Clifford 的 $$v^2=q(v)$$ 是同一支"量子化"的两个版本：**对称化给出玻色子（对易），反对称化给出费米子（反对易）**。
+第 08 章的辛形式 $$\omega$$ 反对称，第 22 章的度量 $$g$$ 对称；两者都是 $$V\otimes V\to k$$ 的双线性型，只差一个符号。第 44 章的正则对易关系 $$[p,q]=\mathrm i\hbar$$ 与第 58 章 Clifford 的 $$v^2=q(v)$$ 是同一支"量子化"的两个版本：**对称化给出玻色子（对易），反对称化给出费米子（反对易）**。
 
 ### 4.4 地图三：谱、特征值、表示
 
@@ -291,13 +293,13 @@ $$\operatorname{Cl}(V,q)=T(V)\ /\ \langle\ v\otimes v-q(v)\ \rangle,\qquad \Lamb
 
 三角的读法是这样的：**几何提出问题**（"两个子簇交几次""这个丛有没有整体截面"），**代数提供工具**（理想、模、导出函子、同调群），**物理提供直觉与检验**（守恒律、变分原理、对称性决定相互作用）。每一章的入口题几乎都是"一个几何问题"，而解答几乎都落在"一个代数不变量"上；中间那一步的动机，往往来自物理。
 
-第 36 章是这张三角最极端的一次实验：它把**算术本身**（$$\mathbb Z$$、$$\mathbb F_q$$ 上的方程）也画进几何这一格，于是"数论问题"和"几何问题"从此是同一门学科的两半。第 38、39 章立刻给出了第一次回报：数域扩张的 Galois 群，和黎曼面的覆叠变换群，服从同一套定理（注 3.4）。
+第 72 章是这张三角最极端的一次实验：它把**算术本身**（$$\mathbb Z$$、$$\mathbb F_q$$ 上的方程）也画进几何这一格，于是"数论问题"和"几何问题"从此是同一门学科的两半。第 38、39 章立刻给出了第一次回报：数域扩张的 Galois 群，和黎曼面的覆叠变换群，服从同一套定理（注 3.4）。
 
 ### 4.6 三段历史注脚
 
 - **1832 年，Galois**。据通行说法，他在决斗前夜写下的遗稿里反复出现"群"这个词，却始终用"置换"称呼它——他手里已有定理 3.4，却还没有"子群"的语言。他关心的是一元方程的根式可解性，得到的却是整个代数的骨架。
-- **1920–1930 年代，Noether 与 van der Waerden**。Emmy Noether 把"理想"当成对象来研究，交换代数与代数几何由此合流：零点集与理想是同一个东西的两副面孔。第 36 章的字典就是这次合流的产物。
-- **1957 年，Grothendieck 的 Tôhoku 论文**。他把"同调"从具体对象里解放出来，写成"右导出函子的普遍定义"。第 35 章的导出函子、第 31–33 章的范畴语言，都来自这一次抽象——**抽象得越彻底，能装下的例子越多**，这正是本章四条主线能贯穿六卷的原因。
+- **1920–1930 年代，Noether 与 van der Waerden**。Emmy Noether 把"理想"当成对象来研究，交换代数与代数几何由此合流：零点集与理想是同一个东西的两副面孔。第 72 章的字典就是这次合流的产物。
+- **1957 年，Grothendieck 的 Tôhoku 论文**。他把"同调"从具体对象里解放出来，写成"右导出函子的普遍定义"。第 70 章的导出函子、第 31–33 章的范畴语言，都来自这一次抽象——**抽象得越彻底，能装下的例子越多**，这正是本章四条主线能贯穿六卷的原因。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -343,7 +345,7 @@ $$h'(x,y)=h'\big(\iota_Xx+\iota_Yy\big)=h'\iota_Xx+h'\iota_Yy=f(x)+g(y)=h(x,y),$
 
 ### 精讲 2（两副面孔：$$q=0$$ 的 Clifford 就是外代数）
 
-**考点**：第 07 章与第 29 章的同一个商构造（注 3.2）。**位置**：地图二的面孔对 1。
+**考点**：第 14 章与第 58 章的同一个商构造（注 3.2）。**位置**：地图二的面孔对 1。
 
 **题目**：设 $$V$$ 是特征不等于 $$2$$ 的域上的向量空间。证明 $$\operatorname{Cl}(V,0)\cong\Lambda^\bullet V$$ 作为结合代数。
 
@@ -352,7 +354,7 @@ $$h'(x,y)=h'\big(\iota_Xx+\iota_Yy\big)=h'\iota_Xx+h'\iota_Yy=f(x)+g(y)=h(x,y),$
 - **外代数的泛性质**：设 $$\iota:V\to\Lambda^\bullet V$$ 是到一次部分的包含。对任意结合 $$k$$-代数 $$A$$ 与任意线性映射 $$\psi:V\to A$$，若 $$\psi(v)^2=0$$ 对一切 $$v\in V$$，则存在**唯一**代数同态 $$\widetilde\psi:\Lambda^\bullet V\to A$$ 使 $$\widetilde\psi\circ\iota=\psi$$。
 - **Clifford 代数的泛性质**：$$\operatorname{Cl}(V,q)=T(V)/\langle v\otimes v-q(v)\cdot1\rangle$$，结构映射 $$j:V\to\operatorname{Cl}(V,q)$$ 满足 $$j(v)^2=q(v)\cdot1$$。对任意结合 $$k$$-代数 $$A$$ 与任意线性映射 $$\phi:V\to A$$，若 $$\phi(v)^2=q(v)\cdot1$$ 对一切 $$v$$ 成立，则存在**唯一**代数同态 $$\widetilde\phi:\operatorname{Cl}(V,q)\to A$$ 使 $$\widetilde\phi\circ j=\phi$$。
 
-在 $$\Lambda^\bullet V$$ 中，对 $$v\in V$$ 有 $$v\wedge v=0$$：因为 $$\wedge$$ 反交换（第 07 章），$$v\wedge v=-v\wedge v$$，即 $$2(v\wedge v)=0$$，而特征不为 $$2$$，故 $$v\wedge v=0$$。
+在 $$\Lambda^\bullet V$$ 中，对 $$v\in V$$ 有 $$v\wedge v=0$$：因为 $$\wedge$$ 反交换（第 14 章），$$v\wedge v=-v\wedge v$$，即 $$2(v\wedge v)=0$$，而特征不为 $$2$$，故 $$v\wedge v=0$$。
 
 **第一步**，取 $$q=0$$：$$j:V\to\operatorname{Cl}(V,0)$$ 满足 $$j(v)^2=0\cdot1=0$$。把它当作外代数泛性质中的 $$\psi$$（目标代数 $$A=\operatorname{Cl}(V,0)$$），得唯一同态
 $$\Psi:\Lambda^\bullet V\to\operatorname{Cl}(V,0),\qquad \Psi\circ\iota=j.$$
@@ -397,7 +399,7 @@ $$\sigma(M_z)=\{\lambda\in\mathbb C:\lvert\lambda\rvert=1\}=S^1.$$
 
 ### 精讲 4（Galois 连接的一次完整运行：$$\mathbb Q(\sqrt2,\sqrt3)/\mathbb Q$$）
 
-**考点**：定义 3.4 与定理 3.4。**位置**：地图一的第四格（第 39 章），也是注 3.4 里 Galois 侧的例子。
+**考点**：定义 3.4 与定理 3.4。**位置**：地图一的第四格（第 78 章），也是注 3.4 里 Galois 侧的例子。
 
 **题目**：设 $$K=\mathbb Q(\sqrt2,\sqrt3)$$。求出 $$\operatorname{Gal}(K/\mathbb Q)$$、它的全部子群、以及全部中间域，并造出对应表。
 
@@ -477,7 +479,7 @@ $$\begin{array}{ccc}\mathcal C & \xrightarrow{\ F\ } & \mathcal D\\ \downarrow &
 $$\varepsilon(\omega)=\omega\wedge dx,\qquad \iota(a+b\,dx)=b.$$
 (i) 证明 $$\varepsilon^2=0$$、$$\iota^2=0$$、$$\varepsilon\iota+\iota\varepsilon=\mathrm{id}$$；
 (ii) 由此证明 $$(\varepsilon+\iota)^2=\mathrm{id}$$，即 $$\varepsilon+\iota$$ 是一个"平方等于 1"的元素；
-(iii) 说明这里同时出现了第 07 章的 $$v^2=0$$ 与第 29 章的 $$v^2=q(v)$$，并指出它与第 22 章正则对易关系的同异。
+(iii) 说明这里同时出现了第 14 章的 $$v^2=0$$ 与第 58 章的 $$v^2=q(v)$$，并指出它与第 44 章正则对易关系的同异。
 
 ### 解答 (Solutions)
 
@@ -650,7 +652,7 @@ $$\big(f^{**}\iota_Vv\big)(\varphi)=(\iota_Vv)(f^*\varphi)=(f^*\varphi)(v)=\varp
 
 **解 研2.**
 (i) $$\Lambda^\bullet\mathbb R$$ 只有两部分：$$\Lambda^0=\mathbb R\cdot1$$、$$\Lambda^1=\mathbb R\cdot dx$$。取 $$\omega=a+b\,dx$$（$$a,b\in\mathbb R$$）。
-**$$\varepsilon^2=0$$**：$$\varepsilon(\omega)=\omega\wedge dx=(a+b\,dx)\wedge dx=a\,dx+b\,dx\wedge dx=adx$$（用 $$dx\wedge dx=0$$，即第 07 章的反对称）。再作用一次：$$\varepsilon(adx)=a\,dx\wedge dx=0$$。
+**$$\varepsilon^2=0$$**：$$\varepsilon(\omega)=\omega\wedge dx=(a+b\,dx)\wedge dx=a\,dx+b\,dx\wedge dx=adx$$（用 $$dx\wedge dx=0$$，即第 14 章的反对称）。再作用一次：$$\varepsilon(adx)=a\,dx\wedge dx=0$$。
 **$$\iota^2=0$$**：由定义 $$\iota(a+b\,dx)=b\in\Lambda^0$$，再作用 $$\iota(b)=0$$（$$\iota$$ 把常值部分送到 $$0$$）。
 **$$\varepsilon\iota+\iota\varepsilon=\mathrm{id}$$**：
 $$\varepsilon\iota(\omega)=\varepsilon(b)=b\,dx,\qquad\iota\varepsilon(\omega)=\iota(a\,dx)=a,$$
@@ -661,9 +663,9 @@ $$(\varepsilon+\iota)^2=\varepsilon^2+\varepsilon\iota+\iota\varepsilon+\iota^2=
 （复合是线性的，故可以这样展开。）于是 $$\varepsilon+\iota\in\operatorname{End}(\Lambda^\bullet\mathbb R)$$ 满足 "$$v^2=1$$"。
 
 (iii) **两副面孔在同一空间上同时出现。**
-- **第 07 章的那一副**：$$\varepsilon^2=0$$，而 $$\varepsilon$$ 就是"乘 $$dx$$"。子代数 $$\mathbb R[\varepsilon]/(\varepsilon^2)$$ 是外代数 $$\Lambda^\bullet(\mathbb R)$$ 里"生成元平方为零"的完整写照：$$v\wedge v=0$$。
-- **第 29 章的那一副**：令 $$v=\varepsilon+\iota$$，则 $$v^2=\mathrm{id}=q(v)\cdot1$$，其中 $$q$$ 取"标准"二次型 $$q(t)=t^2$$。所以 $$v$$ 是 $$\operatorname{Cl}(\mathbb R,1)$$ 的生成元，而 $$v=\varepsilon+\iota$$ 是把这个 Clifford 代数**实现**在 $$\Lambda^\bullet\mathbb R$$ 上的方式（这就是"用外代数构造旋量表示"的最小模型）。
-- **与第 22 章的同异**：第 22 章的正则对易关系是 $$[p,q]=\mathrm i\hbar$$——两个算子的**对易子**是单位；这里的 $$\varepsilon,\iota$$ 满足**反对易**关系 $$\varepsilon\iota+\iota\varepsilon=\mathrm{id}$$。两者都是"两个算子给出单位"，差别只在符号：**对易 = 玻色子（对称代数）**，**反对易 = 费米子（外代数 / Clifford 代数）**。把符号改成 $$q$$-变形，二者被同一条公式统一：$$vw\pm wv=(\cdots)$$。
+- **第 14 章的那一副**：$$\varepsilon^2=0$$，而 $$\varepsilon$$ 就是"乘 $$dx$$"。子代数 $$\mathbb R[\varepsilon]/(\varepsilon^2)$$ 是外代数 $$\Lambda^\bullet(\mathbb R)$$ 里"生成元平方为零"的完整写照：$$v\wedge v=0$$。
+- **第 58 章的那一副**：令 $$v=\varepsilon+\iota$$，则 $$v^2=\mathrm{id}=q(v)\cdot1$$，其中 $$q$$ 取"标准"二次型 $$q(t)=t^2$$。所以 $$v$$ 是 $$\operatorname{Cl}(\mathbb R,1)$$ 的生成元，而 $$v=\varepsilon+\iota$$ 是把这个 Clifford 代数**实现**在 $$\Lambda^\bullet\mathbb R$$ 上的方式（这就是"用外代数构造旋量表示"的最小模型）。
+- **与第 44 章的同异**：第 44 章的正则对易关系是 $$[p,q]=\mathrm i\hbar$$——两个算子的**对易子**是单位；这里的 $$\varepsilon,\iota$$ 满足**反对易**关系 $$\varepsilon\iota+\iota\varepsilon=\mathrm{id}$$。两者都是"两个算子给出单位"，差别只在符号：**对易 = 玻色子（对称代数）**，**反对易 = 费米子（外代数 / Clifford 代数）**。把符号改成 $$q$$-变形，二者被同一条公式统一：$$vw\pm wv=(\cdots)$$。
 
 **接着往哪走**：把"奇算子 + 偶算子 + 反对易"当成公理，就得到**超代数 (superalgebra)** 与超对称的数学框架；把上面这个 $$\mathbb R^2$$ 换成一般流形上的 $$\Omega^\bullet(M)$$，$$d=\varepsilon+\iota$$ 型的分解就是 Hodge 理论与指标定理的起点。这正是下一站：第 7 节说的"拓扑/K 理论入口"。$$\blacksquare$$
 
@@ -673,7 +675,7 @@ $$(\varepsilon+\iota)^2=\varepsilon^2+\varepsilon\iota+\iota\varepsilon+\iota^2=
 
 你已经走完了 40 章。
 
-第 01 章开始时，你手里只有 $$\mathbb C$$ 和 Euler 公式。第 39 章结束时，你手里有：流形与层、同调与上同调、Hilbert 空间与谱定理、Lie 代数与根系、范畴与导出函子、Galois 对应。这些不是"读过"的东西，而是**四十次从一道具体问题里把它长出来**的东西——这就是这本书与一般教材最大的不同：你没有先背定义，你是先被一道题卡住，才被迫发明定义。
+第 02 章开始时，你手里只有 $$\mathbb C$$ 和 Euler 公式。第 78 章结束时，你手里有：流形与层、同调与上同调、Hilbert 空间与谱定理、Lie 代数与根系、范畴与导出函子、Galois 对应。这些不是"读过"的东西，而是**四十次从一道具体问题里把它长出来**的东西——这就是这本书与一般教材最大的不同：你没有先背定义，你是先被一道题卡住，才被迫发明定义。
 
 **这本书教了四件事。**
 
@@ -689,36 +691,35 @@ $$(\varepsilon+\iota)^2=\varepsilon^2+\varepsilon\iota+\iota\varepsilon+\iota^2=
 ### 下一站：四个入口
 
 **一、代数几何：概形上同调、层论、$$\ell$$-进上同调。**
-你已经有了两件工具：层的语言（第 36 章）与导出函子（第 35 章）。把它们合起来就是**概形上同调** $$H^i(X,\mathcal F)$$——整体截面函子的右导出函子，第 37 章那台"粘合障碍计量器"的一般版本。它的第一组定理（Serre 对偶、Riemann–Roch）就把曲线论的全部古典结果收成推论；而为了给有限域上的概形配上"正确的"上同调（让它带上 Galois 作用），Grothendieck 造出了 $$\ell$$-进上同调——**这就是 Weil 猜想的证明路线，也是第 38、39 章的 Galois 群第一次真正用上同调的方式出场。**
+你已经有了两件工具：层的语言（第 72 章）与导出函子（第 70 章）。把它们合起来就是**概形上同调** $$H^i(X,\mathcal F)$$——整体截面函子的右导出函子，第 74 章那台"粘合障碍计量器"的一般版本。它的第一组定理（Serre 对偶、Riemann–Roch）就把曲线论的全部古典结果收成推论；而为了给有限域上的概形配上"正确的"上同调（让它带上 Galois 作用），Grothendieck 造出了 $$\ell$$-进上同调——**这就是 Weil 猜想的证明路线，也是第 38、39 章的 Galois 群第一次真正用上同调的方式出场。**
 
 **二、数论：类域论、模形式、Langlands 纲领。**
-第 38 章已经让你见过数域的算术：范围是 $$K/\mathbb Q$$ 的扩张被 Galois 群控制。**类域论**说：$$\mathbb Q$$ 的**阿贝尔**扩张全都被"模某个整数"描述——你在竞赛 3 里算出的 $$\mathbb Q(\sqrt5)\subset\mathbb Q(\zeta_5)$$ 就是这条定理最小的例子。**模形式**是把这件事搬进分析：上半平面上的全纯函数、Hecke 算子、L 函数，它们把算术信息编码成解析对象（第 38、39 章的知识在这里与解析数论的 zeta、L 函数接上）。**Langlands 纲领**猜想：一切 Galois 表示都来自自守表示——即"算术"与"分析"这两个世界是同一件事的两副面孔。这是当代数学最大的未解纲领之一，而它的语言你已经具备。
+第 76 章已经让你见过数域的算术：范围是 $$K/\mathbb Q$$ 的扩张被 Galois 群控制。**类域论**说：$$\mathbb Q$$ 的**阿贝尔**扩张全都被"模某个整数"描述——你在竞赛 3 里算出的 $$\mathbb Q(\sqrt5)\subset\mathbb Q(\zeta_5)$$ 就是这条定理最小的例子。**模形式**是把这件事搬进分析：上半平面上的全纯函数、Hecke 算子、L 函数，它们把算术信息编码成解析对象（第 38、39 章的知识在这里与解析数论的 zeta、L 函数接上）。**Langlands 纲领**猜想：一切 Galois 表示都来自自守表示——即"算术"与"分析"这两个世界是同一件事的两副面孔。这是当代数学最大的未解纲领之一，而它的语言你已经具备。
 
 **三、表示论：最高权分类、Kazhdan–Lusztig。**
-第 28 章的根系已经把复半单 Lie 代数的不可约表示**组合地**分类完（最高权）。下一步是把这个分类做成范畴：BGG 范畴 $$\mathcal O$$ 里的对象（Verma 模及其合成因子）有精确的**对偶性**，Kazhdan–Lusztig 猜想把它的基与 Hecke 代数的基联系起来——它同时用到了第 28 章的根系、第 30 章的射影表示、第 35 章的导出函子，以及第 39 章的 Galois 味思想（Dynkin 图的自同构）。**这是本书四条主线最后汇聚得最密的一处。**
+第 56 章的根系已经把复半单 Lie 代数的不可约表示**组合地**分类完（最高权）。下一步是把这个分类做成范畴：BGG 范畴 $$\mathcal O$$ 里的对象（Verma 模及其合成因子）有精确的**对偶性**，Kazhdan–Lusztig 猜想把它的基与 Hecke 代数的基联系起来——它同时用到了第 56 章的根系、第 60 章的射影表示、第 70 章的导出函子，以及第 78 章的 Galois 味思想（Dynkin 图的自同构）。**这是本书四条主线最后汇聚得最密的一处。**
 
 **四、拓扑与 K 理论：特征类、指标定理。**
-第 37 章结束时你手上有一个"用向量丛做的广义上同调理论"的雏形：Grothendieck 群 $$K(X)$$、Bott 周期、Chern 特征标。往下走一步就是**特征类**——给每个丛配一个上同调类，度量它的"扭"，并由此得到 Poincaré–Hopf、Gauss–Bonnet 这类"局部的曲率积出整体的拓扑数"的定理。顶点是 **Atiyah–Singer 指标定理**：椭圆算子的解析指标（解空间的维数差）等于纯拓扑的指标（用 Chern 特征标与 Todd 类算出）。**这是"分析 ↔ 拓扑"的最强定理，也是本书"几何 ↔ 物理 ↔ 代数三角"的最后一个榜样。**
+第 74 章结束时你手上有一个"用向量丛做的广义上同调理论"的雏形：Grothendieck 群 $$K(X)$$、Bott 周期、Chern 特征标。往下走一步就是**特征类**——给每个丛配一个上同调类，度量它的"扭"，并由此得到 Poincaré–Hopf、Gauss–Bonnet 这类"局部的曲率积出整体的拓扑数"的定理。顶点是 **Atiyah–Singer 指标定理**：椭圆算子的解析指标（解空间的维数差）等于纯拓扑的指标（用 Chern 特征标与 Todd 类算出）。**这是"分析 ↔ 拓扑"的最强定理，也是本书"几何 ↔ 物理 ↔ 代数三角"的最后一个榜样。**
 
 ### 延伸阅读（按入口分组，每条只给一本起点）
 
 - **代数几何**：Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*（自由讲义，最接近本书的口吻：从问题里长出定义）；工具书用 Hartshorne, *Algebraic Geometry*, GTM 52。
 - **数论**：J. S. Milne, *Algebraic Number Theory*（自由讲义）；要直接看纲领，读 S. Gelbart, *An Elementary Introduction to the Langlands Program*（BAMS 10 (1984)）。
 - **表示论**：J. E. Humphreys, *Introduction to Lie Algebras and Representation Theory*, GTM 9；进阶读 Humphreys, *Representations of Semisimple Lie Algebras in the BGG Category O*, GSM 94。
-- **拓扑与 K 理论**：Allen Hatcher, *Vector Bundles and K-Theory*（自由 PDF，与本课程第 37 章同一来源）；指标定理读 M. Atiyah, *K-Theory* 或 N. Berline, E. Getzler, M. Vergne, *Heat Kernels and Dirac Operators*。
+- **拓扑与 K 理论**：Allen Hatcher, *Vector Bundles and K-Theory*（自由 PDF，与本课程第 74 章同一来源）；指标定理读 M. Atiyah, *K-Theory* 或 N. Berline, E. Getzler, M. Vergne, *Heat Kernels and Dirac Operators*。
 - **回来读的一本**：Michael Atiyah, *The Geometry and Physics of Knots*（用物理直觉讲拓扑不变量，是本课程"三角"精神的最好示范）。
 
 ### 最后一段
 
-本书从 $$\mathbb C$$ 走到 Galois，中间绕过四十个弯。**没有哪一步是必需的**——它们只是同一个冲动在四十个场合的四十次表现：**把看不见的东西，换成一个能算的东西。** 你在第 01 章学会把旋转换成乘法，在第 09 章学会把"洞"换成商群，在第 36 章学会把几何换成环，在第 39 章学会把扩张换成群。这条线索不会在第 40 章结束，它只是换了一本书继续。
+本书从 $$\mathbb C$$ 走到 Galois，中间绕过四十个弯。**没有哪一步是必需的**——它们只是同一个冲动在四十个场合的四十次表现：**把看不见的东西，换成一个能算的东西。** 你在第 02 章学会把旋转换成乘法，在第 18 章学会把"洞"换成商群，在第 72 章学会把几何换成环，在第 78 章学会把扩张换成群。这条线索不会在第 80 章结束，它只是换了一本书继续。
 
 祝你在下一本书里，还能听见问题被卡住的那一声脆响。
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch39_Galois群与Galois对应.md">← 第39章 Galois 群与 Galois 对应</a></div>
+  <div><a href="ch79_尾声_从Galois到现代数学_上.md">← 第79章 尾声：从 Galois 到现代数学·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
   <div></div>
 </div>

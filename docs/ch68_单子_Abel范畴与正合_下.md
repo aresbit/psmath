@@ -2,19 +2,21 @@
 layout: default
 ---
 
-# 第34章: 单子、Abel 范畴与正合 (Monads, Abelian Categories and Exactness)
+# 第68章: 单子、Abel 范畴与正合·下：完整推导 (Monads, Abelian Categories and Exactness · Part II: Full Derivation)
+
 > 对应原专栏: MP120、MP126–MP128
 > 专家依据: `_experts/algebra/category-universal-properties.md` + `_experts/algebra/homological-algebra.md`
 > 知识库依据: `opc2/knowledge/math/范畴论/`（13 篇）、`opc2/knowledge/math/同调代数/`（8 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第67章 单子、Abel 范畴与正合·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
-第 09、10、14 章一直在做同一件事：取一个映射的核，再取前一个映射的像，然后把像塞进核里做商。第 09 章算出 $$\partial^2=0$$，于是 $$\operatorname{im}\partial_{k+1}$$ 落在 $$\ker\partial_k$$ 里，商才有意义；第 10 章把它命名为同调群 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$；第 14 章换成分形式，得到 $$H^k_{dR}=\ker d_k/\operatorname{im}d_{k-1}$$。当时每一步都靠"分母确实是分子的子对象"这一句具体验证撑着。**本章要问的是：这些验证里，哪一部分是结构上必然的、哪一部分才是真正携带信息的量；把"必然的那一部分"抽出来当成公理，会得到什么。**
+第 09、10、14 章一直在做同一件事：取一个映射的核，再取前一个映射的像，然后把像塞进核里做商。第 18 章算出 $$\partial^2=0$$，于是 $$\operatorname{im}\partial_{k+1}$$ 落在 $$\ker\partial_k$$ 里，商才有意义；第 20 章把它命名为同调群 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$；第 28 章换成分形式，得到 $$H^k_{dR}=\ker d_k/\operatorname{im}d_{k-1}$$。当时每一步都靠"分母确实是分子的子对象"这一句具体验证撑着。**本章要问的是：这些验证里，哪一部分是结构上必然的、哪一部分才是真正携带信息的量；把"必然的那一部分"抽出来当成公理，会得到什么。**
 
 这条路从第 31–33 章来：那里我们备齐了范畴、函子、自然变换、极限与余极限、伴随与 Yoneda，但它们到此为止还只是语言。本章是这些语言第一次**真的开始算东西**——算出来的第一个对象叫**正合 (exact)**。三条主线：正合序列、**阿贝尔范畴 (abelian category)**（让核、像、商都自动有意义的公理系统）、**单子 (monad)**（伴随的"影子"，把自由构造与约束折叠分开）。
 
-到哪去：第 35 章讲导出函子，它会给"同调为什么必然存在"一个统一的答案；本章是那一步的全部预备。
+到哪去：第 70 章讲导出函子，它会给"同调为什么必然存在"一个统一的答案；本章是那一步的全部预备。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -34,7 +36,7 @@ $$H:=\ker P_2\big/\operatorname{im}P_1 .$$
 
 **(3)** 问：几何上什么条件保证 $$H=0$$？把 (2) 的结果翻译成一句关于 $$P_1,P_2$$ 的话。然后回答：**这句话为什么值得单独起一个名字？**（先别急着叫它"正合"；试着说清，"命名"在这里究竟标记了什么。）
 
-**(4)** 把 (2) 里的商 $$H$$ 与第 10 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 摆在一起看：它们是同一种构造吗？如果是，为什么第 10 章要花力气去验证 $$\operatorname{im}\partial_{k+1}\subseteq\ker\partial_k$$，而这里 $$H$$ 的存在却是"自动的"？
+**(4)** 把 (2) 里的商 $$H$$ 与第 20 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 摆在一起看：它们是同一种构造吗？如果是，为什么第 20 章要花力气去验证 $$\operatorname{im}\partial_{k+1}\subseteq\ker\partial_k$$，而这里 $$H$$ 的存在却是"自动的"？
 
 这道题是整章的引子：**(1) 是"复形"、(2) 是"同调"、(3) 是"正合"、(4) 是"阿贝尔范畴"**——本章的四个主角。现在只给题，不给定义；(3) 的"命名"问题与 (4) 的"自动性"问题，到 3.3、3.4 节才会被正面回答。
 
@@ -124,14 +126,14 @@ $$u=m\circ\bar u\circ q,\qquad A\xrightarrow{\ q\ }\operatorname{Coim}u\xrightar
 ④ $$\bar u$$ 单：设 $$\bar u(x)=0$$，写 $$x=q(a)$$。则 $$u(a)=m\bar uq(a)=m(0)=0$$，即 $$a\in k(A)$$，于是 $$x=q(a)=0$$。
 由 ③④，$$\bar u$$ 是同构。$$\blacksquare$$
 
-**例 3.9（阿贝尔范畴与非阿贝尔范畴）** 阿贝尔范畴：$$\mathbf{Ab}$$（即 $$\mathbb{Z}\text{-}\mathbf{Mod}$$）、$$R\text{-}\mathbf{Mod}$$、$$\mathbf{Vect}_k$$、有限生成 $$R$$-模范畴（$$R$$ Noether 时）、以及第 36 章要用的层范畴 $$\mathbf{Sh}(X;\mathbf{Ab})$$（核逐点取，余核取预层余核后再层化，公理逐条成立）。
+**例 3.9（阿贝尔范畴与非阿贝尔范畴）** 阿贝尔范畴：$$\mathbf{Ab}$$（即 $$\mathbb{Z}\text{-}\mathbf{Mod}$$）、$$R\text{-}\mathbf{Mod}$$、$$\mathbf{Vect}_k$$、有限生成 $$R$$-模范畴（$$R$$ Noether 时）、以及第 72 章要用的层范畴 $$\mathbf{Sh}(X;\mathbf{Ab})$$（核逐点取，余核取预层余核后再层化，公理逐条成立）。
 **不是**阿贝尔范畴的：$$\mathbf{Set}$$、$$\mathbf{Top}$$（态射集上没有群结构，连加性都不满足）；$$\mathbf{Ring}$$（环同态不能相减，Hom 集不是 Abel 群）；$$\mathbf{Grp}$$（Hom 集上没有群结构，且 (A2) 失效——竞 4 给出一个单态射不是核的具体例子）。
 
 **注 3.9（公理 (A2)(A3) 在干什么，以及入口题 (4) 的答案）** 定理 3.9 的证明用到 (A2)(A3) 才把 $$\operatorname{Coim}u$$ 与 $$\operatorname{Im}u$$ 认成同一个东西。这件事的意义是：**"像"与"核"来自两个不同的构造（一个用余核造、一个本身是核），要让"$$\operatorname{im}f=\ker g$$"这句话里的等号有意义，必须先有定理 3.9 把它们放进同一个世界里。** 没有 (A2)(A3)，这句话左右两边甚至不在同一层。
 
-回到入口题 (4)。第 10 章必须验证 $$\operatorname{im}\partial_{k+1}\subseteq\ker\partial_k$$，是因为在那里"商"是在群论里手工作的，分母必须是子群。而在阿贝尔范畴里，$$H_n$$ 被**定义**为余核
+回到入口题 (4)。第 20 章必须验证 $$\operatorname{im}\partial_{k+1}\subseteq\ker\partial_k$$，是因为在那里"商"是在群论里手工作的，分母必须是子群。而在阿贝尔范畴里，$$H_n$$ 被**定义**为余核
 $$H_n=\operatorname{Coker}\bigl(\operatorname{Im}d_{n+1}\hookrightarrow\operatorname{Ker}d_n\bigr),$$
-公理 (A1) 保证这个余核**总是存在**。至于那个含入态射从何而来：它存在**当且仅当** $$\operatorname{Im}d_{n+1}\subseteq\operatorname{Ker}d_n$$，而这条件正是复形的定义 $$d^2=0$$（定义 3.12）。所以两件事是同一件事的两种说法：**第 10 章花力气验证的包含式，在这里被吸收进了"复形"这个定义本身**；从此以后写 $$H_n$$ 不必再验任何东西。
+公理 (A1) 保证这个余核**总是存在**。至于那个含入态射从何而来：它存在**当且仅当** $$\operatorname{Im}d_{n+1}\subseteq\operatorname{Ker}d_n$$，而这条件正是复形的定义 $$d^2=0$$（定义 3.12）。所以两件事是同一件事的两种说法：**第 20 章花力气验证的包含式，在这里被吸收进了"复形"这个定义本身**；从此以后写 $$H_n$$ 不必再验任何东西。
 
 ### 3.4 正合序列
 
@@ -173,10 +175,10 @@ $$H_n(C_\bullet):=\operatorname{Ker}d_n\big/\operatorname{Im}d_{n+1}=\operatorna
 (ii) 先看 $$f$$ 把该映的东西映到位：若 $$z\in\operatorname{Ker}d^C_n$$，则 $$d^D_n(f_n z)=f_{n-1}(d^C_n z)=0$$，故 $$f_n z\in\operatorname{Ker}d^D_n$$；若 $$y=d^C_{n+1}x$$，则 $$f_n y=d^D_{n+1}(f_{n+1}x)\in\operatorname{Im}d^D_{n+1}$$。于是 $$f_n$$ 分别限制为 $$\operatorname{Ker}d^C_n\to\operatorname{Ker}d^D_n$$ 与 $$\operatorname{Im}d^C_{n+1}\to\operatorname{Im}d^D_{n+1}$$，且这两个限制与含入态射交换，故由余核的万有性质诱导出 $$H_n(f)$$。恒同与复合逐分量成立，加性由 $$f_n$$ 的加性给出。$$\blacksquare$$
 
 **例 3.14（第 09、10、14 章都是本章的特例）** 
-- **第 09 章**：单纯复形 $$K$$ 的链群 $$C_q(K)$$（自由 Abel 群）连同边界算子 $$\partial_q$$。定理"$$\partial^2=0$$"就是定义 3.12 的 $$d^2=0$$；取 $$\mathcal A=\mathbf{Ab}$$，则 $$C_\bullet(K)$$ 是一个复形。那一章结尾强调"$$\partial^2=0$$ 是让 $$\ker\partial/\operatorname{im}\partial$$ 有定义的唯一理由"，正是定义 3.13 与注 3.9 的直觉版。
-- **第 10 章**：$$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 就是定义 3.13。同调类是商里的元素，$$\partial^2=0$$ 则保证了余核有意义。
-- **第 14 章**：de Rham 复形 $$(\Omega^\bullet(M),d)$$ 是 $$\mathcal A=\mathbf{Vect}_{\mathbb R}$$（或 $$\mathbf{Vect}_{\mathbb C}$$）里的**上链复形 (cochain complex)**——指标上升（$$d_k:\Omega^k\to\Omega^{k+1}$$）；把 $$k$$ 换成 $$-k$$ 就回到链复形的形状。$$H^k_{dR}=\ker d_k/\operatorname{im}d_{k-1}$$ 就是上同调。
-- 于是"第 07 章的 $$d^2=0$$、第 09 章的 $$\partial^2=0$$、第 14 章的上同调"在同一句话里统一：**它们全都是阿贝尔范畴里的复形**；差别只在 $$\mathcal A$$ 取 $$\mathbf{Ab}$$ 还是 $$\mathbf{Vect}_{\mathbb R}$$，以及指标是升还是降。当年在单个群、单个向量空间上逐条验证的东西（像落在核里、商有意义、链映射诱导映射），现在由三条公理一次性包办。
+- **第 18 章**：单纯复形 $$K$$ 的链群 $$C_q(K)$$（自由 Abel 群）连同边界算子 $$\partial_q$$。定理"$$\partial^2=0$$"就是定义 3.12 的 $$d^2=0$$；取 $$\mathcal A=\mathbf{Ab}$$，则 $$C_\bullet(K)$$ 是一个复形。那一章结尾强调"$$\partial^2=0$$ 是让 $$\ker\partial/\operatorname{im}\partial$$ 有定义的唯一理由"，正是定义 3.13 与注 3.9 的直觉版。
+- **第 20 章**：$$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 就是定义 3.13。同调类是商里的元素，$$\partial^2=0$$ 则保证了余核有意义。
+- **第 28 章**：de Rham 复形 $$(\Omega^\bullet(M),d)$$ 是 $$\mathcal A=\mathbf{Vect}_{\mathbb R}$$（或 $$\mathbf{Vect}_{\mathbb C}$$）里的**上链复形 (cochain complex)**——指标上升（$$d_k:\Omega^k\to\Omega^{k+1}$$）；把 $$k$$ 换成 $$-k$$ 就回到链复形的形状。$$H^k_{dR}=\ker d_k/\operatorname{im}d_{k-1}$$ 就是上同调。
+- 于是"第 14 章的 $$d^2=0$$、第 18 章的 $$\partial^2=0$$、第 28 章的上同调"在同一句话里统一：**它们全都是阿贝尔范畴里的复形**；差别只在 $$\mathcal A$$ 取 $$\mathbf{Ab}$$ 还是 $$\mathbf{Vect}_{\mathbb R}$$，以及指标是升还是降。当年在单个群、单个向量空间上逐条验证的东西（像落在核里、商有意义、链映射诱导映射），现在由三条公理一次性包办。
 
 **定理 3.15（蛇引理, snake lemma）** 设 $$\mathcal A$$ 阿贝尔，下图行正合且每个方块交换：
 $$\begin{array}{ccccccc}
@@ -243,7 +245,7 @@ $$\varepsilon_{Fc}\circ FG(\varepsilon_{Fc})=\varepsilon_{Fc}\circ\varepsilon_{F
 **例 3.19（三个单子）** 
 (a) **幂集单子**（$$\mathcal C=\mathbf{Set}$$）：$$T=\mathcal P$$ 是幂集函子，$$\eta_S:S\to\mathcal P(S)$$ 送 $$s\mapsto\{s\}$$，$$\mu_S:\mathcal P(\mathcal P(S))\to\mathcal P(S)$$ 取**并**。三条公理分别就是"并的结合律"与"并的幺元律"，逐元素验算即得：$$\mu$$ 把"一族集合的族"摊平成一个集合。它的 Eilenberg–Moore 代数恰是**完备格 (complete lattice)**（$$a=\sup$$）。
 (b) **自由 Abel 群单子**（$$\mathbf{Set}\xrightarrow{\ \mathbb Z[-]\ }\mathbf{Ab}\xrightarrow{\ U\ }\mathbf{Set}$$，$$T=U\circ\mathbb Z[-]$$）：$$\eta_S$$ 送 $$s$$ 到生成元 $$e_s$$；$$\mu_S$$ 把"形式整数线性组合的形式整数线性组合"按分配律展开收拢。这是定理 3.19 的最标准例子（自由 $$\dashv$$ 遗忘）。
-(c) **张量代数单子**（$$\mathcal C=\mathbf{Vect}_k$$）：$$T(V)=\bigoplus_{n\ge0}V^{\otimes n}$$，$$\eta_V$$ 是 $$V=V^{\otimes1}$$ 的含入，$$\mu_V$$ 把两个张量词"拼接"（第 06 章的 $$V^{\otimes m}\otimes V^{\otimes n}\cong V^{\otimes(m+n)}$$ 正是这件事的算术）。张量代数常被记作 $$TV$$——这个记号本身就来自单子 $$T$$。
+(c) **张量代数单子**（$$\mathcal C=\mathbf{Vect}_k$$）：$$T(V)=\bigoplus_{n\ge0}V^{\otimes n}$$，$$\eta_V$$ 是 $$V=V^{\otimes1}$$ 的含入，$$\mu_V$$ 把两个张量词"拼接"（第 12 章的 $$V^{\otimes m}\otimes V^{\otimes n}\cong V^{\otimes(m+n)}$$ 正是这件事的算术）。张量代数常被记作 $$TV$$——这个记号本身就来自单子 $$T$$。
 
 **定义 3.20（Kleisli 范畴与 Eilenberg–Moore 代数）** 设 $$(T,\eta,\mu)$$ 是 $$\mathcal C$$ 上的单子。
 - **Kleisli 范畴** $$\mathcal C_T$$：对象与 $$\mathcal C$$ 相同；态射 $$A\to B$$ 定义为 $$\mathcal C$$ 中的态射 $$A\to TB$$；恒同是 $$\eta_A:A\to TA$$；复合为
@@ -273,13 +275,13 @@ $$U_T\bigl(F_T(f)\bigr)=\mu_B\circ T(\eta_B\circ f)=\mu_B\circ T\eta_B\circ Tf=T
 
 **正合 = "没有信息被多杀"。** 注 3.3 已经点破：$$\operatorname{im}f\subseteq\ker g$$ 说的是"$$g$$ 至少杀掉了 $$f$$ 造的东西"，等号说的是"$$g$$ 没有多杀"。几何上，把 $$f:A\to B$$ 想成把 $$A$$ 贴进 $$B$$，$$\ker g$$ 是"被 $$g$$ 压平的那一片"。正合的意思是好：$$B$$ 里"压平"的那一片，恰好就是 $$A$$ 贴进来的那片——中间没有多出来的部分。非正合时，多出来的那片 $$\ker g/\operatorname{im}f$$ 是**障碍**：它测出"$$A$$ 没能解释 $$B$$ 的死核"。
 
-**极限与余极限的几何，正合是它们的特例。** 第 33 章把拉回与推出讲成纤维积与粘合。本节的核与余核就是那两类构造的最简特例：$$\ker f$$ 是 $$\operatorname{eq}(f,0)$$（一个极限），$$\operatorname{coker}f$$ 是 $$\operatorname{coeq}(f,0)$$（一个余极限）。所以阿贝尔范畴是"极限与余极限都够用、而且能互相比较（定理 3.6、定理 3.9）"的范畴。**蛇引理的几何读法**：$$\delta$$ 把 $$C$$ 一侧的障碍搬到 $$A$$ 一侧的障碍——它不是新东西，是同一个障碍换了立足点。这就是连接同态 (connecting homomorphism) 这个名字的来由：它在序列的两端之间拉了一根线。
+**极限与余极限的几何，正合是它们的特例。** 第 66 章把拉回与推出讲成纤维积与粘合。本节的核与余核就是那两类构造的最简特例：$$\ker f$$ 是 $$\operatorname{eq}(f,0)$$（一个极限），$$\operatorname{coker}f$$ 是 $$\operatorname{coeq}(f,0)$$（一个余极限）。所以阿贝尔范畴是"极限与余极限都够用、而且能互相比较（定理 3.6、定理 3.9）"的范畴。**蛇引理的几何读法**：$$\delta$$ 把 $$C$$ 一侧的障碍搬到 $$A$$ 一侧的障碍——它不是新东西，是同一个障碍换了立足点。这就是连接同态 (connecting homomorphism) 这个名字的来由：它在序列的两端之间拉了一根线。
 
 **短正合列 = 正交分解。** 入口题里 $$H=0$$ 的条件是 $$\operatorname{im}P_1\oplus\operatorname{im}P_2=\mathcal H$$，也就是 $$P_1+P_2=1$$。这正是"$$\mathcal H$$ 被两个正交投影分解为两个直和项"，用序列写就是
 $$0\to\operatorname{im}P_1\hookrightarrow\mathcal H\xrightarrow{\ P_2\ }\operatorname{im}P_2\to 0 .$$
 MP120 用这个例子引出同调，形式上是把"二次复合为零"当成起点；本章则说清了为什么这个起点是对的：**$$P_2P_1=0$$ 让 $$(1)$$ 成为复形，"$$H=0$$"就是它正合，而 $$H\ne0$$ 时 $$H$$ 的维数就是两个投影"没把 $$\mathcal H$$ 铺满"的缺口。**
 
-**物理里的复形：Maxwell 与规范自由度。** 第 12 章的 $$d^2=0$$ 与第 14 章的 $$H^k_{dR}$$ 是本章最重的物理落点。在 $$\mathbb R^3$$ 上，de Rham 复形的一部分是
+**物理里的复形：Maxwell 与规范自由度。** 第 24 章的 $$d^2=0$$ 与第 28 章的 $$H^k_{dR}$$ 是本章最重的物理落点。在 $$\mathbb R^3$$ 上，de Rham 复形的一部分是
 $$\text{数量函数}\xrightarrow{\ \operatorname{grad}\ }\text{向量场}\xrightarrow{\ \operatorname{curl}\ }\text{向量场}\xrightarrow{\ \operatorname{div}\ }\text{数量函数},$$
 "$$d^2=0$$"就是 $$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$。**恰当 = 规范**（如 $$\mathbf B=\operatorname{curl}\mathbf A$$ 里的矢势 $$\mathbf A$$）、**闭 = 满足方程**（如 $$\operatorname{div}\mathbf B=0$$，无磁单极子）。$$H^2_{dR}\ne0$$ 意味着"存在满足 $$\operatorname{div}\mathbf B=0$$ 却写不成 $$\operatorname{curl}\mathbf A$$ 的场"——物理上这正对应"场携带了无法用势解释的拓扑信息"。规范自由度（$$\mathbf A\mapsto\mathbf A+\operatorname{grad}\chi$$）本身就是一个恰当形式，所以**可观测量必须对规范不变，等价地说，它只依赖上同调类**。
 
@@ -364,14 +366,14 @@ $$a\bigl(X\cup\{y\}\bigr)=a\Bigl(\bigcup_{x\in X}\{x,y\}\Bigr)=a\bigl(\{a(\{x,y\
 **(1)** 取 $$\mathcal A=\mathbf{Vect}_k$$，对象 $$C_1=k^2$$、$$C_0=k$$，微分 $$\partial_1(x,y):=x-y$$。定义
 $$\partial_2:k\to k^2,\qquad \partial_2(z):=(z,z).$$
 证明 $$C_\bullet:\ 0\to k\xrightarrow{\partial_2}k^2\xrightarrow{\partial_1}k\to 0$$ 是复形，并计算 $$H_1$$；再把 $$\partial_2$$ 换成零映射，重新算 $$H_1$$。
-**(2)** 用一句话说清：第 09 章的链群与 $$\partial^2=0$$、第 10 章的 $$H_k$$、第 14 章的 $$H^k_{dR}$$ 分别是本章哪个定义的实例。
+**(2)** 用一句话说清：第 18 章的链群与 $$\partial^2=0$$、第 20 章的 $$H_k$$、第 28 章的 $$H^k_{dR}$$ 分别是本章哪个定义的实例。
 
 **解**：**(1)** 复形条件：$$\partial_1\partial_2(z)=\partial_1(z,z)=z-z=0$$ ✓。于是 $$\operatorname{Im}\partial_2\subseteq\operatorname{Ker}\partial_1$$，
 $$\operatorname{Ker}\partial_1=\{(x,y):x=y\}=\{(z,z)\}=\operatorname{Im}\partial_2,\qquad H_1=\operatorname{Ker}\partial_1/\operatorname{Im}\partial_2=0 .$$
 按定理 3.14(i)，该复形在位置 1 正合。若 $$\partial_2=0$$，则复形条件仍成立（$$\partial_1\circ 0=0$$），但
 $$H_1=\operatorname{Ker}\partial_1/\operatorname{Im}0=\operatorname{Ker}\partial_1\cong k\ne0,$$
 复形在位置 1 **不**正合：$$\partial_1$$ 杀掉了一整条对角线 $$\{x=y\}$$，而上一层一个元素都没产生，多杀的部分就是这 $$1$$ 维的 $$H_1$$。这正是注 3.3 的"正合是为不正合准备的"：同一个复形形状，$$H_1$$ 从 $$0$$ 变成 $$k$$，信息就出现在那里。
-**(2)** 第 09 章的链群 $$C_q(K)$$ 连同 $$\partial^2=0$$ 就是**定义 3.12 中取 $$\mathcal A=\mathbf{Ab}$$ 的复形**；第 10 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 就是**定义 3.13**；第 14 章的 $$(\Omega^\bullet(M),d)$$ 是同一构造在 $$\mathcal A=\mathbf{Vect}_{\mathbb R}$$ 中的**上链**版本，$$H^k_{dR}$$ 是其上同调。三者当年各自要验的"像落在核里""商有意义""链映射诱导映射"，现在全部由阿贝尔范畴的三条公理（定义 3.7）与定理 3.14 一次性提供。$$\blacksquare$$
+**(2)** 第 18 章的链群 $$C_q(K)$$ 连同 $$\partial^2=0$$ 就是**定义 3.12 中取 $$\mathcal A=\mathbf{Ab}$$ 的复形**；第 20 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 就是**定义 3.13**；第 28 章的 $$(\Omega^\bullet(M),d)$$ 是同一构造在 $$\mathcal A=\mathbf{Vect}_{\mathbb R}$$ 中的**上链**版本，$$H^k_{dR}$$ 是其上同调。三者当年各自要验的"像落在核里""商有意义""链映射诱导映射"，现在全部由阿贝尔范畴的三条公理（定义 3.7）与定理 3.14 一次性提供。$$\blacksquare$$
 
 ## 六、练习 (Exercises)
 
@@ -386,7 +388,7 @@ $$\text{(a)}\ 0\to\mathbb{Z}\xrightarrow{\ \times2\ }\mathbb{Z}\xrightarrow{\ \b
 \text{(b)}\ \mathbb{Z}/2\xrightarrow{\ 0\ }\mathbb{Z}/4\xrightarrow{\ \times2\ }\mathbb{Z}/4;\qquad
 \text{(c)}\ \mathbb{Z}\xrightarrow{\ \times2\ }\mathbb{Z}\xrightarrow{\ \times3\ }\mathbb{Z}.$$
 
-**基4.** 证明定理 3.14(i)：复形 $$C_\bullet$$ 在位置 $$n$$ 处正合当且仅当 $$H_n(C_\bullet)=0$$。并把第 10 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 改写成定义 3.13 所用的余核形式。
+**基4.** 证明定理 3.14(i)：复形 $$C_\bullet$$ 在位置 $$n$$ 处正合当且仅当 $$H_n(C_\bullet)=0$$。并把第 20 章的 $$H_k=\ker\partial_k/\operatorname{im}\partial_{k+1}$$ 改写成定义 3.13 所用的余核形式。
 
 ### 竞赛（本课目标难度）
 
@@ -426,7 +428,7 @@ $$H=\operatorname{Ker}(\times2)/\operatorname{Im}0\cong\mathbb{Z}/2\ne0,$$
 **(c)** 不是复形：$$(\times3)\circ(\times2)=\times6\ne0$$；等价地 $$\operatorname{Im}(\times2)=2\mathbb{Z}\not\subseteq\operatorname{Ker}(\times3)=\{0\}$$。故 $$d^2\ne0$$，商 $$\operatorname{Ker}/\operatorname{Im}$$ 根本没定义。$$\blacksquare$$
 
 **解 基4.** 记 $$\iota:\operatorname{Im}d_{n+1}\hookrightarrow\operatorname{Ker}d_n$$（定义 3.13 中的含入）。由定理 3.11(ii)，$$H_n=\operatorname{Coker}\iota=0$$ $$\iff$$ $$\iota$$ 是满态射；又 $$\iota$$ 本身是核的含入，是单态射（定理 3.3），故 $$\iota$$ 满 $$\iff$$ $$\iota$$ 是同构 $$\iff$$ $$\operatorname{Im}d_{n+1}=\operatorname{Ker}d_n$$，而最后一句就是"在 $$n$$ 处正合"（定义 3.10）。
-第 10 章的写法：在 $$\mathbf{Ab}$$ 中，$$\iota$$ 就是子群含入 $$\operatorname{im}\partial_{k+1}\hookrightarrow\ker\partial_k$$，其余核是商群
+第 20 章的写法：在 $$\mathbf{Ab}$$ 中，$$\iota$$ 就是子群含入 $$\operatorname{im}\partial_{k+1}\hookrightarrow\ker\partial_k$$，其余核是商群
 $$H_k=\operatorname{Coker}\iota=\ker\partial_k\big/\operatorname{im}\partial_{k+1},$$
 与定义 3.13 逐字一致。$$\blacksquare$$
 
@@ -476,7 +478,7 @@ $$e'=\operatorname{coker}(\ker e')=\operatorname{coker}(\ker u)=\operatorname{Co
 · 由 $$e'$$ 满，$$t\circ m'=0\iff t\circ m'e'=0\iff t\circ u=0$$，故 $$\operatorname{coker}m'=\operatorname{coker}u$$。由 (A2)
 $$m'=\ker(\operatorname{coker}m')=\ker(\operatorname{coker}u)=\operatorname{Im}u .$$
 于是 $$I'$$ 同时同构于 $$\operatorname{Coim}u$$ 与 $$\operatorname{Im}u$$——这正是定理 3.9 说的事，而且是**免费**得到的：一旦知道分解存在，(A2)(A3) 就唯一地确定了它的两端。
-注意这条"分解存在且同构意义下唯一"正是第 35 章的枢纽：**投射消解在同构意义下唯一的比较引理**用的就是同一套论证（把"单"换成"链映射是单射"，把"满"换成"链映射在每层是满射"），而导出函子之所以良定义，全靠这类唯一性。那正是下一章的起点。$$\blacksquare$$
+注意这条"分解存在且同构意义下唯一"正是第 70 章的枢纽：**投射消解在同构意义下唯一的比较引理**用的就是同一套论证（把"单"换成"链映射是单射"，把"满"换成"链映射在每层是满射"），而导出函子之所以良定义，全靠这类唯一性。那正是下一章的起点。$$\blacksquare$$
 
 **解 研2.** **(i) $$\operatorname{Hom}(-,\mathbb{Z}/2)$$（反变）**：把函子作用在 $$0\to\mathbb{Z}\xrightarrow{\times2}\mathbb{Z}\xrightarrow{\bmod2}\mathbb{Z}/2\to0$$ 上（反变函子把箭头全反向）得
 $$0\to\operatorname{Hom}(\mathbb{Z}/2,\mathbb{Z}/2)\xrightarrow{\ \sim\ }\operatorname{Hom}(\mathbb{Z},\mathbb{Z}/2)\xrightarrow{\ \times2\ }\operatorname{Hom}(\mathbb{Z},\mathbb{Z}/2)\to0,$$
@@ -487,7 +489,7 @@ $$\mathbb{Z}/2\xrightarrow{\ 0\ }\mathbb{Z}/2\xrightarrow{\ 1\ }\mathbb{Z}/2\to0
 **(iii) $$\operatorname{Hom}(\mathbb{Z},-)$$（协变）**：自然同构 $$\operatorname{Hom}(\mathbb{Z},A)\cong A$$，故作用后逐字得到原序列，仍然正合。
 **结论与衔接**：正合性会被函子破坏。(ii) 破坏的是左端、(i) 破坏的是右端，而丢失的量分别是
 $$\operatorname{Tor}_1^{\mathbb Z}(\mathbb{Z}/2,\mathbb{Z}/2)=\ker= \mathbb{Z}/2,\qquad \operatorname{Ext}^1_{\mathbb Z}(\mathbb{Z}/2,\mathbb{Z}/2)=\operatorname{coker}=\mathbb{Z}/2 .$$
-第 35 章要做的事情正是把这个观察制度化：**给定函子，用消解把"丢掉的段"逐个逐层算出来，得到的函子族就是导出函子**——这就是"同调为什么必然存在"的统一答案。那正是下一章的起点。$$\blacksquare$$
+第 70 章要做的事情正是把这个观察制度化：**给定函子，用消解把"丢掉的段"逐个逐层算出来，得到的函子族就是导出函子**——这就是"同调为什么必然存在"的统一答案。那正是下一章的起点。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -497,18 +499,16 @@ $$\operatorname{Tor}_1^{\mathbb Z}(\mathbb{Z}/2,\mathbb{Z}/2)=\ker= \mathbb{Z}/2
 
 **3. 单子不是新怪物，它就是伴随的影子。** 任何伴随 $$F\dashv G$$ 都给出单子 $$(GF,\ \eta,\ G\varepsilon F)$$（定理 3.19），而它的两条一致性条件恰是一对三角恒等式；反过来，每个单子都能通过 Kleisli 范畴或 Eilenberg–Moore 范畴分解回一个伴随（定理 3.22）。Mac Lane 那句"单子不过是自函子范畴里的一个幺半群"是逐字为真的陈述（定理 3.21）。
 
-**4. 旧账在这里一次结清。** 第 07 章的 $$d^2=0$$、第 09 章的 $$\partial^2=0$$、第 10 章的 $$H_k$$、第 14 章的 $$H^k_{dR}$$，全都是同一个构造取不同 $$\mathcal A$$、不同指标方向的实例（例 3.14、问题 5.5）。当年在 $$\mathbb{Z}$$-模与 $$\mathbb{R}$$-向量空间上逐条验算的东西（像落在核里、商有意义、链映射诱导映射），现在由三条公理与定理 3.14 一次性提供。
+**4. 旧账在这里一次结清。** 第 14 章的 $$d^2=0$$、第 18 章的 $$\partial^2=0$$、第 20 章的 $$H_k$$、第 28 章的 $$H^k_{dR}$$，全都是同一个构造取不同 $$\mathcal A$$、不同指标方向的实例（例 3.14、问题 5.5）。当年在 $$\mathbb{Z}$$-模与 $$\mathbb{R}$$-向量空间上逐条验算的东西（像落在核里、商有意义、链映射诱导映射），现在由三条公理与定理 3.14 一次性提供。
 
-**5. 下一章的悬念。** 本章讲清了正合，却也暴露出一个刺眼的事实：正合性**会被函子破坏**。练习研2 已经算出，$$\operatorname{Hom}(-,\mathbb{Z}/2)$$ 丢掉满射端、$$-\otimes\mathbb{Z}/2$$ 丢掉单射端，而丢掉的量都等于 $$\mathbb{Z}/2$$。这些量不是意外：它们有名字、有函子性、还能逐层往上算。第 35 章讲**导出函子 (derived functor)**——用消解把函子"离正合有多远"逐层量化，得到 $$\operatorname{Tor}$$ 与 $$\operatorname{Ext}$$，并给"同调为什么必然存在"一个统一的答案。
+**5. 下一章的悬念。** 本章讲清了正合，却也暴露出一个刺眼的事实：正合性**会被函子破坏**。练习研2 已经算出，$$\operatorname{Hom}(-,\mathbb{Z}/2)$$ 丢掉满射端、$$-\otimes\mathbb{Z}/2$$ 丢掉单射端，而丢掉的量都等于 $$\mathbb{Z}/2$$。这些量不是意外：它们有名字、有函子性、还能逐层往上算。第 70 章讲**导出函子 (derived functor)**——用消解把函子"离正合有多远"逐层量化，得到 $$\operatorname{Tor}$$ 与 $$\operatorname{Ext}$$，并给"同调为什么必然存在"一个统一的答案。
 
-**延伸阅读**：Weibel《An Introduction to Homological Algebra》第 1 章（$$\mathbf{Ch}(\mathcal A)$$ 与长正合列的标准处理，本章据此整理）；Mac Lane《Categories for the Working Mathematician》第 VI 章（单子与代数的原始叙述）；Kashiwara–Schapira《Categories and Sheaves》第 8 章（定义 3.7 所依据的公理化版本）；Riehl《Category Theory in Context》第 5 章（单子与伴随分解）；第 36 章将把本章的 $$\mathbf{Sh}(X;\mathbf{Ab})$$ 用作层论的基本舞台。
-
-
+**延伸阅读**：Weibel《An Introduction to Homological Algebra》第 1 章（$$\mathbf{Ch}(\mathcal A)$$ 与长正合列的标准处理，本章据此整理）；Mac Lane《Categories for the Working Mathematician》第 VI 章（单子与代数的原始叙述）；Kashiwara–Schapira《Categories and Sheaves》第 8 章（定义 3.7 所依据的公理化版本）；Riehl《Category Theory in Context》第 5 章（单子与伴随分解）；第 72 章将把本章的 $$\mathbf{Sh}(X;\mathbf{Ab})$$ 用作层论的基本舞台。
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch33_伴随函子与Yoneda引理.md">← 第33章 伴随函子与Yoneda引理</a></div>
+  <div><a href="ch67_单子_Abel范畴与正合_上.md">← 第67章 单子、Abel 范畴与正合·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch35_同调代数_直和_投射_内射模_导出函子.md">第35章 同调代数：直和、投射/内射模、导出函子 →</a></div>
+  <div><a href="ch69_同调代数_直和_投射_内射模_导出函子_上.md">第69章 同调代数：直和、投射/内射模、导出函子·上 →</a></div>
 </div>

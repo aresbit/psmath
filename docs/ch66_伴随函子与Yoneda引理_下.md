@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第33章: 伴随函子与Yoneda 引理 (Adjoint Functors and the Yoneda Lemma)
+# 第66章: 伴随函子与Yoneda 引理·下：完整推导 (Adjoint Functors and the Yoneda Lemma · Part II: Full Derivation)
+
+> 配套预备: 见 第65章 伴随函子与Yoneda 引理·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP118、MP124–MP125、MP137
 > 专家依据: `_experts/algebra/category-universal-properties.md`（主）+ `_experts/algebra/_SKILL.md`
@@ -11,7 +13,7 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
-第 31 章把「结构」抽象成**范畴**、把「结构之间的映射」抽象成**函子**；第 32 章把标量从域放宽到环，撞出了第一对**成对出现的函子**——张量积 $$-\otimes_A M$$ 与 Hom 函子 $$\operatorname{Hom}_A(M,-)$$，并注意到它们「一左一右、各保正合性的一半」。那个被搁置的问题就是本章要回答的：
+第 62 章把「结构」抽象成**范畴**、把「结构之间的映射」抽象成**函子**；第 64 章把标量从域放宽到环，撞出了第一对**成对出现的函子**——张量积 $$-\otimes_A M$$ 与 Hom 函子 $$\operatorname{Hom}_A(M,-)$$，并注意到它们「一左一右、各保正合性的一半」。那个被搁置的问题就是本章要回答的：
 
 **为什么这些构造成对出现？**
 
@@ -19,9 +21,9 @@ layout: default
 
 $$\mathcal{D}(Fc,d)\cong\mathcal{C}(c,Gd),$$
 
-就得到**伴随函子 (adjoint functor)**——范畴论里比同构松、比「相似」强得多、并且**自动携带大量结构**的关系。本章的另一半是 **Yoneda 引理**：一个对象被它到所有对象的态射完全决定，于是「元素」和「自然变换」变成同一种东西。有了它，伴随的抽象定义立刻落回可计算的同构，而「张量 ⊣ Hom」「自由 ⊣ 遗忘」「$$\Sigma\dashv\Omega$$」全部被认出来是同一件事的不同化身；第 20 章的 Gelfand 对偶也会在这一章被重新认出是一对伴随（3.23）。
+就得到**伴随函子 (adjoint functor)**——范畴论里比同构松、比「相似」强得多、并且**自动携带大量结构**的关系。本章的另一半是 **Yoneda 引理**：一个对象被它到所有对象的态射完全决定，于是「元素」和「自然变换」变成同一种东西。有了它，伴随的抽象定义立刻落回可计算的同构，而「张量 ⊣ Hom」「自由 ⊣ 遗忘」「$$\Sigma\dashv\Omega$$」全部被认出来是同一件事的不同化身；第 40 章的 Gelfand 对偶也会在这一章被重新认出是一对伴随（3.23）。
 
-往后看：第 34 章把「一对伴随」进一步压成**单子**，并在 Abel 范畴里把「保正合」精确成短正合列——本章 3.21 的「左伴随保余极限」正是那条路的入口。
+往后看：第 68 章把「一对伴随」进一步压成**单子**，并在 Abel 范畴里把「保正合」精确成短正合列——本章 3.21 的「左伴随保余极限」正是那条路的入口。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -51,7 +53,7 @@ $$\operatorname{Hom}_{\mathbb{Z}}\bigl(\mathbb{Z}/2\otimes_{\mathbb{Z}}\mathbb{Z
 
 ### 函子范畴与自然变换
 
-第 31 章已经有了函子与自然变换的定义；本节把它们打包成一个新的范畴——**函子以此自身为对象**。这一步不只是形式上的收纳：Yoneda 引理说的正是这个新范畴里的态射集，所以先把舞台搭好。
+第 62 章已经有了函子与自然变换的定义；本节把它们打包成一个新的范畴——**函子以此自身为对象**。这一步不只是形式上的收纳：Yoneda 引理说的正是这个新范畴里的态射集，所以先把舞台搭好。
 
 **定义 3.1（自然变换, natural transformation）** 设 $$F,G:\mathcal{C}\to\mathcal{D}$$ 是函子。一个从 $$F$$ 到 $$G$$ 的**自然变换** $$\alpha:F\Rightarrow G$$，是指对每个对象 $$X\in\mathcal{C}$$ 指定一个态射
 
@@ -93,13 +95,13 @@ $$H(f)\circ(\beta\circ\alpha)_X=H(f)\circ\beta_X\circ\alpha_X\ \overset{\beta\ \
 
 $$(\beta\alpha)_X:=\beta_{G(X)}\circ H(\alpha_X)=K(\alpha_X)\circ\beta_{F(X)}.$$
 
-（最后两个表达式相等，正是 $$\beta$$ 在态射 $$\alpha_X:F(X)\to G(X)$$ 上的自然性。）本章只需要垂直复合；水平复合在第 34 章讨论单子与函子的合成时才会用到。
+（最后两个表达式相等，正是 $$\beta$$ 在态射 $$\alpha_X:F(X)\to G(X)$$ 上的自然性。）本章只需要垂直复合；水平复合在第 68 章讨论单子与函子的合成时才会用到。
 
 **例 3.4（预层范畴, presheaf category）** 取 $$\mathcal{D}=\mathbf{Set}$$，得到两类特别重要的函子范畴：
 
 $$\mathbf{Set}^{\mathcal{C}}=[\mathcal{C},\mathbf{Set}],\qquad \hat{\mathcal{C}}:=[\mathcal{C}^{\mathrm{op}},\mathbf{Set}].$$
 
-后者的对象叫 $$\mathcal{C}$$ 上的**预层 (presheaf)**。最经典的预层来自拓扑：取 $$\mathcal{O}(X)$$ 为拓扑空间的开集按包含构成的范畴（对象是开集，态射是包含 $$U\subseteq V$$），则一个预层把每个开集 $$U$$ 送成一个集合、把每个包含 $$U\subseteq V$$ 送成一个**限制映射** $$\rho_{VU}:F(V)\to F(U)$$，并要求 $$\rho_{UU}=1$$、$$\rho_{VU}\circ\rho_{WV}=\rho_{WU}$$。反变函子的两条公理与层论的这两条要求逐字相同——这正是第 36 章层论的入口。
+后者的对象叫 $$\mathcal{C}$$ 上的**预层 (presheaf)**。最经典的预层来自拓扑：取 $$\mathcal{O}(X)$$ 为拓扑空间的开集按包含构成的范畴（对象是开集，态射是包含 $$U\subseteq V$$），则一个预层把每个开集 $$U$$ 送成一个集合、把每个包含 $$U\subseteq V$$ 送成一个**限制映射** $$\rho_{VU}:F(V)\to F(U)$$，并要求 $$\rho_{UU}=1$$、$$\rho_{VU}\circ\rho_{WV}=\rho_{WU}$$。反变函子的两条公理与层论的这两条要求逐字相同——这正是第 72 章层论的入口。
 
 ### Hom 函子与可表函子
 
@@ -127,7 +129,7 @@ $$\eta:h^A\cong F,$$
 
 (i) **遗忘函子由 $$\mathbb{Z}$$ 表示。** 取 $$U:\mathbf{Grp}\to\mathbf{Set}$$。对任意群 $$G$$，群同态 $$\mathbb{Z}\to G$$ 由 $$1\mapsto g$$ 唯一确定，而 $$g$$ 可以是 $$G$$ 中任何元素，于是 $$\mathbf{Grp}(\mathbb{Z},G)\cong U(G)$$：$$U$$ 是可表函子。而 $$\mathbb{Z}$$ 恰好是自由群 $$F_{\{1\}}$$——(a) 问的「自由在左、遗忘在右」在这里已经露出了影子（见 3.16）。
 
-(ii) **Gelfand 谱由 $$\mathbb{C}$$ 表示。** 取含单位 \*-同态全体 $$\Delta(\mathcal A)=\operatorname{Hom}_{\mathbf{C^*Alg}_1}(\mathcal A,\mathbb{C})$$（即第 20 章的谱），则 $$\Delta=h_{\mathbb{C}}$$ 是反变 Hom 函子，由对象 $$\mathbb{C}$$ 表示。3.23 会把它升级成一对伴随。
+(ii) **Gelfand 谱由 $$\mathbb{C}$$ 表示。** 取含单位 \*-同态全体 $$\Delta(\mathcal A)=\operatorname{Hom}_{\mathbf{C^*Alg}_1}(\mathcal A,\mathbb{C})$$（即第 40 章的谱），则 $$\Delta=h_{\mathbb{C}}$$ 是反变 Hom 函子，由对象 $$\mathbb{C}$$ 表示。3.23 会把它升级成一对伴随。
 
 **表示的物理读法（接着例 3.7）。** 可表函子 $$\mathcal{C}(A,-)$$ 的本体论是「用 $$A$$ 当探针去量所有对象」：$$\mathbb{Z}$$ 探测群的方式是「取一个元素」，$$\mathbb{C}$$ 探测 C\*-代数的方式是「取一个特征」。**换一个探针，就是换一套物理测量**。
 
@@ -350,9 +352,9 @@ $$\Phi:\operatorname{Hom}_{S}\bigl(C\otimes_R A,\ B\bigr)\ \longrightarrow\ \ope
 
 $$C\otimes_R-\ \dashv\ \operatorname{Hom}_{S}(C,-),$$
 
-即左伴随是「取模 $$C$$ 的张量函子」，右伴随是「取模 $$C$$ 的 Hom 函子」。**这正是第 32 章末尾点明、留到本章兑现的那一对**：ch32 已经算清了这两个函子各保正合性的一半，本章给出的是「它们为什么成对」的答案。
+即左伴随是「取模 $$C$$ 的张量函子」，右伴随是「取模 $$C$$ 的 Hom 函子」。**这正是第 64 章末尾点明、留到本章兑现的那一对**：ch32 已经算清了这两个函子各保正合性的一半，本章给出的是「它们为什么成对」的答案。
 
-**证明** 分四步。**(以下默认第 32 章的结论：$$C\otimes_R A$$ 由双线性映射的普适性质刻画，任一 $$R$$-平衡、双可加的映射 $$\beta:A\times C\to B$$ 都唯一过 $$A\otimes_R C$$ 或 $$C\otimes_R A$$ 分解。)**
+**证明** 分四步。**(以下默认第 64 章的结论：$$C\otimes_R A$$ 由双线性映射的普适性质刻画，任一 $$R$$-平衡、双可加的映射 $$\beta:A\times C\to B$$ 都唯一过 $$A\otimes_R C$$ 或 $$C\otimes_R A$$ 分解。)**
 
 **(i) $$\Phi$$ 良定义、类型正确。** 固定 $$f\in\operatorname{Hom}_S(C\otimes_R A,B)$$。对固定 $$a$$，映射 $$c\mapsto f(c\otimes a)$$ 是 $$S$$-线性的：$$f(sc\otimes a)=f(s\cdot(c\otimes a))=s\cdot f(c\otimes a)$$（$$C\otimes_R A$$ 上 $$S$$ 的作用是 $$s(c\otimes a):=(sc)\otimes a$$，与 $$A$$ 无关）。对固定 $$c$$，映射 $$a\mapsto f(c\otimes a)$$ 是加性的。最后验证 $$a\mapsto\Phi(f)(a)$$ 是 $$R$$-线性的：因为 $$\operatorname{Hom}_S(C,B)$$ 上的左 $$R$$-作用定义为 $$(r\psi)(c):=\psi(cr)$$，而对 $$r\in R$$，
 
@@ -404,7 +406,7 @@ $$[\Sigma X,\ Y]_*\cong[X,\ \Omega Y]_*,$$
 
 ### 左伴随保余极限、右伴随保极限
 
-现在用 Yoneda 把伴随的全部力量逼出来。核心是一条关于 Hom 函子的老事实（第 31 章的**Hom 保极限**），我们把它写成交警力可用的形式。
+现在用 Yoneda 把伴随的全部力量逼出来。核心是一条关于 Hom 函子的老事实（第 62 章的**Hom 保极限**），我们把它写成交警力可用的形式。
 
 **定理 3.19（Hom 保极限, Hom preserves limits）** 设 $$D:J\to\mathcal{C}$$ 是小图（$$J$$ 是小范畴），$$c\in\mathcal{C}$$，并设 $$\lim_j D_j$$ 存在。则
 
@@ -468,7 +470,7 @@ $$C:\mathbf{CHaus}^{\mathrm{op}}\to\mathbf{C^*Alg}_1,\qquad X\mapsto C(X,\mathbb
 
 $$\Delta:\mathbf{C^*Alg}_1^{\mathrm{op}}\to\mathbf{CHaus},\qquad \mathcal A\mapsto\Delta(\mathcal A)=\bigl\{\varphi\in\operatorname{Hom}_{\mathbf{C^*Alg}_1}(\mathcal A,\mathbb{C})\bigr\},$$
 
-其中 $$\Delta(\mathcal A)$$ 取弱\*拓扑（第 20 章的定义 3.11），即 $$\Delta=h_{\mathbb{C}}$$ 是反变 Hom 函子。则对一切 $$X\in\mathbf{CHaus}$$、$$\mathcal A\in\mathbf{C^*Alg}_1$$ 有自然双射
+其中 $$\Delta(\mathcal A)$$ 取弱\*拓扑（第 40 章的定义 3.11），即 $$\Delta=h_{\mathbb{C}}$$ 是反变 Hom 函子。则对一切 $$X\in\mathbf{CHaus}$$、$$\mathcal A\in\mathbf{C^*Alg}_1$$ 有自然双射
 
 $$\operatorname{Hom}_{\mathbf{C^*Alg}_1}\bigl(C(X),\ \mathcal A\bigr)\ \cong\ \operatorname{Hom}_{\mathbf{CHaus}}\bigl(\Delta(\mathcal A),\ X\bigr),$$
 
@@ -476,7 +478,7 @@ $$\operatorname{Hom}_{\mathbf{C^*Alg}_1}\bigl(C(X),\ \mathcal A\bigr)\ \cong\ \o
 
 $$\mathbf{C^*Alg}_1^{\mathrm{op}}\ \simeq\ \mathbf{CHaus}.$$
 
-**证明** (i) **双射的构造。** 取 $$\varphi\in\operatorname{Hom}_{\mathbf{C^*Alg}_1}(C(X),\mathcal A)$$。对每个 $$\psi\in\Delta(\mathcal A)$$，复合 $$\psi\circ\varphi:C(X)\to\mathbb{C}$$ 仍是 $$\mathbf{C^*Alg}_1$$ 中的态射；由第 20 章定理 3.12（Gelfand 表示定理）的表述(iv)，$$\Delta(C(X))\cong X$$——$$C(X)$$ 的每个保单位同态恰是某点的求值 $$\mathrm{ev}_x$$，且 $$x\mapsto\mathrm{ev}_x$$ 是同胚。故 $$\psi\circ\varphi=\mathrm{ev}_{\widehat\varphi(\psi)}$$ 对唯一一点 $$\widehat\varphi(\psi)\in X$$ 成立，这就定义了
+**证明** (i) **双射的构造。** 取 $$\varphi\in\operatorname{Hom}_{\mathbf{C^*Alg}_1}(C(X),\mathcal A)$$。对每个 $$\psi\in\Delta(\mathcal A)$$，复合 $$\psi\circ\varphi:C(X)\to\mathbb{C}$$ 仍是 $$\mathbf{C^*Alg}_1$$ 中的态射；由第 40 章定理 3.12（Gelfand 表示定理）的表述(iv)，$$\Delta(C(X))\cong X$$——$$C(X)$$ 的每个保单位同态恰是某点的求值 $$\mathrm{ev}_x$$，且 $$x\mapsto\mathrm{ev}_x$$ 是同胚。故 $$\psi\circ\varphi=\mathrm{ev}_{\widehat\varphi(\psi)}$$ 对唯一一点 $$\widehat\varphi(\psi)\in X$$ 成立，这就定义了
 
 $$\widehat\varphi:\Delta(\mathcal A)\to X,\qquad \psi\mapsto\widehat\varphi(\psi).$$
 
@@ -486,11 +488,11 @@ $$\widehat\varphi:\Delta(\mathcal A)\to X,\qquad \psi\mapsto\widehat\varphi(\psi
 
 $$\widetilde u(f):=\Gamma_{\mathcal A}^{-1}\bigl(f\circ u\bigr),$$
 
-其中 $$\Gamma_{\mathcal A}:\mathcal A\to C(\Delta(\mathcal A))$$ 是 Gelfand 表示（第 20 章定义 3.11）。这里用了第 20 章定理 3.19（Gelfand–Naimark）：对含单位交换 C\*-代数，$$\Gamma_{\mathcal A}$$ 是**等距 \*-同构**，故可逆。$$\widetilde u$$ 保单位、保乘法、保 \*，故是 $$\mathbf{C^*Alg}_1$$ 中的态射。验证互逆：$$\widetilde{\widehat\varphi}$$ 与 $$\varphi$$ 在任意 $$f$$ 上给出同一个 $$a\in\mathcal A$$（两者都满足「$$\psi(a)=f(\widehat\varphi(\psi))$$ 对一切 $$\psi$$ 成立」，而这样的 $$a$$ 唯一，因为 $$\Delta(\mathcal A)$$ 上的函数分离点）；同法得 $$\widehat{\widetilde u}=u$$。两边于是互逆。
+其中 $$\Gamma_{\mathcal A}:\mathcal A\to C(\Delta(\mathcal A))$$ 是 Gelfand 表示（第 40 章定义 3.11）。这里用了第 40 章定理 3.19（Gelfand–Naimark）：对含单位交换 C\*-代数，$$\Gamma_{\mathcal A}$$ 是**等距 \*-同构**，故可逆。$$\widetilde u$$ 保单位、保乘法、保 \*，故是 $$\mathbf{C^*Alg}_1$$ 中的态射。验证互逆：$$\widetilde{\widehat\varphi}$$ 与 $$\varphi$$ 在任意 $$f$$ 上给出同一个 $$a\in\mathcal A$$（两者都满足「$$\psi(a)=f(\widehat\varphi(\psi))$$ 对一切 $$\psi$$ 成立」，而这样的 $$a$$ 唯一，因为 $$\Delta(\mathcal A)$$ 上的函数分离点）；同法得 $$\widehat{\widetilde u}=u$$。两边于是互逆。
 
 (iii) **自然性与等价。** 两个方向都由显式公式给出、没有做任何选择，自然性直接读出。单位 $$\eta_X$$ 是 $$x\mapsto\mathrm{ev}_x$$（同胚），余单位 $$\varepsilon_{\mathcal A}=\Gamma_{\mathcal A}^{-1}$$（同构，Gelfand–Naimark）。一对伴随的单位与余单位都是同构就给出范畴等价。$$\blacksquare$$
 
-**注 3.23（这一步和第 20 章的关系，以及它为什么是 Yoneda）** 第 20 章的两条定理（Gelfand 表示定理 3.12、Gelfand–Naimark 定理 3.19）在这里被**重新认出**为一句范畴论的话：$$\Delta=h_{\mathbb{C}}$$ 是可表函子（例 3.7(ii)），$$C$$ 是它的左伴随，而「单位与余单位都是同构」正是那两条定理的合写。于是第 20 章那个含糊的直觉——**「元素就是函数、代数的极大理想就是空间的点」**——获得精确形式：
+**注 3.23（这一步和第 40 章的关系，以及它为什么是 Yoneda）** 第 40 章的两条定理（Gelfand 表示定理 3.12、Gelfand–Naimark 定理 3.19）在这里被**重新认出**为一句范畴论的话：$$\Delta=h_{\mathbb{C}}$$ 是可表函子（例 3.7(ii)），$$C$$ 是它的左伴随，而「单位与余单位都是同构」正是那两条定理的合写。于是第 40 章那个含糊的直觉——**「元素就是函数、代数的极大理想就是空间的点」**——获得精确形式：
 
 $$\text{「点」}=\text{从 }\mathcal A\text{ 出发的态射 }\varphi:\mathcal A\to\mathbb{C}\ =\ h_{\mathbb{C}}(\mathcal A),$$
 
@@ -514,11 +516,11 @@ $$\Sigma S^n=S^{n+1},\qquad \Omega S^{n+1}\simeq S^n\ \ (\text{在}\ n\ge1\ \tex
 
 $$\pi_{n+1}(Y)=[S^{n+1},Y]_*\cong[S^n,\Omega Y]_*=\pi_n(\Omega Y).$$
 
-「球面同伦群降一维」因此不是技巧，而是 $$\Sigma\dashv\Omega$$ 的直接后果——第 25、26 章反复用到的递归计算（把 $$\pi_k$$ 化到低维再用覆盖空间与纤维化处理）在这里找到了源头。物理上这条同构读作：**「一个圆圈上的构型」与「一个随时间演化的构型」是同一份数据**；环路空间把 $$S^1$$ 这条「时间轴」吸收进空间本身，这正是第 23 章 Feynman 路径积分里「时间 = 额外维」的几何原型。
+「球面同伦群降一维」因此不是技巧，而是 $$\Sigma\dashv\Omega$$ 的直接后果——第 25、26 章反复用到的递归计算（把 $$\pi_k$$ 化到低维再用覆盖空间与纤维化处理）在这里找到了源头。物理上这条同构读作：**「一个圆圈上的构型」与「一个随时间演化的构型」是同一份数据**；环路空间把 $$S^1$$ 这条「时间轴」吸收进空间本身，这正是第 46 章 Feynman 路径积分里「时间 = 额外维」的几何原型。
 
-**（5）Yoneda 的几何：对象由「被探测的结果」决定。** 推论 3.10 说 $$h_A$$ 决定了 $$A$$：要检验两个空间是否相同，就去问每一个射进它的探针。代数几何把这句话推到底——先给定**函子**（哪些探测给出哪些数据），空间只是它的表示对象；第 36 章的素谱与层就是从这条路走上来的。
+**（5）Yoneda 的几何：对象由「被探测的结果」决定。** 推论 3.10 说 $$h_A$$ 决定了 $$A$$：要检验两个空间是否相同，就去问每一个射进它的探针。代数几何把这句话推到底——先给定**函子**（哪些探测给出哪些数据），空间只是它的表示对象；第 72 章的素谱与层就是从这条路走上来的。
 
-**（6）Gelfand：几何与代数的对偶是伴随。** 定理 3.23 把第 20 章的两条定理（Gelfand 表示、Gelfand–Naimark）压缩成「$$C\dashv\Delta$$ 的单位与余单位都是同构」，图像是**同一份数据的两个视角**：一侧是空间 $$X$$ 与它上面的连续函数，另一侧是代数 $$\mathcal A$$ 与它的点。Stone 对偶（布尔代数 ≃ 完全不连通紧 Hausdorff 空间）是同一台机器（Yoneda + 伴随）的另一次换装。
+**（6）Gelfand：几何与代数的对偶是伴随。** 定理 3.23 把第 40 章的两条定理（Gelfand 表示、Gelfand–Naimark）压缩成「$$C\dashv\Delta$$ 的单位与余单位都是同构」，图像是**同一份数据的两个视角**：一侧是空间 $$X$$ 与它上面的连续函数，另一侧是代数 $$\mathcal A$$ 与它的点。Stone 对偶（布尔代数 ≃ 完全不连通紧 Hausdorff 空间）是同一台机器（Yoneda + 伴随）的另一次换装。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -536,7 +538,7 @@ $$\ker\varepsilon_G=\bigl\langle\!\bigl\langle\ \text{一切在 }G\text{ 中等�
 
 $$\ker\varepsilon=\bigl\langle\!\bigl\langle\,e,\ g^2\,\bigr\rangle\!\bigr\rangle=\bigl\langle\!\bigl\langle\,g^2\,\bigr\rangle\!\bigr\rangle,$$
 
-（$$e$$ 本身就在核里，作为生成元它是被多余地写出来的；正规闭包由 $$g^2$$ 生成）。**关键 leap**：「自由 ⊣ 遗忘」的余单位**一般不是单射**，偏差恰好是「把 $$UG$$ 里在 $$G$$ 中多余的元素自由化过头」的部分。第 34 章会把「$$\eta$$ 单、$$\varepsilon$$ 满」这条不对称刻成单子的两条自然变换。
+（$$e$$ 本身就在核里，作为生成元它是被多余地写出来的；正规闭包由 $$g^2$$ 生成）。**关键 leap**：「自由 ⊣ 遗忘」的余单位**一般不是单射**，偏差恰好是「把 $$UG$$ 里在 $$G$$ 中多余的元素自由化过头」的部分。第 68 章会把「$$\eta$$ 单、$$\varepsilon$$ 满」这条不对称刻成单子的两条自然变换。
 
 **问题 2（张量 ⊣ Hom 的一次完整计算；入口题 (b) 的回收）** 设 $$n\ge1$$，$$B$$ 是 $$\mathbb{Z}$$-模。**证明**存在自然同构
 
@@ -807,7 +809,7 @@ $$\varepsilon_{Fc}\circ FG(\varepsilon_{Fc})=\varepsilon_{Fc}\circ\varepsilon_{F
 
 把 $$\varepsilon$$ 的自然性方块用在态射 $$\varepsilon_{Fc}:FGFc\to Fc$$ 上（即取 $$d=FGFc$$、$$d'=Fc$$、$$u=\varepsilon_{Fc}$$），方块说的是 $$\varepsilon_{Fc}\circ FG(\varepsilon_{Fc})=\varepsilon_{Fc}\circ\varepsilon_{FGFc}$$——正是所需。故 $$\mu\circ\mu T=\mu\circ T\mu$$。$$\blacksquare$$
 
-三条公理合起来说：$$(T,\eta,\mu)$$ 是 $$\mathcal{C}$$ 上的一个**单子 (monad)**，且它由伴随 $$F\dashv G$$ **自动**产生。第 34 章正是从这里出发的：它反过来问「每一个单子都来自某个伴随吗」（回答是肯定的——用 Kleisli 或 Eilenberg–Moore 构造造出 $$F\dashv G$$ 使 $$T=GF$$），于是「伴随」与「单子」成为同一件事的两个信封。
+三条公理合起来说：$$(T,\eta,\mu)$$ 是 $$\mathcal{C}$$ 上的一个**单子 (monad)**，且它由伴随 $$F\dashv G$$ **自动**产生。第 68 章正是从这里出发的：它反过来问「每一个单子都来自某个伴随吗」（回答是肯定的——用 Kleisli 或 Eilenberg–Moore 构造造出 $$F\dashv G$$ 使 $$T=GF$$），于是「伴随」与「单子」成为同一件事的两个信封。
 
 **解 研2.** **保余极限。** 由定理 3.17 取 $$R=S=\mathbb{Z}$$、$$C=\mathbb{Z}/n$$（交换环 $$\mathbb{Z}$$ 上的模自动是双模），得到
 
@@ -829,7 +831,7 @@ $$\mathbb{Z}/n\xrightarrow{\ n\cdot}\mathbb{Z}/n\xrightarrow{\ \pi\otimes1\ }0,$
 
 $$\ker\bigl(n\cdot:\mathbb{Z}/n\to\mathbb{Z}/n\bigr)=\mathbb{Z}/n\ \ne\ 0.$$
 
-所以「核 $$\to$$ 核」这一步不成立，张量函子**不左正合**。这个缺陷就是 $$\operatorname{Tor}_1^{\mathbb{Z}}(\mathbb{Z}/n,\mathbb{Z}/n)\cong\mathbb{Z}/n$$ 的来源。第 34 章把「正合」在 Abel 范畴里写成短正合列的语言、并把左手侧的不正合算成导出函子，本章 3.21 的那句「左伴随只承诺余极限」正是那条线索的起点。
+所以「核 $$\to$$ 核」这一步不成立，张量函子**不左正合**。这个缺陷就是 $$\operatorname{Tor}_1^{\mathbb{Z}}(\mathbb{Z}/n,\mathbb{Z}/n)\cong\mathbb{Z}/n$$ 的来源。第 68 章把「正合」在 Abel 范畴里写成短正合列的语言、并把左手侧的不正合算成导出函子，本章 3.21 的那句「左伴随只承诺余极限」正是那条线索的起点。
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -837,22 +839,20 @@ $$\ker\bigl(n\cdot:\mathbb{Z}/n\to\mathbb{Z}/n\bigr)=\mathbb{Z}/n\ \ne\ 0.$$
 
 **2. 伴随是「一对可逆的对应」，不是「两个相似的函子」。** 定义 3.13 的全部内容就是双射 $$\mathcal{D}(Fc,d)\cong\mathcal{C}(c,Gd)$$ 加两条自然性。定理 3.15 给出它的等价刻画：一对自然变换 $$\eta,\varepsilon$$ 加两条三角恒等式。前者便于验证，后者便于使用；两种语言在本章都反复出现。
 
-**3. ch32 的「各保一半」在这里被统一解释。** 第 32 章看到张量保满射、Hom 保单射却各差一半；本章 3.19–3.21 给出原因：左伴随 $$-\otimes_R A$$ 保一切**余**极限，右伴随 $$\operatorname{Hom}_S(C,-)$$ 保一切**极限**，谁都不承诺另一半。推论 3.22 把它变成判定法：**保不了（余）极限的函子不可能是左（右）伴随**（例 3.22 用它判掉了 $$U:\mathbf{Grp}\to\mathbf{Set}$$ 做左伴随的可能，竞4 用它判掉了 $$U:\mathbf{Field}\to\mathbf{Set}$$ 有左伴随的可能）。
+**3. ch32 的「各保一半」在这里被统一解释。** 第 64 章看到张量保满射、Hom 保单射却各差一半；本章 3.19–3.21 给出原因：左伴随 $$-\otimes_R A$$ 保一切**余**极限，右伴随 $$\operatorname{Hom}_S(C,-)$$ 保一切**极限**，谁都不承诺另一半。推论 3.22 把它变成判定法：**保不了（余）极限的函子不可能是左（右）伴随**（例 3.22 用它判掉了 $$U:\mathbf{Grp}\to\mathbf{Set}$$ 做左伴随的可能，竞4 用它判掉了 $$U:\mathbf{Field}\to\mathbf{Set}$$ 有左伴随的可能）。
 
-**4. 第 20 章的 Gelfand 对偶被认出是一对伴随。** $$C\dashv\Delta$$、单位与余单位都是同构、因而是一对**范畴等价**（定理 3.23）。「元素就是函数」这句话的精确形式是 $$\Delta=h_{\mathbb{C}}$$——谱是可表函子，几何的点就是代数到 $$\mathbb{C}$$ 的态射。「几何 ↔ 物理 ↔ 代数」三条主线上最锋利的一段就在这里：**代数对象与几何空间之间的翻译可以完全没有信息损失**。
+**4. 第 40 章的 Gelfand 对偶被认出是一对伴随。** $$C\dashv\Delta$$、单位与余单位都是同构、因而是一对**范畴等价**（定理 3.23）。「元素就是函数」这句话的精确形式是 $$\Delta=h_{\mathbb{C}}$$——谱是可表函子，几何的点就是代数到 $$\mathbb{C}$$ 的态射。「几何 ↔ 物理 ↔ 代数」三条主线上最锋利的一段就在这里：**代数对象与几何空间之间的翻译可以完全没有信息损失**。
 
-**5. 下一步：伴随留下的两个礼物。** 一是**单子**：研1 已经从任意伴随 $$F\dashv G$$ 造出了 $$(T=GF,\eta,\mu)$$ 并验证了三条公理；第 34 章会反过来证明每个单子都来自某个伴随（Kleisli / Eilenberg–Moore 构造），于是「伴随」与「单子」是同一份数据的两个信封。二是**正合**：3.21 那条「左伴随只承诺余极限」的缺口需要被度量，而度量它的语言是短正合列与导出函子——这就是第 34 章的 **Abel 范畴**与第 35 章的 $$\operatorname{Tor}$$、$$\operatorname{Ext}$$。
+**5. 下一步：伴随留下的两个礼物。** 一是**单子**：研1 已经从任意伴随 $$F\dashv G$$ 造出了 $$(T=GF,\eta,\mu)$$ 并验证了三条公理；第 68 章会反过来证明每个单子都来自某个伴随（Kleisli / Eilenberg–Moore 构造），于是「伴随」与「单子」是同一份数据的两个信封。二是**正合**：3.21 那条「左伴随只承诺余极限」的缺口需要被度量，而度量它的语言是短正合列与导出函子——这就是第 68 章的 **Abel 范畴**与第 70 章的 $$\operatorname{Tor}$$、$$\operatorname{Ext}$$。
 
-**下一章的悬念。** 研2 里算出的 $$\ker(n\cdot:\mathbb{Z}/n\to\mathbb{Z}/n)=\mathbb{Z}/n$$ 是一个具体的「缺口」。第 34 章会把它写成一个可加函子 $$\operatorname{Tor}_1^{\mathbb{Z}}(\mathbb{Z}/n,\mathbb{Z}/n)\cong\mathbb{Z}/n$$，并说明这正是「把不正合的量精确量出来」的第一例。问题的形状是：**左伴随保余极限、右伴随保极限，那么「没被保住的那一半」能不能也被组织成一个函子？**
+**下一章的悬念。** 研2 里算出的 $$\ker(n\cdot:\mathbb{Z}/n\to\mathbb{Z}/n)=\mathbb{Z}/n$$ 是一个具体的「缺口」。第 68 章会把它写成一个可加函子 $$\operatorname{Tor}_1^{\mathbb{Z}}(\mathbb{Z}/n,\mathbb{Z}/n)\cong\mathbb{Z}/n$$，并说明这正是「把不正合的量精确量出来」的第一例。问题的形状是：**左伴随保余极限、右伴随保极限，那么「没被保住的那一半」能不能也被组织成一个函子？**
 
 **延伸阅读。** Mac Lane《Categories for the Working Mathematician》第 III 章第 2 节（Yoneda）与第 IV 章（伴随）；Riehl《Category Theory in Context》第 2、4 章；Leinster《Basic Category Theory》第 2、4 章。拓扑侧的同伦解释见 Hatcher《Algebraic Topology》第 4.3 节。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch32_模_张量积与Hom函子.md">← 第32章 模、张量积与 Hom 函子</a></div>
+  <div><a href="ch65_伴随函子与Yoneda引理_上.md">← 第65章 伴随函子与Yoneda 引理·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch34_单子_Abel范畴与正合.md">第34章 单子、Abel 范畴与正合 →</a></div>
+  <div><a href="ch67_单子_Abel范畴与正合_上.md">第67章 单子、Abel 范畴与正合·上 →</a></div>
 </div>

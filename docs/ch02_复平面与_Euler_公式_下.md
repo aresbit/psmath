@@ -2,11 +2,13 @@
 layout: default
 ---
 
-# 第1章: 复平面与 Euler 公式 (The Complex Plane and Euler's Formula)
+# 第02章: 复平面与 Euler 公式·下：完整推导 (The Complex Plane and Euler's Formula · Part II: Full Derivation)
+
 > 对应原专栏: MP1、Gap0–Gap2
 > 专家依据: analysis-master（`_experts/analysis/complex-analysis.md` §1；方法论见 `_experts/analysis/_SKILL.md`）
 > 知识库依据: opc2/knowledge/math/复分析/ch01.md（辅以 ch02、ch03 的收敛性口径）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第01章 复平面与 Euler 公式·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
@@ -18,8 +20,8 @@ layout: default
 
 $$\text{平面旋转群 } SO(2)\ \longleftrightarrow\ \text{复数乘法的代数}\ \longleftrightarrow\ \text{指数映射 } \theta\mapsto e^{i\theta}.$$
 
-**从哪来**：从中学的复数（解方程的副产品）与实平面向量出发；这是全书的第 1 章，起点是中学数学。
-**到哪去**：第 02 章会问一个本章回避掉的问题——把旋转写成矩阵之后，它有没有"特征方向"？答案会把我们逼出复特征值，逼出 $$SO(2)$$ 的**谱 (spectrum)**。这条线一路长到 Lie 群与表示论。
+**从哪来**：从中学的复数（解方程的副产品）与实平面向量出发；这是全书的第 02 章，起点是中学数学。
+**到哪去**：第 04 章会问一个本章回避掉的问题——把旋转写成矩阵之后，它有没有"特征方向"？答案会把我们逼出复特征值，逼出 $$SO(2)$$ 的**谱 (spectrum)**。这条线一路长到 Lie 群与表示论。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -197,7 +199,7 @@ $$e^z:=\sum_{n=0}^{\infty}\frac{z^n}{n!}.$$
 $$\left\lvert\sum_{n=N}^{M}\frac{z^n}{n!}\right\rvert\le\sum_{n=N}^{M}\frac{\lvert z\rvert^n}{n!}.$$
 右边是收敛级数 $$\sum\lvert z\rvert^n/n!$$（实指数级数）的尾段，随 $$N\to\infty$$ 趋于 $$0$$。故部分和是 Cauchy 序列，$$\mathbb{C}$$ 完备（$$\mathbb{C}$$ 与 $$\mathbb{R}^2$$ 同构，$$\mathbb{R}^2$$ 完备），故收敛。一致收敛：若 $$\lvert z\rvert\le R$$，则 $$\lvert z^n/n!\rvert\le R^n/n!$$，而 $$\sum R^n/n!$$ 与 $$z$$ 无关且收敛，由 Weierstrass 判别法一致收敛。连续性是"一致收敛保持连续"的直接推论。$$\blacksquare$$
 
-> **注 3.2** 完整的复级数理论（幂级数的收敛半径、逐项求导、Cauchy 乘积的严格处理）见**第 03 章**。本章只用到"$$\theta$$ 是实数"这一情形，因此下面的逐项求导可以在**实分析**的框架内完成，读者已有的工具（Gap1、Gap2）足够。
+> **注 3.2** 完整的复级数理论（幂级数的收敛半径、逐项求导、Cauchy 乘积的严格处理）见**第 06 章**。本章只用到"$$\theta$$ 是实数"这一情形，因此下面的逐项求导可以在**实分析**的框架内完成，读者已有的工具（Gap1、Gap2）足够。
 
 **定理 3.7（指数律）** 对任意 $$z,w\in\mathbb{C}$$，$$e^{z}e^{w}=e^{z+w}$$。
 
@@ -237,7 +239,7 @@ $$e^{i\theta}=\sum_{n\ge0}\frac{i^n\theta^n}{n!}=\underbrace{\sum_{k\ge0}\frac{(
 
 **证明**：(i) $$\lvert e^{i\theta}\rvert^2=\cos^2\theta+\sin^2\theta=1$$。(ii) 共轭对实系数运算封闭，故 $$\overline{e^{i\theta}}=\overline{\cos\theta+i\sin\theta}=\cos\theta-i\sin\theta=e^{-i\theta}$$；再由 (i) 与 $$z\bar z=\lvert z\rvert^2=1$$ 得 $$e^{-i\theta}=1/e^{i\theta}$$。(iii) 直接代 $$\theta$$ 值。(iv) $$n$$ 次用定理 3.7（或对 $$(e^{i\theta})^n=e^{in\theta}$$ 再用 Euler 公式）。(v) 即定理 3.5(iii)。$$\blacksquare$$
 
-> **注 3.3（这是本章的技术核心，也是全书的种子）** 定理 3.9 的路一里，我们真正用到的是：$$e^{i\theta}$$ 是求导算子 $$\frac{d}{d\theta}$$ 的**特征向量 (eigenvector)**，**特征值 (eigenvalue)** 是 $$i$$。Gap2 里"$$\sin'=\cos,\ \cos'=-\sin$$ 交错配对"的直观，说的就是同一件事——$$\cos\theta+i\sin\theta$$ 把这对实函数打包成一个复特征向量，交错配对随之变成"乘一个数"。这个视角在第 02 章会被正面讲透。
+> **注 3.3（这是本章的技术核心，也是全书的种子）** 定理 3.9 的路一里，我们真正用到的是：$$e^{i\theta}$$ 是求导算子 $$\frac{d}{d\theta}$$ 的**特征向量 (eigenvector)**，**特征值 (eigenvalue)** 是 $$i$$。Gap2 里"$$\sin'=\cos,\ \cos'=-\sin$$ 交错配对"的直观，说的就是同一件事——$$\cos\theta+i\sin\theta$$ 把这对实函数打包成一个复特征向量，交错配对随之变成"乘一个数"。这个视角在第 04 章会被正面讲透。
 
 ### 3.4 指数映射与旋转群的同构
 
@@ -260,7 +262,7 @@ $$SO(2)\ \cong\ S^1\ \cong\ U(1)\ \cong\ \mathbb{R}/2\pi\mathbb{Z}.$$
 
 右端是**数**（单位复数）、第三是**代数对象**（酉群 $$U(1)$$）、第二是**几何对象**（圆）、左端是**变换**（旋转）。四个名字，一个对象。
 
-> **注 3.4（悬在这里的线头）** $$\exp:\mathbb{R}\to S^1$$ 把一条直线"卷"到圆上，是**覆叠映射 (covering map)**，且 $$\mathbb{R}$$ 是 $$S^1$$ 的单连通覆叠。这就是第 20 章前后**覆盖群 (covering group)** 的雏形。另外，$$\arg z$$ 之所以只能定到模 $$2\pi$$，本质上就是因为这个卷绕——多值性不是缺陷，是拓扑。
+> **注 3.4（悬在这里的线头）** $$\exp:\mathbb{R}\to S^1$$ 把一条直线"卷"到圆上，是**覆叠映射 (covering map)**，且 $$\mathbb{R}$$ 是 $$S^1$$ 的单连通覆叠。这就是第 40 章前后**覆盖群 (covering group)** 的雏形。另外，$$\arg z$$ 之所以只能定到模 $$2\pi$$，本质上就是因为这个卷绕——多值性不是缺陷，是拓扑。
 
 ## 四、几何与物理直觉 (Intuition)
 
@@ -440,7 +442,7 @@ $$\lambda_\pm=e^{\pm i\theta},$$
 
 (c) 解释这句话：为什么说"在实平面里看不到旋转的伸缩方向，是因为它的伸缩方向指向复方向"？请把 $$R_\theta$$ 在复基下的作用写出来，并与 $$M_{e^{i\theta}}$$ 对照。
 
-**悬念**：这就是第 02 章的开头。一个在实数域里漂亮但"无法对角化"的算子，一进入复域立刻分裂成两个纯伸缩，伸缩因子是 $$e^{\pm i\theta}$$。$$SO(2)$$ 的**谱**是 $$\{e^{i\theta},e^{-i\theta}\}$$ —— 谱为什么比"特征值集合"更基本？为什么它长在单位圆上？
+**悬念**：这就是第 04 章的开头。一个在实数域里漂亮但"无法对角化"的算子，一进入复域立刻分裂成两个纯伸缩，伸缩因子是 $$e^{\pm i\theta}$$。$$SO(2)$$ 的**谱**是 $$\{e^{i\theta},e^{-i\theta}\}$$ —— 谱为什么比"特征值集合"更基本？为什么它长在单位圆上？
 
 **研2.** **连续同态的分类**（更难，可选）。证明：若 $$\gamma:\mathbb{R}\to S^1$$ 是**连续**群同态（即 $$\gamma(s+t)=\gamma(s)\gamma(t)$$），则存在常数 $$c\in\mathbb{R}$$ 使
 $$\gamma(t)=e^{ict}\quad\text{对一切 }t\in\mathbb{R}.$$
@@ -673,7 +675,7 @@ $$P^{-1}R_\theta P=\begin{pmatrix}e^{i\theta} & 0\\ 0 & e^{-i\theta}\end{pmatrix
 $$\operatorname{tr}R_\theta=2\cos\theta=e^{i\theta}+e^{-i\theta},\qquad\det R_\theta=1=e^{i\theta}\cdot e^{-i\theta},$$
 它们在实域里正好是二次多项式 $$\lambda^2-2\cos\theta\,\lambda+1$$ 的系数；而 $$\sin\theta\ne0$$ 时它的判别式 $$4\cos^2\theta-4=-4\sin^2\theta<0$$——没有实根。实域只允许我们看到这两个复伸缩因子的对称组合，看不到它们各自。
 
-**接下一章**：上面这套计算就是第 02 章的开场——把 $$R_\theta$$ 放到复特征基下对角化，得到的就是它的**谱 (spectrum)** $$\{e^{i\theta},e^{-i\theta}\}$$。第 02 章会回答这里留下的两个问题：为什么"谱"比"特征值集合"更基本（在无限维里两者会分家），以及 $$SO(2)$$ 的谱为什么恰好铺满单位圆——那正是下一章的起点。
+**接下一章**：上面这套计算就是第 04 章的开场——把 $$R_\theta$$ 放到复特征基下对角化，得到的就是它的**谱 (spectrum)** $$\{e^{i\theta},e^{-i\theta}\}$$。第 04 章会回答这里留下的两个问题：为什么"谱"比"特征值集合"更基本（在无限维里两者会分家），以及 $$SO(2)$$ 的谱为什么恰好铺满单位圆——那正是下一章的起点。
 
 **解 研2.** **关键 leap**：不要试图直接去"解"函数方程 $$\gamma(s+t)=\gamma(s)\gamma(t)$$——那不是代数方程。正确的动作是**先证明 $$\gamma$$ 可导**（连续性是全部假设，而连续性居然够用，这是这题的意外之处），把它变成一个微分方程 $$\gamma'=c\gamma$$，而后者有唯一解 $$e^{ct}$$。证明可导的工具只是一个积分：同态性能把一个积分恒等式变成 $$\gamma$$ 的显式表达式。
 
@@ -708,7 +710,7 @@ $$\gamma(t)=e^{i\omega t}. \blacksquare$$
 **补一句反方向。** 反过来，每个 $$\gamma(t)=e^{i\omega t}$$（$$\omega\in\mathbb{R}$$）确实是连续群同态：同态性是定理 3.7（指数律），连续性是复指数函数的连续性。所以上面的分类是**恰好**的。又因 $$e^{2\pi i}=1$$（推论 3.9(iii)），$$\omega$$ 与 $$\omega+2\pi$$ 给出同一个 $$\gamma$$，故这类同态被 $$\omega\in\mathbb{R}/2\pi\mathbb{Z}\cong S^1$$ 一一参数化。
 （另有一条路——先用 $$\gamma(t)^n=\gamma(nt)$$ 定出 $$\gamma$$ 在 $$\mathbb{Q}$$ 上的值，再用连续性把 $$t\in\mathbb{R}$$ 用有理数逼近——也能走通，但中间要先花力气排除"模长不取 $$\lvert\gamma(1)\rvert^q$$"的坏分支；上面这条积分—ODE 的路把这件事交给微分方程解的唯一性一次解决。）
 
-**接下一章**：第三步真正做的事情，是把 $$\gamma$$ 在单位元 $$0$$ 处**线性化**——得到的是**一个数** $$c=i\omega$$，而 $$\gamma$$ 被这个数完全决定。第 02 章会把同一种"在不动点处只看线性部分"的动作用到旋转算子身上：那里被线性化的是旋转 $$R_\theta$$ 本身，它交出来的数就是它的谱 $$\{e^{i\theta},e^{-i\theta}\}$$——群的线性化给出一个数，算子的线性化给出一对数，两者是同一个动作在不同尺度上的样子。（这个"线性化"一路长下去就是 Lie 代数与 Lie 群，第 20–23 章。）
+**接下一章**：第三步真正做的事情，是把 $$\gamma$$ 在单位元 $$0$$ 处**线性化**——得到的是**一个数** $$c=i\omega$$，而 $$\gamma$$ 被这个数完全决定。第 04 章会把同一种"在不动点处只看线性部分"的动作用到旋转算子身上：那里被线性化的是旋转 $$R_\theta$$ 本身，它交出来的数就是它的谱 $$\{e^{i\theta},e^{-i\theta}\}$$——群的线性化给出一个数，算子的线性化给出一对数，两者是同一个动作在不同尺度上的样子。（这个"线性化"一路长下去就是 Lie 代数与 Lie 群，第 20–23 章。）
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -716,13 +718,13 @@ $$\gamma(t)=e^{i\omega t}. \blacksquare$$
 
 2. **复数乘法的内容是"模相乘、幅角相加"，其矩阵形式是 $$M_z=\begin{pmatrix}a & -b\\ b & a\end{pmatrix}$$。** 乘以 $$z$$ 就是"转 $$\arg z$$、伸 $$\lvert z\rvert$$"。由此立刻得到模的乘性 $$\lvert zw\rvert=\lvert z\rvert\lvert w\rvert$$ 与保角性。把"数"和"线性变换"绑定（$$\phi:z\mapsto M_z$$）是从这一步开始贯穿全书的动作。
 
-3. **Euler 公式最经济的证法是唯一性**：$$e^{i\theta}$$ 与 $$\cos\theta+i\sin\theta$$ 都满足 $$X'=iX,\ X(0)=1$$。这里的 $$i$$ 是求导算子 $$\frac{d}{d\theta}$$ 作用在 $$e^{i\theta}$$ 上的**特征值**。记住这句话，第 02 章、第 15–17 章的谱理论都从这里长出来。
+3. **Euler 公式最经济的证法是唯一性**：$$e^{i\theta}$$ 与 $$\cos\theta+i\sin\theta$$ 都满足 $$X'=iX,\ X(0)=1$$。这里的 $$i$$ 是求导算子 $$\frac{d}{d\theta}$$ 作用在 $$e^{i\theta}$$ 上的**特征值**。记住这句话，第 04 章、第 15–17 章的谱理论都从这里长出来。
 
 4. **$$\exp:\mathbb{R}\to S^1$$ 是同态，核是 $$2\pi\mathbb{Z}$$，给出 $$SO(2)\cong S^1\cong U(1)\cong\mathbb{R}/2\pi\mathbb{Z}$$。** "加法群被卷到圆上"这件事是覆叠理论、相位多值性、日后覆盖群与表示论的共同种子。
 
 5. **物理上：实指数是衰减，虚指数是振荡，$$e^{(a+i\omega)t}$$ 是两者的统一。** 相量法、角速度 $$\dot z=i\omega z$$、多缝干涉的 $$(\sin(n\theta/2)/\sin(\theta/2))^2$$，都是同一个复指数在不同外衣下的样子。
 
-**下一章悬念**：研究题 1 埋了引线——旋转矩阵 $$R_\theta$$ 在实方向上"看不见"特征方向，可一旦允许复特征值，它立刻分裂成两个伸缩方向，因子是 $$e^{\pm i\theta}$$。第 02 章就把这件事讲透：什么是算子的**谱 (spectrum)**，为什么"谱"比"特征值集合"更基本（无限维里谱可以连续），以及 $$SO(2)$$ 的谱为什么恰好铺满单位圆。
+**下一章悬念**：研究题 1 埋了引线——旋转矩阵 $$R_\theta$$ 在实方向上"看不见"特征方向，可一旦允许复特征值，它立刻分裂成两个伸缩方向，因子是 $$e^{\pm i\theta}$$。第 04 章就把这件事讲透：什么是算子的**谱 (spectrum)**，为什么"谱"比"特征值集合"更基本（无限维里谱可以连续），以及 $$SO(2)$$ 的谱为什么恰好铺满单位圆。
 
 **延伸阅读**：
 
@@ -731,14 +733,11 @@ $$\gamma(t)=e^{i\omega t}. \blacksquare$$
 - Tristan Needham,《Visual Complex Analysis》第 1 章。把"乘法 $$=$$ 旋转 $$+$$ 伸缩"画成图，与本章 §四完全同构。
 - Квант 杂志复数几何专题；任何一本奥赛几何教材里的"旋转法"章节。对照题 1 的综合几何解法与复数解法，看两者的分工。
 - 原专栏：MP1（复平面与 Euler 公式）、Gap0（中学到大学的桥梁）、Gap1（导数）、Gap2（重要的导数）。本章的物理直观与"求导算子特征值"的说法直接来自 MP1 与 Gap2。
-
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div></div>
+  <div><a href="ch01_复平面与_Euler_公式_上.md">← 第01章 复平面与 Euler 公式·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch02_平面旋转群_SO_2_与算子的谱.md">第02章 平面旋转群 SO(2) 与算子的谱 →</a></div>
+  <div><a href="ch03_平面旋转群_SO_2_与算子的谱_上.md">第03章 平面旋转群 SO(2) 与算子的谱·上 →</a></div>
 </div>

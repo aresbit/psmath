@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第30章: Möbius 群、双重覆盖与射影表示 (The Möbius Group, Double Covers and Projective Representations)
+# 第60章: Möbius 群、双重覆盖与射影表示·下：完整推导 (The Möbius Group, Double Covers and Projective Representations · Part II: Full Derivation)
+
+> 配套预备: 见 第59章 Möbius 群、双重覆盖与射影表示·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP107–MP112
 > 专家依据: `_experts/algebra/representation-theory.md`（主）+ `_experts/algebra/lie-algebra-root-systems.md`
@@ -13,12 +15,12 @@ layout: default
 
 本章只做一件事：把「一个群作用在**射影**空间上」这件事讲透。
 
-前三章各埋了一个伏笔，这里是它们的收口。第 26 章算出 $$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$，并证明「转一整圈」不是零伦闭路；第 22 章发现Heisenberg群 $$H_3(\mathbb R)$$ 是相空间平移群的**中心扩张**，而 Stone–von Neumann 定理的真正含义是「上循环不平凡时，射影表示反而被中心扩张的唯一不可约表示锁死」；第 29 章造出旋量并把 $$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$ 这笔账记在了「存在一个连通双层覆叠」上。这三件事是同一件事。
+前三章各埋了一个伏笔，这里是它们的收口。第 52 章算出 $$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$，并证明「转一整圈」不是零伦闭路；第 44 章发现Heisenberg群 $$H_3(\mathbb R)$$ 是相空间平移群的**中心扩张**，而 Stone–von Neumann 定理的真正含义是「上循环不平凡时，射影表示反而被中心扩张的唯一不可约表示锁死」；第 58 章造出旋量并把 $$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$ 这笔账记在了「存在一个连通双层覆叠」上。这三件事是同一件事。
 
 本章把那个「同一个动作」抽象成**中心扩张**，给它一个名字叫**射影表示**，再算清它什么时候能被修补成普通表示（答案：上循环是不是**上边界**）。我们会看到 Möbius 群、Lorentz 群、旋转群三者的同构与覆叠关系排成一条链，而**「转 360° 不等于恒等」的最终解释是：那不是几何怪事，而是射影表示的必然**——半整数自旋正是它的产物。
 
-**从哪来**：第 22 章的中心扩张原型、第 26 章的双重覆叠、第 28 章的 $$\mathfrak{sl}(2)$$ 表示分类、第 29 章的旋量。
-**到哪去**：第 31 章把「群 » 表示 » 覆叠群」这套语言换成范畴与函子的语言——卷四在此结束，卷五转入范畴论。
+**从哪来**：第 44 章的中心扩张原型、第 52 章的双重覆叠、第 56 章的 $$\mathfrak{sl}(2)$$ 表示分类、第 58 章的旋量。
+**到哪去**：第 62 章把「群 » 表示 » 覆叠群」这套语言换成范畴与函子的语言——卷四在此结束，卷五转入范畴论。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -50,7 +52,7 @@ $$U(\theta)=\begin{pmatrix}e^{-i\theta/2}&0\\ 0&e^{i\theta/2}\end{pmatrix}$$
 (1) 这是否意味着「对应规则 $$R_\theta\mapsto U(\theta)$$ 根本不是一个群同态」？如果是，为什么物理上没出问题？
 (2) 物理上 $$-I$$ 与 $$I$$ 不可区分（整体相位没有意义）。那么，能不能**连续地、一致地**把每个 $$U(\theta)$$ 乘上一个相位因子，使得对应规则重新变成群同态？如果能，怎么乘；如果不能，为什么？（提示：先想清楚「一致地」三个字在拓扑上是什么意思。）
 
-第 (2) 问就是「射影表示能否线性化」，它的答案在 3.5 节，而否定的证明在定理 3.12。这道题与第 26 章的定理 3.10 是同一个数学事实的两种说法：第 26 章说的是「转一圈的闭路缩不掉」，这里说的是「相位没法一致地选掉」。
+第 (2) 问就是「射影表示能否线性化」，它的答案在 3.5 节，而否定的证明在定理 3.12。这道题与第 52 章的定理 3.10 是同一个数学事实的两种说法：第 52 章说的是「转一圈的闭路缩不掉」，这里说的是「相位没法一致地选掉」。
 
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
@@ -197,13 +199,13 @@ $$1\longrightarrow A\longrightarrow\tilde G\xrightarrow{\ \pi\ }G\longrightarrow
 
 **定理 3.8（两次出现的同一个现象）**
 
-**(i)** $$\mathrm{SU}(2)=S^3$$ 单连通，$$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$，覆叠同态 $$\rho:\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 是**万有覆叠**、是双重覆叠，也是 $$\mathbb Z/2$$ 中心扩张（第 26 章定理 3.10）。
+**(i)** $$\mathrm{SU}(2)=S^3$$ 单连通，$$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$，覆叠同态 $$\rho:\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 是**万有覆叠**、是双重覆叠，也是 $$\mathbb Z/2$$ 中心扩张（第 52 章定理 3.10）。
 
 **(ii)** $$\mathrm{SL}(2,\mathbb C)$$ 单连通，覆叠同态 $$\Phi:\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 是万有覆叠（由定理 3.6，$$\ker\Phi=\{\pm I\}$$），故 $$\pi_1(\mathrm{SO}^+(1,3))\cong\mathbb Z/2$$；它同样是双重覆叠与 $$\mathbb Z/2$$ 中心扩张。
 
-**(iii)** $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 与 $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 都是第 29 章定理 3.11 的一般自旋覆叠 $$\mathrm{Spin}(V,q)\to SO(q)$$ 的实例：$$\mathrm{Spin}(3)\cong\mathrm{SU}(2)$$、$$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$。
+**(iii)** $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 与 $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 都是第 58 章定理 3.11 的一般自旋覆叠 $$\mathrm{Spin}(V,q)\to SO(q)$$ 的实例：$$\mathrm{Spin}(3)\cong\mathrm{SU}(2)$$、$$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$。
 
-*证明* **(i)** 是第 26 章定理 3.10 的结论，此处引用。
+*证明* **(i)** 是第 52 章定理 3.10 的结论，此处引用。
 
 **(ii)** 只需证 $$\mathrm{SL}(2,\mathbb C)$$ 单连通，其余由定理 3.6 与覆叠空间理论立得。用 **QR 分解**（对 $$2\times2$$ 的显式 Gram–Schmidt）：任取 $$A\in\mathrm{SL}(2,\mathbb C)$$，把它的两列记为 $$u,v$$。令
 $$q_1=\frac{u}{\lVert u\rVert},\qquad q_2=\frac{w}{\lVert w\rVert},\qquad w=v-\langle v,q_1\rangle q_1,$$
@@ -218,11 +220,11 @@ $$R_\lambda=\begin{pmatrix}t^{1-\lambda}&s\\ 0&t^{\lambda-1}\end{pmatrix},\qquad
 $$H:[0,1]\times\mathrm{SL}(2,\mathbb C)\to\mathrm{SL}(2,\mathbb C),\qquad H(\lambda,A)=A_\lambda$$
 给出 $$\mathrm{SL}(2,\mathbb C)$$ 到 $$\mathrm{SU}(2)$$ 的**形变收缩**：它连续、$$H(0,A)=A$$、$$H(1,A)\in\mathrm{SU}(2)$$、且 $$H(\lambda,A)=A$$ 当 $$A\in\mathrm{SU}(2)$$（此时 $$t=1$$）。
 
-形变收缩不改变同伦型，故 $$\pi_1(\mathrm{SL}(2,\mathbb C))\cong\pi_1(\mathrm{SU}(2))$$。而 $$\mathrm{SU}(2)=\Bigl\{\begin{pmatrix}\alpha&\beta\\ -\bar\beta&\bar\alpha\end{pmatrix}:\lvert\alpha\rvert^2+\lvert\beta\rvert^2=1\Bigr\}$$ 与单位球面 $$S^3$$ 同胚（把 $$(\alpha,\beta)$$ 读成 $$\mathbb C^2\cong\mathbb R^4$$ 中的单位向量），由第 08 章 $$S^3$$ 单连通。故 $$\mathrm{SL}(2,\mathbb C)$$ 单连通。
+形变收缩不改变同伦型，故 $$\pi_1(\mathrm{SL}(2,\mathbb C))\cong\pi_1(\mathrm{SU}(2))$$。而 $$\mathrm{SU}(2)=\Bigl\{\begin{pmatrix}\alpha&\beta\\ -\bar\beta&\bar\alpha\end{pmatrix}:\lvert\alpha\rvert^2+\lvert\beta\rvert^2=1\Bigr\}$$ 与单位球面 $$S^3$$ 同胚（把 $$(\alpha,\beta)$$ 读成 $$\mathbb C^2\cong\mathbb R^4$$ 中的单位向量），由第 16 章 $$S^3$$ 单连通。故 $$\mathrm{SL}(2,\mathbb C)$$ 单连通。
 
 最后，由定理 3.6 的 $$\Phi$$ 是满射且核为 $$\pm I$$、而 $$\mathrm{SL}(2,\mathbb C)$$ 单连通，$$\Phi$$ 是**万有覆叠**，覆叠的层数等于基本群的阶，故 $$\pi_1(\mathrm{SO}^+(1,3))\cong\mathbb Z/2$$。$$\blacksquare$$
 
-**(iii)** 由第 29 章定理 3.11 的 $$\rho:\mathrm{Spin}(V,q)\to O(q)$$ 与第 29 章 3.4 节末注（$$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$）；$$\mathrm{Spin}(3)\cong\mathrm{SU}(2)$$ 是第 26 章的四元数构造。$$\blacksquare$$
+**(iii)** 由第 58 章定理 3.11 的 $$\rho:\mathrm{Spin}(V,q)\to O(q)$$ 与第 58 章 3.4 节末注（$$\mathrm{Spin}(1,3)\cong\mathrm{SL}(2,\mathbb C)$$）；$$\mathrm{Spin}(3)\cong\mathrm{SU}(2)$$ 是第 52 章的四元数构造。$$\blacksquare$$
 
 **例 3.8（$$\mathrm{Spin}(n)$$ 一族）** 对 $$n\ge3$$，$$\mathrm{Spin}(n)\to\mathrm{SO}(n)$$ 是双重覆叠，$$\pi_1(\mathrm{SO}(n))=\mathbb Z/2$$；进一步，$$n\ge3$$ 时 $$\mathrm{Spin}(n)$$ 单连通，故它是万有覆叠。低维的例外让人一眼看出这件事实的「偶然性」：
 $$\mathrm{Spin}(3)\cong\mathrm{SU}(2)\cong S^3,\quad \mathrm{Spin}(4)\cong\mathrm{SU}(2)\times\mathrm{SU}(2),\quad \mathrm{Spin}(5)\cong\mathrm{Sp}(2),\quad \mathrm{Spin}(6)\cong\mathrm{SU}(4).$$
@@ -239,25 +241,25 @@ $$\alpha:G\longrightarrow\mathrm{PGL}(V).$$
 等价的说法：$$G$$ 作用在射影空间 $$\mathbb P(V)$$ 上，且每个作用由 $$V$$ 的一个线性变换诱导。
 
 **定理 3.10（提升给出上循环）** 设 $$\alpha:G\to\mathrm{PGL}(V)$$ 是射影表示。**任取**一组提升：对每个 $$g\in G$$ 选一个 $$\rho(g)\in\mathrm{GL}(V)$$ 使它的像 $$[\rho(g)]$$ 等于 $$\alpha(g)$$（这只是「选择」，不要求 $$\rho$$ 连续、也不要求是同态；用选择公理即可）。则存在唯一函数 $$c:G\times G\to\mathbb C^*$$ 使
-$$\rho(g)\rho(h)=c(g,h)\,\rho(gh)\qquad\text{对一切 }g,h\in G. \tag{30.1}$$
+$$\rho(g)\rho(h)=c(g,h)\,\rho(gh)\qquad\text{对一切 }g,h\in G. \tag{60.1}$$
 并且 $$c$$ 自动满足**上循环条件 (cocycle condition)**
-$$c(g,h)\,c(gh,k)=c(g,hk)\,c(h,k)\qquad\text{对一切 }g,h,k\in G. \tag{30.2}$$
+$$c(g,h)\,c(gh,k)=c(g,hk)\,c(h,k)\qquad\text{对一切 }g,h,k\in G. \tag{60.2}$$
 若改选另一组提升 $$\rho'(g)=\beta(g)\rho(g)$$（$$\beta:G\to\mathbb C^*$$ 是任意函数），则对应的上循环变成
-$$c'(g,h)=\frac{\beta(g)\beta(h)}{\beta(gh)}\,c(g,h). \tag{30.3}$$
+$$c'(g,h)=\frac{\beta(g)\beta(h)}{\beta(gh)}\,c(g,h). \tag{60.3}$$
 形如 $$\dfrac{\beta(g)\beta(h)}{\beta(gh)}$$ 的上循环称为**上边界 (coboundary)**；两个只差一个上边界的上循环称为**上同调 (cohomologous)**。全体上循环模去上边界记作 $$H^2(G;\mathbb C^*)$$，称为 $$G$$ 的**第 2 上同调群 (second cohomology group)**。
 
 *证明* **存在与唯一**：由 $$[\rho(g)][\rho(h)]=\alpha(g)\alpha(h)=\alpha(gh)=[\rho(gh)]$$，两个可逆算子的像相同，即 $$\rho(g)\rho(h)$$ 与 $$\rho(gh)$$ 只差一个标量，设为 $$c(g,h)\in\mathbb C^*$$；$$\rho(gh)$$ 可逆保证这个标量由两者唯一确定（$$\rho(g)\rho(h)=c\,\rho(gh)$$ 中 $$c=\dfrac{(\rho(g)\rho(h))_{ij}}{(\rho(gh))_{ij}}$$ 对任一非零元素取值）。
 
-**上循环条件**：把 (30.1) 用两种方式结合 $$(\rho(g)\rho(h))\rho(k)$$。
+**上循环条件**：把 (60.1) 用两种方式结合 $$(\rho(g)\rho(h))\rho(k)$$。
 $$
 (\rho(g)\rho(h))\rho(k)=c(g,h)\rho(gh)\rho(k)=c(g,h)\,c(gh,k)\,\rho(ghk),
 $$
 $$
 \rho(g)(\rho(h)\rho(k))=\rho(g)\,c(h,k)\rho(hk)=c(h,k)\,c(g,hk)\,\rho(ghk).
 $$
-标量 $$c$$ 是中心元，可以随意搬运。两式相等而 $$\rho(ghk)$$ 可逆，故 $$c(g,h)c(gh,k)=c(h,k)c(g,hk)$$，即 (30.2)。
+标量 $$c$$ 是中心元，可以随意搬运。两式相等而 $$\rho(ghk)$$ 可逆，故 $$c(g,h)c(gh,k)=c(h,k)c(g,hk)$$，即 (60.2)。
 
-**(30.3)**：$$\rho'(g)\rho'(h)=\beta(g)\beta(h)\rho(g)\rho(h)=\beta(g)\beta(h)c(g,h)\rho(gh)$$，而 $$\rho'(gh)=\beta(gh)\rho(gh)$$，故 $$c'(g,h)=\beta(g)\beta(h)c(g,h)/\beta(gh)$$。$$\blacksquare$$
+**(60.3)**：$$\rho'(g)\rho'(h)=\beta(g)\beta(h)\rho(g)\rho(h)=\beta(g)\beta(h)c(g,h)\rho(gh)$$，而 $$\rho'(gh)=\beta(gh)\rho(gh)$$，故 $$c'(g,h)=\beta(g)\beta(h)c(g,h)/\beta(gh)$$。$$\blacksquare$$
 
 **定理 3.11（可线性化 $$\iff$$ 上循环是上边界）** 设 $$\alpha:G\to\mathrm{PGL}(V)$$ 是射影表示，$$\rho$$ 是一组提升，$$c$$ 是相应的上循环。则存在**线性表示** $$\tilde\rho:G\to\mathrm{GL}(V)$$ 使 $$[\tilde\rho(g)]=\alpha(g)$$ 对一切 $$g$$ 成立，当且仅当 $$c$$ 是上边界。
 
@@ -271,15 +273,15 @@ $$\pi:\tilde G_\alpha\to G,\qquad \pi(g,A)=g$$
 $$\tilde\rho(g)\tilde\rho(h)=\beta(g)^{-1}\beta(h)^{-1}c(g,h)\rho(gh)=\beta(g)^{-1}\beta(h)^{-1}\frac{\beta(g)\beta(h)}{\beta(gh)}\rho(gh)=\beta(gh)^{-1}\rho(gh)=\tilde\rho(gh),$$
 故 $$\tilde\rho$$ 是同态；又 $$[\tilde\rho(g)]=[\rho(g)]=\alpha(g)$$。
 
-**(⇒)** 设 $$\tilde\rho:G\to\mathrm{GL}(V)$$ 是线性表示且 $$[\tilde\rho(g)]=\alpha(g)$$。则 $$\tilde\rho(g)=\beta(g)\rho(g)$$ 对唯一确定的 $$\beta(g)\in\mathbb C^*$$，代入定理 3.10(30.3) 并注意 $$\tilde\rho$$ 对应的平凡上循环是 $$\beta\equiv1$$ 的 $$c\equiv1$$，得 $$c(g,h)=\beta(g)\beta(h)/\beta(gh)$$，是上边界。
+**(⇒)** 设 $$\tilde\rho:G\to\mathrm{GL}(V)$$ 是线性表示且 $$[\tilde\rho(g)]=\alpha(g)$$。则 $$\tilde\rho(g)=\beta(g)\rho(g)$$ 对唯一确定的 $$\beta(g)\in\mathbb C^*$$，代入定理 3.10(60.3) 并注意 $$\tilde\rho$$ 对应的平凡上循环是 $$\beta\equiv1$$ 的 $$c\equiv1$$，得 $$c(g,h)=\beta(g)\beta(h)/\beta(gh)$$，是上边界。
 
 **$$\tilde G_\alpha$$ 是群**：若 $$[A]=\alpha(g)$$、$$[B]=\alpha(h)$$，则 $$[AB]=[A][B]=\alpha(g)\alpha(h)=\alpha(gh)$$，故 $$(g,A)(h,B)=(gh,AB)$$ 仍在 $$\tilde G_\alpha$$ 内；结合律继承自 $$G$$ 与 $$\mathrm{GL}(V)$$；单位元是 $$(e,I)$$；逆元 $$(g,A)^{-1}=(g^{-1},A^{-1})$$（因 $$[A^{-1}]=[A]^{-1}=\alpha(g)^{-1}=\alpha(g^{-1})$$）。核：$$\pi(g,A)=e\iff g=e\iff[A]=\alpha(e)=[I]\iff A=\lambda I$$，故 $$\ker\pi=\{(e,\lambda I)\}\cong\mathbb C^*$$。中心性：$$(g,A)(e,\lambda I)=(g,\lambda A)=(e,\lambda I)(g,A)$$。
 
 **与截面的等价**：给定线性表示 $$\tilde\rho$$，映射 $$\sigma(g)=(g,\tilde\rho(g))$$ 是 $$\tilde G_\alpha$$ 中的元素且 $$\pi\circ\sigma=\operatorname{id}$$，并且 $$\sigma$$ 是同态（$$\sigma(g)\sigma(h)=(gh,\tilde\rho(g)\tilde\rho(h))=(gh,\tilde\rho(gh))=\sigma(gh)$$）。反之给定同态截面 $$\sigma$$，写 $$\sigma(g)=(g,\tilde\rho(g))$$，则 $$\sigma$$ 是同态立即给出 $$\tilde\rho(gh)=\tilde\rho(g)\tilde\rho(h)$$，且 $$[\tilde\rho(g)]=\alpha(g)$$。$$\blacksquare$$
 
-**注 3.11（为什么中心扩张让「唯一性」变强）** 定理 3.11 说：射影表示是「差一个标量」的同态，而把它「提正」的代价是把群换大——换成一个中心扩张。第 22 章已经见过这件事最漂亮的一次兑现：相空间 $$\mathbb R^2$$ 的平移群是交换群，它的射影表示带着相位上循环 $$(s,t)\mapsto e^{-i\hbar st}$$；把它提正得到Heisenberg群 $$H_3(\mathbb R)$$，而 Stone–von Neumann 定理说：固定中心特征（即固定 $$\hbar$$）后，$$H_3(\mathbb R)$$ 的不可约酉表示在等价意义下**唯一**。也就是说，**射影表示的「不唯一」在中心扩张后反而变成了「唯一」**。这是「上同调非平凡 ⇒ 表示反被刚化」的第一个范例。
+**注 3.11（为什么中心扩张让「唯一性」变强）** 定理 3.11 说：射影表示是「差一个标量」的同态，而把它「提正」的代价是把群换大——换成一个中心扩张。第 44 章已经见过这件事最漂亮的一次兑现：相空间 $$\mathbb R^2$$ 的平移群是交换群，它的射影表示带着相位上循环 $$(s,t)\mapsto e^{-i\hbar st}$$；把它提正得到Heisenberg群 $$H_3(\mathbb R)$$，而 Stone–von Neumann 定理说：固定中心特征（即固定 $$\hbar$$）后，$$H_3(\mathbb R)$$ 的不可约酉表示在等价意义下**唯一**。也就是说，**射影表示的「不唯一」在中心扩张后反而变成了「唯一」**。这是「上同调非平凡 ⇒ 表示反被刚化」的第一个范例。
 
-**定理 3.12（自旋射影表示不可线性化）** 记 $$\rho:\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 为第 26 章的双重覆叠（$$\rho(q)=\rho(-q)$$，$$\ker\rho=\{\pm I\}$$）。对 $$R\in\mathrm{SO}(3)$$ 取 $$\rho^{-1}(R)$$ 中任一元素，记它在 $$\mathrm{PGL}(2,\mathbb C)$$ 中的类为 $$\alpha(R)$$——由 $$-q$$ 与 $$q$$ 同类，这个类与代表元的选取无关。则
+**定理 3.12（自旋射影表示不可线性化）** 记 $$\rho:\mathrm{SU}(2)\to\mathrm{SO}(3)$$ 为第 52 章的双重覆叠（$$\rho(q)=\rho(-q)$$，$$\ker\rho=\{\pm I\}$$）。对 $$R\in\mathrm{SO}(3)$$ 取 $$\rho^{-1}(R)$$ 中任一元素，记它在 $$\mathrm{PGL}(2,\mathbb C)$$ 中的类为 $$\alpha(R)$$——由 $$-q$$ 与 $$q$$ 同类，这个类与代表元的选取无关。则
 
 **(i)** $$\alpha:\mathrm{SO}(3)\to\mathrm{PGL}(2,\mathbb C)$$ 是射影表示（事实上是同态）；
 
@@ -292,22 +294,22 @@ $$\psi=\tilde\rho\circ\rho:\ \mathrm{SU}(2)\to\mathrm{GL}(2,\mathbb C).$$
 $$\psi$$ 是连续同态。又对一切 $$q$$，
 $$[\psi(q)]=[\tilde\rho(\rho(q))]=\alpha(\rho(q))=[q],$$
 故存在唯一标量 $$\varphi(q)\in\mathbb C^*$$ 使
-$$\psi(q)=\varphi(q)\,q. \tag{30.4}$$
-（这里把 $$q\in\mathrm{SU}(2)\subset\mathrm{GL}(2,\mathbb C)$$ 本身看成 (30.4) 右端的第二个因子。）
+$$\psi(q)=\varphi(q)\,q. \tag{60.4}$$
+（这里把 $$q\in\mathrm{SU}(2)\subset\mathrm{GL}(2,\mathbb C)$$ 本身看成 (60.4) 右端的第二个因子。）
 
-**第一步：$$\varphi$$ 是群同态。** 用 (30.4) 两次：
+**第一步：$$\varphi$$ 是群同态。** 用 (60.4) 两次：
 $$\varphi(qp)\,qp=\psi(qp)=\psi(q)\psi(p)=\varphi(q)\varphi(p)\,qp .$$
 矩阵 $$qp$$ 可逆，故 $$\varphi(qp)=\varphi(q)\varphi(p)$$。特别地 $$\varphi(1)=1$$。
 
-**第二步：$$\varphi$$ 连续。** 记 $$\psi(q)=(\psi_{ij}(q))$$、$$q=(q_{ij})$$。集合 $$U=\{q\in\mathrm{SU}(2):q_{11}\ne0\}$$ 是 $$\mathrm{SU}(2)$$ 中的非空开集（例如 $$I\in U$$），且在 $$U$$ 上由 (30.4) 有 $$\varphi=\psi_{11}/q_{11}$$——两个连续函数的商，故 $$\varphi$$ 在 $$U$$ 上连续。对任意的 $$q\in\mathrm{SU}(2)$$，取 $$p\in U$$ 使 $$qp\in U$$（这样的 $$p$$ 存在：$$U$$ 非空开，$$q^{-1}U$$ 也非空开，取 $$p\in q^{-1}U\cap U$$）。于是 $$\varphi(q)=\varphi(qp)/\varphi(p)$$ 在 $$q$$ 的一个邻域内是连续函数的商，故 $$\varphi$$ 在每个点连续。
+**第二步：$$\varphi$$ 连续。** 记 $$\psi(q)=(\psi_{ij}(q))$$、$$q=(q_{ij})$$。集合 $$U=\{q\in\mathrm{SU}(2):q_{11}\ne0\}$$ 是 $$\mathrm{SU}(2)$$ 中的非空开集（例如 $$I\in U$$），且在 $$U$$ 上由 (60.4) 有 $$\varphi=\psi_{11}/q_{11}$$——两个连续函数的商，故 $$\varphi$$ 在 $$U$$ 上连续。对任意的 $$q\in\mathrm{SU}(2)$$，取 $$p\in U$$ 使 $$qp\in U$$（这样的 $$p$$ 存在：$$U$$ 非空开，$$q^{-1}U$$ 也非空开，取 $$p\in q^{-1}U\cap U$$）。于是 $$\varphi(q)=\varphi(qp)/\varphi(p)$$ 在 $$q$$ 的一个邻域内是连续函数的商，故 $$\varphi$$ 在每个点连续。
 
 **第三步：$$\varphi\equiv1$$。** 由第二小步，$$\varphi$$ 连续；由第一步，它是同态。于是它把换位子送到换位子：
 $$\varphi\bigl([\mathrm{SU}(2),\mathrm{SU}(2)]\bigr)\subseteq[\mathbb C^*,\mathbb C^*]=\{1\},$$
-因为 $$\mathbb C^*$$ 交换。而 $$\mathrm{SU}(2)$$ 是**完美群**，即等于自己的换位子群：它的 Lie 代数 $$\mathfrak{su}(2)$$ 是单 Lie 代数，满足 $$[\mathfrak{su}(2),\mathfrak{su}(2)]=\mathfrak{su}(2)\ne0$$，而连通 Lie 群的换位子群的 Lie 代数是换位子子代数（第 27 章），故 $$[\mathrm{SU}(2),\mathrm{SU}(2)]$$ 的 Lie 代数是整个 $$\mathfrak{su}(2)$$，从而是 $$\mathrm{SU}(2)$$ 的开子群；开子群又闭，而 $$\mathrm{SU}(2)$$ 连通，故它就是 $$\mathrm{SU}(2)$$ 本身。因此
+因为 $$\mathbb C^*$$ 交换。而 $$\mathrm{SU}(2)$$ 是**完美群**，即等于自己的换位子群：它的 Lie 代数 $$\mathfrak{su}(2)$$ 是单 Lie 代数，满足 $$[\mathfrak{su}(2),\mathfrak{su}(2)]=\mathfrak{su}(2)\ne0$$，而连通 Lie 群的换位子群的 Lie 代数是换位子子代数（第 54 章），故 $$[\mathrm{SU}(2),\mathrm{SU}(2)]$$ 的 Lie 代数是整个 $$\mathfrak{su}(2)$$，从而是 $$\mathrm{SU}(2)$$ 的开子群；开子群又闭，而 $$\mathrm{SU}(2)$$ 连通，故它就是 $$\mathrm{SU}(2)$$ 本身。因此
 $$\varphi(\mathrm{SU}(2))=\varphi\bigl([\mathrm{SU}(2),\mathrm{SU}(2)]\bigr)=\{1\},$$
 即 $$\varphi\equiv1$$。
 
-**第四步：矛盾。** 由第三步，(30.4) 给出 $$\psi(q)=q$$ 对一切 $$q\in\mathrm{SU}(2)$$。但 $$\psi=\tilde\rho\circ\rho$$ 经过 $$\rho$$ 分解，故 $$\psi(q)=\psi(-q)$$。取 $$q=1$$：$$\psi(-1)=\psi(1)=I$$。另一方面 $$\psi(-1)=-1\ne I$$。矛盾。故这样的 $$\tilde\rho$$ 不存在。$$\blacksquare$$
+**第四步：矛盾。** 由第三步，(60.4) 给出 $$\psi(q)=q$$ 对一切 $$q\in\mathrm{SU}(2)$$。但 $$\psi=\tilde\rho\circ\rho$$ 经过 $$\rho$$ 分解，故 $$\psi(q)=\psi(-q)$$。取 $$q=1$$：$$\psi(-1)=\psi(1)=I$$。另一方面 $$\psi(-1)=-1\ne I$$。矛盾。故这样的 $$\tilde\rho$$ 不存在。$$\blacksquare$$
 
 **注 3.12（这个证明只需要三件事实）** 上面用到的只是：$$\mathrm{SU}(2)$$ 连通且完美（第三步）、$$\varphi$$ 连续（第二步）、$$\rho$$ 的核是 $$\{\pm I\}$$。没有任何地方用到维数、显式矩阵或紧性。所以同样的论证适用于 $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$——注意 $$\mathrm{SL}(2,\mathbb C)$$ **不紧**，但它仍然连通且完美（其 Lie 代数 $$\mathfrak{sl}(2,\mathbb C)$$ 单，$$[\mathfrak{sl},\mathfrak{sl}]=\mathfrak{sl}$$），这三件事实一条不缺。于是：把同构 $$\mathrm{SO}^+(1,3)\cong\mathrm{PSL}(2,\mathbb C)$$ 看作 $$\mathrm{SO}^+(1,3)$$ 在 $$\mathbb C^2$$ 上的射影表示，它也**不可线性化**。这就回答了入口问题 B 的第 (2) 问在一般维数下的样子。
 
@@ -319,7 +321,7 @@ $$\varphi(\mathrm{SU}(2))=\varphi\bigl([\mathrm{SU}(2),\mathrm{SU}(2)]\bigr)=\{1
 
 **(i)** $$\mathrm{SU}(2)$$ 的不可约复表示恰为一列
 $$V_j,\qquad j\in\Bigl\{0,\tfrac12,1,\tfrac32,2,\dots\Bigr\},\qquad \dim V_j=2j+1,$$
-其中 $$V_j=\operatorname{Sym}^{2j}(\mathbb C^2)$$ 是 $$\mathbb C^2$$ 上 $$2j$$ 次对称张量幂，$$2j$$ 是它在 $$\mathfrak{sl}(2,\mathbb C)$$ 意义下的最高权（第 28 章入口题 (iii) 的分类，$$m=2j$$）。
+其中 $$V_j=\operatorname{Sym}^{2j}(\mathbb C^2)$$ 是 $$\mathbb C^2$$ 上 $$2j$$ 次对称张量幂，$$2j$$ 是它在 $$\mathfrak{sl}(2,\mathbb C)$$ 意义下的最高权（第 56 章入口题 (iii) 的分类，$$m=2j$$）。
 
 **(ii)** 中心元 $$-I\in\mathrm{SU}(2)$$ 在 $$V_j$$ 上作用为标量 $$(-1)^{2j}$$。
 
@@ -327,7 +329,7 @@ $$V_j,\qquad j\in\Bigl\{0,\tfrac12,1,\tfrac32,2,\dots\Bigr\},\qquad \dim V_j=2j+
 
 **(iv)** 特别地，$$V_{1/2}\cong\mathbb C^2$$ 正是定理 3.12 里那个自旋射影表示。于是「自旋 $$1/2$$ 的态转 $$360°$$ 变号」这件事的最终解释是：**$$-I\in\mathrm{SU}(2)$$ 在 $$V_{1/2}$$ 上的特征值是 $$(-1)^{2\cdot1/2}=-1$$，而 $$\mathrm{SO}(3)=\mathrm{SU}(2)/\{\pm I\}$$ 把这个 $$-I$$ 与 $$I$$ 认成了同一个元素。** 群论允许「$$-I$$ 与 $$I$$ 等价」而表示论知道「它们作用不同」——这个差额就是射影表示。
 
-*证明* **(i)** 这是第 28 章入口题 (iii)（$$\mathfrak{sl}(2,\mathbb C)$$ 的有限维不可约表示与最高权 $$m\in\mathbb Z_{\ge0}$$ 一一对应、维数 $$m+1$$、权集 $$m,m-2,\dots,-m$$）在紧群 $$\mathrm{SU}(2)$$ 上的实现：$$\mathrm{SU}(2)$$ 的复化 Lie 代数是 $$\mathfrak{sl}(2,\mathbb C)$$，$$\mathrm{SU}(2)$$ 单连通，故 $$\mathrm{SU}(2)$$ 的表示与 $$\mathfrak{sl}(2,\mathbb C)$$ 的表示一一对应（第 27 章的指数映射）。取 $$m=2j$$ 即得 $$V_j=\operatorname{Sym}^{m}\mathbb C^2$$。$$\square$$
+*证明* **(i)** 这是第 56 章入口题 (iii)（$$\mathfrak{sl}(2,\mathbb C)$$ 的有限维不可约表示与最高权 $$m\in\mathbb Z_{\ge0}$$ 一一对应、维数 $$m+1$$、权集 $$m,m-2,\dots,-m$$）在紧群 $$\mathrm{SU}(2)$$ 上的实现：$$\mathrm{SU}(2)$$ 的复化 Lie 代数是 $$\mathfrak{sl}(2,\mathbb C)$$，$$\mathrm{SU}(2)$$ 单连通，故 $$\mathrm{SU}(2)$$ 的表示与 $$\mathfrak{sl}(2,\mathbb C)$$ 的表示一一对应（第 54 章的指数映射）。取 $$m=2j$$ 即得 $$V_j=\operatorname{Sym}^{m}\mathbb C^2$$。$$\square$$
 
 **(ii)** 取 $$\mathbb C^2$$ 的标准基 $$e_1,e_2$$。$$-I$$ 把 $$e_1\mapsto-e_1$$、$$e_2\mapsto-e_2$$。$$V_j=\operatorname{Sym}^{2j}\mathbb C^2$$ 由单项式 $$e_1^ae_2^b$$（$$a+b=2j$$）张成。对称幂的作用是
 $$(-I)\cdot e_1^ae_2^b=(-e_1)^a(-e_2)^b=(-1)^{a+b}e_1^ae_2^b=(-1)^{2j}e_1^ae_2^b .$$
@@ -357,11 +359,11 @@ $$[\psi(q)]=[\tilde\rho(\rho(q))]=\alpha_j(\rho(q))=[\rho_j(q)]$$
 | 相对论 | $$\mathrm{SO}^+(1,3)$$ | Minkowski 空间的前向光锥 | $$\mathrm{SL}(2,\mathbb C)$$ |
 | 量子力学 | $$\mathrm{SO}(3)$$ | $$\mathbb R^3$$（或射影 Hilbert 空间） | $$\mathrm{SU}(2)$$ |
 
-中间一列的两个「作在什么上」被同构连起来：$$\widehat{\mathbb C}$$ 是光锥中**射线**的集合（天球），Möbius 变换作用在 $$\widehat{\mathbb C}$$ 上就是 Lorentz 变换作用在光锥的射线上。第三行是第一行的「实数低维版」：把 Hermite 矩阵换成迹为零的 Hermite 矩阵（即 $$\mathfrak{su}(2)\cong\mathbb R^3$$），$$\mathrm{SL}(2,\mathbb C)$$ 换成 $$\mathrm{SU}(2)$$，$$\det$$ 换成 $$-\det$$（欧氏范数平方），定理 3.6 的整套证明逐字搬过去，得到 $$\mathrm{SU}(2)/\{\pm I\}\cong\mathrm{SO}(3)$$（第 26 章）。
+中间一列的两个「作在什么上」被同构连起来：$$\widehat{\mathbb C}$$ 是光锥中**射线**的集合（天球），Möbius 变换作用在 $$\widehat{\mathbb C}$$ 上就是 Lorentz 变换作用在光锥的射线上。第三行是第一行的「实数低维版」：把 Hermite 矩阵换成迹为零的 Hermite 矩阵（即 $$\mathfrak{su}(2)\cong\mathbb R^3$$），$$\mathrm{SL}(2,\mathbb C)$$ 换成 $$\mathrm{SU}(2)$$，$$\det$$ 换成 $$-\det$$（欧氏范数平方），定理 3.6 的整套证明逐字搬过去，得到 $$\mathrm{SU}(2)/\{\pm I\}\cong\mathrm{SO}(3)$$（第 52 章）。
 
 ### 4.2 「双重」在几何上长什么样
 
-双重覆叠的几何图像是**两叶覆盖**：底空间上的每个点，上方有两叶。以 $$\mathrm{SU}(2)=S^3\to\mathrm{SO}(3)=\mathbb{RP}^3$$ 为例，$$S^3$$ 上对径的两点被粘成同一个旋转（第 26 章已经画过「对径粘合的实心球」）。
+双重覆叠的几何图像是**两叶覆盖**：底空间上的每个点，上方有两叶。以 $$\mathrm{SU}(2)=S^3\to\mathrm{SO}(3)=\mathbb{RP}^3$$ 为例，$$S^3$$ 上对径的两点被粘成同一个旋转（第 52 章已经画过「对径粘合的实心球」）。
 
 $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 的图像没有这么直观的低维模型，但性质完全相同：底群上的每条闭路，提升到覆叠群上**未必**闭。只要底空间里存在一条「缩不掉的闭路」（即 $$\pi_1\ne0$$），就会有「提升之后从 $$I$$ 走到 $$-I$$」的现象。这正是入口问题 B 的几何内容：转 $$360°$$ 是 $$\mathrm{SO}(3)$$ 中一条非零伦闭路，它的提升从 $$1$$ 走到 $$-1$$。
 
@@ -379,12 +381,12 @@ $$\mathrm{SL}(2,\mathbb C)\to\mathrm{SO}^+(1,3)$$ 的图像没有这么直观的
 
 本章的收口正是这条主线的一次完整兑现，四个说法指的是同一个数学对象：
 
-1. **几何**：$$\mathrm{SO}(3)$$ 里「转一整圈」的闭路不可收缩（$$\pi_1=\mathbb Z/2$$，第 26 章）；
+1. **几何**：$$\mathrm{SO}(3)$$ 里「转一整圈」的闭路不可收缩（$$\pi_1=\mathbb Z/2$$，第 52 章）；
 2. **代数（覆叠）**：存在双重覆叠 $$\mathrm{SU}(2)\to\mathrm{SO}(3)$$，$$\mathrm{SU}(2)$$ 是万有覆叠，$$\mathrm{SO}(3)=\mathrm{SU}(2)/\{\pm I\}$$；
 3. **代数（上同调）**：相应的上循环不是上边界，$$H^2(\mathrm{SO}(3);\mathbb C^*)\ne0$$；
 4. **物理**：半整数自旋的态空间只是 $$\mathrm{SO}(3)$$ 的射影表示，$$\mathrm{SU}(2)$$ 上的线性表示才是它「真正的家」；实验上表现为转 $$360°$$ 出负号。
 
-第 22 章的Heisenberg群是同一件事的另一个实例（那里底群是 $$\mathbb R^2$$ 的平移群，中心扩张是 $$H_3(\mathbb R)$$，上循环是 $$\exp(-i\hbar st)$$，「不可消掉」体现为 $$\hbar$$ 是一个不能连续变到 $$0$$ 的参数），第 29 章的旋量群是它在一般维数里的推广。这三处合起来说明：**射影表示不是技术细节，而是「群作用在射影空间上」这一普遍情形的名字。**
+第 44 章的Heisenberg群是同一件事的另一个实例（那里底群是 $$\mathbb R^2$$ 的平移群，中心扩张是 $$H_3(\mathbb R)$$，上循环是 $$\exp(-i\hbar st)$$，「不可消掉」体现为 $$\hbar$$ 是一个不能连续变到 $$0$$ 的参数），第 58 章的旋量群是它在一般维数里的推广。这三处合起来说明：**射影表示不是技术细节，而是「群作用在射影空间上」这一普遍情形的名字。**
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -445,13 +447,13 @@ $$\frac{w_2-w_4}{w_1-w_4}\in\mathbb R\iff w_1,w_2,w_4\ \text{共线}.$$
 
 ### 题 3：Weyl 上循环不是上边界
 
-**考点** 定理 3.10 与 3.11。**位置** 第 22 章的中心扩张在这里被放回射影表示的框架，并用一个「对称性」技巧一刀切开。
+**考点** 定理 3.10 与 3.11。**位置** 第 44 章的中心扩张在这里被放回射影表示的框架，并用一个「对称性」技巧一刀切开。
 
 **问题** 设 $$\mathcal H=L^2(\mathbb R)$$，$$U(s),V(t)$$ 是满足 Weyl 关系
 $$U(s)V(t)=e^{-i\hbar st}\,V(t)U(s)\qquad(\hbar\ne0)$$
-的单参数酉群（第 22 章）。定义 $$\rho(s,t)=U(s)V(t)$$。证明：
+的单参数酉群（第 44 章）。定义 $$\rho(s,t)=U(s)V(t)$$。证明：
 
-(1) (30.1) 中的上循环是 $$c\bigl((s,t),(s',t')\bigr)=e^{i\hbar s't}$$，并验证它满足上循环条件 (30.2)；
+(1) (60.1) 中的上循环是 $$c\bigl((s,t),(s',t')\bigr)=e^{i\hbar s't}$$，并验证它满足上循环条件 (60.2)；
 (2) $$c$$ 不是上边界，因此相空间平移群的这个射影表示不可线性化。
 
 **解** **(1)** 用 Weyl 关系把 $$V(t)$$ 搬到 $$U(s')$$ 的右边：
@@ -460,7 +462,7 @@ $$V(t)U(s')=e^{i\hbar s't}U(s')V(t)$$
 $$\rho(s,t)\rho(s',t')=U(s)V(t)U(s')V(t')=e^{i\hbar s't}\,U(s)U(s')V(t)V(t')=e^{i\hbar s't}\,\rho(s+s',t+t').$$
 故 $$c\bigl((s,t),(s',t')\bigr)=e^{i\hbar s't}$$。
 
-验证 (30.2)：记 $$g=(s,t)$$、$$h=(s',t')$$、$$k=(s'',t'')$$。
+验证 (60.2)：记 $$g=(s,t)$$、$$h=(s',t')$$、$$k=(s'',t'')$$。
 $$\text{左边}=e^{i\hbar s't}\cdot e^{i\hbar s''(t+t')},\qquad \text{右边}=e^{i\hbar(s'+s'')t}\cdot e^{i\hbar s''t'}.$$
 左边指数为 $$i\hbar\bigl(s't+s''t+s''t'\bigr)$$，右边指数为 $$i\hbar\bigl(s't+s''t+s''t'\bigr)$$，相等。$$\square$$
 
@@ -470,7 +472,7 @@ $$c(g,h)=\frac{\beta(g)\beta(h)}{\beta(g+h)},$$
 $$c(g,h)=e^{i\hbar\cdot0\cdot1}=1,\qquad c(h,g)=e^{i\hbar\cdot1\cdot1}=e^{i\hbar}\ne1\quad(\hbar\ne0).$$
 故 $$c$$ 不对称，因而**不是**上边界。由定理 3.11，这个射影表示不能线性化。$$\blacksquare$$
 
-**注（这说明什么）** 相空间平移群 $$\mathbb R^2$$ 是**交换**群，它的一切线性酉表示都可以在某个基下同时对角化（可交换的酉算子族同时对角化），本质上只是「一组相位」；而 Weyl 系统的 $$U(s),V(t)$$ 明显不能同时对角化（它们不对易）。所以此处「不可线性化」有物理内容：**对易关系 $$[X,P]=i\hbar$$ 与「射影表示的不可线性化」是同一件事**。第 22 章用 Stone–von Neumann 定理说了这句话的另一半：换到中心扩张 $$H_3(\mathbb R)$$ 上，不可线性化消失了，取而代之是不可约表示的**唯一性**。
+**注（这说明什么）** 相空间平移群 $$\mathbb R^2$$ 是**交换**群，它的一切线性酉表示都可以在某个基下同时对角化（可交换的酉算子族同时对角化），本质上只是「一组相位」；而 Weyl 系统的 $$U(s),V(t)$$ 明显不能同时对角化（它们不对易）。所以此处「不可线性化」有物理内容：**对易关系 $$[X,P]=i\hbar$$ 与「射影表示的不可线性化」是同一件事**。第 44 章用 Stone–von Neumann 定理说了这句话的另一半：换到中心扩张 $$H_3(\mathbb R)$$ 上，不可线性化消失了，取而代之是不可约表示的**唯一性**。
 
 ### 题 4：实版本——$$\mathrm{PSL}(2,\mathbb R)\cong\mathrm{SO}^+(1,2)$$ 与双曲几何
 
@@ -516,11 +518,11 @@ $$\text{双曲平面的保向等距群}\cong\mathrm{PSL}(2,\mathbb R)\cong\mathr
 
 **基3.** 对 $$A=\begin{pmatrix}1&1\\ 0&1\end{pmatrix}\in\mathrm{SL}(2,\mathbb C)$$，算出 $$A\,X(x)\,A^*$$ 并读出对应的四维实线性变换 $$x\mapsto x'$$，写成 $$4\times4$$ 实矩阵。验证这个矩阵的行列式为 $$1$$，并用两组具体向量验证它保持 $$\langle\cdot,\cdot\rangle_{1,3}$$。
 
-**基4.** 设 $$\beta:G\to\mathbb C^*$$ 是任意函数，令 $$c(g,h)=\dfrac{\beta(g)\beta(h)}{\beta(gh)}$$。直接验证 $$c$$ 满足上循环条件 (30.2)，并说明为什么由定理 3.11 立即知道「这个上循环对应的射影表示可线性化」。
+**基4.** 设 $$\beta:G\to\mathbb C^*$$ 是任意函数，令 $$c(g,h)=\dfrac{\beta(g)\beta(h)}{\beta(gh)}$$。直接验证 $$c$$ 满足上循环条件 (60.2)，并说明为什么由定理 3.11 立即知道「这个上循环对应的射影表示可线性化」。
 
 ### 竞赛（本课目标难度）
 
-**竞1.** 证明不存在连续映射 $$s:\mathrm{SO}(3)\to\mathrm{SU}(2)$$ 使 $$\rho\circ s=\operatorname{id}_{\mathrm{SO}(3)}$$（$$\rho$$ 是第 26 章的双重覆叠）。并说明这个结论与定理 3.12(ii) 的关系。
+**竞1.** 证明不存在连续映射 $$s:\mathrm{SO}(3)\to\mathrm{SU}(2)$$ 使 $$\rho\circ s=\operatorname{id}_{\mathrm{SO}(3)}$$（$$\rho$$ 是第 52 章的双重覆叠）。并说明这个结论与定理 3.12(ii) 的关系。
 
 **竞2.** 用「$$\mathrm{SO}(3)$$ 的不可约复表示维数全为奇数」这一事实，直接证明定理 3.12(ii)：不存在线性表示 $$\tilde\rho:\mathrm{SO}(3)\to\mathrm{GL}(2,\mathbb C)$$ 使 $$[\tilde\rho(R)]=\alpha(R)$$ 对一切 $$R$$ 成立。
 
@@ -596,7 +598,7 @@ $$\det\begin{pmatrix}\tfrac32&1&-\tfrac12\\ 1&1&-1\\ \tfrac12&1&\tfrac12\end{pma
 $$c(g,h)c(gh,k)=\frac{\beta(g)\beta(h)}{\beta(gh)}\cdot\frac{\beta(gh)\beta(k)}{\beta(ghk)}=\frac{\beta(g)\beta(h)\beta(k)}{\beta(ghk)},$$
 右边
 $$c(g,hk)c(h,k)=\frac{\beta(g)\beta(hk)}{\beta(ghk)}\cdot\frac{\beta(h)\beta(k)}{\beta(hk)}=\frac{\beta(g)\beta(h)\beta(k)}{\beta(ghk)} .$$
-两者相等，故 (30.2) 成立。
+两者相等，故 (60.2) 成立。
 
 **由定理 3.11 立即可线性化**：定理 3.11 的 (⇐) 方向说的是「上循环 $$c$$ 若是上边界，则 $$\tilde\rho(g)=\beta(g)^{-1}\rho(g)$$ 是线性表示，且 $${[\tilde\rho(g)]=\alpha(g)}$$」。而上边界正是形如 $$\beta(g)\beta(h)/\beta(gh)$$ 的上循环——本题的 $$c$$ 就是这个形状，它的「$$\beta$$」就是给定的那个 $$\beta$$。所以 $$\tilde\rho(g)=\beta(g)^{-1}\rho(g)$$ 直接给出线性提升。$$\blacksquare$$
 
@@ -610,7 +612,7 @@ $$c(g,hk)c(h,k)=\frac{\beta(g)\beta(hk)}{\beta(ghk)}\cdot\frac{\beta(h)\beta(k)}
 $$\Theta:\mathrm{SO}(3)\times\{\pm1\}\to\mathrm{SU}(2),\qquad \Theta(R,\varepsilon)=\varepsilon\,s(R).$$
 $$\Theta$$ 连续。单射：若 $$\varepsilon s(R)=\varepsilon' s(R')$$，则作用 $$\rho$$ 得 $$R=R'$$（因 $$\rho(\varepsilon s(R))=\rho(s(R))=R$$），再由 $$\varepsilon s(R)=\varepsilon' s(R)$$ 且 $$s(R)\ne0$$ 得 $$\varepsilon=\varepsilon'$$。满射：任取 $$q\in\mathrm{SU}(2)$$，令 $$R=\rho(q)$$；则 $$\rho(s(R))=R=\rho(q)$$，故 $$s(R)=\pm q$$，即 $$q=\pm s(R)=\Theta(R,\pm1)$$。连续双射，且两边的紧 Hausdorff 空间，故 $$\Theta$$ 是同胚。
 
-**第三步：矛盾。** $$\mathrm{SO}(3)\times\{\pm1\}$$ 不连通（$$\{\pm1\}$$ 离散、$$\mathrm{SO}(3)$$ 非空，两个 «切片» 都非空且开）。而 $$\mathrm{SU}(2)\cong S^3$$（第 26 章）连通。同胚保持连通性，矛盾。
+**第三步：矛盾。** $$\mathrm{SO}(3)\times\{\pm1\}$$ 不连通（$$\{\pm1\}$$ 离散、$$\mathrm{SO}(3)$$ 非空，两个 «切片» 都非空且开）。而 $$\mathrm{SU}(2)\cong S^3$$（第 52 章）连通。同胚保持连通性，矛盾。
 
 **与定理 3.12(ii) 的关系**：由定理 3.11，「$$\alpha$$ 可线性化」等价于「中心扩张 $$\widetilde{\mathrm{SO}(3)}_\alpha$$ 有同态截面」。对自旋射影表示，可以验证（见下）$$\widetilde{\mathrm{SO}(3)}_\alpha\cong\{(R,\lambda q):\lambda\in\mathbb C^*,\ \rho(q)=R\}$$，而其中的子集 $$\{\lambda=1\}\cong\mathrm{SU}(2)$$ 就是 $$\rho$$ 的图；于是「有同态截面」至少要能造出连续截面 $$s$$。本题证明了后者不存在，故定理 3.12(ii) 的结论成立。（也可以直接说：定理 3.12(ii) 的证明与本题证明共用同一件事实——$$\mathrm{SU}(2)$$ 连通而 $$\mathrm{SO}(3)\times\{\pm1\}$$ 不连通，只是分别以「同态截面」和「连续截面」的形式出现。）
 
@@ -618,15 +620,15 @@ $$\Theta$$ 连续。单射：若 $$\varepsilon s(R)=\varepsilon' s(R')$$，则�
 
 **解 竞2.** **关键 leap：用维数奇偶性把 2 维情形逼成「两个平凡表示的直和」。**
 
-由第 26 章与第 28 章，$$\mathrm{SO}(3)$$ 的不可约复表示是 $$V_j$$（$$j\in\mathbb Z_{\ge0}$$），维数 $$2j+1$$（定理 3.13(iii)：$$-I$$ 作用平凡者恰为整数 $$j$$）。
+由第 52 章与第 56 章，$$\mathrm{SO}(3)$$ 的不可约复表示是 $$V_j$$（$$j\in\mathbb Z_{\ge0}$$），维数 $$2j+1$$（定理 3.13(iii)：$$-I$$ 作用平凡者恰为整数 $$j$$）。
 
-**第一步：$$\mathrm{SO}(3)$$ 完全可约。** $$\mathrm{SO}(3)$$ 紧，用 Haar 测度平均任意内积可得不变内积（第 28 章/第 20 章的紧群完全可约性），故每个有限维表示都是不可约表示的直和。
+**第一步：$$\mathrm{SO}(3)$$ 完全可约。** $$\mathrm{SO}(3)$$ 紧，用 Haar 测度平均任意内积可得不变内积（第 56 章/第 40 章的紧群完全可约性），故每个有限维表示都是不可约表示的直和。
 
 **第二步：2 维表示只能是两个 1 维表示的直和。** 若 $$\tilde\rho$$ 是 2 维表示，分解为不可约表示，维数全为奇数（$$1,3,5,\dots$$），和为 $$2$$ 迫使只有 $$1+1$$ 一种可能。
 
-**第三步：1 维表示只有平凡。** 1 维表示是群同态 $$\mathrm{SO}(3)\to\mathbb C^*$$，其像交换。而 $$\mathrm{SO}(3)$$ 是它自己 Lie 代数的换位子群（$$\mathfrak{so}(3)$$ 是单 Lie 代数，$$[\mathfrak{so}(3),\mathfrak{so}(3)]=\mathfrak{so}(3)\ne0$$，由第 27 章连通 Lie 群的换位子群等于换位子子代数的指数像），于是同态把换位子送到换位子：像落在 $$\mathbb C^*$$ 的换位子群 $$\{1\}$$ 中。故 1 维表示平凡。
+**第三步：1 维表示只有平凡。** 1 维表示是群同态 $$\mathrm{SO}(3)\to\mathbb C^*$$，其像交换。而 $$\mathrm{SO}(3)$$ 是它自己 Lie 代数的换位子群（$$\mathfrak{so}(3)$$ 是单 Lie 代数，$$[\mathfrak{so}(3),\mathfrak{so}(3)]=\mathfrak{so}(3)\ne0$$，由第 54 章连通 Lie 群的换位子群等于换位子子代数的指数像），于是同态把换位子送到换位子：像落在 $$\mathbb C^*$$ 的换位子群 $$\{1\}$$ 中。故 1 维表示平凡。
 
-**第四步：结论。** 因此 $$\tilde\rho$$ 必是「$$2$$ 份平凡表示」的直和，即 $$\tilde\rho(R)=I$$ 对一切 $$R$$。但若 $$[\tilde\rho(R)]=\alpha(R)$$ 对一切 $$R$$，取 $$q=\begin{pmatrix}i&0\\ 0&-i\end{pmatrix}\in\mathrm{SU}(2)$$（$$q=\cos\tfrac\pi2+k\sin\tfrac\pi2$$，故由第 26 章的公式 $$\rho(q)$$ 是绕 $$k$$ 轴转 $$\pi$$ 的旋转），令 $$R=\rho(q)$$：则 $$\alpha(R)=[q]$$，而 $$q$$ 不是标量矩阵（$$q\ne\lambda I$$ 对一切 $$\lambda$$），故 $$[q]\ne[I]$$。与 $$\tilde\rho(R)=I$$ 矛盾。故这样的线性表示不存在，定理 3.12(ii) 成立。$$\blacksquare$$
+**第四步：结论。** 因此 $$\tilde\rho$$ 必是「$$2$$ 份平凡表示」的直和，即 $$\tilde\rho(R)=I$$ 对一切 $$R$$。但若 $$[\tilde\rho(R)]=\alpha(R)$$ 对一切 $$R$$，取 $$q=\begin{pmatrix}i&0\\ 0&-i\end{pmatrix}\in\mathrm{SU}(2)$$（$$q=\cos\tfrac\pi2+k\sin\tfrac\pi2$$，故由第 52 章的公式 $$\rho(q)$$ 是绕 $$k$$ 轴转 $$\pi$$ 的旋转），令 $$R=\rho(q)$$：则 $$\alpha(R)=[q]$$，而 $$q$$ 不是标量矩阵（$$q\ne\lambda I$$ 对一切 $$\lambda$$），故 $$[q]\ne[I]$$。与 $$\tilde\rho(R)=I$$ 矛盾。故这样的线性表示不存在，定理 3.12(ii) 成立。$$\blacksquare$$
 
 **解 竞3.** **关键 leap：$$A^n$$ 必是标量，而标量可以被 $$n$$ 次方根「调平」。**
 
@@ -650,7 +652,7 @@ $$w-w_i=\frac{az+b}{cz+d}-\frac{az_i+b}{cz_i+d}=\frac{(az+b)(cz_i+d)-(az_i+b)(cz
 $$(az+b)(cz_i+d)-(az_i+b)(cz+d)=acz_iz+adz+bcz_i+bd-aczz_i-adz_i-bcz-bd$$
 $$=ad(z-z_i)+bc(z_i-z)=(ad-bc)(z-z_i)=(z-z_i),$$
 （用了 $$ad-bc=1$$）。故
-$$w-w_i=\frac{z-z_i}{(cz+d)(cz_i+d)} . \tag{30.5}$$
+$$w-w_i=\frac{z-z_i}{(cz+d)(cz_i+d)} . \tag{60.5}$$
 
 代入交比。分子
 $$(w-w_1)(w_2-w_3)=\frac{(z-z_1)(z_2-z_3)}{(cz+d)(cz_1+d)(cz_2+d)(cz_3+d)},$$
@@ -660,7 +662,7 @@ $$(w-w_3)(w_2-w_1)=\frac{(z-z_3)(z_2-z_1)}{(cz+d)(cz_3+d)(cz_2+d)(cz_1+d)} .$$
 $$\frac{(w-w_1)(w_2-w_3)}{(w-w_3)(w_2-w_1)}=\frac{(z-z_1)(z_2-z_3)}{(z-z_3)(z_2-z_1)},$$
 即 $$[f(z),f(z_1),f(z_2),f(z_3)]=[z,z_1,z_2,z_3]$$。
 
-**这题的关键 leap**：不是去比较交比的四个因子各自怎么变（那样会陷入六个因子的记账），而是发现 (30.5) 里每个差式都带着**同一个**「尾巴」$$(cz+d)$$（在分母里，$$z$$ 与 $$z_i$$ 各出一个），四个因子在分子分母中恰好成对抵消。**先算差，再算比**——这是所有「共形不变量的验证」的通用套路。$$\blacksquare$$
+**这题的关键 leap**：不是去比较交比的四个因子各自怎么变（那样会陷入六个因子的记账），而是发现 (60.5) 里每个差式都带着**同一个**「尾巴」$$(cz+d)$$（在分母里，$$z$$ 与 $$z_i$$ 各出一个），四个因子在分子分母中恰好成对抵消。**先算差，再算比**——这是所有「共形不变量的验证」的通用套路。$$\blacksquare$$
 
 **解 竞5.** **第一步：算商。** 商映射 $$\mathrm{GL}(2,\mathbb R)\to\mathrm{PGL}(2,\mathbb R)$$ 的核是 $$\mathbb R^*I$$。在 $$\mathrm{PGL}(2,\mathbb R)$$ 中，$$\mathrm{PSL}(2,\mathbb R)$$ 是 $$\mathrm{SL}(2,\mathbb R)$$ 的像。由第一同构定理
 $$\mathrm{PGL}(2,\mathbb R)\big/\mathrm{PSL}(2,\mathbb R)\cong\mathrm{GL}(2,\mathbb R)\big/\bigl(\mathbb R^*I\cdot\mathrm{SL}(2,\mathbb R)\bigr).$$
@@ -697,7 +699,7 @@ $$\alpha(g)\alpha(h)=[\tilde\rho(\tilde g)][\tilde\rho(\tilde h)]=[\tilde\rho(\t
 
 - **两边合起来**是 $$\mathrm{SU}(2)$$ 的全部不可约表示（每个 $$j\in\tfrac12\mathbb Z_{\ge0}$$ 落在恰好一边）。于是「$$\mathrm{SO}(3)$$ 的（不可约）射影表示」与「$$\mathrm{SU}(2)$$ 的（不可约）线性表示」在同一层级上是一回事——**多出来的一层（覆盖群）把所有射影表示都变成了线性表示**，而「是否在中心上取平凡特征」把它们分成了整数自旋与半整数自旋两族。
 
-把「$$\mathrm{SO}(3)$$ 的射影表示全体」与「$$\mathrm{SU}(2)$$ 的、在中心上按某个固定特征变换的线性表示全体」各自看成一个整体，(i) 给出的对应在同构意义下是一一的。下一章（第 31 章）把这类「整体之间的对应」抽象成**函子**，并给出判断「两个这样的对应何时自然同构」的语言——那时本节这个对应会变成一句「诱导表示函子与限制函子互为伴随」式的陈述。$$\blacksquare$$
+把「$$\mathrm{SO}(3)$$ 的射影表示全体」与「$$\mathrm{SU}(2)$$ 的、在中心上按某个固定特征变换的线性表示全体」各自看成一个整体，(i) 给出的对应在同构意义下是一一的。下一章（第 62 章）把这类「整体之间的对应」抽象成**函子**，并给出判断「两个这样的对应何时自然同构」的语言——那时本节这个对应会变成一句「诱导表示函子与限制函子互为伴随」式的陈述。$$\blacksquare$$
 
 **解 研2.**
 
@@ -728,7 +730,7 @@ $$\theta(s(g)i(\lambda))\theta(s(h)i(\mu))=s'(g)i'(\beta(g)\lambda)s'(h)i'(\beta
 
 **这题的关键 leap**：把「同构」翻译成「两组截面之间的换基函数 $$\beta$$」，于是「上循环之差」正好变成 $$\beta$$ 的上边界。上同调类之所以是「不变量」，就因为它不依赖截面的选择。
 
-第 31 章会把这个现象升格为一条一般原则：一个「整体对象」（这里是 $$G$$）上挂的附加数据（这里是中心扩张），可以用**函子**的语言统一描述，而同调代数（第 35 章）正是这套语言在「何时可提升」问题上的计算工具。本章的 $$H^2(G;\mathbb C^*)$$ 是那条长路的起点。$$\blacksquare$$
+第 62 章会把这个现象升格为一条一般原则：一个「整体对象」（这里是 $$G$$）上挂的附加数据（这里是中心扩张），可以用**函子**的语言统一描述，而同调代数（第 70 章）正是这套语言在「何时可提升」问题上的计算工具。本章的 $$H^2(G;\mathbb C^*)$$ 是那条长路的起点。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -738,32 +740,30 @@ $$\text{Möbius 群}=\mathrm{PSL}(2,\mathbb C)=\mathrm{PGL}(2,\mathbb C)\cong\ma
 
 **2. 「双重覆盖」= 「中心扩张」= 「射影表示」= 「上同调非平凡」。** 这四个词是同一件事的四种写法：
 $$\begin{array}{ccccc}\mathrm{SU}(2)\to\mathrm{SO}(3)&\longleftrightarrow&\mathbb Z/2\hookrightarrow\tilde G\twoheadrightarrow G&\longleftrightarrow&\alpha:G\to\mathrm{PGL}(V)&\longleftrightarrow&[c]\in H^2(G;\mathbb C^*)\ne0 .\end{array}$$
-定理 3.11 给出了「可线性化 $$\iff$$ 上循环是上边界」的判据，于是「一个射影表示好不好」变成了一个上同调类的计算问题。第 22 章的 $$H_3(\mathbb R)$$ 是这条链的原型，第 29 章的旋量群是它的一般维数版本。
+定理 3.11 给出了「可线性化 $$\iff$$ 上循环是上边界」的判据，于是「一个射影表示好不好」变成了一个上同调类的计算问题。第 44 章的 $$H_3(\mathbb R)$$ 是这条链的原型，第 58 章的旋量群是它的一般维数版本。
 
-**3. 「转 360° 变号」的正确读法：不是几何怪事，而是射影性的必然。** 第 26 章把它算成了一个拓扑事实（$$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$），本章把它解释成了一个表示论事实：态空间只被定义到相位，所以对称群只能射影地作用；$$\mathrm{SO}(3)$$ 的射影表示分类（定理 3.13）给出唯一的两族——整数自旋（下降为线性表示）与半整数自旋（不可线性化）。**半整数自旋的「必须」，来自 $$-I$$ 在 $$V_j$$ 上作用为 $$(-1)^{2j}$$ 这件事。**
+**3. 「转 360° 变号」的正确读法：不是几何怪事，而是射影性的必然。** 第 52 章把它算成了一个拓扑事实（$$\pi_1(\mathrm{SO}(3))=\mathbb Z/2$$），本章把它解释成了一个表示论事实：态空间只被定义到相位，所以对称群只能射影地作用；$$\mathrm{SO}(3)$$ 的射影表示分类（定理 3.13）给出唯一的两族——整数自旋（下降为线性表示）与半整数自旋（不可线性化）。**半整数自旋的「必须」，来自 $$-I$$ 在 $$V_j$$ 上作用为 $$(-1)^{2j}$$ 这件事。**
 
-**4. 群上同调是「提升问题」的度量。** 定理 3.11 与练习研 2 合起来说：$$G$$ 的 $$\mathbb C^*$$ 中心扩张（等价地，$$G$$ 的射影表示）被 $$H^2(G;\mathbb C^*)$$ 标记。这个「用上同调刻画障碍」的套路在数学里反复出现：de Rham 上同调刻画「闭形式何时是恰当形式」（第 14 章），第 35 章的导出函子会把它推成一般理论。
+**4. 群上同调是「提升问题」的度量。** 定理 3.11 与练习研 2 合起来说：$$G$$ 的 $$\mathbb C^*$$ 中心扩张（等价地，$$G$$ 的射影表示）被 $$H^2(G;\mathbb C^*)$$ 标记。这个「用上同调刻画障碍」的套路在数学里反复出现：de Rham 上同调刻画「闭形式何时是恰当形式」（第 28 章），第 70 章的导出函子会把它推成一般理论。
 
-**5. 本课程的一条大线在此收口。** 第 22 章（$$H_3(\mathbb R)$$ 的中心扩张）$$\to$$ 第 26 章（$$\mathrm{SU}(2)$$ 双重覆盖 $$\mathrm{SO}(3)$$）$$\to$$ 第 28 章（$$\mathfrak{sl}(2)$$ 的表示分类）$$\to$$ 第 29 章（旋量与 $$\mathrm{Spin}(1,3)$$）$$\to$$ 本章（射影表示与中心扩张的一般理论）。这条线的每一站都同时从几何、物理、代数三个方向被触及，而收口处的那句话是：**「群作用在射影空间上」，而不是「群作用在向量空间上」，才是量子力学的默认设置。**
+**5. 本课程的一条大线在此收口。** 第 44 章（$$H_3(\mathbb R)$$ 的中心扩张）$$\to$$ 第 52 章（$$\mathrm{SU}(2)$$ 双重覆盖 $$\mathrm{SO}(3)$$）$$\to$$ 第 56 章（$$\mathfrak{sl}(2)$$ 的表示分类）$$\to$$ 第 58 章（旋量与 $$\mathrm{Spin}(1,3)$$）$$\to$$ 本章（射影表示与中心扩张的一般理论）。这条线的每一站都同时从几何、物理、代数三个方向被触及，而收口处的那句话是：**「群作用在射影空间上」，而不是「群作用在向量空间上」，才是量子力学的默认设置。**
 
 ---
 
-**下一章的悬念**：本章反复在做同一件事——把一个环环相扣的「整体」抽象出来（群、表示、中心扩张、上循环），再研究**它们之间的映射**（同态、同构、提升）。当这些「整体」与「它们之间的映射」多到需要一个统一语言时，数学的下一步就是把这些结构本身当成对象：**范畴**。第 31 章将引入范畴与函子，把本章的「Möbius 群 $$\to$$ Lorentz 群」这类对应、以及研 1 里那个「射影表示 $$\leftrightarrow$$ 覆盖群的线性表示」的一一对应，统一成一句可计算的话。卷四在此结束，卷五从范畴论重新出发。
+**下一章的悬念**：本章反复在做同一件事——把一个环环相扣的「整体」抽象出来（群、表示、中心扩张、上循环），再研究**它们之间的映射**（同态、同构、提升）。当这些「整体」与「它们之间的映射」多到需要一个统一语言时，数学的下一步就是把这些结构本身当成对象：**范畴**。第 62 章将引入范畴与函子，把本章的「Möbius 群 $$\to$$ Lorentz 群」这类对应、以及研 1 里那个「射影表示 $$\leftrightarrow$$ 覆盖群的线性表示」的一一对应，统一成一句可计算的话。卷四在此结束，卷五从范畴论重新出发。
 
 **延伸阅读**
 
 - Fulton–Harris, *Representation Theory: A First Course*，第 1–2 讲（$$\mathrm{SU}(2)$$ 与 $$\mathrm{SL}(2,\mathbb C)$$ 的表示、$$\mathrm{SL}(2,\mathbb C)\cong\mathrm{Spin}(1,3)$$ 的矩阵计算）。
-- Brian Hall, *Lie Groups, Lie Algebras, and Representations*，第 1–2 章（矩阵李群与覆叠群）、第 5 章（$$\mathrm{SL}(2,\mathbb C)$$ 的表示）；本章定理 3.6 与 3.8 的标准版本在此。
+- Brian Hall, *Lie Groups, Lie Algebras, and Representations*，第 1–2 章（矩阵李群与覆叠群）、第 10 章（$$\mathrm{SL}(2,\mathbb C)$$ 的表示）；本章定理 3.6 与 3.8 的标准版本在此。
 - Peter Woit, *Quantum Theory, Groups and Representations*（Columbia 讲义）——从射影表示与 Wigner 定理出发讲量子对称性，与本章第 4.3 节直接对应。
 - Wigner 的原著 *Group Theory and its Application to the Quantum Mechanics of Atomic Spectra*，关于「射线表示 (ray representation)」的一节是射影表示的物理来源。
 - 中子干涉实验（Rauch 等，1975）是「转 $$360°$$ 变号、转 $$720°$$ 复原」的实验证据，任何量子力学期刊的综述里都能找到其与 $$\mathrm{SU}(2)$$ 双重覆盖的关系。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch29_Clifford代数与Lorentz群.md">← 第29章 Clifford 代数与 Lorentz 群</a></div>
+  <div><a href="ch59_Möbius群_双重覆盖与射影表示_上.md">← 第59章 Möbius 群、双重覆盖与射影表示·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch31_范畴与函子.md">第31章 范畴与函子 →</a></div>
+  <div><a href="ch61_范畴与函子_上.md">第61章 范畴与函子·上 →</a></div>
 </div>

@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第39章: Galois 群与 Galois 对应 (The Galois Group and the Galois Correspondence)
+# 第78章: Galois 群与 Galois 对应·下：完整推导 (The Galois Group and the Galois Correspondence · Part II: Full Derivation)
+
+> 配套预备: 见 第77章 Galois 群与 Galois 对应·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP149
 > 专家依据: `_experts/algebra/group-theory-galois.md`（主）+ `_experts/numbertheory/algebraic-number-theory.md`
@@ -13,17 +15,17 @@ layout: default
 
 本章要解决一个核心问题：**怎样把「对称性」变成一台可计算的机器**。
 
-第 38 章我们造出了扩域：给定多项式，可以构造出装下它全部根的域 $$L$$。但那个 $$L$$ 只是一个「装根的口袋」，我们对它的内部结构几乎一无所知。本章给它装上对称性——把 $$L$$ 中所有固定基域 $$K$$ 不动的自同构收集成群 $$\operatorname{Gal}(L/K)$$，然后证明一条惊人的定理：**$$L$$ 与 $$K$$ 之间的一切中间域，与这个群的一切子群一一对应，而且包含关系完全翻转**。这就是 Galois 对应。
+第 76 章我们造出了扩域：给定多项式，可以构造出装下它全部根的域 $$L$$。但那个 $$L$$ 只是一个「装根的口袋」，我们对它的内部结构几乎一无所知。本章给它装上对称性——把 $$L$$ 中所有固定基域 $$K$$ 不动的自同构收集成群 $$\operatorname{Gal}(L/K)$$，然后证明一条惊人的定理：**$$L$$ 与 $$K$$ 之间的一切中间域，与这个群的一切子群一一对应，而且包含关系完全翻转**。这就是 Galois 对应。
 
 有了这台机器，「方程能否用根式求解」这个关于**域**的问题，被完整翻译成「某个有限群是否可解」这个关于**群**的问题。一般五次方程没有根式求根公式，就是这台机器算出来的一句话。
 
-本章是全书域论一侧的终点站。第 40 章从它出发，走向现代数学。这是全书串联得最短的一条线：Galois 出现得最晚，却把前面所有伏笔一次收拢。
+本章是全书域论一侧的终点站。第 80 章从它出发，走向现代数学。这是全书串联得最短的一条线：Galois 出现得最晚，却把前面所有伏笔一次收拢。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
 **入口题（自编，题面取自 Квант 的「数对称」传统）**
 
-在**不给定义**的前提下，先做五小问。前四问只用第 38 章的扩域概念就能做；第五问要等本章全部机器装配完毕。
+在**不给定义**的前提下，先做五小问。前四问只用第 76 章的扩域概念就能做；第五问要等本章全部机器装配完毕。
 
 **(1)** 设 $$L=\mathbb{Q}(\sqrt2,\sqrt3)$$。把 $$L$$ 到自身、且保持每个有理数不动的域同构（这样的同构叫 $$L$$ 的对称）全部找出来，数一数有几个。
 
@@ -39,7 +41,7 @@ layout: default
 
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
-**回顾（第 38 章）** 设 $$L/K$$ 是域扩张，即 $$K$$ 是基域、$$L\supseteq K$$ 是扩域。$$[L:K]$$ 是 $$L$$ 作为 $$K$$-线性空间的维数，称**扩张次数**。若 $$L=K(\alpha_1,\dots,\alpha_m)$$ 且各 $$\alpha_i$$ 都是 $$K$$ 上的代数元，称 $$L/K$$ 为代数扩张，此时每个 $$\alpha_i$$ 有唯一的首一极小多项式。**塔定理**：对 $$K\subseteq E\subseteq L$$ 有 $$[L:K]=[L:E]\cdot[E:K]$$。**本原元定理**：有限可分扩张必是单扩张，即 $$L=K(\gamma)$$ 对某个 $$\gamma$$。下面凡说「自同构」而不加限定，都指 $$L$$ 到自身的域自同构。
+**回顾（第 76 章）** 设 $$L/K$$ 是域扩张，即 $$K$$ 是基域、$$L\supseteq K$$ 是扩域。$$[L:K]$$ 是 $$L$$ 作为 $$K$$-线性空间的维数，称**扩张次数**。若 $$L=K(\alpha_1,\dots,\alpha_m)$$ 且各 $$\alpha_i$$ 都是 $$K$$ 上的代数元，称 $$L/K$$ 为代数扩张，此时每个 $$\alpha_i$$ 有唯一的首一极小多项式。**塔定理**：对 $$K\subseteq E\subseteq L$$ 有 $$[L:K]=[L:E]\cdot[E:K]$$。**本原元定理**：有限可分扩张必是单扩张，即 $$L=K(\gamma)$$ 对某个 $$\gamma$$。下面凡说「自同构」而不加限定，都指 $$L$$ 到自身的域自同构。
 
 ### 3.1 对称、群、固定域
 
@@ -47,7 +49,7 @@ layout: default
 
 自同构是「与域运算交换」的可逆映射：$$\sigma(a+b)=\sigma(a)+\sigma(b)$$，$$\sigma(ab)=\sigma(a)\sigma(b)$$，$$\sigma(1)=1$$。它对复合封闭：若 $$\sigma,\tau\in\operatorname{Aut}_K(L)$$，则 $$\sigma\circ\tau$$ 也是 $$K$$-自同构（$$\sigma(\tau(a))=\sigma(a)=a$$ 对 $$a\in K$$）；$$\mathrm{id}$$ 是单位元；$$\sigma^{-1}$$ 也是（因为 $$\sigma$$ 是双射，且 $$a=\sigma(\sigma^{-1}(a))$$ 配合 $$\sigma(a)=a$$ 给出 $$\sigma^{-1}(a)=a$$）。**所以 $$\operatorname{Aut}_K(L)$$ 在复合下自动成群。** 群结构不是外加的，它是「自同构」这个概念自身的产物。
 
-**定义 3.2（Galois 群, Galois group；伽罗瓦群）** 域扩张 $$L/K$$ 的 **Galois 群**是 $$\operatorname{Aut}_K(L)$$，记作 $$\operatorname{Gal}(L/K)$$。（第 38 章与术语表用「伽罗瓦群」，与本章的「Galois 群」是同一个对象。）
+**定义 3.2（Galois 群, Galois group；伽罗瓦群）** 域扩张 $$L/K$$ 的 **Galois 群**是 $$\operatorname{Aut}_K(L)$$，记作 $$\operatorname{Gal}(L/K)$$。（第 76 章与术语表用「伽罗瓦群」，与本章的「Galois 群」是同一个对象。）
 
 **定义 3.3（固定域, fixed field）** 设 $$H\subseteq\operatorname{Aut}(L)$$ 是自同构的子群。$$H$$ 的**固定域**是
 
@@ -57,7 +59,7 @@ $$L^H$$ 是 $$L$$ 的子域：若 $$a,b\in L^H$$ 且 $$\sigma\in H$$，则 $$\si
 
 两个方向要分清：$$\operatorname{Gal}(L/K)$$ 是**由域造群**（给定扩张，收集它的对称）；$$L^H$$ 是**由群造域**（给定一族对称，问它们共同钉住了谁）。本章的主定理说，在合适的条件下这两个方向互为逆映射。
 
-**例 3.3（入口题 (1) 的答案）** 取 $$L=\mathbb{Q}(\sqrt2,\sqrt3)$$，$$K=\mathbb{Q}$$。由第 38 章，
+**例 3.3（入口题 (1) 的答案）** 取 $$L=\mathbb{Q}(\sqrt2,\sqrt3)$$，$$K=\mathbb{Q}$$。由第 76 章，
 
 $$L=\{a+b\sqrt2+c\sqrt3+d\sqrt6:\ a,b,c,d\in\mathbb{Q}\},\qquad [L:\mathbb{Q}]=4,$$
 
@@ -142,7 +144,7 @@ $$\sum_{j=1}^{r}a_j\,\sigma(x_j)=0,\qquad \sigma\in H.$$
 
 **证明（思路）** 一般地只有 $$\lvert G\rvert\le[L:K]$$，取等就是 Galois——所以 (3) 是最常用的判定。四条之间的路线是 $$1\Rightarrow2\Rightarrow3\Rightarrow4\Rightarrow1$$。
 
-**$$1\Rightarrow2$$：** 由本原元定理（第 38 章），有限可分扩张是单扩张，$$L=K(\gamma)$$。正规性说：$$\gamma$$ 的极小多项式 $$m$$（不可约、有根 $$\gamma\in L$$）在 $$L$$ 内完全分裂。故 $$L$$ 是 $$m$$ 的分裂域；可分性给出 $$m$$ 无重根。∎
+**$$1\Rightarrow2$$：** 由本原元定理（第 76 章），有限可分扩张是单扩张，$$L=K(\gamma)$$。正规性说：$$\gamma$$ 的极小多项式 $$m$$（不可约、有根 $$\gamma\in L$$）在 $$L$$ 内完全分裂。故 $$L$$ 是 $$m$$ 的分裂域；可分性给出 $$m$$ 无重根。∎
 
 **$$2\Rightarrow3$$：** 设 $$L$$ 是可分多项式 $$f\in K[t]$$ 的分裂域，$$\alpha_1,\dots,\alpha_m$$ 为其全部互异根，$$L=K(\alpha_1,\dots,\alpha_m)$$。核心事实是：**任取 $$K$$-嵌入 $$\phi:L\hookrightarrow\bar K$$（$$\bar K$$ 为 $$K$$ 的代数闭包），$$\phi(L)\subseteq L$$**。理由：$$\phi$$ 把每个 $$\alpha_i$$ 送到 $$f$$ 的某个根（$$\phi$$ 固定 $$K$$ 的系数，故 $$f(\phi(\alpha_i))=\phi(f(\alpha_i))=0$$），而 $$f$$ 的根全在 $$L$$ 内，故 $$\phi$$ 把生成元集 $$\{\alpha_1,\dots,\alpha_m\}$$ 映入 $$L$$，从而 $$\phi(L)\subseteq L$$；又 $$\phi$$ 是单射、$$[L:K]$$ 有限，故 $$\phi(L)=L$$。
 
@@ -305,7 +307,7 @@ $$\sigma(\delta)=\operatorname{sgn}(\sigma)\cdot\delta.$$
 
 ### 3.7 两个结构性例子：有限域与单位根
 
-**定理 3.14（有限域：Frobenius 生成一切）** 设 $$p$$ 为素数，$$q=p^n$$，$$\mathbb{F}_q$$ 为 $$q$$ 元域（第 38 章：对每个 $$q=p^n$$ 存在唯一 $$\mathbb{F}_q$$，它是 $$t^{q}-t$$ 的分裂域）。则 $$\mathbb{F}_q/\mathbb{F}_p$$ 是 Galois 扩张，且由 **Frobenius 自同构**
+**定理 3.14（有限域：Frobenius 生成一切）** 设 $$p$$ 为素数，$$q=p^n$$，$$\mathbb{F}_q$$ 为 $$q$$ 元域（第 76 章：对每个 $$q=p^n$$ 存在唯一 $$\mathbb{F}_q$$，它是 $$t^{q}-t$$ 的分裂域）。则 $$\mathbb{F}_q/\mathbb{F}_p$$ 是 Galois 扩张，且由 **Frobenius 自同构**
 
 $$\varphi:\mathbb{F}_q\to\mathbb{F}_q,\qquad \varphi(x)=x^{p}$$
 
@@ -365,7 +367,7 @@ $$f\ \text{根式可解}\iff G\ \text{是可解群}\ (\text{即导列}\ G^{(m)}=
 
 **证明（思路）** 两个方向各用一个关键引理。
 
-**（$$\Rightarrow$$）** 设 $$f$$ 有一根式塔。不妨设每步都是 Galois 扩张：若某步 $$F_i/F_{i-1}$$ 不 Galois，可先把它换成该步多项式的分裂域，并配合第 38 章的「足够多单位根」策略。核心引理是：**若 $$F$$ 含有 $$n$$ 次本原单位根且 $$M=F(\sqrt[n]{a})$$ 是 $$F$$ 的 Galois 扩张，则 $$\operatorname{Gal}(M/F)$$ 是循环群**（阶整除 $$n$$）。证明：取 $$\sigma\in\operatorname{Gal}(M/F)$$ 与一个 $$n$$ 次根 $$b=\sqrt[n]{a}$$，则 $$\sigma(b)=\zeta b$$ 对某个 $$n$$ 次单位根 $$\zeta$$（因 $$\sigma(b)^n=\sigma(a)=a=b^n$$），于是 $$\sigma\mapsto\zeta$$ 是 $$\operatorname{Gal}(M/F)\to\mu_n$$ 的单同态，其像循环。把这些循环（因而交换）因子沿塔拼起来，$$G$$ 就有一条交换商的次正规列，由可解群的判据（第 04 章）$$G$$ 可解。
+**（$$\Rightarrow$$）** 设 $$f$$ 有一根式塔。不妨设每步都是 Galois 扩张：若某步 $$F_i/F_{i-1}$$ 不 Galois，可先把它换成该步多项式的分裂域，并配合第 76 章的「足够多单位根」策略。核心引理是：**若 $$F$$ 含有 $$n$$ 次本原单位根且 $$M=F(\sqrt[n]{a})$$ 是 $$F$$ 的 Galois 扩张，则 $$\operatorname{Gal}(M/F)$$ 是循环群**（阶整除 $$n$$）。证明：取 $$\sigma\in\operatorname{Gal}(M/F)$$ 与一个 $$n$$ 次根 $$b=\sqrt[n]{a}$$，则 $$\sigma(b)=\zeta b$$ 对某个 $$n$$ 次单位根 $$\zeta$$（因 $$\sigma(b)^n=\sigma(a)=a=b^n$$），于是 $$\sigma\mapsto\zeta$$ 是 $$\operatorname{Gal}(M/F)\to\mu_n$$ 的单同态，其像循环。把这些循环（因而交换）因子沿塔拼起来，$$G$$ 就有一条交换商的次正规列，由可解群的判据（第 08 章）$$G$$ 可解。
 
 **（$$\Leftarrow$$）** 设 $$G$$ 可解，取合成列/导列 $$G=G_0\trianglerighteq G_1\trianglerighteq\cdots\trianglerighteq G_m=\{1\}$$ 使每个 $$G_i/G_{i+1}$$ 交换（导列即满足此性质）。先扩大基域：令 $$K'\supseteq K$$ 含足量单位根（比如含 $$\lvert G\rvert$$ 次本原单位根），$$L'=LK'$$。由定理 3.11 的共轭对应与定理 3.12，$$\operatorname{Gal}(L'/K')$$ 仍是 $$G$$ 的一个子群（扩张基域只会缩小 Galois 群），故也可解。
 
@@ -433,11 +435,11 @@ Galois 对应是一张**图**。画两列点：左边一列是中间域，从下
 
 ### 4.4 一个矩阵图像（MP149 的写法）
 
-对最简单的例子 $$\mathbb{C}/\mathbb{R}$$，把复数写成实矩阵（第 01 章）：$$a+bi\leftrightarrow\begin{pmatrix}a&-b\\ b&a\end{pmatrix}$$，而 $$a+bi\mapsto a-bi$$ 就是左乘 $$\sigma_2=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix}$$。于是
+对最简单的例子 $$\mathbb{C}/\mathbb{R}$$，把复数写成实矩阵（第 02 章）：$$a+bi\leftrightarrow\begin{pmatrix}a&-b\\ b&a\end{pmatrix}$$，而 $$a+bi\mapsto a-bi$$ 就是左乘 $$\sigma_2=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix}$$。于是
 
 $$\operatorname{Gal}(\mathbb{C}/\mathbb{R})\cong\mathbb{Z}/2\cong O(2)/SO(2).$$
 
-「Galois 群」在这里就是「保持 $$\mathbb{R}$$ 不动的矩阵对称」——第 24 章「变换群」的最小实例。这个视角是本章所有例子的精神：**把域的扩张翻译成线性空间上的（半）线性变换群**。
+「Galois 群」在这里就是「保持 $$\mathbb{R}$$ 不动的矩阵对称」——第 48 章「变换群」的最小实例。这个视角是本章所有例子的精神：**把域的扩张翻译成线性空间上的（半）线性变换群**。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -589,7 +591,7 @@ $$f(-c)=-c^5+6c+3=\tfrac{24c}{5}+3>0,\qquad f(c)=c^5-6c+3=3-\tfrac{24c}{5}<0$$
 
 **（3）Galois 群含一个对换。** 设 $$L$$ 为 $$f$$ 的分裂域，$$G=\operatorname{Gal}(L/\mathbb{Q})$$。对 $$z\in L$$ 取复共轭 $$\bar z$$：因为 $$f$$ 的系数是实数，$$\bar z$$ 仍是 $$f$$ 的根；又 $$L$$ 由 $$f$$ 的根生成，故复共轭是 $$L$$ 的一个自同构，且固定 $$\mathbb{Q}$$。由 (2)，它固定三个实根、交换那两个非实复根，故对应根集上的一个**对换 (transposition)**——一个奇置换。
 
-**（4）Galois 群含一个 5-循环，从而 $$G=S_5$$。** 由 (1) 与注 3.9，$$G$$ 在五个根上传递，故 $$5\mid\lvert G\rvert$$；由 Cauchy 定理（第 03 章），$$G$$ 含一个 5 阶元，它在五个字母上只能是 **5-循环**。
+**（4）Galois 群含一个 5-循环，从而 $$G=S_5$$。** 由 (1) 与注 3.9，$$G$$ 在五个根上传递，故 $$5\mid\lvert G\rvert$$；由 Cauchy 定理（第 06 章），$$G$$ 含一个 5 阶元，它在五个字母上只能是 **5-循环**。
 
 现在用一条标准引理：**设 $$p$$ 素数，$$H\le S_p$$ 传递，且 $$H$$ 同时含一个对换与一个 $$p$$-循环，则 $$H=S_p$$。** 证明如下。共轭不改变结论，故可设 $$p$$-循环是 $$\sigma=(1\,2\,\cdots\,p)$$，对换是 $$\tau=(a\,b)$$。考察
 
@@ -706,7 +708,7 @@ $$L/K\ \text{不 Galois}\iff L/K\ \text{不正规}.$$
 
 $$\lvert G\rvert=\lvert Z(G)\rvert+\sum_i[G:C_G(x_i)],$$
 
-（求和跑遍非中心共轭类代表，每项是 $$p$$ 的正幂且 $$>1$$，因而是 $$p$$ 的倍数），得 $$p^2\equiv\lvert Z(G)\rvert\pmod p$$；又 $$p$$-群中心非平凡（第 02 章），故 $$\lvert Z(G)\rvert\in\{p,p^2\}$$。若 $$\lvert Z(G)\rvert=p$$，则 $$G/Z(G)$$ 是 $$p$$ 阶循环群，而「$$G/Z(G)$$ 循环 $$\Rightarrow$$ $$G$$ 交换」是标准事实（取 $$\bar g$$ 生成 $$G/Z(G)$$，任意 $$x=g^az,\ y=g^bw$$ 且 $$z,w\in Z(G)$$ 给出 $$xy=g^{a+b}zw=yx$$），这与 $$\lvert Z(G)\rvert<\lvert G\rvert$$ 矛盾。故 $$G$$ 交换。
+（求和跑遍非中心共轭类代表，每项是 $$p$$ 的正幂且 $$>1$$，因而是 $$p$$ 的倍数），得 $$p^2\equiv\lvert Z(G)\rvert\pmod p$$；又 $$p$$-群中心非平凡（第 04 章），故 $$\lvert Z(G)\rvert\in\{p,p^2\}$$。若 $$\lvert Z(G)\rvert=p$$，则 $$G/Z(G)$$ 是 $$p$$ 阶循环群，而「$$G/Z(G)$$ 循环 $$\Rightarrow$$ $$G$$ 交换」是标准事实（取 $$\bar g$$ 生成 $$G/Z(G)$$，任意 $$x=g^az,\ y=g^bw$$ 且 $$z,w\in Z(G)$$ 给出 $$xy=g^{a+b}zw=yx$$），这与 $$\lvert Z(G)\rvert<\lvert G\rvert$$ 矛盾。故 $$G$$ 交换。
 
 **第二步：找指数 $$p$$ 的子群。** 交换 $$p$$ 群（由第一步，$$G$$ 交换）只有两种结构：$$G\cong\mathbb{Z}/p^2$$ 或 $$G\cong(\mathbb{Z}/p)^2$$。
 
@@ -835,7 +837,7 @@ $$\mathbb{Z}/5,\quad D_5=\mathbb{Z}/5\rtimes\mathbb{Z}/2,\quad F_{20}=\mathbb{Z}
 
 相应的阶为 $$5,10,20,60,120$$。
 
-**（d）五次方程的完整判据。** 对不可约的五次 $$f$$，$$\operatorname{Gal}(f)$$ 必是上述五个之一。其中可解性（第 04 章的判据）：$$\mathbb{Z}/5,D_5,F_{20}$$ 可解（它们的导列分别在一步或两步内降到 $$\{1\}$$：$$F_{20}$$ 的导子群是 $$\mathbb{Z}/5$$，再下一步为 $$\{1\}$$）；$$A_5$$、$$S_5$$ 不可解（定理 3.18）。由定理 3.17，
+**（d）五次方程的完整判据。** 对不可约的五次 $$f$$，$$\operatorname{Gal}(f)$$ 必是上述五个之一。其中可解性（第 08 章的判据）：$$\mathbb{Z}/5,D_5,F_{20}$$ 可解（它们的导列分别在一步或两步内降到 $$\{1\}$$：$$F_{20}$$ 的导子群是 $$\mathbb{Z}/5$$，再下一步为 $$\{1\}$$）；$$A_5$$、$$S_5$$ 不可解（定理 3.18）。由定理 3.17，
 
 $$\boxed{f\ \text{根式可解}\iff\operatorname{Gal}(f)\in\{\mathbb{Z}/5,\ D_5,\ F_{20}\}.}$$
 
@@ -844,9 +846,9 @@ $$\boxed{f\ \text{根式可解}\iff\operatorname{Gal}(f)\in\{\mathbb{Z}/5,\ D_5,
 - **$$S_5$$ 型**：$$\Delta$$ 非平方（例如 $$t^5-6t+3$$，$$\Delta$$ 不是平方；复共轭给出的对换是奇置换）；
 - **$$A_5$$ 型**：$$\Delta$$ 是平方，而群既不是 $$\mathbb{Z}/5$$ 也不是 $$D_5$$。
 
-从「系数空间计数」的启发式看，$$A_5$$ 型更少见：$$\Delta$$ 是平方是系数上的**一个**代数条件（一个超曲面），而通有的五次多项式给出的群是 $$S_5$$。（这里只提供直觉：严格的比例陈述属于几何 Galois 理论，见第 40 章。）
+从「系数空间计数」的启发式看，$$A_5$$ 型更少见：$$\Delta$$ 是平方是系数上的**一个**代数条件（一个超曲面），而通有的五次多项式给出的群是 $$S_5$$。（这里只提供直觉：严格的比例陈述属于几何 Galois 理论，见第 80 章。）
 
-**（e）接下一章。** 上面 (d) 只列出「哪些群能出现」；反过来问「哪些群能实现为 $$\mathbb{Q}$$ 上多项式的 Galois 群」，就是**逆 Galois 问题 (inverse Galois problem)**——它是第 40 章的第一站。$$\blacksquare$$
+**（e）接下一章。** 上面 (d) 只列出「哪些群能出现」；反过来问「哪些群能实现为 $$\mathbb{Q}$$ 上多项式的 Galois 群」，就是**逆 Galois 问题 (inverse Galois problem)**——它是第 80 章的第一站。$$\blacksquare$$
 
 **解 研2.** **思路**：把 $$\mathbb{Q}(\sqrt d)$$ 拆成「基本块」（$$\mathbb{Q}(i)$$、$$\mathbb{Q}(\sqrt2)$$、$$\mathbb{Q}(\sqrt{-2})$$、以及奇素数对应的 $$\mathbb{Q}(\sqrt{p^*})$$），每一块都装在一个分圆域里，再用合成（定理 3.12）与 $$\mathbb{Q}(\zeta_m)\mathbb{Q}(\zeta_n)=\mathbb{Q}(\zeta_{\mathrm{lcm}(m,n)})$$ 打包。
 
@@ -890,7 +892,7 @@ $$\mathbb{Q}(\sqrt d)\subseteq M=\mathbb{Q}(\zeta_N).$$
 
 （例：$$d=-15$$ 时 $$p_1=3,p_2=5$$，$$3^*=3,5^*=5$$，$$M=\mathbb{Q}(\zeta_4,\zeta_3,\zeta_5)=\mathbb{Q}(\zeta_{60})\ni\sqrt{-1}\cdot\sqrt3\cdot\sqrt5=\sqrt{-15}$$ ✓。）
 
-**第三步：为什么这通向第 40 章。** 由定理 3.15，$$\operatorname{Gal}(\mathbb{Q}(\zeta_N)/\mathbb{Q})\cong(\mathbb{Z}/N)^\times$$ 交换，故分圆域的每个子域（包括 $$\mathbb{Q}(\sqrt d)$$）都是 $$\mathbb{Q}$$ 的 **Abel 扩张**。Kronecker–Weber 定理给出反过来的完整刻画：**$$\mathbb{Q}$$ 的每个有限 Abel 扩张都含于某个分圆域**。追问「把 $$\mathbb{Q}$$ 换成别的数域 $$F$$，该用什么对象参数化 $$F$$ 的 Abel 扩张」，就是**类域论**，也是第 40 章的起点——在那里 Galois 对应会升格为「射影有限群 ↔ 有限 étale 覆盖」。$$\blacksquare$$
+**第三步：为什么这通向第 80 章。** 由定理 3.15，$$\operatorname{Gal}(\mathbb{Q}(\zeta_N)/\mathbb{Q})\cong(\mathbb{Z}/N)^\times$$ 交换，故分圆域的每个子域（包括 $$\mathbb{Q}(\sqrt d)$$）都是 $$\mathbb{Q}$$ 的 **Abel 扩张**。Kronecker–Weber 定理给出反过来的完整刻画：**$$\mathbb{Q}$$ 的每个有限 Abel 扩张都含于某个分圆域**。追问「把 $$\mathbb{Q}$$ 换成别的数域 $$F$$，该用什么对象参数化 $$F$$ 的 Abel 扩张」，就是**类域论**，也是第 80 章的起点——在那里 Galois 对应会升格为「射影有限群 ↔ 有限 étale 覆盖」。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -906,15 +908,15 @@ $$\mathbb{Q}(\sqrt d)\subseteq M=\mathbb{Q}(\zeta_N).$$
 
 ### 显式收口：全书最短的一条线
 
-**收口 1：第 38 章的扩域在这里获得「对称性」。** 第 38 章造出的 $$L$$ 只是一个装根的口袋：我们知道它是域、知道次数，却对内部结构一无所知。本章给它装上 $$\operatorname{Gal}(L/K)$$，并证明这两个对象携带**完全相同**的信息。「扩域」这个词从此同时装着域与群。
+**收口 1：第 76 章的扩域在这里获得「对称性」。** 第 76 章造出的 $$L$$ 只是一个装根的口袋：我们知道它是域、知道次数，却对内部结构一无所知。本章给它装上 $$\operatorname{Gal}(L/K)$$，并证明这两个对象携带**完全相同**的信息。「扩域」这个词从此同时装着域与群。
 
 **收口 2：与第 10 / 35 章的同调代数并排。** 同调代数是一台**保序函子**：复形 $$\to$$ 链群 $$\to$$ 同调群，用 $$\ker/\operatorname{im}$$ 把几何信息压成不变量；Galois 对应是**另一种结构对应**，但它是**反变、反序的双射**——域越大群越小。两者共享同一个句型「一侧的结构 $$\cong$$ 另一侧的（不）变量」，差别只在保序还是反序。第 31–34 章的范畴语言正是描写这类对应的通用工具：Galois 对应可以写成「$$\{\text{中间域}\}^{\mathrm{op}}\cong\{\text{子群}\}$$」这样一个反变等价。
 
-**收口 3：第 26 / 30 章的「双重覆盖与射影表示」在这里回响。** 那里 $$SU(2)\to SO(3)$$ 是二对一，量子态只能承载**射影表示**（差一个相位）；本章的 Galois 群则是「方程的对称群」的**忠实**版本：它作用在根集上，是根的置换，不带多余相位。并排看：物理的对称作用是射影的，代数的对称作用是置换的。第 40 章会用「基本群 / 覆叠空间 / Galois 群」的统一语言把这两种面貌收进同一个框架。
+**收口 3：第 26 / 30 章的「双重覆盖与射影表示」在这里回响。** 那里 $$SU(2)\to SO(3)$$ 是二对一，量子态只能承载**射影表示**（差一个相位）；本章的 Galois 群则是「方程的对称群」的**忠实**版本：它作用在根集上，是根的置换，不带多余相位。并排看：物理的对称作用是射影的，代数的对称作用是置换的。第 80 章会用「基本群 / 覆叠空间 / Galois 群」的统一语言把这两种面貌收进同一个框架。
 
 ### 下一章
 
-第 40 章《尾声：从 Galois 到现代数学》接住本章：**逆 Galois 问题**（哪些有限群能实现为 $$\mathbb{Q}$$ 上多项式的 Galois 群，即研 1 (d) 的另一半）、**Kronecker–Weber 与类域论**（研 2 推开的那扇门）、**Grothendieck 的 Galois 理论**（把「Galois 扩张」换成「有限 étale 覆盖」，把「Galois 群」换成射影有限基本群），以及这套语言如何在代数几何与数论中通用。
+第 80 章《尾声：从 Galois 到现代数学》接住本章：**逆 Galois 问题**（哪些有限群能实现为 $$\mathbb{Q}$$ 上多项式的 Galois 群，即研 1 (d) 的另一半）、**Kronecker–Weber 与类域论**（研 2 推开的那扇门）、**Grothendieck 的 Galois 理论**（把「Galois 扩张」换成「有限 étale 覆盖」，把「Galois 群」换成射影有限基本群），以及这套语言如何在代数几何与数论中通用。
 
 ### 延伸阅读
 
@@ -922,13 +924,11 @@ $$\mathbb{Q}(\sqrt d)\subseteq M=\mathbb{Q}(\zeta_N).$$
 - D. S. Dummit, R. M. Foote, *Abstract Algebra* (3rd ed.)，§14.2（Galois 对应）、§14.7（根式可解，含 $$t^5-6t+3$$ 的例子）。
 - И. Р. Шафаревич, *Основы алгебры*（Shafarevich，《代数基础》）：Galois 理论一章从 Abel–Ruffini 讲起，是俄罗斯数学物理高中的标准写法。
 - Квант 1970 年代关于 Abel 与 Galois 的历史文章；J. S. Milne, *Lectures on Étale Cohomology*，§I.5（Grothendieck 的 Galois 理论）。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch38_扩域与代数数.md">← 第38章 扩域与代数数</a></div>
+  <div><a href="ch77_Galois群与Galois对应_上.md">← 第77章 Galois 群与 Galois 对应·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch40_尾声_从Galois到现代数学.md">第40章 尾声：从 Galois 到现代数学 →</a></div>
+  <div><a href="ch79_尾声_从Galois到现代数学_上.md">第79章 尾声：从 Galois 到现代数学·上 →</a></div>
 </div>

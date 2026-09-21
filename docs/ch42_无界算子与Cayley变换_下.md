@@ -2,25 +2,27 @@
 layout: default
 ---
 
-# 第21章: 无界算子与 Cayley 变换 (Unbounded Operators and the Cayley Transform)
+# 第42章: 无界算子与 Cayley 变换·下：完整推导 (Unbounded Operators and the Cayley Transform · Part II: Full Derivation)
+
 > 对应原专栏: MP55–MP56
 > 专家依据: `_experts/analysis/functional-analysis.md`（主）+ `_experts/analysis/spectral-theory.md`
 > 知识库依据: `opc2/knowledge/math/泛函分析/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第41章 无界算子与 Cayley 变换·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
-**从哪来**：第 15 到第 20 章把"算子"这件事越做越顺——第 18 章给出谱、预解式与谱半径公式，第 19 章给出谱定理 $$T=\int\lambda\,dE(\lambda)$$，第 20 章把这一切装进 C\*-代数。但这几章共享一个从未被审问的前提：**算子在整空间上有定义，而且有界**。裂缝其实早就露出来了：第 17 章末尾写道，"$$a$$、$$a^\dagger$$、$$X$$、$$P$$ 都不可能是有界算子，'谱'与'定义域'必须在更严格的意义下重新谈"；第 02 章的"诚实清单"更明确地把这笔账记在了本章名下——那里算 $$\sigma(D)=i\mathbb Z$$ 时用的正是一个无界算子。
+**从哪来**：第 15 到第 40 章把"算子"这件事越做越顺——第 36 章给出谱、预解式与谱半径公式，第 38 章给出谱定理 $$T=\int\lambda\,dE(\lambda)$$，第 40 章把这一切装进 C\*-代数。但这几章共享一个从未被审问的前提：**算子在整空间上有定义，而且有界**。裂缝其实早就露出来了：第 34 章末尾写道，"$$a$$、$$a^\dagger$$、$$X$$、$$P$$ 都不可能是有界算子，'谱'与'定义域'必须在更严格的意义下重新谈"；第 04 章的"诚实清单"更明确地把这笔账记在了本章名下——那里算 $$\sigma(D)=i\mathbb Z$$ 时用的正是一个无界算子。
 
-**核心问题**：量子力学最常用的三个算子——位置 $$\hat x$$、动量 $$\hat p$$、能量 $$-\frac{d^2}{dx^2}$$——**全部无界**。如果可观测量都有界，量子力学的数学在第 20 章就可以结束；它们无界，于是必须回答三个问题：无界算子的"自伴"是什么意思？定义域的选择是技术细节还是实质内容？以及最关键的：**能不能把无界问题变回有界问题？**
+**核心问题**：量子力学最常用的三个算子——位置 $$\hat x$$、动量 $$\hat p$$、能量 $$-\frac{d^2}{dx^2}$$——**全部无界**。如果可观测量都有界，量子力学的数学在第 40 章就可以结束；它们无界，于是必须回答三个问题：无界算子的"自伴"是什么意思？定义域的选择是技术细节还是实质内容？以及最关键的：**能不能把无界问题变回有界问题？**
 
-**到哪去**：第三个问题的答案是能，手段叫 **Cayley 变换 (Cayley transform)**：$$U=(T-i)(T+i)^{-1}$$ 把无界自伴算子 $$T$$ 换成酉算子 $$U$$。第 19 章的谱定理与第 20 章的函数演算于是整体搬到无界情形。搬完之后，第 22 章要处理量子力学真正的起点——正则对易关系 $$[\hat x,\hat p]=i\hbar I$$。这个等式本身就已经说明 $$\hat x,\hat p$$ 不能都有界（本章研 2 给出证明），所以第 22 章整章都建在"无界"这个前提上，用的正是本章造的语言。
+**到哪去**：第三个问题的答案是能，手段叫 **Cayley 变换 (Cayley transform)**：$$U=(T-i)(T+i)^{-1}$$ 把无界自伴算子 $$T$$ 换成酉算子 $$U$$。第 38 章的谱定理与第 40 章的函数演算于是整体搬到无界情形。搬完之后，第 44 章要处理量子力学真正的起点——正则对易关系 $$[\hat x,\hat p]=i\hbar I$$。这个等式本身就已经说明 $$\hat x,\hat p$$ 不能都有界（本章研 2 给出证明），所以第 44 章整章都建在"无界"这个前提上，用的正是本章造的语言。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
 > 题目来源：自编。母题是 MP55 开篇那段"位置算符与动量算符都不能保证结果平方可积"，以及 MP55 末段关于 $$-\frac{d^2}{dt^2}$$ 的算例。
 
-**问题 2.1（动量算子的定义域之谜）.** 取 $$H=L^2(\mathbb R)$$（$$\mathbb R$$ 上平方可积复函数空间，内积与 $$L^2$$ 的基本事实见第 15 章），取 $$\hbar=1$$，把动量算子写成
+**问题 2.1（动量算子的定义域之谜）.** 取 $$H=L^2(\mathbb R)$$（$$\mathbb R$$ 上平方可积复函数空间，内积与 $$L^2$$ 的基本事实见第 30 章），取 $$\hbar=1$$，把动量算子写成
 
 $$\hat p=-i\frac{d}{dx}.$$
 
@@ -40,7 +42,7 @@ $$\langle\hat p\varphi,\psi\rangle=\langle\varphi,\hat p\psi\rangle,\qquad \fora
 
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
-本节按六步走：先立"算子带定义域"（3.1），再补"无界算子怎么谈连续性"（3.2），然后处理伴随、对称、自伴这三个最容易混的概念（3.3），接着把三个基本算子逐个算清楚（3.4），用亏指数说明"定义域就是边界条件"（3.5），最后用 Cayley 变换把无界问题化归为酉算子（3.6），并回头把第 02 章的债还掉（3.7）。
+本节按六步走：先立"算子带定义域"（3.1），再补"无界算子怎么谈连续性"（3.2），然后处理伴随、对称、自伴这三个最容易混的概念（3.3），接着把三个基本算子逐个算清楚（3.4），用亏指数说明"定义域就是边界条件"（3.5），最后用 Cayley 变换把无界问题化归为酉算子（3.6），并回头把第 04 章的债还掉（3.7）。
 
 ### 3.1 无界算子：定义域是算子的一部分
 
@@ -58,7 +60,7 @@ $$\lVert Tx\rVert\le C\lVert x\rVert,\qquad \forall x\in H,$$
 
 **定义 3.2（稠定算子, densely defined operator）。** 若 $$\overline{\mathrm{Dom}(T)}=H$$，即定义域在 $$H$$ 中稠密，称 $$T$$ **稠定**。
 
-要求稠定不是洁癖，而是伴随算子存在的前提：以下 3.3 节中，构造 $$T^*$$ 时要用到 Riesz 表示定理，而它要求泛函定义在一个稠密子空间上（第 15 章）。物理上稠定是自明的：可观测量必须能在足够多的态上被测量。
+要求稠定不是洁癖，而是伴随算子存在的前提：以下 3.3 节中，构造 $$T^*$$ 时要用到 Riesz 表示定理，而它要求泛函定义在一个稠密子空间上（第 30 章）。物理上稠定是自明的：可观测量必须能在足够多的态上被测量。
 
 **定理 3.3（Hellinger–Toeplitz 定理）。** 设 $$T:H\to H$$ 是**处处定义**的线性算子，且**对称**，即
 
@@ -66,9 +68,9 @@ $$\langle Tx,y\rangle=\langle x,Ty\rangle,\qquad \forall x,y\in H .$$
 
 则 $$T$$ 有界。
 
-*证明思路*：把每个 $$y$$ 变成一个泛函 $$\varphi_y(x)=\langle x,Ty\rangle$$。对称性让"$$x$$ 固定、$$y$$ 取遍单位球"这族泛函恰好逐点有界，于是可以动用一致有界原理（第 18 章），把逐点界升级为一致界。
+*证明思路*：把每个 $$y$$ 变成一个泛函 $$\varphi_y(x)=\langle x,Ty\rangle$$。对称性让"$$x$$ 固定、$$y$$ 取遍单位球"这族泛函恰好逐点有界，于是可以动用一致有界原理（第 36 章），把逐点界升级为一致界。
 
-*证明*：对每个 $$y\in H$$ 定义 $$\varphi_y:H\to\mathbb C$$，$$\varphi_y(x)=\langle x,Ty\rangle$$。由内积对第一变元的线性和 Cauchy–Schwarz 不等式（第 15 章），$$\varphi_y$$ 是线性泛函且
+*证明*：对每个 $$y\in H$$ 定义 $$\varphi_y:H\to\mathbb C$$，$$\varphi_y(x)=\langle x,Ty\rangle$$。由内积对第一变元的线性和 Cauchy–Schwarz 不等式（第 30 章），$$\varphi_y$$ 是线性泛函且
 
 $$\lvert\varphi_y(x)\rvert\le\lVert x\rVert\cdot\lVert Ty\rVert,$$
 
@@ -122,7 +124,7 @@ $$\lVert x+y\rVert_T^2=\lVert x+y\rVert^2+\lVert Tx+Ty\rVert^2=\bigl\lVert (x+y,
 
 *证明*：$$\lVert Tx\rVert\le\sqrt{\lVert x\rVert^2+\lVert Tx\rVert^2}=\lVert x\rVert_T$$，所以范数不超过 1。要证"有界线性算子"，还需要定义域空间是赋范空间——由 命题 3.8 它甚至是 Hilbert 空间。$$\blacksquare$$
 
-这条推论是理解本章的一把钥匙：**无界算子并不"坏"，它只是对 $$L^2$$ 的范数无界；对图像范数它乖得很。**第 02 章算 $$D$$ 的谱时"逐频率除以 $$ik-\lambda$$"能奏效，本质上就是因为换了这把尺子。
+这条推论是理解本章的一把钥匙：**无界算子并不"坏"，它只是对 $$L^2$$ 的范数无界；对图像范数它乖得很。**第 04 章算 $$D$$ 的谱时"逐频率除以 $$ik-\lambda$$"能奏效，本质上就是因为换了这把尺子。
 
 **定义 3.10（扩张、可闭、闭包）。** 设 $$S,T$$ 是 $$H$$ 上的算子。若 $$\Gamma(S)\subseteq\Gamma(T)$$，称 $$T$$ 是 $$S$$ 的**扩张 (extension)**，记 $$S\subseteq T$$；展开即 $$\mathrm{Dom}(S)\subseteq\mathrm{Dom}(T)$$ 且 $$T$$ 在 $$\mathrm{Dom}(S)$$ 上与 $$S$$ 相同。若 $$\overline{\Gamma(S)}$$ 也是某个算子的图像，称 $$S$$ **可闭 (closable)**，对应的算子称 $$S$$ 的**闭包 (closure)**，记 $$\overline S$$（$$\Gamma(\overline S)=\overline{\Gamma(S)}$$）。
 
@@ -148,7 +150,7 @@ $$\langle y,z\rangle=\lim_{n}\langle Sx_n,z\rangle=\lim_{n}\langle x_n,Sz\rangle
 
 $$\mathrm{Dom}(T^*)=\Bigl\lbrace\, y\in H\ :\ \text{泛函}\ x\mapsto\langle Tx,y\rangle\ \text{在}\ \mathrm{Dom}(T)\ \text{上连续}\,\Bigr\rbrace .$$
 
-对 $$y\in\mathrm{Dom}(T^*)$$，该泛函唯一地延拓为 $$H$$ 上的连续线性泛函，再由 Riesz 表示定理（第 15 章）唯一地写成 $$x\mapsto\langle x,z\rangle$$ 的形式，$$z\in H$$。规定 $$T^*y=z$$，即
+对 $$y\in\mathrm{Dom}(T^*)$$，该泛函唯一地延拓为 $$H$$ 上的连续线性泛函，再由 Riesz 表示定理（第 30 章）唯一地写成 $$x\mapsto\langle x,z\rangle$$ 的形式，$$z\in H$$。规定 $$T^*y=z$$，即
 
 $$\langle Tx,y\rangle=\langle x,T^*y\rangle,\qquad \forall x\in\mathrm{Dom}(T).$$
 
@@ -176,7 +178,7 @@ $$\langle Tx,y\rangle=\lim_n\langle Tx,y_n\rangle=\lim_n\langle x,T^*y_n\rangle=
 
 $$\langle Tx,y\rangle=\langle x,Ty\rangle,\qquad \forall x,y\in\mathrm{Dom}(T).$$
 
-由 定义 3.13 立得：$$T$$ 对称 $$\iff$$ $$T\subseteq T^*$$，即 $$\mathrm{Dom}(T)\subseteq\mathrm{Dom}(T^*)$$ 且在 $$\mathrm{Dom}(T)$$ 上 $$T^*=T$$。对称性还有一个等价的"数"的刻画：$$\langle Tx,x\rangle\in\mathbb R$$ 对一切 $$x\in\mathrm{Dom}(T)$$（用极化恒等式把 $$\langle Tx,y\rangle$$ 从二次型还原，第 15 章）。
+由 定义 3.13 立得：$$T$$ 对称 $$\iff$$ $$T\subseteq T^*$$，即 $$\mathrm{Dom}(T)\subseteq\mathrm{Dom}(T^*)$$ 且在 $$\mathrm{Dom}(T)$$ 上 $$T^*=T$$。对称性还有一个等价的"数"的刻画：$$\langle Tx,x\rangle\in\mathbb R$$ 对一切 $$x\in\mathrm{Dom}(T)$$（用极化恒等式把 $$\langle Tx,y\rangle$$ 从二次型还原，第 30 章）。
 
 **定义 3.16（自伴 / 本质自伴, self-adjoint / essentially self-adjoint）。** 稠定算子 $$T$$ 称**自伴**，若 $$T=T^*$$，即 $$T$$ 对称**且** $$\mathrm{Dom}(T)=\mathrm{Dom}(T^*)$$。稠定对称算子 $$T$$ 称**本质自伴**，若其闭包 $$\overline T$$ 自伴。（此时 $$\overline T$$ 是 $$T$$ 唯一的自伴扩张。）
 
@@ -248,7 +250,7 @@ $$\widehat{f'}(p)=ip\,\hat f(p),\qquad \lVert f'\rVert_2^2=\int p^2\lvert\hat f(
 
 *证明思路*：把"求导 = 乘 $$ip$$"从 Schwartz 函数延拓到 $$H^1$$。
 
-*证明*：$$C_c^\infty(\mathbb R)\subseteq H^1$$，且 $$C_c^\infty$$ 在 $$L^2$$ 中稠密，故 $$H^1$$ 稠密。若 $$f\in L^2$$ 且弱导数 $$f'\in L^2$$，对任意 Schwartz 函数 $$\phi$$，由弱导数的定义与 Plancherel（第 15 章的 Fourier 理论）
+*证明*：$$C_c^\infty(\mathbb R)\subseteq H^1$$，且 $$C_c^\infty$$ 在 $$L^2$$ 中稠密，故 $$H^1$$ 稠密。若 $$f\in L^2$$ 且弱导数 $$f'\in L^2$$，对任意 Schwartz 函数 $$\phi$$，由弱导数的定义与 Plancherel（第 30 章的 Fourier 理论）
 
 $$\int f'\overline\phi=-\int f\overline{\phi'}=-\int \hat f\overline{\widehat{\phi'}}=\int \hat f\overline{ip\hat\phi}=\int(ip\hat f)\overline{\hat\phi},$$
 
@@ -274,7 +276,7 @@ $$\lVert P\psi\rVert^2=\int p^2\lvert\hat\psi(p)\rvert^2\,dp .$$
 
 *证明*：**稠密**：$$C_c^\infty\subseteq H^1$$。
 
-**对称**：设 $$\psi,\varphi\in H^1$$。乘积 $$\psi\overline\varphi$$ 的弱导数 $$\psi'\overline\varphi+\psi\overline{\varphi'}\in L^1$$，故 $$\psi\overline\varphi$$ 绝对连续；又 $$\psi\overline\varphi\in L^1$$ 且其导数可积，故 $$\psi\overline\varphi$$ 在 $$\pm\infty$$ 有极限，而该极限必为 $$0$$（否则模方在无穷远处不趋于零，与可积性矛盾——$$H^1\subset C_0$$，这是 Sobolev 嵌入，第 15 章）。于是 $$\int(\psi\overline\varphi)'=0$$，即
+**对称**：设 $$\psi,\varphi\in H^1$$。乘积 $$\psi\overline\varphi$$ 的弱导数 $$\psi'\overline\varphi+\psi\overline{\varphi'}\in L^1$$，故 $$\psi\overline\varphi$$ 绝对连续；又 $$\psi\overline\varphi\in L^1$$ 且其导数可积，故 $$\psi\overline\varphi$$ 在 $$\pm\infty$$ 有极限，而该极限必为 $$0$$（否则模方在无穷远处不趋于零，与可积性矛盾——$$H^1\subset C_0$$，这是 Sobolev 嵌入，第 30 章）。于是 $$\int(\psi\overline\varphi)'=0$$，即
 
 $$\int\psi'\overline\varphi=-\int\psi\overline{\varphi'}.$$
 
@@ -306,9 +308,9 @@ $$\sigma(H_0)=[0,\infty),$$
 
 *证明*：$$H_0=P^2$$，而 $$P$$ 自伴（定理 3.22）；自伴算子的平方是自伴的、正算子（$$\langle P^2\psi,\psi\rangle=\lVert P\psi\rVert^2\ge0$$）。由 Fourier 变换，$$P$$ 酉等价于 $$L^2(\mathbb R)$$ 上"乘 $$p$$"的乘法算子 $$M_p$$：$$\widehat{P\psi}=p\hat\psi$$。于是 $$H_0$$ 酉等价于乘 $$p^2$$ 的乘法算子 $$M_{p^2}$$，定义域为 $$\lbrace\hat\psi:p^2\hat\psi\in L^2\rbrace=H^2$$。
 
-对乘法算子有两条可直接验证的事实（第 18 章乘法算子一段）：$$\sigma(M_{p^2})=\overline{\lbrace p^2\bigr\rbrace}=[0,\infty)$$；且 $$\lambda$$ 是特征值当且仅当集合 $$\lbrace p:p^2=\lambda\rbrace$$ 有正测度。这个集合是有限点集（$$p=\pm\sqrt\lambda$$，或 $$p=0$$），Lebesgue 测度为零，所以 $$M_{p^2}$$ 没有特征值。酉等价保持谱与"是否特征值"，故 $$H_0$$ 的谱为 $$[0,\infty)$$ 且无特征向量。$$\blacksquare$$
+对乘法算子有两条可直接验证的事实（第 36 章乘法算子一段）：$$\sigma(M_{p^2})=\overline{\lbrace p^2\bigr\rbrace}=[0,\infty)$$；且 $$\lambda$$ 是特征值当且仅当集合 $$\lbrace p:p^2=\lambda\rbrace$$ 有正测度。这个集合是有限点集（$$p=\pm\sqrt\lambda$$，或 $$p=0$$），Lebesgue 测度为零，所以 $$M_{p^2}$$ 没有特征值。酉等价保持谱与"是否特征值"，故 $$H_0$$ 的谱为 $$[0,\infty)$$ 且无特征向量。$$\blacksquare$$
 
-这就回答了入口题 (iv)：$$e^{ikx}$$ 满足 $$-\frac{d^2}{dx^2}e^{ikx}=k^2e^{ikx}$$，但它不是 $$L^2(\mathbb R)$$ 的元素（$$\lvert e^{ikx}\rvert=1$$，模方积分发散），所以它不在 $$\mathrm{Dom}(H_0)$$ 里，不是特征向量。物理上这类解叫"广义特征函数"，数学上的正确说法是：$$k^2$$ 属于**连续谱**，$$e^{ikx}$$ 是谱测度的广义向量（第 19 章的 PVM 语言）。**定义域把物理直觉里的"本征函数"挡在了 Hilbert 空间之外——这正是本章一开始就强调"定义域是算子的一部分"的原因。**
+这就回答了入口题 (iv)：$$e^{ikx}$$ 满足 $$-\frac{d^2}{dx^2}e^{ikx}=k^2e^{ikx}$$，但它不是 $$L^2(\mathbb R)$$ 的元素（$$\lvert e^{ikx}\rvert=1$$，模方积分发散），所以它不在 $$\mathrm{Dom}(H_0)$$ 里，不是特征向量。物理上这类解叫"广义特征函数"，数学上的正确说法是：$$k^2$$ 属于**连续谱**，$$e^{ikx}$$ 是谱测度的广义向量（第 38 章的 PVM 语言）。**定义域把物理直觉里的"本征函数"挡在了 Hilbert 空间之外——这正是本章一开始就强调"定义域是算子的一部分"的原因。**
 
 ### 3.5 亏指数与自伴扩张：定义域就是边界条件
 
@@ -454,7 +456,7 @@ $$\lambda I-T\ \text{是双射}\iff \mu I-U\ \text{是双射}\iff \mu\notin\sigm
 
 $$(\lambda I-T)^{-1}=(I-U)\,(\mu I-U)^{-1}\,\frac{1}{\lambda+i},$$
 
-右端是有界算子的乘积，故有界；反过来若 $$\lambda I-T$$ 是双射，则 $$T$$ 闭（自伴算子的伴随性，定理 3.14(i)）蕴含 $$(\lambda I-T)^{-1}$$ 闭，再用闭图像定理（第 18 章）得它有界。两半合起来给出
+右端是有界算子的乘积，故有界；反过来若 $$\lambda I-T$$ 是双射，则 $$T$$ 闭（自伴算子的伴随性，定理 3.14(i)）蕴含 $$(\lambda I-T)^{-1}$$ 闭，再用闭图像定理（第 36 章）得它有界。两半合起来给出
 
 $$\lambda\in\sigma(T)\qquad\Longleftrightarrow\qquad \mu=c(\lambda)\in\sigma(U) .$$
 
@@ -468,7 +470,7 @@ $$U$$ 的"特征值"$$\frac{p-i}{p+i}$$ 的模恒为 $$1$$，辐角 $$2\arctan p
 
 最后把这个手段用到谱定理上。
 
-**定理 3.30（无界自伴算子的谱定理）。** 设 $$T$$ 是 $$H$$ 上稠定自伴（可以无界）的算子。则存在唯一的投影算子值测度 $$E:\mathcal B(\mathbb R)\to B(H)$$（第 19 章）使
+**定理 3.30（无界自伴算子的谱定理）。** 设 $$T$$ 是 $$H$$ 上稠定自伴（可以无界）的算子。则存在唯一的投影算子值测度 $$E:\mathcal B(\mathbb R)\to B(H)$$（第 38 章）使
 
 $$T=\int_{\mathbb R}\lambda\,dE(\lambda),$$
 
@@ -478,9 +480,9 @@ $$\langle Tx,y\rangle=\int_{\mathbb R}\lambda\,d\langle E(\lambda)x,y\rangle .$$
 
 此外：$$T$$ 有界 $$\iff$$ $$\sigma(T)$$ 有界（此时 $$\lVert T\rVert=\sup_{\lambda\in\sigma(T)}\lvert\lambda\rvert$$），$$\sigma(T)\subseteq\mathbb R$$ 非空，且特征函数演算 $$\chi_\Delta(T)=E(\Delta)$$ 对有界 Borel 函数 $$f$$ 给出 $$\lVert f(T)\rVert=\lVert f\rVert_{\infty,\sigma(T)}$$。
 
-*证明思路*：把 第 19 章的谱定理用在**有界的** $$U$$ 上（$$U$$ 酉故有界），再沿 $$c^{-1}$$ 把 $$U$$ 的谱测度拉回实轴。
+*证明思路*：把 第 38 章的谱定理用在**有界的** $$U$$ 上（$$U$$ 酉故有界），再沿 $$c^{-1}$$ 把 $$U$$ 的谱测度拉回实轴。
 
-*证明*：由 定理 3.28，$$U$$ 是酉算子。第 19 章的正规算子谱定理给唯一的谱测度 $$E_U$$，支撑在 $$\sigma(U)\subseteq\mathbb T$$ 上，且
+*证明*：由 定理 3.28，$$U$$ 是酉算子。第 38 章的正规算子谱定理给唯一的谱测度 $$E_U$$，支撑在 $$\sigma(U)\subseteq\mathbb T$$ 上，且
 
 $$U=\int_{\mathbb T}\mu\,dE_U(\mu).$$
 
@@ -498,7 +500,7 @@ $$f(\mu)=i\,\frac{1+\mu}{1-\mu},$$
 
 $$\frac{1+\mu}{1-\mu}=\frac{(\lambda+i)+(\lambda-i)}{(\lambda+i)-(\lambda-i)}=\frac{2\lambda}{2i}=-i\lambda,\qquad\text{故}\ f(c(\lambda))=i\cdot(-i\lambda)=\lambda .$$
 
-按第 19 章的连续函数演算，$$f(U)$$ 有意义，且
+按第 38 章的连续函数演算，$$f(U)$$ 有意义，且
 
 $$T_{\text{formal}}:=f(U)=\int_{\mathbb T}f(\mu)\,dE_U(\mu)=\int_{\mathbb R}\lambda\,dE(\lambda),$$
 
@@ -506,15 +508,15 @@ $$T_{\text{formal}}:=f(U)=\int_{\mathbb T}f(\mu)\,dE_U(\mu)=\int_{\mathbb R}\lam
 
 $$\mathrm{Dom}(T_{\text{formal}})=\Bigl\lbrace x:\int\lvert f(\mu)\rvert^2\,d\langle E_U(\mu)x,x\rangle<\infty\Bigr\rbrace=\Bigl\lbrace x:\int\lambda^2\,d\langle E(\lambda)x,x\rangle<\infty\Bigr\rbrace .$$
 
-$$T$$ 与 $$T_{\text{formal}}$$ 都是 $$i(I+U)(I-U)^{-1}$$：前者由 定理 3.27(iv)，后者因为 $$f(U)$$ 在 $$(I-U)^{-1}$$ 有意义处与之相符（有界 Borel 函数上做了函数演算后再取极限）。两者定义域也相同，故 $$T=T_{\text{formal}}$$。唯一性来自 $$E_U$$ 的唯一性（第 19 章）。
+$$T$$ 与 $$T_{\text{formal}}$$ 都是 $$i(I+U)(I-U)^{-1}$$：前者由 定理 3.27(iv)，后者因为 $$f(U)$$ 在 $$(I-U)^{-1}$$ 有意义处与之相符（有界 Borel 函数上做了函数演算后再取极限）。两者定义域也相同，故 $$T=T_{\text{formal}}$$。唯一性来自 $$E_U$$ 的唯一性（第 38 章）。
 
 谱与范数的断言是同一个积分的推论：$$\langle Tx,x\rangle=\int\lambda\,d\langle Ex,x\rangle$$ 与 $$\lVert Tx\rVert^2=\int\lambda^2\,d\langle Ex,x\rangle$$（后者由 $$T$$ 自伴时 $$\lVert Tx\rVert^2=\langle T^2x,x\rangle=\int\lambda^2\,d\langle Ex,x\rangle$$），于是 $$T$$ 有界 $$\iff$$ $$\int\lambda^2d\langle Ex,x\rangle\le C\lVert x\rVert^2$$ $$\iff$$ $$\mathrm{supp}\,E$$ 有界 $$\iff$$ $$\sigma(T)$$ 有界，此时 $$\lVert Tx\rVert^2\le(\sup\lvert\sigma(T)\rvert)^2\lVert x\rVert^2$$ 且取等号可达。$$\blacksquare$$
 
 **注（乘法算子模型）。** 定理 3.30 也是 MP55"自伴算子酉等价于乘法算子"那句话的精确形态：把 $$H$$ 按 $$E_U$$ 分解，$$T$$ 就变成"乘以函数 $$\lambda\mapsto\lambda$$"，定义域就是"函数与 $$\lambda$$ 相乘后仍属空间"的那些向量。位置算子是乘 $$x$$、动量算子是乘 $$p$$（在动量表象）、自由能量是乘 $$p^2$$——第 3.4 节三个例子正是这一定理的三个具体化身。
 
-### 3.7 回账：第 02 章的 $$\sigma(D)=i\mathbb Z$$ 现在有了地基
+### 3.7 回账：第 04 章的 $$\sigma(D)=i\mathbb Z$$ 现在有了地基
 
-第 02 章在算 $$S^1$$ 上的算子 $$D=\frac{d}{d\theta}$$ 时，写下过一份"诚实清单"，第一条写着：$$D$$ 是无界算子，"无界算子的完整理论（图像、闭性、预解式）见第 21 章。本章只用到'预解式 $$\lambda\mapsto(\lambda I-D)^{-1}$$ 存在且范数被 $$\delta^{-1}$$ 控制'这一半，且是显式构造的，不依赖任何一般定理。"
+第 04 章在算 $$S^1$$ 上的算子 $$D=\frac{d}{d\theta}$$ 时，写下过一份"诚实清单"，第一条写着：$$D$$ 是无界算子，"无界算子的完整理论（图像、闭性、预解式）见第 42 章。本章只用到'预解式 $$\lambda\mapsto(\lambda I-D)^{-1}$$ 存在且范数被 $$\delta^{-1}$$ 控制'这一半，且是显式构造的，不依赖任何一般定理。"
 
 现在把这笔账结清。取
 
@@ -522,7 +524,7 @@ $$H=L^2(S^1),\qquad \mathrm{Dom}(D)=H^1(S^1)=\Bigl\lbrace f=\sum_k c_ke^{ik\thet
 
 **定理 3.31（$$D$$ 在 $$H^1(S^1)$$ 上反自伴）。** 上述 $$D$$ 稠定、闭，且 $$D^*=-D$$（$$\mathrm{Dom}(D^*)=\mathrm{Dom}(D)$$）。因而 $$iD$$ 自伴，$$\sigma(D)=i\mathbb Z$$。
 
-*证明*：**稠密**：三角多项式 $$\subseteq H^1$$ 且在 $$L^2$$ 中稠密（第 15 章的完备正交系）。
+*证明*：**稠密**：三角多项式 $$\subseteq H^1$$ 且在 $$L^2$$ 中稠密（第 30 章的完备正交系）。
 
 **伴随的定义域**：设 $$g=\sum_k g_ke^{ik\theta}\in L^2$$。对 $$f\in H^1$$，
 
@@ -536,17 +538,17 @@ $$\mathrm{Dom}(D^*)=\Bigl\lbrace g:\sum_kk^2\lvert g_k\rvert^2<\infty\Bigr\rbrac
 
 **闭**：$$D^*$$ 恒闭（定理 3.14(i)），故 $$D=D^{**}=-D^*$$ 也闭——更直接地，$$-D=D^*$$ 闭即 $$D$$ 闭。也可用图像范数验证：$$\lVert f\rVert_D^2=\lVert f\rVert^2+\lVert f'\rVert^2=\sum_k(1+k^2)\lvert f_k\rvert^2$$，故映射 $$f\mapsto\bigl((1+k^2)^{1/2}f_k\bigr)_k$$ 把 $$(\mathrm{Dom}(D),\lVert\cdot\rVert_D)$$ 等距同构到 $$\ell^2$$ 的闭子空间 $$\lbrace (c_k):\sum(1+k^2)\lvert f_k\rvert^2<\infty\rbrace$$ 上，于是它完备，由 命题 3.8 得 $$D$$ 闭。
 
-**谱**：$$iD$$ 自伴（由 $$D^*=-D$$ 得 $$(iD)^*=-iD^*=-i(-D)=iD$$），故由 定理 3.19 其谱在实轴上，即 $$\sigma(D)\subseteq i\mathbb R$$。反过来 $$De^{ik\theta}=ik\,e^{ik\theta}$$ 给出 $$i\mathbb Z\subseteq\sigma(D)$$（$$ik$$ 是特征值）。**这正是第 02 章 定理 3.11 的两半**：那里"$$i\mathbb Z\subseteq\sigma(D)$$"用特征方程，"另一半"用逐频率除法显式构造 $$(\lambda I-D)^{-1}$$ 并估计范数 $$\le\delta^{-1}$$。两半合起来给出 $$\sigma(D)=i\mathbb Z$$。$$\blacksquare$$
+**谱**：$$iD$$ 自伴（由 $$D^*=-D$$ 得 $$(iD)^*=-iD^*=-i(-D)=iD$$），故由 定理 3.19 其谱在实轴上，即 $$\sigma(D)\subseteq i\mathbb R$$。反过来 $$De^{ik\theta}=ik\,e^{ik\theta}$$ 给出 $$i\mathbb Z\subseteq\sigma(D)$$（$$ik$$ 是特征值）。**这正是第 04 章 定理 3.11 的两半**：那里"$$i\mathbb Z\subseteq\sigma(D)$$"用特征方程，"另一半"用逐频率除法显式构造 $$(\lambda I-D)^{-1}$$ 并估计范数 $$\le\delta^{-1}$$。两半合起来给出 $$\sigma(D)=i\mathbb Z$$。$$\blacksquare$$
 
-**这笔债到底欠在哪、还了什么。** 三条交代，供从第 02 章回来的读者核对：
+**这笔债到底欠在哪、还了什么。** 三条交代，供从第 04 章回来的读者核对：
 
-1. **第 02 章不需要本章的全套理论。** 它的证明只用两件事：$$D$$ 在 $$C_{2\pi}^\infty$$ 上的对称性（分部积分，边界项因周期性消失），以及 $$\lambda\notin i\mathbb Z$$ 时逐频率除法的显式逆与 $$\lVert(\lambda I-D)^{-1}\rVert\le\delta^{-1}$$。这两件事合起来已经直接给出"$$\lambda I-D$$ 双射且逆有界"，即谱的定义成立，**没有用到闭性、亏指数、谱定理中的任何一条**。所以那份"诚实清单"里的自我限制是准确的，第 02 章的结论没有漏洞。
+1. **第 04 章不需要本章的全套理论。** 它的证明只用两件事：$$D$$ 在 $$C_{2\pi}^\infty$$ 上的对称性（分部积分，边界项因周期性消失），以及 $$\lambda\notin i\mathbb Z$$ 时逐频率除法的显式逆与 $$\lVert(\lambda I-D)^{-1}\rVert\le\delta^{-1}$$。这两件事合起来已经直接给出"$$\lambda I-D$$ 双射且逆有界"，即谱的定义成立，**没有用到闭性、亏指数、谱定理中的任何一条**。所以那份"诚实清单"里的自我限制是准确的，第 04 章的结论没有漏洞。
 
-2. **但有一个隐含前提是第 02 章没有证、本章才补上的：定义域 $$H^1$$ 是"对"的那一个。** 定理 3.31 说明 $$\mathrm{Dom}(D^*)=\mathrm{Dom}(D)=H^1$$，所以 $$H^1$$ 不是随手挑的子空间，而是那个形式算子的**闭包**——不加任何相位扭曲时它能取到的最大定义域。若改用更小的 $$C_{2\pi}^\infty$$，$$D$$ 仍对称、可闭（命题 3.12），但 $$D\ne D^*$$，而且**不是本质自伴**：它有无穷多个自伴扩张，每个对应一组圆周上的"准周期条件" $$f(2\pi)=e^{i\alpha}f(0)$$，谱从 $$i\mathbb Z$$ 变成 $$\lbrace i(k+\alpha/2\pi):k\in\mathbb Z\rbrace$$。换句话说，**第 02 章那个干净的 $$\sigma(D)=i\mathbb Z$$，是"用极大定义域、不加相位扭曲"这份选择的红利。**
+2. **但有一个隐含前提是第 04 章没有证、本章才补上的：定义域 $$H^1$$ 是"对"的那一个。** 定理 3.31 说明 $$\mathrm{Dom}(D^*)=\mathrm{Dom}(D)=H^1$$，所以 $$H^1$$ 不是随手挑的子空间，而是那个形式算子的**闭包**——不加任何相位扭曲时它能取到的最大定义域。若改用更小的 $$C_{2\pi}^\infty$$，$$D$$ 仍对称、可闭（命题 3.12），但 $$D\ne D^*$$，而且**不是本质自伴**：它有无穷多个自伴扩张，每个对应一组圆周上的"准周期条件" $$f(2\pi)=e^{i\alpha}f(0)$$，谱从 $$i\mathbb Z$$ 变成 $$\lbrace i(k+\alpha/2\pi):k\in\mathbb Z\rbrace$$。换句话说，**第 04 章那个干净的 $$\sigma(D)=i\mathbb Z$$，是"用极大定义域、不加相位扭曲"这份选择的红利。**
 
 3. **周期背景与区间背景的对照，是本章 3.5 节那个例子的镜像。** 在 $$S^1$$（无边）上取极大定义域，无需任何边界条件即得自伴；在 $$[0,1]$$（有边）上取 $$C_c^\infty$$，必须补边界条件才自伴，亏指数 $$(2,2)$$。
 
-至此第 02 章留给本章的那句话可以划掉了：图像、闭性、可闭性在本章 3.2 节，$$D$$ 的自伴（反自伴）性在 定理 3.31，预解式的地位在 定理 3.29 与 定理 3.30。
+至此第 04 章留给本章的那句话可以划掉了：图像、闭性、可闭性在本章 3.2 节，$$D$$ 的自伴（反自伴）性在 定理 3.31，预解式的地位在 定理 3.29 与 定理 3.30。
 
 ## 四、几何与物理直觉 (Intuition)
 
@@ -607,7 +609,7 @@ $$(I+B)^{-1}=\frac{1}{1+x^2}\begin{pmatrix}1&-x\\x&1\end{pmatrix},\qquad (I-B)(I
 
 $$U=\frac{P-i}{P+i}\ \longleftrightarrow\ \mu(p)=\frac{p-i}{p+i}.$$
 
-$$\lvert\mu(p)\rvert^2=\frac{p^2+1}{p^2+1}=1$$，故 $$U$$ 是"乘一个模为 1 的函数"的乘法算子。乘法算子 $$M_\mu$$ 是酉算子 $$\iff$$ $$\lvert\mu\rvert=1$$ 几乎处处（第 18 章乘法算子一段）。所以 $$U$$ 酉，与 定理 3.28 一致（$$P$$ 自伴）。谱：$$\mu(p)$$ 的值域是单位圆去掉点 $$1$$（$$p\to\pm\infty$$ 时 $$\mu\to1$$，取不到），闭包是整个单位圆，故 $$\sigma(U)=\mathbb T$$，且 $$1$$ 不是特征值（$$\mu(p)=1$$ 无解）。这恰好是 定理 3.29 说的：$$P$$ 无界 ⟹ $$1\in\sigma(U)$$ 但 $$1$$ 非特征值；而 $$\sigma(P)=\mathbb R$$ 在 $$c$$ 下的像就是 $$\mathbb T\setminus\lbrace1\rbrace$$ 的闭包。写成相位：$$\mu(p)=-e^{2i\arctan p}=e^{i(2\arctan p-\pi)}$$，随 $$p$$ 从 $$-\infty$$ 增到 $$+\infty$$，辐角从 $$-\pi$$ 增到 $$0$$——**这就是散射相移 $$\delta(p)=2\arctan p-\pi$$ 加一个 $$\pi$$ 的平移**。$$\blacksquare$$
+$$\lvert\mu(p)\rvert^2=\frac{p^2+1}{p^2+1}=1$$，故 $$U$$ 是"乘一个模为 1 的函数"的乘法算子。乘法算子 $$M_\mu$$ 是酉算子 $$\iff$$ $$\lvert\mu\rvert=1$$ 几乎处处（第 36 章乘法算子一段）。所以 $$U$$ 酉，与 定理 3.28 一致（$$P$$ 自伴）。谱：$$\mu(p)$$ 的值域是单位圆去掉点 $$1$$（$$p\to\pm\infty$$ 时 $$\mu\to1$$，取不到），闭包是整个单位圆，故 $$\sigma(U)=\mathbb T$$，且 $$1$$ 不是特征值（$$\mu(p)=1$$ 无解）。这恰好是 定理 3.29 说的：$$P$$ 无界 ⟹ $$1\in\sigma(U)$$ 但 $$1$$ 非特征值；而 $$\sigma(P)=\mathbb R$$ 在 $$c$$ 下的像就是 $$\mathbb T\setminus\lbrace1\rbrace$$ 的闭包。写成相位：$$\mu(p)=-e^{2i\arctan p}=e^{i(2\arctan p-\pi)}$$，随 $$p$$ 从 $$-\infty$$ 增到 $$+\infty$$，辐角从 $$-\pi$$ 增到 $$0$$——**这就是散射相移 $$\delta(p)=2\arctan p-\pi$$ 加一个 $$\pi$$ 的平移**。$$\blacksquare$$
 
 **经典问题 4（位置算子的谱与"没有特征向量"）。** 考点：定理 3.21、定理 3.30，入口题 (iv) 的孪生问题。位置：3.3–3.4 节。
 
@@ -615,13 +617,13 @@ $$\lvert\mu(p)\rvert^2=\frac{p^2+1}{p^2+1}=1$$，故 $$U$$ 是"乘一个模为 1
 
 *解*：**没有特征向量**：设 $$X\psi=\lambda\psi$$，即 $$(x-\lambda)\psi(x)=0$$ 几乎处处。于是 $$\psi=0$$ 于测度非零集 $$\lbrace x\ne\lambda\rbrace$$ 上，故 $$\psi=0$$ 几乎处处（单点集零测）。所以任何 $$\lambda$$ 都不是特征值。
 
-**谱是 $$\mathbb R$$**：设 $$\lambda\in\mathbb R$$。用 定理 3.30 的乘法算子模型最省事：$$X$$ 就是乘恒等函数 $$\mathrm{id}(x)=x$$ 的乘法算子，而对乘法算子 $$M_h$$ 有 $$\sigma(M_h)=\overline{h(\mathbb R)}$$（第 18 章乘法算子一段；推导要点：$$\lambda\notin\overline{h(\mathbb R)}$$ 时 $$1/(h-\lambda)$$ 有界，$$M_{1/(h-\lambda)}$$ 就是 $$(\lambda I-M_h)^{-1}$$；$$\lambda\in\overline{h(\mathbb R)}$$ 时取 $$h$$ 在 $$\lambda$$ 附近水平集上的归一化指示函数即可证 $$\lambda I-M_h$$ 不是下有界的）。取 $$h=\mathrm{id}$$ 得 $$\sigma(X)=\overline{\mathbb R}=\mathbb R$$。也可以直接构造：取 $$\psi_n=\sqrt{n}\,\chi_{[\lambda,\lambda+1/n]}$$（归一化指示函数），则
+**谱是 $$\mathbb R$$**：设 $$\lambda\in\mathbb R$$。用 定理 3.30 的乘法算子模型最省事：$$X$$ 就是乘恒等函数 $$\mathrm{id}(x)=x$$ 的乘法算子，而对乘法算子 $$M_h$$ 有 $$\sigma(M_h)=\overline{h(\mathbb R)}$$（第 36 章乘法算子一段；推导要点：$$\lambda\notin\overline{h(\mathbb R)}$$ 时 $$1/(h-\lambda)$$ 有界，$$M_{1/(h-\lambda)}$$ 就是 $$(\lambda I-M_h)^{-1}$$；$$\lambda\in\overline{h(\mathbb R)}$$ 时取 $$h$$ 在 $$\lambda$$ 附近水平集上的归一化指示函数即可证 $$\lambda I-M_h$$ 不是下有界的）。取 $$h=\mathrm{id}$$ 得 $$\sigma(X)=\overline{\mathbb R}=\mathbb R$$。也可以直接构造：取 $$\psi_n=\sqrt{n}\,\chi_{[\lambda,\lambda+1/n]}$$（归一化指示函数），则
 
 $$\lVert(\lambda I-X)\psi_n\rVert^2=n\!\int_{\lambda}^{\lambda+1/n}(x-\lambda)^2dx=\frac{1}{3n^2}\to0,$$
 
 故 $$\lambda I-X$$ 不是下有界的，因而不可能有有界逆（有界逆必给 $$\lVert(\lambda I-X)\psi\rVert\ge C^{-1}\lVert\psi\rVert$$）。$$\lambda\notin\mathbb R$$ 时由 定理 3.19 的实谱结论排除。于是 $$\sigma(X)=\mathbb R$$，且因无特征值，这是**纯连续谱**。$$\blacksquare$$
 
-**关键 leap**：谱不等于特征值集合。第 18 章已经点过这件事（乘法算子 $$M_\varphi$$、单侧移位），本章给的是"为什么"：定义域与闭性决定了一个"特征方程的解"是否真的落在 Hilbert 空间里。$$e^{ikx}\notin L^2$$、$$\delta$$ 函数不是向量——**谱是比特征值更大的概念**，这正是第 19 章要引进 PVM 的原因。
+**关键 leap**：谱不等于特征值集合。第 36 章已经点过这件事（乘法算子 $$M_\varphi$$、单侧移位），本章给的是"为什么"：定义域与闭性决定了一个"特征方程的解"是否真的落在 Hilbert 空间里。$$e^{ikx}\notin L^2$$、$$\delta$$ 函数不是向量——**谱是比特征值更大的概念**，这正是第 38 章要引进 PVM 的原因。
 
 ## 六、练习 (Exercises)
 
@@ -661,7 +663,7 @@ $$\lambda I-T=(\lambda+i)\,(I-U)^{-1}\,(I-\mu U),$$
 
 **研1.** 取 $$H=L^2(0,1)$$，$$T_0=-\frac{d^2}{dt^2}$$，$$\mathrm{Dom}(T_0)=C_c^\infty(0,1)$$。**(a)** 证明 $$T_0^*$$ 是 $$H^2(0,1)$$ 上的 $$-\frac{d^2}{dt^2}$$（无边界条件）。**(b)** 算出 $$n_+=n_-=2$$。**(c)** 证明 Dirichlet 扩张（$$u(0)=u(1)=0$$）是自伴的，并算出它的谱是 $$\lbrace n^2\pi^2:n\ge1\rbrace$$；对 Neumann 扩张（$$u'(0)=u'(1)=0$$）做同样的事，谱是 $$\lbrace n^2\pi^2:n\ge0\rbrace$$。**(d)** 用 定理 3.29 解释：为什么 Dirichlet 谱的最低点是 $$\pi^2$$ 而 Neumann 的可以到 $$0$$？
 
-**研2.** 设 $$A,B$$ 是 $$H$$ 上的有界算子且 $$AB-BA=i\hbar I$$（$$\hbar>0$$）。**(a)** 证明这不可能（即正则对易关系迫使算子无界）。**(b)** 用 $$P=-i\frac{d}{dx}$$ 与 $$X$$（乘 $$x$$）在 $$H^1$$ 与 $$\mathrm{Dom}(X)$$ 上验证 $$[X,P]=iI$$（形式上）。**(c)** 从而论证：第 22 章的 Heisenberg 对易关系只能活在无界算子的语言里，而"时间演化 $$e^{itH}$$ 是酉算子"这种说法之所以好用，正是因为 Cayley 变换把无界 $$H$$ 换成了有界酉算子。
+**研2.** 设 $$A,B$$ 是 $$H$$ 上的有界算子且 $$AB-BA=i\hbar I$$（$$\hbar>0$$）。**(a)** 证明这不可能（即正则对易关系迫使算子无界）。**(b)** 用 $$P=-i\frac{d}{dx}$$ 与 $$X$$（乘 $$x$$）在 $$H^1$$ 与 $$\mathrm{Dom}(X)$$ 上验证 $$[X,P]=iI$$（形式上）。**(c)** 从而论证：第 44 章的 Heisenberg 对易关系只能活在无界算子的语言里，而"时间演化 $$e^{itH}$$ 是酉算子"这种说法之所以好用，正是因为 Cayley 变换把无界 $$H$$ 换成了有界酉算子。
 
 ### 解答 (Solutions)
 
@@ -677,7 +679,7 @@ $$\lVert(T-\lambda)x\rVert^2=\lVert(T-a)x\rVert^2+b^2\lVert x\rVert^2 .$$
 
 **单射与等距**：上式取 $$\lambda=\pm i$$（$$a=0,b=\pm1$$）得 $$\lVert(T\pm i)x\rVert^2=\lVert Tx\rVert^2+\lVert x\rVert^2\ge\lVert x\rVert^2$$。若 $$(T\pm i)x=0$$ 则 $$x=0$$：单射。对 $$y=(T+i)x$$，$$\lVert(T+i)^{-1}y\rVert=\lVert x\rVert$$ 而 $$\lVert y\rVert=\lVert(T+i)x\rVert$$，故 $$\lVert(T+i)^{-1}y\rVert=\lVert y\rVert$$；等价地 $$\lVert(T+i)^{-1}\rVert\le1$$。对 $$T-i$$ 同理。$$\blacksquare$$
 
-**解 基2.** **稠密**：$$C_c^\infty(\mathbb R)\subseteq\mathrm{Dom}(X)$$，因为紧支集有界函数 $$\psi$$ 满足 $$\int\lvert x\psi\rvert^2\le M^2\int\lvert\psi\rvert^2<\infty$$；而 $$C_c^\infty$$ 在 $$L^2$$ 中稠密（可用 $$L^1\cap L^2$$ 函数截断、再用光滑逼近，第 15 章）。故 $$X$$ 稠定。
+**解 基2.** **稠密**：$$C_c^\infty(\mathbb R)\subseteq\mathrm{Dom}(X)$$，因为紧支集有界函数 $$\psi$$ 满足 $$\int\lvert x\psi\rvert^2\le M^2\int\lvert\psi\rvert^2<\infty$$；而 $$C_c^\infty$$ 在 $$L^2$$ 中稠密（可用 $$L^1\cap L^2$$ 函数截断、再用光滑逼近，第 30 章）。故 $$X$$ 稠定。
 
 **对称**：$$\langle X\psi,\varphi\rangle=\int x\psi\overline\varphi=\int\psi\overline{x\varphi}=\langle\psi,X\varphi\rangle$$，因为 $$x\in\mathbb R$$。
 
@@ -729,7 +731,7 @@ $$\langle Uy,w\rangle=\lVert Tx\rVert\lVert Tx'\rVert\text{ 型}+\langle x,x'\ra
 
 $$\sup_{\lVert y\rVert\le1}\lvert\varphi_y(x)\rvert=\sup_{\lVert y\rVert\le1}\lvert\langle Tx,y\rangle\rvert=\lVert Tx\rVert<\infty,$$
 
-最后一步是内积范数的对偶刻画。故泛函族 $$\lbrace\varphi_y\rbrace_{\lVert y\rVert\le1}$$ 逐点有界。$$H$$ 是 Banach 空间（Hilbert 空间必完备），由一致有界原理（第 18 章）
+最后一步是内积范数的对偶刻画。故泛函族 $$\lbrace\varphi_y\rbrace_{\lVert y\rVert\le1}$$ 逐点有界。$$H$$ 是 Banach 空间（Hilbert 空间必完备），由一致有界原理（第 36 章）
 
 $$\sup_{\lVert y\rVert\le1}\lVert\varphi_y\rVert=:C<\infty .$$
 
@@ -799,15 +801,15 @@ $$\lambda I-T\ \text{是双射}\iff \mu I-U\ \text{是双射}\iff\mu\notin\sigma
 
 $$(\lambda I-T)^{-1}=(I-U)\,(\mu I-U)^{-1}\,(\lambda+i)^{-1}$$
 
-有界；反方向由 $$T$$ 闭（自伴故 $$T=T^*$$，而 定理 3.14(i) 说伴随恒闭）加上闭图像定理（第 18 章）给出。两半合起来：
+有界；反方向由 $$T$$ 闭（自伴故 $$T=T^*$$，而 定理 3.14(i) 说伴随恒闭）加上闭图像定理（第 36 章）给出。两半合起来：
 
 $$\lambda\in\sigma(T)\iff\frac{\lambda-i}{\lambda+i}=\mu\in\sigma(U).$$
 
-**对 $$X$$ 具体算**：$$X$$ 是乘 $$x$$ 的乘法算子；乘法算子的函数演算把 $$\mu(X)$$ 实现为乘 $$\mu(x)$$ 的算子（第 20 章的连续函数演算，在乘法模型里就是逐点相乘），所以
+**对 $$X$$ 具体算**：$$X$$ 是乘 $$x$$ 的乘法算子；乘法算子的函数演算把 $$\mu(X)$$ 实现为乘 $$\mu(x)$$ 的算子（第 40 章的连续函数演算，在乘法模型里就是逐点相乘），所以
 
 $$(U\varphi)(x)=\frac{x-i}{x+i}\,\varphi(x),\qquad\text{即}\ U=M_{\mu},\ \ \mu(x)=\frac{x-i}{x+i}.$$
 
-$$\lvert\mu(x)\rvert=1$$ 对一切 $$x\in\mathbb R$$，故 $$U$$ 是酉算子（第 18 章乘法算子一段：乘模为 1 的函数是酉的）。$$\mu$$ 是实轴到 $$\mathbb T\setminus\lbrace1\rbrace$$ 的双射，故 $$\overline{\mu(\mathbb R)}=\mathbb T$$，即
+$$\lvert\mu(x)\rvert=1$$ 对一切 $$x\in\mathbb R$$，故 $$U$$ 是酉算子（第 36 章乘法算子一段：乘模为 1 的函数是酉的）。$$\mu$$ 是实轴到 $$\mathbb T\setminus\lbrace1\rbrace$$ 的双射，故 $$\overline{\mu(\mathbb R)}=\mathbb T$$，即
 
 $$\sigma(U)=\mathbb T .$$
 
@@ -846,7 +848,7 @@ $$\sigma(T_N)=\lbrace n^2\pi^2:\ n=0,1,2,\dots\rbrace,\qquad \text{特征函数}
 
 **(d)** 由 定理 3.29，两个扩张的谱各自满足 $$\lambda\in\sigma(T)\iff\mu(\lambda)=\frac{\lambda-i}{\lambda+i}\in\sigma(U)$$。Dirichlet 的 $$T_D$$ 是**正**算子（$$\langle T_Du,u\rangle=\int\lvert u'\rvert^2-\bigl[u'\overline u\bigr]_0^1=\lVert u'\rVert^2\ge0$$，且 $$=0$$ 蕴含 $$u$$ 为常数，配合 $$u(0)=0$$ 得 $$u=0$$），故 $$0\notin\sigma(T_D)$$，最小谱点是 $$\pi^2$$。Neumann 的 $$T_N$$ 有常数特征函数，$$0\in\sigma(T_N)$$，对应 $$\mu(0)=\frac{-i}{i}=-1\in\sigma(U_N)$$：**$$T$$ 的低谱端对应 $$U$$ 的谱点靠近 $$-1$$ 还是 $$1$$**——Dirichlet 的 $$\mu(\pi^2)=\frac{\pi^2-i}{\pi^2+i}$$ 在单位圆上离 $$-1$$ 有一段距离，Neumann 的 $$\mu(0)=-1$$ 正好落在 $$-1$$。更本质地说：$$T_D$$ 正且无零特征值，所以 $$0\notin\sigma(T_D)$$；$$T_N$$ 的常数函数是零特征向量，所以 $$0\in\sigma(T_N)$$。**边界条件把最低能级从 $$\pi^2$$ 抬到 $$0$$ 或压下——这就是"墙上有几种反射方式"的谱论后果。**
 
-（本小题是第 22 章的起点：量子力学里"粒子在盒中"与"粒子在环上"的能谱差别，全部由定义域（边界条件）编码，而正则对易关系要在这种受约束的定义域上重新讨论。）$$\blacksquare$$
+（本小题是第 44 章的起点：量子力学里"粒子在盒中"与"粒子在环上"的能谱差别，全部由定义域（边界条件）编码，而正则对易关系要在这种受约束的定义域上重新讨论。）$$\blacksquare$$
 
 **解 研2.** **(a)** 设 $$[A,B]=AB-BA=i\hbar I$$。先证一个归纳式：
 
@@ -872,7 +874,7 @@ $$(XP-PX)\psi=x(-i\psi')-(-i)(x\psi)'=-ix\psi'+i(\psi+x\psi')=i\psi .$$
 
 故 $$[X,P]=iI$$（$$\hbar=1$$）在 $$C_c^\infty$$ 上成立。$$C_c^\infty\subseteq\mathrm{Dom}(X)\cap H^1$$，且 $$PX\psi$$、$$XP\psi$$ 都有意义（$$\psi\in C_c^\infty\Rightarrow x\psi\in C_c^\infty\subseteq H^1$$）。所以对易关系在一族公共定义域上成立，而 $$X,P$$ 无界（由 (a) 或直接看特征值无界）。
 
-**(c)** 综合 (a)：正则对易关系 $$[X,P]=i\hbar I$$ 与"两者有界"不相容，故第 22 章的一切陈述都必须写在无界算子的语言里——本章的**定义域、对称 vs 自伴、闭性**就是那套语言，而 $$C_c^\infty$$ 上的形式对易关系之所以能推出物理结论，靠的是把它提升到 定理 3.22 与 命题 3.21 的**自伴**算子（而不只是形式对称），再用 定理 3.30 的谱定理。另一方面，时间演化 $$e^{-itH}$$ 要成为真的酉群，也需要 $$H$$ 自伴（Stone 定理）；而 Cayley 变换（定理 3.28）说明"无界自伴 $$H$$"与"酉算子"是同一份数据的两种写法——**这也是第 22 章把 $$[X,P]=i\hbar I$$ 改写成 Weyl 关系（指数化后的酉算子关系）的动机：无界算子的关系不好直接处理，酉算子的关系好处理。那正是下一章的起点。**$$\blacksquare$$
+**(c)** 综合 (a)：正则对易关系 $$[X,P]=i\hbar I$$ 与"两者有界"不相容，故第 44 章的一切陈述都必须写在无界算子的语言里——本章的**定义域、对称 vs 自伴、闭性**就是那套语言，而 $$C_c^\infty$$ 上的形式对易关系之所以能推出物理结论，靠的是把它提升到 定理 3.22 与 命题 3.21 的**自伴**算子（而不只是形式对称），再用 定理 3.30 的谱定理。另一方面，时间演化 $$e^{-itH}$$ 要成为真的酉群，也需要 $$H$$ 自伴（Stone 定理）；而 Cayley 变换（定理 3.28）说明"无界自伴 $$H$$"与"酉算子"是同一份数据的两种写法——**这也是第 44 章把 $$[X,P]=i\hbar I$$ 改写成 Weyl 关系（指数化后的酉算子关系）的动机：无界算子的关系不好直接处理，酉算子的关系好处理。那正是下一章的起点。**$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -880,31 +882,29 @@ $$(XP-PX)\psi=x(-i\psi')-(-i)(x\psi)'=-ix\psi'+i(\psi+x\psi')=i\psi .$$
 
 2. **对称与自伴的区分只存在于无界情形。** Hellinger–Toeplitz（定理 3.3）说：处处定义 + 对称 $$\Rightarrow$$ 有界；所以有界世界里两个词合一。无界世界里，对称只保证 $$T\subseteq T^*$$，自伴要求 $$\mathrm{Dom}(T)=\mathrm{Dom}(T^*)$$。判定手段是 $$\mathrm{ran}(T\pm i)=H$$（定理 3.17），量化手段是亏指数（定义 3.24、定理 3.25）。
 
-3. **无界 = 换个范数就有界。** 图像范数（定义 3.7）把 $$\mathrm{Dom}(T)$$ 变成 Hilbert 空间，闭算子在其上是有界算子（推论 3.9）。第 02 章"逐频率除以 $$ik-\lambda$$"的做法能成立，秘密就在这里。
+3. **无界 = 换个范数就有界。** 图像范数（定义 3.7）把 $$\mathrm{Dom}(T)$$ 变成 Hilbert 空间，闭算子在其上是有界算子（推论 3.9）。第 04 章"逐频率除以 $$ik-\lambda$$"的做法能成立，秘密就在这里。
 
-4. **Cayley 变换把无界问题搬回有界问题的世界：$$U=(T-i)(T+i)^{-1}$$。** 它把自伴 $$T$$ 一对一换成酉 $$U$$（定理 3.28），把实轴按半角公式卷成单位圆（定理 3.29），从而让第 19 章的谱定理与第 20 章的函数演算整体可用（定理 3.30）。物理上它就是散射相移 $$e^{i(2\arctan p-\pi)}$$，就是 S 矩阵的最简模型；数学上它是万能公式 $$x=\tan\frac\theta2$$ 的算子版。
+4. **Cayley 变换把无界问题搬回有界问题的世界：$$U=(T-i)(T+i)^{-1}$$。** 它把自伴 $$T$$ 一对一换成酉 $$U$$（定理 3.28），把实轴按半角公式卷成单位圆（定理 3.29），从而让第 38 章的谱定理与第 40 章的函数演算整体可用（定理 3.30）。物理上它就是散射相移 $$e^{i(2\arctan p-\pi)}$$，就是 S 矩阵的最简模型；数学上它是万能公式 $$x=\tan\frac\theta2$$ 的算子版。
 
-5. **谱比特征值大。** $$-\frac{d^2}{dx^2}$$ 在 $$L^2(\mathbb R)$$ 上谱为 $$[0,\infty)$$ 却一个特征向量也没有（定理 3.23）；$$e^{ikx}$$ 不是向量，是"广义特征函数"，正式说法属于第 19 章的 PVM。位置算子同理（经典问题 4）。
+5. **谱比特征值大。** $$-\frac{d^2}{dx^2}$$ 在 $$L^2(\mathbb R)$$ 上谱为 $$[0,\infty)$$ 却一个特征向量也没有（定理 3.23）；$$e^{ikx}$$ 不是向量，是"广义特征函数"，正式说法属于第 38 章的 PVM。位置算子同理（经典问题 4）。
 
-6. **本章还清了两笔旧账。** 第 02 章的 $$\sigma(D)=i\mathbb Z$$ 现在有了地基：$$D$$ 在 $$H^1(S^1)$$ 上反自伴（定理 3.31），而第 02 章只用了对称性与显式预解式，那个自我限制是准确的；同时它默默用了"$$H^1$$ 是极大定义域"这一点，本章补上了证明，并解释了为什么圆周上不需要边界条件而区间上需要。第 17 章末尾"$$X,P$$ 不可能有界"那句话，由 Hellinger–Toeplitz（定理 3.3）与研 2 的交换子论证给出两种独立证明。
+6. **本章还清了两笔旧账。** 第 04 章的 $$\sigma(D)=i\mathbb Z$$ 现在有了地基：$$D$$ 在 $$H^1(S^1)$$ 上反自伴（定理 3.31），而第 04 章只用了对称性与显式预解式，那个自我限制是准确的；同时它默默用了"$$H^1$$ 是极大定义域"这一点，本章补上了证明，并解释了为什么圆周上不需要边界条件而区间上需要。第 34 章末尾"$$X,P$$ 不可能有界"那句话，由 Hellinger–Toeplitz（定理 3.3）与研 2 的交换子论证给出两种独立证明。
 
 **下一章的悬念。** 本章造好了语言，但还没用它碰量子力学真正的起点：正则对易关系
 
 $$[\hat x,\hat p]=i\hbar I .$$
 
-第 22 章要问：这个等式（在一族公共稠定定义域上）到底决定了多少东西？答案惊人地刚性——**在 Weyl 形式（指数化后的酉算子关系）下，它在不可约意义上有唯一的表示**，这就是 Stone–von Neumann 定理。中间要过两道本章刚铺好的桥：一是 Stone 定理（自伴算子与单参数强连续酉群的一一对应，其证明正是沿本章定理 3.30 的 PVM 积分 $$e^{-itH}=\int e^{-it\lambda}dE(\lambda)$$），二是"把无界关系指数化成酉算子关系好处理"这条策略——它不过是 Cayley 变换（定理 3.28）的同一思想换个方向再走一次。第 23 章则会把 Cayley 变换再推一步，用算子半群与 Feynman 路径积分处理"$$e^{-tH}$$ 这个半群本身"。
+第 44 章要问：这个等式（在一族公共稠定定义域上）到底决定了多少东西？答案惊人地刚性——**在 Weyl 形式（指数化后的酉算子关系）下，它在不可约意义上有唯一的表示**，这就是 Stone–von Neumann 定理。中间要过两道本章刚铺好的桥：一是 Stone 定理（自伴算子与单参数强连续酉群的一一对应，其证明正是沿本章定理 3.30 的 PVM 积分 $$e^{-itH}=\int e^{-it\lambda}dE(\lambda)$$），二是"把无界关系指数化成酉算子关系好处理"这条策略——它不过是 Cayley 变换（定理 3.28）的同一思想换个方向再走一次。第 46 章则会把 Cayley 变换再推一步，用算子半群与 Feynman 路径积分处理"$$e^{-tH}$$ 这个半群本身"。
 
 **延伸阅读。**
 - MP55（本章入口的母题：位置与动量算子的无界性、乘法算子、图与闭算子、本质自伴）与 MP56（Cayley 变换，从万能公式到实矩阵到复算子）。
-- 第 02 章的"诚实清单"（本章 3.7 节正面回应）与第 17 章末尾关于 $$a,a^\dagger$$ 无界的预告。
+- 第 04 章的"诚实清单"（本章 3.7 节正面回应）与第 34 章末尾关于 $$a,a^\dagger$$ 无界的预告。
 - 细节补充方向：闭算子的值域定理、自伴扩张与边界三元组（abstract boundary conditions）、Weyl 判据与本质谱——它们都在第 18–20 章的谱论与本章的亏指数之间架桥。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch20_Banach代数与C_代数.md">← 第20章 Banach 代数与 C\* 代数</a></div>
+  <div><a href="ch41_无界算子与Cayley变换_上.md">← 第41章 无界算子与 Cayley 变换·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch22_正则对易关系与Stone_vonNeumann.md">第22章 正则对易关系与 Stone–von Neumann 定理 →</a></div>
+  <div><a href="ch43_正则对易关系与Stone_vonNeumann_上.md">第43章 正则对易关系与 Stone–von Neumann·上 →</a></div>
 </div>

@@ -2,17 +2,19 @@
 layout: default
 ---
 
-# 第15章: Hilbert 空间与内积结构 (Hilbert Spaces and Inner Product Structure)
+# 第30章: Hilbert 空间与内积结构·下：完整推导 (Hilbert Spaces and Inner Product Structure · Part II: Full Derivation)
+
 > 对应原专栏: MP38–MP39
 > 专家依据: `_experts/analysis/functional-analysis.md` + `_experts/analysis/_SKILL.md`
 > 知识库依据: `opc2/knowledge/math/泛函分析/`（21 篇）、`opc2/knowledge/math/泛函分析/mit-18-102/`（14 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第29章 Hilbert 空间与内积结构·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
-**从哪来**：第 04 章的 定理 3.6 证明了「内积给出 $$V\to V^*$$ 的自然同构 $$g^\flat$$」，第 03 章的 定理 3.21 又证明了「$$V\cong V^*$$ 不自然」。这两个结论在有限维里说得通：内积一次选定，之后的指标升降就只是"把向量搬成泛函"。但第 03 章的问题 3 已经埋了地雷——$$V=\mathbb{R}[x]$$ 时 $$\dim V=\aleph_0$$ 而 $$\dim V^*=\mathfrak{c}$$，$$V$$ 与 $$V^*$$ 之间连**同构**都不存在，更不必谈"自然"。本章要回答的就是：**$$g^\flat$$ 在无穷维里什么时候还是同构？**
+**从哪来**：第 08 章的 定理 3.6 证明了「内积给出 $$V\to V^*$$ 的自然同构 $$g^\flat$$」，第 06 章的 定理 3.21 又证明了「$$V\cong V^*$$ 不自然」。这两个结论在有限维里说得通：内积一次选定，之后的指标升降就只是"把向量搬成泛函"。但第 06 章的问题 3 已经埋了地雷——$$V=\mathbb{R}[x]$$ 时 $$\dim V=\aleph_0$$ 而 $$\dim V^*=\mathfrak{c}$$，$$V$$ 与 $$V^*$$ 之间连**同构**都不存在，更不必谈"自然"。本章要回答的就是：**$$g^\flat$$ 在无穷维里什么时候还是同构？**
 
-**到哪去**：答案是——当且仅当空间**完备**且范数**来自内积**，即空间是 **Hilbert 空间**。这时 $$g^\flat$$ 被 Riesz 表示定理救活，$$H\cong H^*$$ 成为内积的免费赠品，而 Banach 空间一般不享有。这一章同时把第 04 章的正交概念从有限维搬到无穷维：正交补、正交投影、正交规范基。下一章（第 16 章）将把这套语言直接翻译成量子力学的态、可观测量与测量。
+**到哪去**：答案是——当且仅当空间**完备**且范数**来自内积**，即空间是 **Hilbert 空间**。这时 $$g^\flat$$ 被 Riesz 表示定理救活，$$H\cong H^*$$ 成为内积的免费赠品，而 Banach 空间一般不享有。这一章同时把第 08 章的正交概念从有限维搬到无穷维：正交补、正交投影、正交规范基。下一章（第 32 章）将把这套语言直接翻译成量子力学的态、可观测量与测量。
 
 **核心问题**：$$L^2$$ 上的 Fourier 级数为什么"能收敛到函数"却又"逐点常常不收敛"？本章给出的解释是：Fourier 级数的收敛是**范数收敛**（正交基展开），而逐点收敛是另一件事——两者的差别正是"内积几何"与"点态分析"的差别。
 
@@ -42,7 +44,7 @@ $$\Bigg\lVert f-\sum_{\lvert n\rvert\le N}\hat f(n)e^{inx}\Bigg\rVert_2\xrightar
 
 可是历史上，连续函数的 Fourier 级数确实有在某点发散的例子。**范数收敛与逐点发散如何共存？**
 
-**为什么这道题是全章的引子。** (ii)(iii) 两问合起来说明一件事：第 04 章 定理 3.6 里那个"免费"的 $$g^\flat:V\to V^*$$，在无穷维里可能**不是满射**——$$V$$ 里根本没有向量能代表 $$\ell$$。而 (iii) 的失败不是因为我们选的泛函太怪异，恰恰因为它太自然（$$e^x$$ 是 $$[0,1]$$ 上最规矩的函数之一）。本章第三节给治病的手段（完备化，定理 3.6）并把失败定位到"不完备"上（定理 3.14），第六节的练习研究题 1 会把 (ii)(iii) 彻底收尾；(iv) 则由注 3.19 回答。
+**为什么这道题是全章的引子。** (ii)(iii) 两问合起来说明一件事：第 08 章 定理 3.6 里那个"免费"的 $$g^\flat:V\to V^*$$，在无穷维里可能**不是满射**——$$V$$ 里根本没有向量能代表 $$\ell$$。而 (iii) 的失败不是因为我们选的泛函太怪异，恰恰因为它太自然（$$e^x$$ 是 $$[0,1]$$ 上最规矩的函数之一）。本章第三节给治病的手段（完备化，定理 3.6）并把失败定位到"不完备"上（定理 3.14），第六节的练习研究题 1 会把 (ii)(iii) 彻底收尾；(iv) 则由注 3.19 回答。
 
 ## 三、结构：定义与完整推导 (Structure & Proof)
 
@@ -106,7 +108,7 @@ $$\lVert x+y\rVert^{2}\le\lVert x\rVert^{2}+2\lVert x\rVert\lVert y\rVert+\lVert
 
 **定义 3.4（Hilbert 空间, Hilbert space）。** 若内积空间 $$H$$ 在范数 $$\lVert\cdot\rVert$$ 下**完备**（每个柯西列都收敛），则称 $$H$$ 为 **Hilbert 空间**。
 
-（glossary 里记录的译名是「Hilbert 空间」；本书正文统一写 "Hilbert 空间"，与第 04 章、第 14 章的写法保持一致。）
+（glossary 里记录的译名是「Hilbert 空间」；本书正文统一写 "Hilbert 空间"，与第 08 章、第 28 章的写法保持一致。）
 
 **定理 3.5（平行四边形法则与"范数来自内积"的判别）。**
 
@@ -253,7 +255,7 @@ $$\big\lVert\xi-\xi^{(m)}\big\rVert_H^{2}=\lim_n\lVert z_n-x^{(m)}_n\rVert^{2}\l
 
 ### 3.3 正交、投影定理与 Riesz 表示
 
-现在把第 04 章的"正交"搬到无穷维。全部论证只用到 Cauchy–Schwarz 与**完备性**——这就是完备性买来的东西。
+现在把第 08 章的"正交"搬到无穷维。全部论证只用到 Cauchy–Schwarz 与**完备性**——这就是完备性买来的东西。
 
 **定义 3.7（正交与正交补）。** 设 $$H$$ 是内积空间。称 $$x\perp y$$ 若 $$\langle x,y\rangle=0$$。对子集 $$S\subset H$$，其**正交补 (orthogonal complement)** 为
 
@@ -365,9 +367,9 @@ $$\Phi(\alpha y+\beta z)(x)=\langle x,\alpha y+\beta z\rangle=\overline{\alpha}\
 
 自反性：$$\Phi$$ 给出 $$H\cong H^*$$（作为赋范空间，通过共轭线性同构），对 $$H^*$$ 再用一次同一结论（$$H^*$$ 本身也是 Hilbert 空间——它由 $$\Phi$$ 与 $$H$$ 等距同构，而完备性在等距下保持）即得 $$H^{**}\cong H^*\cong H$$；细节上还可以验证这个复合恰是自然嵌入 $$J$$。弱拓扑与弱\*拓扑重合，是因为在自反空间上两者都是"使 $$H^*$$ 的元素连续"的最粗拓扑。$$\blacksquare$$
 
-**注 3.13（Riesz 表示把"泛函"换成了"向量"）。** 定理 3.12 可以一句话记住：**Hilbert 空间上的连续线性泛函就是"与某个固定向量做内积"。** 它的第一个用处是让**伴随算子** $$A^*$$ 能被定义成 $$A^*:H\to H$$ 而不是 $$H^*\to H^*$$：固定 $$y$$ 时 $$x\mapsto\langle Ax,y\rangle$$ 是连续线性泛函，由定理 3.12 它等于 $$\langle x,A^*y\rangle$$，这就定出了 $$A^*y\in H$$（第 16 章会用到；更系统的展开见知识库 `泛函分析/ch06.md` 与 `mit-18-102/ch10.md`）。第二个用处是让 **Dirac 符号**合法化：$$\langle\phi\mid\psi\rangle$$ 里的 $$\langle\phi\mid$$ 被理解为"$$H^*$$ 里的泛函"，而由 Riesz，它同时也就是 $$H$$ 里的一个向量——左矢与右矢可以互相搬运（见 MP39 与本章练习竞赛题 1）。
+**注 3.13（Riesz 表示把"泛函"换成了"向量"）。** 定理 3.12 可以一句话记住：**Hilbert 空间上的连续线性泛函就是"与某个固定向量做内积"。** 它的第一个用处是让**伴随算子** $$A^*$$ 能被定义成 $$A^*:H\to H$$ 而不是 $$H^*\to H^*$$：固定 $$y$$ 时 $$x\mapsto\langle Ax,y\rangle$$ 是连续线性泛函，由定理 3.12 它等于 $$\langle x,A^*y\rangle$$，这就定出了 $$A^*y\in H$$（第 32 章会用到；更系统的展开见知识库 `泛函分析/ch06.md` 与 `mit-18-102/ch10.md`）。第二个用处是让 **Dirac 符号**合法化：$$\langle\phi\mid\psi\rangle$$ 里的 $$\langle\phi\mid$$ 被理解为"$$H^*$$ 里的泛函"，而由 Riesz，它同时也就是 $$H$$ 里的一个向量——左矢与右矢可以互相搬运（见 MP39 与本章练习竞赛题 1）。
 
-**定理 3.14（与第 04 章的接口：$$g^\flat$$ 到底什么时候是同构？）。** 设 $$(V,\langle\cdot,\cdot\rangle)$$ 是内积空间，定义
+**定理 3.14（与第 08 章的接口：$$g^\flat$$ 到底什么时候是同构？）。** 设 $$(V,\langle\cdot,\cdot\rangle)$$ 是内积空间，定义
 
 $$g^{\flat}:V\to V^{*},\qquad g^{\flat}(v):=\langle v,\cdot\rangle\quad\big(\text{即 } g^{\flat}(v)(w)=\langle v,w\rangle\big).$$
 
@@ -383,7 +385,7 @@ $$g^{\flat}:V\to V^{*},\qquad g^{\flat}(v):=\langle v,\cdot\rangle\quad\big(\tex
 
 *证明。* **(i)** 由内积对第一变元的线性：$$g^\flat(\alpha v+\beta w)(x)=\langle\alpha v+\beta w,x\rangle=\alpha\langle v,x\rangle+\beta\langle w,x\rangle$$。
 
-**(ii)** 设 $$g^\flat(v)=0$$，即 $$\langle v,w\rangle=0$$ 对一切 $$w$$。取 $$w=v$$ 得 $$\lVert v\rVert^{2}=0$$，由正定性 $$v=0$$。所以核是 $$\lbrace0\rbrace$$——注意这一步**只用正定性**，与完备性无关。但无穷维里"单射 $$\Rightarrow$$ 满射"不成立（秩—零化度定理要有限维，见第 03 章的 问题 3）。
+**(ii)** 设 $$g^\flat(v)=0$$，即 $$\langle v,w\rangle=0$$ 对一切 $$w$$。取 $$w=v$$ 得 $$\lVert v\rVert^{2}=0$$，由正定性 $$v=0$$。所以核是 $$\lbrace0\rbrace$$——注意这一步**只用正定性**，与完备性无关。但无穷维里"单射 $$\Rightarrow$$ 满射"不成立（秩—零化度定理要有限维，见第 06 章的 问题 3）。
 
 **(iii)** 即定理 3.12（每个 $$f\in V^*$$ 都由某个向量表示）。
 
@@ -417,7 +419,7 @@ $$L^{1}([0,1])\qquad\text{与}\qquad L^{\infty}([0,1]) .$$
 
 **结论（本章最重要的一句话）。**
 
-> 第 04 章 定理 3.6 说"内积给出 $$V\to V^{*}$$ 的自然同构"。在**有限维**，这句话对任何内积空间成立——但那里的关键是"$$\dim V=\dim V^{*}$$，单射即满射"（秩—零化度定理），内积其实只提供了单射那半边。到了**无穷维**，维数不再能保证满射（$$\mathbb{R}[x]$$：$$\dim V=\aleph_0$$，而由第 03 章的 问题 3，$$\dim V^{*}=\mathfrak{c}$$），此时唯一的补救是**同时要求内积与完备性**——即 $$V$$ 是 Hilbert 空间。**所以在无穷维里，$$V\cong V^{*}$$ 靠的不是维数巧合，而是内积加完备性；这正是第 03 章研究题 1 与问题 3 问的那件事的答案，也说明 Riesz 表示定理不是"显然的内积性质"，而是一条真正用掉了完备性的定理。**
+> 第 08 章 定理 3.6 说"内积给出 $$V\to V^{*}$$ 的自然同构"。在**有限维**，这句话对任何内积空间成立——但那里的关键是"$$\dim V=\dim V^{*}$$，单射即满射"（秩—零化度定理），内积其实只提供了单射那半边。到了**无穷维**，维数不再能保证满射（$$\mathbb{R}[x]$$：$$\dim V=\aleph_0$$，而由第 06 章的 问题 3，$$\dim V^{*}=\mathfrak{c}$$），此时唯一的补救是**同时要求内积与完备性**——即 $$V$$ 是 Hilbert 空间。**所以在无穷维里，$$V\cong V^{*}$$ 靠的不是维数巧合，而是内积加完备性；这正是第 06 章研究题 1 与问题 3 问的那件事的答案，也说明 Riesz 表示定理不是"显然的内积性质"，而是一条真正用掉了完备性的定理。**
 
 ### 3.4 正交规范基与 Fourier 展开
 
@@ -473,7 +475,7 @@ $$T:H\to\ell^{2},\qquad Tx=\big(\langle x,e_1\rangle,\langle x,e_2\rangle,\dots\
 
 **单射**：保范映射零核。于是 $$T$$ 是等距同构。$$\blacksquare$$
 
-**注 3.18（为什么这条定理重要）。** 它说：**所有无限维可分 Hilbert 空间在几何上是同一个空间。** 研究 $$\ell^2$$ 就等于研究 $$L^2$$、研究 Sobolev 空间 $$H^1$$、研究一切可分量子力学态空间。这是泛函分析里最省力的一条事实——第 16 章会直接受益。
+**注 3.18（为什么这条定理重要）。** 它说：**所有无限维可分 Hilbert 空间在几何上是同一个空间。** 研究 $$\ell^2$$ 就等于研究 $$L^2$$、研究 Sobolev 空间 $$H^1$$、研究一切可分量子力学态空间。这是泛函分析里最省力的一条事实——第 32 章会直接受益。
 
 **定理 3.19（$$L^2$$ 是 Hilbert 空间；三角系是它的正交规范基）。** 设 $$\langle f,g\rangle=\int_{-\pi}^{\pi}f(x)\overline{g(x)}\,dx$$，$$\lVert f\rVert_2=\sqrt{\langle f,f\rangle}$$。
 
@@ -528,10 +530,10 @@ $$\lVert\sigma_Nf-f\rVert_2\le\lVert\sigma_N(f-g)\rVert_2+\lVert\sigma_Ng-g\rVer
 **物理侧：为什么量子力学必须住在 Hilbert 空间里。** 把 $$L^2(\Omega)$$ 里的 $$\psi$$ 看作"状态"，内积结构给出三件事：
 
 1. **归一化与概率。** $$\langle\psi,\psi\rangle=\int\lvert\psi\rvert^2=1$$ 是概率归一化；$$\lvert\psi(x)\rvert^2$$ 是概率密度。注意被积项 $$\overline{\psi}\psi=\lvert\psi\rvert^2$$ 处处取实——这正是注 3.20 的共轭机制：**只有取共轭，"与自己做内积"才给出实数**。
-2. **相位无关性。** 注 3.20 说 $$\overline{\phi}\psi$$ 只依赖相位差。物理语言：$$\psi$$ 与 $$e^{i\alpha}\psi$$ 描述同一个态（整体相位不可观测）。数学语言：态是 $$L^2$$ 中**单位球面模掉 $$U(1)$$ 作用**的元素——这条线索在第 24 章会以射影表示的面貌回来。
+2. **相位无关性。** 注 3.20 说 $$\overline{\phi}\psi$$ 只依赖相位差。物理语言：$$\psi$$ 与 $$e^{i\alpha}\psi$$ 描述同一个态（整体相位不可观测）。数学语言：态是 $$L^2$$ 中**单位球面模掉 $$U(1)$$ 作用**的元素——这条线索在第 48 章会以射影表示的面貌回来。
 3. **叠加原理就是线性。** 态的线性组合还是态（$$\lVert\alpha\phi+\beta\psi\rVert$$ 由内积算出），正交的态互不"干涉"（$$\lVert\phi+\psi\rVert^2=\lVert\phi\rVert^2+\lVert\psi\rVert^2$$）。
 
-**测量就是正交投影。** 定理 3.10 的分解 $$x=P_Mx+(I-P_M)x$$ 在物理里的读法是：把一个态"投影到某个子空间上"，$$\lVert P_Mx\rVert^2$$ 就是"落在该子空间里的概率"。这一读法在第 16 章会被系统化成投影算子值测度与谱定理。**Riesz 表示定理则是 Dirac 符号的合法性证明**：$$\langle\phi\mid A\mid\psi\rangle$$ 这个写法把左矢、算子、右矢三种东西自由搬动，靠的正是 $$H\cong H^*$$。
+**测量就是正交投影。** 定理 3.10 的分解 $$x=P_Mx+(I-P_M)x$$ 在物理里的读法是：把一个态"投影到某个子空间上"，$$\lVert P_Mx\rVert^2$$ 就是"落在该子空间里的概率"。这一读法在第 32 章会被系统化成投影算子值测度与谱定理。**Riesz 表示定理则是 Dirac 符号的合法性证明**：$$\langle\phi\mid A\mid\psi\rangle$$ 这个写法把左矢、算子、右矢三种东西自由搬动，靠的正是 $$H\cong H^*$$。
 
 **三者对应的这一章版本**：
 
@@ -819,7 +821,7 @@ $$\sum_{n\ge1}\frac{1}{n^{4}}=\frac{8\pi^{5}}{45\cdot16\pi}=\frac{\pi^{4}}{90} .
 
 **第二句：$$\lVert e_n-0\rVert=1\not\to0$$。** 因为 $$\lVert e_n\rVert=\sqrt{\langle e_n,e_n\rangle}=1$$ 对一切 $$n$$。
 
-**为什么不矛盾。** "$$\langle x,e_n\rangle\to0$$ 对每个 $$x$$"说的是：把 $$e_n$$ 用**每一个**固定向量去量，量出来的数趋于零。这是**逐向量（弱）**的收敛，等价于说 $$e_n$$ 在**弱拓扑**下趋于 $$0$$。而"$$e_n\to0$$ 于范数"要求 $$\lVert e_n\rVert\to0$$，即**一致地**小。Bessel 不等式给出的界 $$\lVert x\rVert^{2}$$ 依赖于 $$x$$，且**没有任何先验理由**让这个界随 $$n$$ 缩小。换个说法：$$x=\sum_n\langle x,e_n\rangle e_n$$（若 $$\lbrace e_n\rbrace$$ 是基）里每一项的系数趋于零，但每项的**长度**始终是 $$1$$——把无穷多个"长度为 $$1$$ 的成分"按系数衰减的方式叠加，整体仍然收敛。这就是"范数收敛严格强于弱收敛"的最简例子，也是第 04 章练习研究题 2 里"无穷维让 $$V\ne V^*$$"的同一条断层线。$$\blacksquare$$
+**为什么不矛盾。** "$$\langle x,e_n\rangle\to0$$ 对每个 $$x$$"说的是：把 $$e_n$$ 用**每一个**固定向量去量，量出来的数趋于零。这是**逐向量（弱）**的收敛，等价于说 $$e_n$$ 在**弱拓扑**下趋于 $$0$$。而"$$e_n\to0$$ 于范数"要求 $$\lVert e_n\rVert\to0$$，即**一致地**小。Bessel 不等式给出的界 $$\lVert x\rVert^{2}$$ 依赖于 $$x$$，且**没有任何先验理由**让这个界随 $$n$$ 缩小。换个说法：$$x=\sum_n\langle x,e_n\rangle e_n$$（若 $$\lbrace e_n\rbrace$$ 是基）里每一项的系数趋于零，但每项的**长度**始终是 $$1$$——把无穷多个"长度为 $$1$$ 的成分"按系数衰减的方式叠加，整体仍然收敛。这就是"范数收敛严格强于弱收敛"的最简例子，也是第 08 章练习研究题 2 里"无穷维让 $$V\ne V^*$$"的同一条断层线。$$\blacksquare$$
 
 （补一句：由定理 3.13，Hilbert 空间自反，弱拓扑与弱\*拓扑重合，这个例子里 $$e_n\xrightarrow{w}0$$ 但 $$\lVert e_n\rVert=1$$，说明**弱收敛不保范数**。）
 
@@ -891,15 +893,15 @@ $$\lVert\ell\rVert=\lVert y\rVert_{L^{2}}=\Big(\int_0^{1}e^{2x}dx\Big)^{1/2}=\sq
 
 与定理 3.14 (iv) 的估计 $$\sqrt{(e^{2}-1)/2}$$ 一致。
 
-**(iii)** 不是定理错了，是**空间缺了那个向量**。$$V=\mathbb{R}[x]$$ 不全，$$e^{x}$$ 这个"应该存在的极限"没有落脚处；把它补进去（完备化）之后，Riesz 表示立刻成立，$$y=e^{x}$$ 只是恰好在补进来的那部分里。**这正是第 04 章的 $$g^\flat$$ 从"单射"升格为"同构"的代价：不是换一个定理，而是换一个空间。** 换句话说，完备化就是"让泛函有资格被向量表示"这件事的收费口。$$\blacksquare$$
+**(iii)** 不是定理错了，是**空间缺了那个向量**。$$V=\mathbb{R}[x]$$ 不全，$$e^{x}$$ 这个"应该存在的极限"没有落脚处；把它补进去（完备化）之后，Riesz 表示立刻成立，$$y=e^{x}$$ 只是恰好在补进来的那部分里。**这正是第 08 章的 $$g^\flat$$ 从"单射"升格为"同构"的代价：不是换一个定理，而是换一个空间。** 换句话说，完备化就是"让泛函有资格被向量表示"这件事的收费口。$$\blacksquare$$
 
-**（接下一章）** 到这里 $$\mathbb{R}[x]$$ 的缺口被 $$L^{2}$$ 补上，Hilbert 空间的几何（投影、正交基、Riesz）全部到位——**下一章（第 16 章：从 Hamilton 到量子）就把这套几何交给物理：态是 $$L^{2}$$ 里的单位向量，可观测量是自伴算子，投影 $$P_M$$ 就是"测量落在 $$M$$ 里"的事件，而 Riesz 表示定理正是 Dirac 符号 $$\langle\phi\mid\psi\rangle$$ 得以自由搬运左右矢的原因。**
+**（接下一章）** 到这里 $$\mathbb{R}[x]$$ 的缺口被 $$L^{2}$$ 补上，Hilbert 空间的几何（投影、正交基、Riesz）全部到位——**下一章（第 32 章：从 Hamilton 到量子）就把这套几何交给物理：态是 $$L^{2}$$ 里的单位向量，可观测量是自伴算子，投影 $$P_M$$ 就是"测量落在 $$M$$ 里"的事件，而 Riesz 表示定理正是 Dirac 符号 $$\langle\phi\mid\psi\rangle$$ 得以自由搬运左右矢的原因。**
 
 **解 研2.** **(i)** 对 $$\alpha\in\mathbb{R}$$，
 
 $$\big\langle e^{i\alpha}\phi,\ e^{i\alpha}\psi\big\rangle=\int_{\mathbb{R}}\overline{e^{i\alpha}\phi(x)}\,e^{i\alpha}\psi(x)\,dx=\int_{\mathbb{R}}e^{-i\alpha}\overline{\phi(x)}\,e^{i\alpha}\psi(x)\,dx=\int_{\mathbb{R}}\overline{\phi(x)}\psi(x)\,dx=\langle\phi,\psi\rangle ,$$
 
-（用了 $$\overline{e^{i\alpha}}=e^{-i\alpha}$$ 与 $$e^{-i\alpha}e^{i\alpha}=1$$）。故乘 $$e^{i\alpha}$$ 保一切内积，特别地保范数：$$\lVert e^{i\alpha}\psi\rVert=\lVert\psi\rVert$$。由注 3.20，$$\overline{\phi}\psi=\lvert\phi\rvert\lvert\psi\rvert e^{i(\arg\psi-\arg\phi)}$$ 只依赖相位**差**，整体相位 $$\alpha$$ 在差里抵消。**于是内积无法区分 $$\psi$$ 与 $$e^{i\alpha}\psi$$**——在物理上这意味着"态"不是 $$L^{2}$$ 的单个向量，而是它的一个 $$U(1)$$ 轨道（这一点在第 24 章的射影表示里会正式化）。
+（用了 $$\overline{e^{i\alpha}}=e^{-i\alpha}$$ 与 $$e^{-i\alpha}e^{i\alpha}=1$$）。故乘 $$e^{i\alpha}$$ 保一切内积，特别地保范数：$$\lVert e^{i\alpha}\psi\rVert=\lVert\psi\rVert$$。由注 3.20，$$\overline{\phi}\psi=\lvert\phi\rvert\lvert\psi\rvert e^{i(\arg\psi-\arg\phi)}$$ 只依赖相位**差**，整体相位 $$\alpha$$ 在差里抵消。**于是内积无法区分 $$\psi$$ 与 $$e^{i\alpha}\psi$$**——在物理上这意味着"态"不是 $$L^{2}$$ 的单个向量，而是它的一个 $$U(1)$$ 轨道（这一点在第 48 章的射影表示里会正式化）。
 
 **(ii)** 取 $$\phi=\chi_{[0,1]}$$、$$\psi=i\chi_{[2,3]}$$（分别支在不相交区间 $$[0,1]$$ 与 $$[2,3]$$ 上）。则
 
@@ -911,9 +913,9 @@ $$\langle\phi,\psi\rangle=\int_{1}^{2}i\,dx=i .$$
 
 于是 $$\operatorname{Re}\langle\phi,\psi\rangle=0$$ 而 $$\operatorname{Im}\langle\phi,\psi\rangle=1\ne0$$。
 
-**(iii)** 由注 3.20 与经典题 2 的读法：$$\operatorname{Re}\langle\phi,\psi\rangle$$ 是**实数、对称**的部分（$$\overline{\operatorname{Re}\langle\phi,\psi\rangle}=\operatorname{Re}\langle\psi,\phi\rangle$$），它承担"概率与期望值"这类**可观测的实数**——$$\lvert\langle\phi,\psi\rangle\rvert^{2}$$ 给出"在态 $$\phi$$ 中测得态 $$\psi$$"的概率；$$\operatorname{Im}\langle\phi,\psi\rangle$$ 是**反对称**的部分（$$\operatorname{Im}\langle\phi,\psi\rangle=-\operatorname{Im}\langle\psi,\phi\rangle$$，是一个**辛形式**，与第 04 章 3.5 节、3.6 节的结构同源），它承担**正则对易关系 $$[q,p]=i\hbar$$ 那一侧**的代数信息：相位差的方向性（顺时针/逆时针）在虚部里，而量子力学的非交换性正来自这个反对称结构。$$\blacksquare$$
+**(iii)** 由注 3.20 与经典题 2 的读法：$$\operatorname{Re}\langle\phi,\psi\rangle$$ 是**实数、对称**的部分（$$\overline{\operatorname{Re}\langle\phi,\psi\rangle}=\operatorname{Re}\langle\psi,\phi\rangle$$），它承担"概率与期望值"这类**可观测的实数**——$$\lvert\langle\phi,\psi\rangle\rvert^{2}$$ 给出"在态 $$\phi$$ 中测得态 $$\psi$$"的概率；$$\operatorname{Im}\langle\phi,\psi\rangle$$ 是**反对称**的部分（$$\operatorname{Im}\langle\phi,\psi\rangle=-\operatorname{Im}\langle\psi,\phi\rangle$$，是一个**辛形式**，与第 08 章 3.5 节、3.6 节的结构同源），它承担**正则对易关系 $$[q,p]=i\hbar$$ 那一侧**的代数信息：相位差的方向性（顺时针/逆时针）在虚部里，而量子力学的非交换性正来自这个反对称结构。$$\blacksquare$$
 
-**（接下一章）** 到这一步，"Hilbert 空间 + 复 Hermite 内积的实部/虚部"已经把几何与代数都铺好了：**第 16 章（从 Hamilton 到量子：可观测量与本征态）会把 $$\operatorname{Re}$$ 的部分变成测量概率、把 $$\operatorname{Im}$$ 的部分变成 $$[q,p]=i\hbar$$，并把自伴算子搬上舞台——这正是本章定理 3.12、定理 3.13 与注 3.20 三件事合起来的物理面目。**
+**（接下一章）** 到这一步，"Hilbert 空间 + 复 Hermite 内积的实部/虚部"已经把几何与代数都铺好了：**第 32 章（从 Hamilton 到量子：可观测量与本征态）会把 $$\operatorname{Re}$$ 的部分变成测量概率、把 $$\operatorname{Im}$$ 的部分变成 $$[q,p]=i\hbar$$，并把自伴算子搬上舞台——这正是本章定理 3.12、定理 3.13 与注 3.20 三件事合起来的物理面目。**
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -921,13 +923,13 @@ $$\langle\phi,\psi\rangle=\int_{1}^{2}i\,dx=i .$$
 
 **2. 完备性是唯一的收费口。** 本章所有"$$=$$"最终都被某条 $$\varepsilon$$ 论证兑现：投影要用柯西列取极限，Riesz 要用闭凸集的极小元，Fourier 展开要用部分和柯西。**只要有人问"这一步为什么能取极限"，答案永远是完备性。** 这也是为什么 $$L^p$$、$$C(K)$$、$$\ell^p$$ 都被先做成 Banach 空间再谈别的。
 
-**3. 第 04 章的 $$g^\flat$$ 是本章的主题曲。** 有限维时它是同构，但那靠的是"$$\dim V=\dim V^{*}$$"这个维数巧合（第 04 章 定理 3.6 的证明里"满射"那一步用到了有限维），内积只贡献了单射。无穷维里维数不再相等（$$\mathbb{R}[x]$$：$$\aleph_0$$ 对 $$\mathfrak{c}$$），于是 $$g^\flat$$ 的地位必须被重新谈判：**它在 Hilbert 空间上是等距同构（定理 3.12、3.13），在不完备的内积空间上不是满射（定理 3.14），在非 Hilbert 的 Banach 空间上一般也不行（$$L^1$$ 与 $$L^\infty$$ 的可分性反例）。** 第 03 章的问题 3 问"$$V\cong V^*$$ 为什么在无穷维会崩"，本章的回答是：**崩的不是内积，是"维数保证同构"这条捷径；修好它的唯一办法是要求空间完备。**
+**3. 第 08 章的 $$g^\flat$$ 是本章的主题曲。** 有限维时它是同构，但那靠的是"$$\dim V=\dim V^{*}$$"这个维数巧合（第 08 章 定理 3.6 的证明里"满射"那一步用到了有限维），内积只贡献了单射。无穷维里维数不再相等（$$\mathbb{R}[x]$$：$$\aleph_0$$ 对 $$\mathfrak{c}$$），于是 $$g^\flat$$ 的地位必须被重新谈判：**它在 Hilbert 空间上是等距同构（定理 3.12、3.13），在不完备的内积空间上不是满射（定理 3.14），在非 Hilbert 的 Banach 空间上一般也不行（$$L^1$$ 与 $$L^\infty$$ 的可分性反例）。** 第 06 章的问题 3 问"$$V\cong V^*$$ 为什么在无穷维会崩"，本章的回答是：**崩的不是内积，是"维数保证同构"这条捷径；修好它的唯一办法是要求空间完备。**
 
 **4. 正交规范基把"函数"变成"数列"。** 定理 3.18 说所有无限维可分 Hilbert 空间都等距同构于 $$\ell^2$$，这句话是省力的极致：算 $$L^2$$ 里的几何等于算 $$\ell^2$$ 里的几何。定理 3.17 给出换算公式（Fourier 展开 + Parseval），经典题 3 与练习竞赛题 1 演示了它如何把难以手算的级数变成机械的积分。**注意区分"几何收敛"与"点态收敛"**：注 3.19 说明 Fourier 级数的 $$L^2$$ 收敛是正交基给的，而逐点发散是 Dirichlet 核 $$L^1$$ 范数无界（$$\sim\log N$$）造成的——这是本章最容易被误读的一点。
 
 **5. 平行四边形的判别力。** 定理 3.5 的 (3.2) 是一条**代数指纹**：它把"范数来自内积"变成可检验的恒等式，并一举把 $$\ell^p,\ L^p\ (p\ne2)$$ 从 Hilbert 家族里踢出去。练习基础题 4 提醒了一个容易犯的错：入式的是**范数的平方**，不是范数本身。这条判据在后续章节还会以别的面貌出现（如 Hilbert 空间的自反性、弱拓扑与弱\*拓扑重合都依赖它）。
 
-**下一章的悬念（第 16 章：从 Hamilton 到量子——可观测量与本征态）。** 本章把舞台搭好了：$$H$$ 是 Hilbert 空间，$$H\cong H^*$$ 由 Riesz 给出，正交投影 $$P_M$$ 是"到子空间的最短距离"。但真正的物理还没上场。下一章做三件事：第一，把 $$L^2(\mathbb{R})$$ 上的**复 Hermite 内积**的实部与虚部分开读——实部给概率与期望值，虚部给正则对易关系 $$[q,p]=i\hbar$$（这正是第 04 章练习研究题 2 留下的那句话）；第二，把**自伴算子**定义为"内积对称"的算子（$$\langle Tx,y\rangle=\langle x,Ty\rangle$$），并用本章的定理 3.12 说明为什么在 Hilbert 空间上"自伴 $$=$$ 可以搬来搬去"，而在 Banach 空间上只能谈对偶空间之间的 $$A^{*}:Y^{*}\to X^{*}$$（MP39 的起点）；第三，把第 02 章的"$$J^2=-I$$、谱为 $$\pm i$$"与本章的 $$L^2$$ 正交基合起来，得到量子力学最早的那批本征值问题（谐振子、氢原子）。**一句话：本章给的是**几何**，下一章给的是**物理**——同一个 Hilbert 空间的两副面孔。**
+**下一章的悬念（第 32 章：从 Hamilton 到量子——可观测量与本征态）。** 本章把舞台搭好了：$$H$$ 是 Hilbert 空间，$$H\cong H^*$$ 由 Riesz 给出，正交投影 $$P_M$$ 是"到子空间的最短距离"。但真正的物理还没上场。下一章做三件事：第一，把 $$L^2(\mathbb{R})$$ 上的**复 Hermite 内积**的实部与虚部分开读——实部给概率与期望值，虚部给正则对易关系 $$[q,p]=i\hbar$$（这正是第 08 章练习研究题 2 留下的那句话）；第二，把**自伴算子**定义为"内积对称"的算子（$$\langle Tx,y\rangle=\langle x,Ty\rangle$$），并用本章的定理 3.12 说明为什么在 Hilbert 空间上"自伴 $$=$$ 可以搬来搬去"，而在 Banach 空间上只能谈对偶空间之间的 $$A^{*}:Y^{*}\to X^{*}$$（MP39 的起点）；第三，把第 04 章的"$$J^2=-I$$、谱为 $$\pm i$$"与本章的 $$L^2$$ 正交基合起来，得到量子力学最早的那批本征值问题（谐振子、氢原子）。**一句话：本章给的是**几何**，下一章给的是**物理**——同一个 Hilbert 空间的两副面孔。**
 
 **延伸阅读。**
 
@@ -935,15 +937,13 @@ $$\langle\phi,\psi\rangle=\int_{1}^{2}i\,dx=i .$$
 - J. B. Conway, *A Course in Functional Analysis*, GTM 96（Ch. 1）：几何视角下的 Hilbert 空间，投影定理的强形式（闭凸集）。
 - MIT OCW 18.102 *Introduction to Functional Analysis*（第 14–17 讲）：Melrose 讲义路径，即知识库 `泛函分析/mit-18-102/ch08.md–ch10.md` 的来源；Fejér 绕道与 $$L^2$$ 收敛在这份讲义里讲得最清楚。
 - M. Reed, B. Simon, *Methods of Modern Mathematical Physics*, Vol. I（Ch. II）：把本章内容直接作为量子力学的地基来使用——原专栏 MP38 推荐的就是这套书。
-- R. Vershynin, *Lectures in Functional Analysis*（第 4–5 章）：从紧算子与谱理论回头看 Hilbert 空间，是第 16 章之后的路。
+- R. Vershynin, *Lectures in Functional Analysis*（第 4–5 章）：从紧算子与谱理论回头看 Hilbert 空间，是第 32 章之后的路。
 - 原专栏：MP38（泛函分析与量子力学——度量空间、$$L^p$$、Banach/Hilbert、Riesz 引理）、MP39（量子力学中的内积结构——伴随算子、Hermite 共轭、Dirac 符号）；本章 3.1–3.4 与注 3.20 直接来自这两篇，入口题、定理 3.14 与经典题 4 为本书自编。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch14_de_Rham上同调.md">← 第14章 de Rham 上同调</a></div>
+  <div><a href="ch29_Hilbert空间与内积结构_上.md">← 第29章 Hilbert 空间与内积结构·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch16_从Hamilton到量子_可观测量与本征态.md">第16章 从 Hamilton 到量子：可观测量与本征态 →</a></div>
+  <div><a href="ch31_从Hamilton到量子_可观测量与本征态_上.md">第31章 从 Hamilton 到量子：可观测量与本征态·上 →</a></div>
 </div>

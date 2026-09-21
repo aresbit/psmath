@@ -2,11 +2,13 @@
 layout: default
 ---
 
-# 第28章: 复半单 Lie 代数与根系 (Complex Semisimple Lie Algebras and Root Systems)
+# 第56章: 复半单 Lie 代数与根系·下：完整推导 (Complex Semisimple Lie Algebras and Root Systems · Part II: Full Derivation)
+
 > 对应原专栏: MP73
 > 专家依据: `_experts/algebra/lie-algebra-root-systems.md`（主，主场）+ `_experts/algebra/_SKILL.md`
 > 知识库依据: `opc2/knowledge/math/李代数/`（15 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
+> 配套预备: 见 第55章 复半单 Lie 代数与根系·上（同一主题的具体铺垫，建议先读）
 
 ## 一、本章概要 (Overview)
 
@@ -14,11 +16,11 @@ layout: default
 
 答案是能，而且表小得惊人。本章要把「半单」这个词从一个否定性定义（「没有可解理想」）变成一个**可分类的结构**：用 Cartan 判据判定半单性，用 Cartan 子代数把 $$\operatorname{ad}$$ 同时对角化，把整个代数拆成根空间 $$L = H \oplus \bigoplus_{\alpha} L_\alpha$$，再把根的集合抽出来当成一个独立的欧氏几何对象（根系），最后压成一张**只能有九种形状**的图（Dynkin 图）。这条链的终点是一条分类定理：复单 Lie 代数恰有 $$A_n,B_n,C_n,D_n$$ 四族与 $$E_6,E_7,E_8,F_4,G_2$$ 五个例外。
 
-与前后章的关系：从第 27 章来（那里是 Lie 群与指数映射的微分侧），本章走的是**结构侧**。第 17 章的谐振子升降算子与第 26 章的 $$SU(2)$$ 会在本章被**认领**——但不是按最省事的那个猜法认领。入口题 (iv)–(v) 要破除一个几乎人人都会犯的误认：谐振子的 $$a,a^\dagger$$ **不是** $$\mathfrak{sl}(2)$$ 的 $$E,F$$。它们是**振荡子代数 (oscillator algebra)** 的生成元，与 $$\mathfrak{sl}(2)$$ 共享「升权 / 降权」的语法却不是同一个代数（见 入口题 (iv) 与 4.3 节）。而第 26 章的 $$SU(2)$$ 则是货真价实的 $$A_1$$。往第 29 章去（Clifford 代数与 Lorentz 群），会把「几何对象的不同表示」这件事从根系的整性约束里再抽一次。
+与前后章的关系：从第 54 章来（那里是 Lie 群与指数映射的微分侧），本章走的是**结构侧**。第 34 章的谐振子升降算子与第 52 章的 $$SU(2)$$ 会在本章被**认领**——但不是按最省事的那个猜法认领。入口题 (iv)–(v) 要破除一个几乎人人都会犯的误认：谐振子的 $$a,a^\dagger$$ **不是** $$\mathfrak{sl}(2)$$ 的 $$E,F$$。它们是**振荡子代数 (oscillator algebra)** 的生成元，与 $$\mathfrak{sl}(2)$$ 共享「升权 / 降权」的语法却不是同一个代数（见 入口题 (iv) 与 4.3 节）。而第 52 章的 $$SU(2)$$ 则是货真价实的 $$A_1$$。往第 58 章去（Clifford 代数与 Lorentz 群），会把「几何对象的不同表示」这件事从根系的整性约束里再抽一次。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-> 题目来源：**自编**。母题有二：一是第 17 章谐振子那道题的最后一问（「能级等间距是哪个代数事实的推论？」），二是 Lie 理论史上真实存在过的猜想——Killing 在 1888 年列出的「所有单 Lie 代数」表里多算了几个、又漏了几个，直到 Cartan 用根系的整性约束重算才定稿。把「算一个具体例子」与「证明一张表是完备的」并成一道题，是本章的设计。
+> 题目来源：**自编**。母题有二：一是第 34 章谐振子那道题的最后一问（「能级等间距是哪个代数事实的推论？」），二是 Lie 理论史上真实存在过的猜想——Killing 在 1888 年列出的「所有单 Lie 代数」表里多算了几个、又漏了几个，直到 Cartan 用根系的整性约束重算才定稿。把「算一个具体例子」与「证明一张表是完备的」并成一道题，是本章的设计。
 
 **(i)** 考虑 $$\mathfrak{sl}(2,\mathbb C)$$，即全体迹为零的 $$2\times 2$$ 复矩阵。取
 
@@ -42,11 +44,11 @@ $$V = \operatorname{span}\{v_0,v_1,\dots,v_m\},\qquad \dim V = m+1 .$$
 
 也就是说，$$\mathfrak{sl}(2,\mathbb C)$$ 的全部有限维不可约表示由**一个非负整数**完全标记。
 
-**(iv) 先破除一个几乎人人都会犯的误认。** 现在看第 17 章的谐振子：
+**(iv) 先破除一个几乎人人都会犯的误认。** 现在看第 34 章的谐振子：
 
 $$a = \frac{1}{\sqrt{2m\hbar\omega}}\bigl(m\omega X + iP\bigr),\qquad a^\dagger = \frac{1}{\sqrt{2m\hbar\omega}}\bigl(m\omega X - iP\bigr),$$
 
-数算子 $$N = a^\dagger a$$，Hamilton 量 $$H_{\mathrm{osc}} = \hbar\omega\bigl(N+\tfrac12 I\bigr)$$，第 17 章的定理给出
+数算子 $$N = a^\dagger a$$，Hamilton 量 $$H_{\mathrm{osc}} = \hbar\omega\bigl(N+\tfrac12 I\bigr)$$，第 34 章的定理给出
 
 $$[N,a] = -a,\qquad [N,a^\dagger] = a^\dagger,\qquad [a,a^\dagger] = I .$$
 
@@ -66,7 +68,7 @@ $$\mathfrak{osc} = \operatorname{span}\{a,\ a^\dagger,\ N,\ I\},\qquad [N,a]=-a,
 
 $$\mathfrak h=\operatorname{span}\{a,a^\dagger,I\}\cong\text{Heisenberg 代数}$$
 
-是理想（由 $$[N,a]=-a$$、$$[N,a^\dagger]=a^\dagger$$，$$\operatorname{ad}N$$ 把 $$\mathfrak h$$ 映到自身），而 $$N$$ 通过 $$\operatorname{ad}N$$ 作用在 $$\mathfrak h$$ 上（特征值 $$\pm1$$ 与 $$0$$）。用第 27 章的话说，这是一个**中心扩张**：那条 $$[a,a^\dagger]=I$$ 落在中心维里。
+是理想（由 $$[N,a]=-a$$、$$[N,a^\dagger]=a^\dagger$$，$$\operatorname{ad}N$$ 把 $$\mathfrak h$$ 映到自身），而 $$N$$ 通过 $$\operatorname{ad}N$$ 作用在 $$\mathfrak h$$ 上（特征值 $$\pm1$$ 与 $$0$$）。用第 54 章的话说，这是一个**中心扩张**：那条 $$[a,a^\dagger]=I$$ 落在中心维里。
 
 $$\mathfrak{osc}$$ 与 $$\mathfrak{sl}(2)$$ **共享升降语法**（都有「升权算子」「降权算子」「测权算子」三个角色），但**不是同一个代数**——差别就在那个换位子的落点：$$\mathfrak{sl}(2)$$ 的 $$[E,F]=H$$ 落在**可对角化的 Cartan 元**上，$$\mathfrak{osc}$$ 的 $$[a,a^\dagger]=I$$ 落在**中心**上。这个差别不是技术细节，它决定了两者表示论的根本不同（见 (vi)）。
 
@@ -78,7 +80,7 @@ $$\tilde E = \tfrac12 a^{\dagger\,2},\qquad \tilde F = -\tfrac12 a^{2},\qquad \t
 
 $$[\tilde H,\tilde E] = \tfrac12[N,a^{\dagger\,2}] = a^{\dagger\,2} = 2\tilde E,\qquad [\tilde H,\tilde F] = -\tfrac12[N,a^{2}] = a^{2} = -2\tilde F .$$
 
-第三个关系要算一下。由 $$[a,a^\dagger]=I$$ 可证 $$[a^{\dagger\,2},a^2] = -4N-2$$（反复使用 $$a^{\dagger\,n}a = a\,a^{\dagger\,n}-n a^{\dagger\,n-1}$$ 即可；或者用第 17 章的定理 3.9 先算 $$a^{\dagger\,2}a^2 = N^2-N$$、$$a^2a^{\dagger\,2}=N^2+3N+2$$，相减得 $$-4N-2$$）。于是
+第三个关系要算一下。由 $$[a,a^\dagger]=I$$ 可证 $$[a^{\dagger\,2},a^2] = -4N-2$$（反复使用 $$a^{\dagger\,n}a = a\,a^{\dagger\,n}-n a^{\dagger\,n-1}$$ 即可；或者用第 34 章的定理 3.9 先算 $$a^{\dagger\,2}a^2 = N^2-N$$、$$a^2a^{\dagger\,2}=N^2+3N+2$$，相减得 $$-4N-2$$）。于是
 
 $$[\tilde E,\tilde F] = -\tfrac14[a^{\dagger\,2},a^2] = -\tfrac14(-4N-2) = N+\tfrac12 I = \tilde H .$$
 
@@ -573,7 +575,7 @@ $$D_n:\ W\cong(\mathbb Z/2)^{n-1}\rtimes S_n,\ \lvert W\rvert=2^{n-1}n!;\qquad G
 
 ### 4.3 物理：从能级到标准模型
 
-**接口一（第 17 章 → 本章）：一个必须当场拆穿的误认。** 谐振子的 $$a,a^\dagger,N$$ **不是** $$\mathfrak{sl}(2)$$ 的 $$E,F,H$$（详见 入口题 (iv)–(vi)），它们是**振荡子代数** $$\mathfrak{osc}=\operatorname{span}\{a,a^\dagger,N,I\}$$（四维）的生成元。区别是结构性的：
+**接口一（第 34 章 → 本章）：一个必须当场拆穿的误认。** 谐振子的 $$a,a^\dagger,N$$ **不是** $$\mathfrak{sl}(2)$$ 的 $$E,F,H$$（详见 入口题 (iv)–(vi)），它们是**振荡子代数** $$\mathfrak{osc}=\operatorname{span}\{a,a^\dagger,N,I\}$$（四维）的生成元。区别是结构性的：
 
 | | $$\mathfrak{sl}(2)$$ | $$\mathfrak{osc}$$ |
 |---|---|---|
@@ -586,7 +588,7 @@ $$D_n:\ W\cong(\mathbb Z/2)^{n-1}\rtimes S_n,\ \lvert W\rvert=2^{n-1}n!;\qquad G
 
 这条辨析在原子物理里的对应物是**谱生成代数 (spectrum generating algebra)**：氢原子的能级 $$E_n=-1/n^2$$ 并不等间距，但它的 $$n^2$$ 重简并由 $$\mathfrak{so}(4)$$ 的表示论解释，而 $$\mathfrak{so}(4)\cong\mathfrak{sl}(2)\oplus\mathfrak{sl}(2)$$——又是 $$A_1\times A_1$$（例 3.37）。**注意逻辑方向**：不是因「能级等间距」才去找 $$\mathfrak{sl}(2)$$，而是发现一个**额外**的对称代数作用在谱上、它的权链给出了简并结构。
 
-**接口二（第 26 章 → 本章）**：$$SU(2)$$ 的 Lie 代数 $$\mathfrak{su}(2)$$ 复化后是 $$\mathfrak{sl}(2,\mathbb C)$$，其 Dynkin 图是**一个孤立顶点** $$A_1$$。第 26 章用四元数与双重覆盖算出的「不可约表示维数 $$\lambda+1$$」在本章就是 入口题 (iii) 的分类定理，来源是一个**组合数据**（整数的最高权），与 $$S^3$$ 的拓扑无关：第 26 章看**整体拓扑**（$$S^3$$ 双重覆盖 $$SO(3)$$），本章看**局部代数**（$$\mathfrak{sl}(2)$$ 的权链）。
+**接口二（第 52 章 → 本章）**：$$SU(2)$$ 的 Lie 代数 $$\mathfrak{su}(2)$$ 复化后是 $$\mathfrak{sl}(2,\mathbb C)$$，其 Dynkin 图是**一个孤立顶点** $$A_1$$。第 52 章用四元数与双重覆盖算出的「不可约表示维数 $$\lambda+1$$」在本章就是 入口题 (iii) 的分类定理，来源是一个**组合数据**（整数的最高权），与 $$S^3$$ 的拓扑无关：第 52 章看**整体拓扑**（$$S^3$$ 双重覆盖 $$SO(3)$$），本章看**局部代数**（$$\mathfrak{sl}(2)$$ 的权链）。
 
 **接口三（本章 → 标准模型）**：强相互作用的规范群 $$SU(3)$$ 对应 $$\mathfrak{sl}(3,\mathbb C)=A_2$$。夸克的三种「色」张成基础表示 $$V(\omega_1)$$（三维），胶子构成伴随表示 $$V(\omega_1+\omega_2)$$（八维，故称「八重态」）。从两个顶点的一张图出发、用最高权格点读出维数，就解释了两个最基本的粒子多重态——这是 Dynkin 图在实验物理里最直接的兑现。
 
@@ -983,15 +985,15 @@ $$\theta=2\alpha_1+3\alpha_2=(-2,1,1)=\varepsilon_2+\varepsilon_3-2\varepsilon_1
 
 因为 $$\theta+\alpha_1=(-3,0,3)$$ 与 $$\theta+\alpha_2=(-2,2,0)=2(\varepsilon_2-\varepsilon_1)$$ 都**不是**根 ✓。$$\blacksquare$$
 
-**解 研2.** **思路**：这道题的结论会在第 29 章被完整兑现，这里只给结构上的推理。
+**解 研2.** **思路**：这道题的结论会在第 58 章被完整兑现，这里只给结构上的推理。
 
 **第一步：两个图。** 由 3.5 段，$$B_n$$ 是一条链（末端一条双边，箭头指向末端的短根），$$D_n$$ 是一条链在最右端**分叉成两个端点**。
 
 **第二步：端点对应的权。** 图的**端点**（度数 $$1$$ 的顶点）对应的基本权是**极小维表示**的最高权：$$B_n$$ 只有一个端点（末端短根 $$\alpha_n$$），对应基本权 $$\omega_n$$；$$D_n$$ 有**两个**端点，对应两个基本权 $$\omega_{n-1},\omega_n$$。
 
-**第三步：为什么「两个端点 = 两个旋量表示」。** 旋量表示是 $$\mathfrak{so}(N)$$ 的**不能**由张量积构造、只能由 Clifford 代数构造的表示。关键事实（第 29 章会证）：$$\mathrm{Cl}(2n+1)$$ 有**唯一的**不可约模（维数 $$2^n$$），故 $$\mathfrak{so}(2n+1)$$ 只有一个旋量表示——图一个端点；而 $$\mathrm{Cl}(2n)$$ 有**两个**不等价的不可约模（维数各 $$2^{n-1}$$），因为复体积元 $$\omega_{\mathbb C}=\prod_j(e_{2j-1}+ie_{2j})$$ 在模上作用为 $$\pm1$$，给出手性分裂——图两个端点。
+**第三步：为什么「两个端点 = 两个旋量表示」。** 旋量表示是 $$\mathfrak{so}(N)$$ 的**不能**由张量积构造、只能由 Clifford 代数构造的表示。关键事实（第 58 章会证）：$$\mathrm{Cl}(2n+1)$$ 有**唯一的**不可约模（维数 $$2^n$$），故 $$\mathfrak{so}(2n+1)$$ 只有一个旋量表示——图一个端点；而 $$\mathrm{Cl}(2n)$$ 有**两个**不等价的不可约模（维数各 $$2^{n-1}$$），因为复体积元 $$\omega_{\mathbb C}=\prod_j(e_{2j-1}+ie_{2j})$$ 在模上作用为 $$\pm1$$，给出手性分裂——图两个端点。
 
-**第四步（机制）**：从 $$D_n$$ 的图分叉处切掉一个端点，图变成 $$B_{n-1}$$ 的链——这是**限制到子代数**的分支规则在图形上的影子；两个手性模在限制到 $$B_{n-1}$$ 时都变成同一个旋量模的像。**这恰好是第 29 章要展开的起点**：$$\mathrm{Cl}(V,Q)$$ 的不可约模「一个还是两个」，由 $$\dim V$$ 的奇偶决定，也就是由 Dynkin 图末端分不分叉决定。$$\blacksquare$$
+**第四步（机制）**：从 $$D_n$$ 的图分叉处切掉一个端点，图变成 $$B_{n-1}$$ 的链——这是**限制到子代数**的分支规则在图形上的影子；两个手性模在限制到 $$B_{n-1}$$ 时都变成同一个旋量模的像。**这恰好是第 58 章要展开的起点**：$$\mathrm{Cl}(V,Q)$$ 的不可约模「一个还是两个」，由 $$\dim V$$ 的奇偶决定，也就是由 Dynkin 图末端分不分叉决定。$$\blacksquare$$
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
@@ -1005,7 +1007,7 @@ $$\theta=2\alpha_1+3\alpha_2=(-2,1,1)=\varepsilon_2+\varepsilon_3-2\varepsilon_1
 
 **5. 一个当场拆穿的误认（本章的额外收获）。** 谐振子的升降算子**不是** $$\mathfrak{sl}(2)$$，而是**振荡子代数**的生成元；区别在于关键换位子落在中心还是落在 Cartan 元上。「能级等间距」应归给振荡子代数加 $$N$$ 的正性。一般教训：**判断两个 Lie 代数是否同构，不要看生成元「长得像什么」（「升权/降权/测权」这类角色命名是表示论层面的，可以被不同代数共享），要看换位子的落点（中心？Cartan？理想？）——这是结构层面、可验证的。**
 
-**下一章的悬念**：$$D_n$$（$$\mathfrak{so}(2n,\mathbb C)$$）的 Dynkin 图末端**分叉成两个端点**，而 $$B_n$$（$$\mathfrak{so}(2n+1)$$）是一条链。研 2 说过这对应「$$\mathfrak{so}(2n)$$ 有两个半旋量表示、$$\mathfrak{so}(2n+1)$$ 只有一个」。这个「两个 vs 一个」从哪来？答案是 **Clifford 代数 $$\mathrm{Cl}(V,Q)$$ 的不可约模个数**：维数为偶时复体积元给出 $$\pm1$$ 的手性分裂，为奇时不存在。第 29 章（Clifford 代数与 Lorentz 群）将把这套结构完整建立起来，并顺手给出相对论旋量（Dirac / Weyl / Majorana）的代数定义。**从 Dynkin 图的一个分叉，到电子的相对论波动方程——中间要走的正是第 29 章。**
+**下一章的悬念**：$$D_n$$（$$\mathfrak{so}(2n,\mathbb C)$$）的 Dynkin 图末端**分叉成两个端点**，而 $$B_n$$（$$\mathfrak{so}(2n+1)$$）是一条链。研 2 说过这对应「$$\mathfrak{so}(2n)$$ 有两个半旋量表示、$$\mathfrak{so}(2n+1)$$ 只有一个」。这个「两个 vs 一个」从哪来？答案是 **Clifford 代数 $$\mathrm{Cl}(V,Q)$$ 的不可约模个数**：维数为偶时复体积元给出 $$\pm1$$ 的手性分裂，为奇时不存在。第 58 章（Clifford 代数与 Lorentz 群）将把这套结构完整建立起来，并顺手给出相对论旋量（Dirac / Weyl / Majorana）的代数定义。**从 Dynkin 图的一个分叉，到电子的相对论波动方程——中间要走的正是第 58 章。**
 
 **延伸阅读**：
 
@@ -1014,13 +1016,11 @@ $$\theta=2\alpha_1+3\alpha_2=(-2,1,1)=\varepsilon_2+\varepsilon_3-2\varepsilon_1
 - **N. Bourbaki, *Lie Groups and Lie Algebras*, Ch. 4–6** —— 根系的「字典」：九加五型的根、Weyl 群、基本权一览表，适合当查询手册。
 - **R. Carter, *Lie Algebras of Finite and Affine Type*** —— 想走到 Kac–Moody 与仿射型从这里接着走；仿射 Dynkin 图正是本章「正定」放松为「半正定」时多出来的那批。
 - **H. Georgi, *Lie Algebras in Particle Physics*** —— 物理侧对照：八重道、电弱、$$\mathfrak{so}(10)$$ / $$E_6$$ 大统一模型，全是本章分类表的直接使用。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch27_Lie代数与指数映射.md">← 第27章 Lie 代数与指数映射</a></div>
+  <div><a href="ch55_复半单Lie代数与根系_上.md">← 第55章 复半单 Lie 代数与根系·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch29_Clifford代数与Lorentz群.md">第29章 Clifford 代数与 Lorentz 群 →</a></div>
+  <div><a href="ch57_Clifford代数与Lorentz群_上.md">第57章 Clifford 代数与 Lorentz 群·上 →</a></div>
 </div>

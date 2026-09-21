@@ -2,7 +2,9 @@
 layout: default
 ---
 
-# 第20章: Banach 代数与 C\* 代数 (Banach Algebras and C\*-Algebras)
+# 第40章: Banach 代数与 C\* 代数·下：完整推导 (Banach Algebras and C\*-Algebras · Part II: Full Derivation)
+
+> 配套预备: 见 第39章 Banach 代数与 C\* 代数·上（同一主题的具体铺垫，建议先读）
 
 > 对应原专栏: MP53–MP54
 > 专家依据: `_experts/analysis/functional-analysis.md`（主）+ `_experts/analysis/spectral-theory.md`
@@ -11,15 +13,15 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
-第 18 章把「谱」定义成算子 $$\lambda I - T$$ 不可逆的标量集合，第 19 章用投影算子值测度把正规算子写成 $$T = \int z \, dE(z)$$。这两章里，「算子」始终是主角。但第 18 章留下了一个从未被回答的问题：**为什么自伴算子的谱一定落在实轴上？** 谱定理本身答不了它——谱定理是「给定自伴 $$T$$，构造 $$E$$」，它预设了 $$T$$ 自伴，却没有解释这条件如何逼出实数谱。
+第 36 章把「谱」定义成算子 $$\lambda I - T$$ 不可逆的标量集合，第 38 章用投影算子值测度把正规算子写成 $$T = \int z \, dE(z)$$。这两章里，「算子」始终是主角。但第 36 章留下了一个从未被回答的问题：**为什么自伴算子的谱一定落在实轴上？** 谱定理本身答不了它——谱定理是「给定自伴 $$T$$，构造 $$E$$」，它预设了 $$T$$ 自伴，却没有解释这条件如何逼出实数谱。
 
 本章把镜头从「一个算子」退到「这个算子所在的代数」。一旦不盯着具体的 $$T$$、而是研究 $$T$$ 所在的代数 $$\mathcal A$$ 本身，谱就脱去了算子外衣，成为一个纯代数概念：$$\sigma(a) = \lbrace \lambda : \lambda e - a \text{ 不可逆} \rbrace$$。在这个高度上，**Gelfand 表示定理**说：任何含单位的交换 Banach 代数都同构于某个紧 Hausdorff 空间上的连续函数代数的子代数，于是
 
 $$\sigma(a) = \Gamma(a)(\Delta(\mathcal A)) \qquad \text{「元素的谱」} = \text{「函数的值域」}.$$
 
-再补上「对合」与 **C\* 恒等式** $$\lVert a^* a \rVert = \lVert a \rVert^2$$，**Arens 引理** 便一句话判定了自伴元的 Gelfand 表示是实值函数——第 18 章的悬念就此了结，量子力学「可观测量必须是实数」的公理有了数学根据。
+再补上「对合」与 **C\* 恒等式** $$\lVert a^* a \rVert = \lVert a \rVert^2$$，**Arens 引理** 便一句话判定了自伴元的 Gelfand 表示是实值函数——第 36 章的悬念就此了结，量子力学「可观测量必须是实数」的公理有了数学根据。
 
-从全书看，这是「对偶」这个动作第三次出现：第 03 章对偶的是向量空间，第 15 章（Riesz 表示）对偶的是 Hilbert 空间，本章对偶的是**代数本身**。前两次的对偶对象是「有线性结构的集合」，这次的对象还背着乘法——这预示着对偶不再只是空间与空间的配对，而会升级成范畴与范畴的等价（第 31 章）。
+从全书看，这是「对偶」这个动作第三次出现：第 06 章对偶的是向量空间，第 30 章（Riesz 表示）对偶的是 Hilbert 空间，本章对偶的是**代数本身**。前两次的对偶对象是「有线性结构的集合」，这次的对象还背着乘法——这预示着对偶不再只是空间与空间的配对，而会升级成范畴与范畴的等价（第 62 章）。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
@@ -61,7 +63,7 @@ $$\sigma(a) = \Gamma(a)(K) \qquad \text{对一切 } a \in \mathcal A .$$
 
 ### 3.1 从线性空间到代数
 
-第 01 章说过：复平面 $$\mathbb{C}$$ 相对于实平面 $$\mathbb{R}^2$$，多出来的东西就是那个二元乘法。把这句话抽象出来，就是本节的主角。
+第 02 章说过：复平面 $$\mathbb{C}$$ 相对于实平面 $$\mathbb{R}^2$$，多出来的东西就是那个二元乘法。把这句话抽象出来，就是本节的主角。
 
 **定义 3.1（赋范代数与 Banach 代数, normed algebra / Banach algebra）** 设 $$\mathcal A$$ 是复线性空间，其上另给一个二元运算 $$\mathcal A \times \mathcal A \to \mathcal A$$，$$(a,b) \mapsto ab$$，称为**乘法 (multiplication)**。若乘法满足
 
@@ -88,7 +90,7 @@ $$(a * b)_n = \sum_{k \in \mathbb{Z}} a_k \, b_{n-k} .$$
 
 ### 3.2 代数的谱
 
-第 18 章的谱定义里出现了 $$T$$、$$I$$ 与「$$H$$ 上的可逆」，处处依赖 Hilbert 空间。下面的定义把它剥到只剩代数运算。
+第 36 章的谱定义里出现了 $$T$$、$$I$$ 与「$$H$$ 上的可逆」，处处依赖 Hilbert 空间。下面的定义把它剥到只剩代数运算。
 
 **定义 3.2（可逆群与谱, group of invertibles / spectrum）** 设 $$\mathcal A$$ 是含单位的 Banach 代数。记
 $$G(\mathcal A) = \lbrace a \in \mathcal A : a \text{ 在 } \mathcal A \text{ 中可逆} \rbrace$$
@@ -96,7 +98,7 @@ $$G(\mathcal A) = \lbrace a \in \mathcal A : a \text{ 在 } \mathcal A \text{ �
 
 $$\sigma_{\mathcal A}(a) = \lbrace \lambda \in \mathbb{C} : \lambda e - a \notin G(\mathcal A) \rbrace, \qquad \rho_{\mathcal A}(a) = \mathbb{C} \setminus \sigma_{\mathcal A}(a) .$$
 
-$$\sigma_{\mathcal A}(a)$$ 中的元素称为 $$a$$ 的**谱点**。当 $$\mathcal A = \mathcal B(H)$$ 时，这就是第 18 章已经用过的 $$\sigma(T)$$，所以我们不再区分记号，一律写 $$\sigma(a)$$。
+$$\sigma_{\mathcal A}(a)$$ 中的元素称为 $$a$$ 的**谱点**。当 $$\mathcal A = \mathcal B(H)$$ 时，这就是第 36 章已经用过的 $$\sigma(T)$$，所以我们不再区分记号，一律写 $$\sigma(a)$$。
 
 **命题 3.3（Neumann 级数；可逆群是开集）** 设 $$\mathcal A$$ 含单位、$$\lVert e \rVert = 1$$。
 
@@ -107,7 +109,7 @@ $$(e - a)^{-1} = \sum_{n=0}^{\infty} a^n, \qquad \lVert (e-a)^{-1} \rVert \le \f
 
 **证明思路.** (i) 把截断和 $$s_N = e + a + \dots + a^{N-1}$$ 与 $$(e-a)$$ 相乘，中间的项全部相消，得到 $$(e-a)s_N = e - a^N$$。只要证明 $$a^N \to 0$$、$$s_N$$ 收敛，就让 $$N \to \infty$$。(ii) 在 (i) 的基础上，把可逆元 $$a$$ 附近的小扰动写成 $$a + h = a\,(e + a^{-1}h)$$。
 
-**证明.** (i) 由次乘性归纳可得 $$\lVert a^n \rVert \le \lVert a \rVert^n$$，故 $$\sum_{n \ge 0} \lVert a^n \rVert \le \sum_{n\ge0}\lVert a \rVert^n = (1-\lVert a \rVert)^{-1} < \infty$$。由 $$\mathcal A$$ 完备与「绝对可和蕴含收敛」（见第 18 章的完备性判据），级数 $$s = \sum_{n\ge0} a^n$$ 在 $$\mathcal A$$ 中收敛。又
+**证明.** (i) 由次乘性归纳可得 $$\lVert a^n \rVert \le \lVert a \rVert^n$$，故 $$\sum_{n \ge 0} \lVert a^n \rVert \le \sum_{n\ge0}\lVert a \rVert^n = (1-\lVert a \rVert)^{-1} < \infty$$。由 $$\mathcal A$$ 完备与「绝对可和蕴含收敛」（见第 36 章的完备性判据），级数 $$s = \sum_{n\ge0} a^n$$ 在 $$\mathcal A$$ 中收敛。又
 
 $$(e - a)s_N = s_N - a s_N = (e + a + \dots + a^{N-1}) - (a + a^2 + \dots + a^{N}) = e - a^N .$$
 
@@ -147,9 +149,9 @@ $$R(\lambda) - R(\mu) = R(\lambda)\big[(\mu e - a) - (\lambda e - a)\big]R(\mu) 
 
 $$\frac{u(\lambda) - u(\mu)}{\lambda - \mu} = -\,f\big(R(\lambda)R(\mu)\big) \xrightarrow{\ \lambda \to \mu\ } -f\big(R(\mu)^2\big),$$
 
-最后一步用了 $$R$$ 的连续性（命题 3.3 (ii)：$$R(\lambda) \to R(\mu)$$，乘法连续）。故 $$u$$ 在每点可导，是**整函数**。又当 $$\lvert \lambda \rvert > \lVert a \rVert$$ 时由 (i) 的估计 $$\lvert u(\lambda) \rvert \le \lVert f \rVert \, (\lvert \lambda \rvert - \lVert a \rVert)^{-1} \to 0$$，所以 $$u$$ 在整个 $$\mathbb{C}$$ 上有界。由 Liouville 定理（第 01 章），$$u$$ 是常函数；又 $$\lvert \lambda \rvert \to \infty$$ 时 $$u(\lambda) \to 0$$，故 $$u \equiv 0$$。
+最后一步用了 $$R$$ 的连续性（命题 3.3 (ii)：$$R(\lambda) \to R(\mu)$$，乘法连续）。故 $$u$$ 在每点可导，是**整函数**。又当 $$\lvert \lambda \rvert > \lVert a \rVert$$ 时由 (i) 的估计 $$\lvert u(\lambda) \rvert \le \lVert f \rVert \, (\lvert \lambda \rvert - \lVert a \rVert)^{-1} \to 0$$，所以 $$u$$ 在整个 $$\mathbb{C}$$ 上有界。由 Liouville 定理（第 02 章），$$u$$ 是常函数；又 $$\lvert \lambda \rvert \to \infty$$ 时 $$u(\lambda) \to 0$$，故 $$u \equiv 0$$。
 
-于是 $$f(R(\lambda)) = 0$$ 对一切 $$f \in \mathcal A^*$$、一切 $$\lambda$$ 成立。由 Hahn–Banach 的分离点推论（第 15 章的 Riesz 一节；若 $$R(\lambda) \ne 0$$，存在 $$f \in \mathcal A^*$$ 使 $$f(R(\lambda)) \ne 0$$），必须 $$R(\lambda) = 0$$ 对一切 $$\lambda$$。但 $$R(\lambda)$$ 是可逆元（它有逆 $$\lambda e - a$$），而 $$0$$ 不可逆（不存在 $$b$$ 使 $$0 \cdot b = e \ne 0$$）。矛盾。故 $$\sigma(a) \ne \varnothing$$。$$\blacksquare$$
+于是 $$f(R(\lambda)) = 0$$ 对一切 $$f \in \mathcal A^*$$、一切 $$\lambda$$ 成立。由 Hahn–Banach 的分离点推论（第 30 章的 Riesz 一节；若 $$R(\lambda) \ne 0$$，存在 $$f \in \mathcal A^*$$ 使 $$f(R(\lambda)) \ne 0$$），必须 $$R(\lambda) = 0$$ 对一切 $$\lambda$$。但 $$R(\lambda)$$ 是可逆元（它有逆 $$\lambda e - a$$），而 $$0$$ 不可逆（不存在 $$b$$ 使 $$0 \cdot b = e \ne 0$$）。矛盾。故 $$\sigma(a) \ne \varnothing$$。$$\blacksquare$$
 
 ### 3.3 谱半径公式
 
@@ -239,7 +241,7 @@ $$\varphi(ab) = \varphi(a)\varphi(b) \quad \text{对一切 } a, b \in \mathcal A
 
 **证明.** (i) 设 $$\varphi \in \Delta(\mathcal A)$$。$$\ker\varphi$$ 是理想（若 $$\varphi(a)=0$$，则 $$\varphi(ab) = \varphi(a)\varphi(b) = 0$$）。它真：否则 $$\varphi \equiv 0$$。商映射给出代数同构 $$\mathcal A/\ker\varphi \cong \varphi(\mathcal A)$$；$$\varphi(\mathcal A)$$ 是 $$\mathbb{C}$$ 的非零子空间（含 $$\varphi(e)=1$$），故就是 $$\mathbb{C}$$，于是 $$\mathcal A/\ker\varphi \cong \mathbb{C}$$ 是可除代数，由命题 3.7 (iii) $$\ker\varphi$$ 极大。这证明 $$\varphi \mapsto \ker\varphi$$ **单射**（因为 $$\ker\varphi$$ 极大，且 $$\mathcal A/\ker\varphi \cong \mathbb{C}$$ 中的同构唯一，反推 $$\varphi$$ 由核决定：$$\varphi(a)$$ 就是 $$a + \ker\varphi$$ 在 $$\mathbb{C}$$ 中的像）。
 
-**满射**：设 $$\mathfrak I$$ 极大。由命题 3.7 (ii) $$\mathfrak I$$ 闭，故商空间 $$\mathcal A/\mathfrak I$$ 以商范数 $$\lVert a + \mathfrak I \rVert = \inf\lbrace \lVert a - i\rVert : i \in \mathfrak I\rbrace$$ 成为 Banach 空间（完备性是「商掉闭子空间仍完备」，见第 18 章）。乘积不等式对商范数同样成立，所以 $$\mathcal A/\mathfrak I$$ 是 Banach 代数；由命题 3.7 (iii) 它可除；由定理 3.8 存在等距同构 $$\psi : \mathcal A/\mathfrak I \to \mathbb{C}$$；令 $$\varphi = \psi \circ \pi$$（$$\pi$$ 是商映射），则 $$\varphi$$ 是非零乘法线性泛函且 $$\ker\varphi = \mathfrak I$$。故 $$\mathfrak I$$ 来自某个特征。
+**满射**：设 $$\mathfrak I$$ 极大。由命题 3.7 (ii) $$\mathfrak I$$ 闭，故商空间 $$\mathcal A/\mathfrak I$$ 以商范数 $$\lVert a + \mathfrak I \rVert = \inf\lbrace \lVert a - i\rVert : i \in \mathfrak I\rbrace$$ 成为 Banach 空间（完备性是「商掉闭子空间仍完备」，见第 36 章）。乘积不等式对商范数同样成立，所以 $$\mathcal A/\mathfrak I$$ 是 Banach 代数；由命题 3.7 (iii) 它可除；由定理 3.8 存在等距同构 $$\psi : \mathcal A/\mathfrak I \to \mathbb{C}$$；令 $$\varphi = \psi \circ \pi$$（$$\pi$$ 是商映射），则 $$\varphi$$ 是非零乘法线性泛函且 $$\ker\varphi = \mathfrak I$$。故 $$\mathfrak I$$ 来自某个特征。
 
 (ii) 由 (iii)（下面即将证明）与 $$\varphi(e)=1$$：$$1 = \lvert \varphi(e) \rvert \le \lVert e \rVert = 1$$ 给出 $$\lVert \varphi \rVert \ge 1$$；而 $$\lvert \varphi(a) \rvert \le r(a) \le \lVert a \rVert$$ 给出 $$\lVert \varphi \rVert \le 1$$。故 $$\lVert \varphi \rVert = 1$$。
 
@@ -247,9 +249,9 @@ $$\varphi(ab) = \varphi(a)\varphi(b) \quad \text{对一切 } a, b \in \mathcal A
 
 ### 3.6 Gelfand 拓扑与 Gelfand 表示定理
 
-有了「点」的位置：$$\Delta(\mathcal A)$$ 由定理 3.10 (ii) 含于 $$\mathcal A^*$$ 的闭单位球面。把它装上从 $$\mathcal A^*$$ 继承的弱\*拓扑，它就成了紧空间——这正是第 15 章「弱\*拓扑下单位球紧」（Banach–Alaoglu）的又一次应用。
+有了「点」的位置：$$\Delta(\mathcal A)$$ 由定理 3.10 (ii) 含于 $$\mathcal A^*$$ 的闭单位球面。把它装上从 $$\mathcal A^*$$ 继承的弱\*拓扑，它就成了紧空间——这正是第 30 章「弱\*拓扑下单位球紧」（Banach–Alaoglu）的又一次应用。
 
-**定义 3.11（Gelfand 拓扑与 Gelfand 表示, Gelfand topology / Gelfand transform）** 在 $$\Delta(\mathcal A) \subset \mathcal A^*$$ 上取**弱\*拓扑**（使一切赋值 $$\varphi \mapsto \varphi(a)$$（$$a \in \mathcal A$$）连续的最粗拓扑，见第 15 章的弱拓扑一节）作为子空间拓扑，称 **Gelfand 拓扑 (Gelfand topology)**。对 $$a \in \mathcal A$$，定义
+**定义 3.11（Gelfand 拓扑与 Gelfand 表示, Gelfand topology / Gelfand transform）** 在 $$\Delta(\mathcal A) \subset \mathcal A^*$$ 上取**弱\*拓扑**（使一切赋值 $$\varphi \mapsto \varphi(a)$$（$$a \in \mathcal A$$）连续的最粗拓扑，见第 30 章的弱拓扑一节）作为子空间拓扑，称 **Gelfand 拓扑 (Gelfand topology)**。对 $$a \in \mathcal A$$，定义
 $$\hat a : \Delta(\mathcal A) \to \mathbb{C}, \qquad \hat a(\varphi) = \varphi(a),$$
 称为 $$a$$ 的 **Gelfand 表示 (Gelfand transform)**；$$a \mapsto \hat a$$ 记为 $$\Gamma = \Gamma_{\mathcal A}$$。$$\hat a$$ 的**根 (radical)** 是 $$\mathrm{rad}(\mathcal A) = \bigcap_{\varphi \in \Delta}\ker\varphi$$。
 
@@ -265,7 +267,7 @@ $$\hat a : \Delta(\mathcal A) \to \mathbb{C}, \qquad \hat a(\varphi) = \varphi(a
 $$\sigma(a) = \lbrace \hat a(\varphi) : \varphi \in \Delta(\mathcal A) \rbrace = \Gamma(a)(\Delta(\mathcal A)) ,$$
 并且 $$r(a) = \lVert \hat a \rVert_\infty$$。特别地 $$\Gamma$$ 的核正是根：$$\Gamma(a) = 0 \iff \hat a \equiv 0 \iff r(a) = 0$$。
 
-**证明.** (i) 由定理 3.10 (ii)，$$\Delta(\mathcal A) \subset B$$，$$B = \lbrace \varphi \in \mathcal A^* : \lVert \varphi \rVert \le 1\rbrace$$。由 Banach–Alaoglu（见第 15 章的弱拓扑一节），$$B$$ 在弱\*拓扑下紧；Hausdorff 空间的子空间 Hausdorff。故只需证 $$\Delta(\mathcal A)$$ 在 $$B$$ 中弱\*闭。
+**证明.** (i) 由定理 3.10 (ii)，$$\Delta(\mathcal A) \subset B$$，$$B = \lbrace \varphi \in \mathcal A^* : \lVert \varphi \rVert \le 1\rbrace$$。由 Banach–Alaoglu（见第 30 章的弱拓扑一节），$$B$$ 在弱\*拓扑下紧；Hausdorff 空间的子空间 Hausdorff。故只需证 $$\Delta(\mathcal A)$$ 在 $$B$$ 中弱\*闭。
 
 把它写成弱\*闭集的交。弱\*拓扑下，「$$\varphi \mapsto \varphi(a)$$」连续，故对固定的 $$a, b \in \mathcal A$$，
 $$F_{a,b} = \lbrace \varphi \in B : \varphi(ab) - \varphi(a)\varphi(b) = 0\rbrace$$
@@ -291,7 +293,7 @@ $$\mathfrak J = \lbrace (\lambda e - a)c : c \in \mathcal A \rbrace$$
 
 ### 3.7 对合与 C\* 代数
 
-到目前为止我们只用了代数运算与范数。要处理「实值」与「共轭」，必须把复共轭这个操作也抽象进去——这就是**对合**。它让 Banach 代数理论终于能回答第 18 章的那个问题。
+到目前为止我们只用了代数运算与范数。要处理「实值」与「共轭」，必须把复共轭这个操作也抽象进去——这就是**对合**。它让 Banach 代数理论终于能回答第 36 章的那个问题。
 
 **定义 3.14（对合代数, involutive algebra）** 设 $$\mathcal A$$ 是复代数。映射 $$* : \mathcal A \to \mathcal A$$，$$a \mapsto a^*$$ 称为**对合 (involution)**，若对一切 $$a, b \in \mathcal A$$、$$\lambda \in \mathbb{C}$$：
 
@@ -299,7 +301,7 @@ $$(a+b)^* = a^* + b^*, \quad (\lambda a)^* = \bar\lambda\, a^*, \quad (ab)^* = b
 
 也就是说 $$*$$ 是周期 2 的**共轭线性反自同构 (conjugate-linear anti-automorphism)**（反字指 $$(ab)^* = b^*a^*$$ 中次序颠倒）。带对合的代数记为 $$\mathcal A(*)$$。满足 $$a^* = a$$ 的元素称**自伴元 (self-adjoint)** 或 **Hermite 元 (Hermitian)**。
 
-三个例子：$$C(X)$$ 上取 $$f^* = \bar f$$（复共轭）；$$\mathcal B(H)$$ 上取伴随算子 $$T^*$$（第 16 章定义的伴随）；$$\ell^1(\mathbb{Z})$$ 上取 $$(a^*)_n = \overline{a_{-n}}$$。三者都使「自伴」这个抽象定义落回具体的「实值函数」「自伴算子」「实系数序列」。
+三个例子：$$C(X)$$ 上取 $$f^* = \bar f$$（复共轭）；$$\mathcal B(H)$$ 上取伴随算子 $$T^*$$（第 32 章定义的伴随）；$$\ell^1(\mathbb{Z})$$ 上取 $$(a^*)_n = \overline{a_{-n}}$$。三者都使「自伴」这个抽象定义落回具体的「实值函数」「自伴算子」「实系数序列」。
 
 **命题 3.15（唯一的自伴分解）** 设 $$\mathcal A(*)$$ 是对合代数。每个 $$a \in \mathcal A$$ 有**唯一**的分解
 
@@ -336,7 +338,7 @@ $$r(a) = \lim_{k\to\infty} \lVert a^{2^k} \rVert^{1/2^k} = \lim_{k\to\infty} \lV
 
 ### 3.8 Arens 引理：自伴元谱为实
 
-现在正式补上第 18 章留下的洞。
+现在正式补上第 36 章留下的洞。
 
 **定理 3.18（Arens 引理, Arens' lemma）** 设 $$\mathcal A$$ 是含单位的交换 **C\* 代数**，$$a \in \mathcal A$$ 自伴（$$a^* = a$$）。则 $$\hat a : \Delta(\mathcal A) \to \mathbb{C}$$ 是**实值函数**；等价地，$$\varphi(a) \in \mathbb{R}$$ 对一切 $$\varphi \in \Delta(\mathcal A)$$。
 
@@ -418,13 +420,13 @@ $$\varphi(a^*) = \varphi(u - iv) = \hat u(\varphi) - i\hat v(\varphi) = \overlin
 
 **注** 定理 3.19 常写成 **Gelfand–Naimark 定理**；无单位时结论变成 $$\mathcal A \cong C_0(X)$$（$$X$$ 局部紧、$$\mathcal A$$ 无单位的情形在练习里出现）。
 
-### 3.9 正常算子与第 18 章悬念的收束
+### 3.9 正常算子与第 36 章悬念的收束
 
 **定义 3.20（正常算子, normal operator）** 设 $$H$$ 是复 Hilbert 空间，$$T \in \mathcal B(H)$$。若
 $$T^*T = TT^*,$$
 则称 $$T$$ 为**正常算子 (normal operator)**。自伴算子（$$T^*=T$$）与酉算子（$$U^*U = UU^* = I$$）都是正常算子。
 
-**定理 3.21（自伴算子的谱是实的；第 18 章 3.7 的答案）** 设 $$T \in \mathcal B(H)$$ 自伴。则 $$\sigma(T) \subset \mathbb{R}$$。更一般地，若 $$T$$ 正规，则 $$\sigma(T) = \lbrace \hat T(\varphi) : \varphi \in \Delta(\mathcal A)\rbrace$$，其中 $$\mathcal A$$ 是 $$T$$ 与 $$I$$ 生成的闭 \*-子代数；特别地 $$r(T) = \lVert T \rVert$$，且 $$T$$ 酉时 $$\sigma(T) \subset \mathbb{T} = \lbrace z : \lvert z \rvert = 1\rbrace$$。
+**定理 3.21（自伴算子的谱是实的；第 36 章 3.7 的答案）** 设 $$T \in \mathcal B(H)$$ 自伴。则 $$\sigma(T) \subset \mathbb{R}$$。更一般地，若 $$T$$ 正规，则 $$\sigma(T) = \lbrace \hat T(\varphi) : \varphi \in \Delta(\mathcal A)\rbrace$$，其中 $$\mathcal A$$ 是 $$T$$ 与 $$I$$ 生成的闭 \*-子代数；特别地 $$r(T) = \lVert T \rVert$$，且 $$T$$ 酉时 $$\sigma(T) \subset \mathbb{T} = \lbrace z : \lvert z \rvert = 1\rbrace$$。
 
 **证明.** 令 $$\mathcal A$$ 为 $$B(H)$$ 中由 $$T$$ 与 $$I$$ 生成的闭 \*-子代数（即 $$\lbrace p(T,T^*) : p \text{ 是二元多项式}\rbrace$$ 的闭包）。因为 $$T$$ 正规，$$\mathcal A$$ **交换**：生成元 $$T, T^*, I$$ 两两交换（$$TT^* = T^*T$$ 与 $$I$$ 交换是定义），而交换元的多项式仍是交换的，取闭包保持交换。$$\mathcal A$$ 含单位 $$I$$，且是闭 \*-子代数，故以 $$T$$ 上的算子范数与伴随为对合，$$\mathcal A$$ 是含单位的**交换 C\* 代数**。
 
@@ -438,7 +440,7 @@ $$\sigma_{\mathcal B(H)}(T) \subseteq \sigma_{\mathcal A}(T) \subset \mathbb{R} 
 
 酉情形：若 $$U^*U = UU^* = I$$，则 $$U^*U = I = \hat e$$，于是 $$\lvert \hat U \rvert^2 = \widehat{U^*U} = \widehat{U^*}\hat U = \mathbf 1$$（用定理 3.19 (i)），故 $$\lvert \hat U \rvert \equiv 1$$，即 $$\sigma_{\mathcal A}(U) \subset \mathbb{T}$$；再用同一个包含关系。正常情形下的 $$r(T) = \lVert T\rVert$$ 由命题 3.17 (iii) 与定理 3.12 (iv) 合并。$$\blacksquare$$
 
-**这段证明值得单独记住**：Arens 引理说「自伴 $$\Rightarrow$$ Gelfand 表示实值」，定理 3.12 说「谱 = 表示的值域」，两者一拼就是「自伴 $$\Rightarrow$$ 谱实」。第 18 章里，这件事曾被当作 $$\sigma(T) \subset \mathbb{R}$$ 的一个孤立事实（用谱定理或二次型符号直接得到）；现在它有了一个**结构性**的解释：$$\sigma(T)$$ 是 $$\hat T$$ 这个实值函数在紧空间 $$\Delta(\mathcal A)$$ 上的像。
+**这段证明值得单独记住**：Arens 引理说「自伴 $$\Rightarrow$$ Gelfand 表示实值」，定理 3.12 说「谱 = 表示的值域」，两者一拼就是「自伴 $$\Rightarrow$$ 谱实」。第 36 章里，这件事曾被当作 $$\sigma(T) \subset \mathbb{R}$$ 的一个孤立事实（用谱定理或二次型符号直接得到）；现在它有了一个**结构性**的解释：$$\sigma(T)$$ 是 $$\hat T$$ 这个实值函数在紧空间 $$\Delta(\mathcal A)$$ 上的像。
 
 **注 3.22（用「包含」而不用「相等」）** 上面的证明只用了 $$\sigma_{\mathcal B(H)}(T) \subseteq \sigma_{\mathcal A}(T)$$，方向是「越小的地方越难可逆」。对 C\* 代数，这个包含实际上是**等式**（自伴/正规的情形）——理由是 $$\lVert T\rVert = r_{\mathcal A}(T) = r_{\mathcal B(H)}(T)$$ 且谱是紧集，加上一个标准的连通性论证。我们不需要这个等式，故不展开；但请记住这个小技巧：**换到子代数上算谱，只会把谱放大，不会缩小**。
 
@@ -450,7 +452,7 @@ $$\sigma_{\mathcal B(H)}(T) \subseteq \sigma_{\mathcal A}(T) \subset \mathbb{R} 
 
 **拓扑视角.** 在 $$C(X)$$ 里，$$f$$ 本来就是函数。它的「取值」$$f(x)$$ 是几何对象。
 
-**算子视角.** 在 $$\mathcal B(H)$$ 里，$$T$$ 是算子，不是函数。但它的谱 $$\sigma(T)$$ 是「使 $$\lambda I - T$$ 不可逆的 $$\lambda$$」——这是**代数**对象，而且第 18 章已经证明它是 $$\mathbb{C}$$ 的非空紧子集。
+**算子视角.** 在 $$\mathcal B(H)$$ 里，$$T$$ 是算子，不是函数。但它的谱 $$\sigma(T)$$ 是「使 $$\lambda I - T$$ 不可逆的 $$\lambda$$」——这是**代数**对象，而且第 36 章已经证明它是 $$\mathbb{C}$$ 的非空紧子集。
 
 **代数视角.** 在任意交换 Banach 代数 $$\mathcal A$$ 里，$$\sigma(a)$$ 是「使 $$\lambda e - a$$ 不可逆的 $$\lambda$$」——与算子情形是同一个定义，只是把 $$I$$ 换成 $$e$$、把 $$\mathcal B(H)$$ 换成 $$\mathcal A$$。
 
@@ -468,13 +470,13 @@ $$\boxed{\ \sigma(a) = \lbrace \varphi(a) : \varphi \in \Delta(\mathcal A) \rbra
 
 | | 章 | 对偶的对象 | 内容 |
 |---|---|---|---|
-| 第一次 | 第 03 章 | **向量空间** | $$V \mapsto V^* = \mathcal B(V, \mathbb{C})$$，对偶空间、逆变与协变 |
-| 第二次 | 第 15 章 | **Hilbert 空间** | Riesz 表示：$$H \cong H^*$$，「取内积」就是「取泛函」 |
+| 第一次 | 第 06 章 | **向量空间** | $$V \mapsto V^* = \mathcal B(V, \mathbb{C})$$，对偶空间、逆变与协变 |
+| 第二次 | 第 30 章 | **Hilbert 空间** | Riesz 表示：$$H \cong H^*$$，「取内积」就是「取泛函」 |
 | 第三次 | 本章 | **代数** | Gelfand：交换 Banach 代数 $$\mathcal A \mapsto C(\Delta(\mathcal A))$$，「元素」就是「函数」 |
 
-三次的结构其实完全一样：**造一个「在对象上取值的探针」的集合，用探针的参数化这个对象。** 第 03 章的探针是线性泛函，第 15 章的探针是「与某个向量取内积」，本章的探针是特征 $$\varphi$$。
+三次的结构其实完全一样：**造一个「在对象上取值的探针」的集合，用探针的参数化这个对象。** 第 06 章的探针是线性泛函，第 30 章的探针是「与某个向量取内积」，本章的探针是特征 $$\varphi$$。
 
-但第三次有一次**质变**。前两次对偶的出发点是「线性空间」，得到的对偶对象也是线性空间——对偶一次，结构变得一模一样，只是反过来。这一次出发点是**代数**，得到的却是**函数代数**：$$\mathcal A$$ 上只有抽象的乘法，而 $$C(\Delta(\mathcal A))$$ 上的乘法是**逐点相乘**。乘法被「解压」成了几何操作。这意味着对偶不再只是「空间 ↦ 空间」，而是「**一类结构与另一类结构之间的对应**」——这就是范畴对偶 (categorical duality) 的雏形。第 31 章会把这种「一类结构 ≅ 另一类结构」的对应正式定义成一个范畴等价（函子、自然变换）。本章是这条路的入口。
+但第三次有一次**质变**。前两次对偶的出发点是「线性空间」，得到的对偶对象也是线性空间——对偶一次，结构变得一模一样，只是反过来。这一次出发点是**代数**，得到的却是**函数代数**：$$\mathcal A$$ 上只有抽象的乘法，而 $$C(\Delta(\mathcal A))$$ 上的乘法是**逐点相乘**。乘法被「解压」成了几何操作。这意味着对偶不再只是「空间 ↦ 空间」，而是「**一类结构与另一类结构之间的对应**」——这就是范畴对偶 (categorical duality) 的雏形。第 62 章会把这种「一类结构 ≅ 另一类结构」的对应正式定义成一个范畴等价（函子、自然变换）。本章是这条路的入口。
 
 $$\textbf{记忆锚：}\quad \text{ch03：向量} \to \text{泛函} \;\Longrightarrow\; \text{ch15：向量} \to \text{内积} \;\Longrightarrow\; \text{ch20：元素} \to \text{函数} .$$
 
@@ -495,11 +497,11 @@ $$\underbrace{T = T^*}_{\text{物理：可观测量}} \Rightarrow \underbrace{\h
 - **量子态**对应 C\* 代数的**态 (state)**——满足 $$\varphi(e) = 1$$ 与 $$\varphi(a^*a) \ge 0$$ 的线性泛函，物理意义是「期望值」；
 - **$$\Delta(\mathcal A)$$ 上的点** $$\varphi$$ 是交换情形下的「态」——即「取值探针」，物理上就是**纯态**。
 
-第 16 章讲可观测量与本征态时，我们只有「算子 + 谱测度」这一套语言；现在多了「代数 + 态」这套语言。两者是同一件事的两个坐标：谱测度描述「测量结果的分布」（几何/测度侧），态描述「系统的准备方式」（代数侧）。第 22 章（正则对易关系与 Stone–von Neumann）会看到，正是「态」与「表示」的关系，决定了量子力学的 Hilbert 空间表示在什么意义下是唯一的。
+第 32 章讲可观测量与本征态时，我们只有「算子 + 谱测度」这一套语言；现在多了「代数 + 态」这套语言。两者是同一件事的两个坐标：谱测度描述「测量结果的分布」（几何/测度侧），态描述「系统的准备方式」（代数侧）。第 44 章（正则对易关系与 Stone–von Neumann）会看到，正是「态」与「表示」的关系，决定了量子力学的 Hilbert 空间表示在什么意义下是唯一的。
 
 ### 4.4 Gelfand 拓扑的几何含义
 
-$$\Delta(\mathcal A)$$ 上的 Gelfand 拓扑是弱\*拓扑。用第 15 章的语言：$$\varphi_n \to \varphi$$ 当且仅当 $$\varphi_n(a) \to \varphi(a)$$ 对**每个** $$a \in \mathcal A$$。翻译成函数语言，就是
+$$\Delta(\mathcal A)$$ 上的 Gelfand 拓扑是弱\*拓扑。用第 30 章的语言：$$\varphi_n \to \varphi$$ 当且仅当 $$\varphi_n(a) \to \varphi(a)$$ 对**每个** $$a \in \mathcal A$$。翻译成函数语言，就是
 
 $$\hat a(\varphi_n) \to \hat a(\varphi) \ \ \forall a \in \mathcal A \qquad \Longleftrightarrow \qquad \text{「函数序列在每点上收敛」} .$$
 
@@ -515,7 +517,7 @@ $$\hat a(\varphi_n) \to \hat a(\varphi) \ \ \forall a \in \mathcal A \qquad \Lon
 
 这正是「非交换几何 (non-commutative geometry)」要处理的情形：没有点，那就**不要点**。把「空间」直接定义成代数，把「几何操作」都翻译成代数操作（测度 = 正线性泛函、向量丛 = 投影模、微分 = 交换子、积分 = 迹）。Gelfand–Naimark 一般情形（无单位时 $$\mathcal A \cong C_0(X)$$、一般情形 $$\mathcal A$$ 是某个 $$\mathcal B(H)$$ 的闭 \*-子代数）说明：**抽象的 C\* 代数一定是具体算子代数**，所以代数本身就够当「空间」用。
 
-回到入口题 (d) 的提示：对非交换的 $$\mathcal B(H)$$，仍然有意义的替代品是**取单个正规算子 $$T$$，退到它生成的交换子代数** $$\mathcal A = \overline{\lbrace p(T, T^*) \rbrace}$$。这就是定理 3.21 的做法，也是第 19 章谱定理的代数化版本：非交换世界里，我们只能一个一个算子地「局部交换化」，$$\Delta(\mathcal A)$$ 就是 $$\sigma(T)$$。这也解释了一个第 19 章留下的现象——**为什么自伴算子的谱测度能唯一存在**：因为生成的代数是交换 C\* 代数，Gelfand 表示在它上面是等距 \*-同构，于是「连续函数演算」$$f(T) = \Gamma^{-1}(f)$$ 是唯一确定的。第 19 章用谱测度构造 $$f(T)$$；本章从 C\* 代数的公理重新导出一遍，两条路殊途同归。
+回到入口题 (d) 的提示：对非交换的 $$\mathcal B(H)$$，仍然有意义的替代品是**取单个正规算子 $$T$$，退到它生成的交换子代数** $$\mathcal A = \overline{\lbrace p(T, T^*) \rbrace}$$。这就是定理 3.21 的做法，也是第 38 章谱定理的代数化版本：非交换世界里，我们只能一个一个算子地「局部交换化」，$$\Delta(\mathcal A)$$ 就是 $$\sigma(T)$$。这也解释了一个第 38 章留下的现象——**为什么自伴算子的谱测度能唯一存在**：因为生成的代数是交换 C\* 代数，Gelfand 表示在它上面是等距 \*-同构，于是「连续函数演算」$$f(T) = \Gamma^{-1}(f)$$ 是唯一确定的。第 38 章用谱测度构造 $$f(T)$$；本章从 C\* 代数的公理重新导出一遍，两条路殊途同归。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -1130,7 +1132,7 @@ $$\Delta(\mathcal A)$$ 就是 $$\Delta(\mathcal A_1)$$ 挖掉 $$\varphi_\infty$$
 | 后果 | $$\lambda e - a$$ 写不出来，谱无从定义 | $$T \notin \mathcal B(H)$$，$$T + \lambda I$$ 只在 $$D(T)$$ 上有意义 |
 | 补救 | 添 $$e$$ 得 $$\mathcal A_1$$，$$e_1$$ 记号化「缺失」 | 取有界可逆的 $$(T + iI)^{-1}$$，或按图范数把 $$T$$ 当闭算子 |
 
-两者的结构一致：对象本身少了一块，标准机器（谱、Gelfand 表示、算子范数）开不动，于是先做安全封装，让机器在封装后的对象上跑，再读回来。对代数，封装是 $$\mathcal A_1$$；对无界算子，封装就是 **Cayley 变换**（研2）——把无界的东西换成有界酉算子。这正是第 21 章的开场。
+两者的结构一致：对象本身少了一块，标准机器（谱、Gelfand 表示、算子范数）开不动，于是先做安全封装，让机器在封装后的对象上跑，再读回来。对代数，封装是 $$\mathcal A_1$$；对无界算子，封装就是 **Cayley 变换**（研2）——把无界的东西换成有界酉算子。这正是第 42 章的开场。
 
 **解 研2.** 思路：自伴性把 $$\sigma(T)$$ 逼进实轴（定理 3.21），实轴上的点 $$\lambda$$ 经 Möbius 变换 $$\zeta = (\lambda - i)/(\lambda + i)$$ 落到圆周上——于是「实轴 + 无穷远」被整条搬到「圆周」，无界的 $$\lambda$$ 变成有界的 $$\zeta$$。Cayley 变换就是这次搬运在算子层面的实现。
 
@@ -1171,25 +1173,25 @@ $$\sigma(T) = \lbrace \mu : \zeta(\mu) \in \sigma(U) \rbrace = \left\lbrace i\,\
 
 （检验一个例子：取 $$H = \mathbb{C}$$、$$T = \lambda_0 \in \mathbb{R}$$。则 $$\zeta = (\lambda_0 - i)/(\lambda_0 + i)$$，而 $$i(1+\zeta)/(1-\zeta) = \lambda_0$$，故 $$\sigma(T) = \lbrace \lambda_0\rbrace$$ 与右端一致。）
 
-**这一段正是第 21 章的起点。** $$\zeta = (\mu - i)/(\mu + i)$$ 把实轴连同无穷远点双射到单位圆周（$$\mu \to \infty$$ 对应 $$\zeta \to 1$$）。对**有界**自伴 $$T$$，$$\infty$$ 不在谱里，一切顺当；对**无界**自伴算子，$$\sigma(T)$$ 是 $$\mathbb{R}$$ 中的无界闭集，$$\infty$$ 是它的极限点，$$T$$ 不再是 $$\mathcal B(H)$$ 的元素，本章为有界算子建的理论直接失效。第 21 章把方向反过来用：不追 $$T$$，只追 $$U = (T - iI)(T + iI)^{-1}$$。自伴性保证 $$(T + iI)^{-1}$$ 仍有界（$$\lVert (T + iI)^{-1} \rVert \le 1$$），于是 $$U$$ 是**有界酉算子**，$$T$$ 的全部信息（谱、谱测度、函数演算）都编码在 $$U$$ 与那个「缺失的点」$$\zeta = 1$$ 上。无界问题就此归约成有界问题——本章的 C\* 代数机器得以接管第 21 章。
+**这一段正是第 42 章的起点。** $$\zeta = (\mu - i)/(\mu + i)$$ 把实轴连同无穷远点双射到单位圆周（$$\mu \to \infty$$ 对应 $$\zeta \to 1$$）。对**有界**自伴 $$T$$，$$\infty$$ 不在谱里，一切顺当；对**无界**自伴算子，$$\sigma(T)$$ 是 $$\mathbb{R}$$ 中的无界闭集，$$\infty$$ 是它的极限点，$$T$$ 不再是 $$\mathcal B(H)$$ 的元素，本章为有界算子建的理论直接失效。第 42 章把方向反过来用：不追 $$T$$，只追 $$U = (T - iI)(T + iI)^{-1}$$。自伴性保证 $$(T + iI)^{-1}$$ 仍有界（$$\lVert (T + iI)^{-1} \rVert \le 1$$），于是 $$U$$ 是**有界酉算子**，$$T$$ 的全部信息（谱、谱测度、函数演算）都编码在 $$U$$ 与那个「缺失的点」$$\zeta = 1$$ 上。无界问题就此归约成有界问题——本章的 C\* 代数机器得以接管第 42 章。
 
 ## 七、Takeaway 与延伸 (Takeaways)
 
 ### 7.1 五条核心洞察 (Takeaways)
 
-**T1. 谱是纯代数的对象，不是算子的附属品。** 定义 3.2 里只有乘法与单位元：$$\sigma(a) = \lbrace \lambda : \lambda e - a \notin G(\mathcal A)\rbrace$$。把它写成这样之后，第 18 章「$$\lambda I - T$$ 不可逆」立刻变成特例，而第 18 章留下的问题（自伴为何给出实谱）也才有了结构性的回答；只盯住算子本身，问题就永远停在「个别算子的个别性质」这一层。
+**T1. 谱是纯代数的对象，不是算子的附属品。** 定义 3.2 里只有乘法与单位元：$$\sigma(a) = \lbrace \lambda : \lambda e - a \notin G(\mathcal A)\rbrace$$。把它写成这样之后，第 36 章「$$\lambda I - T$$ 不可逆」立刻变成特例，而第 36 章留下的问题（自伴为何给出实谱）也才有了结构性的回答；只盯住算子本身，问题就永远停在「个别算子的个别性质」这一层。
 
 **T2. 元素就是函数。** 本章唯一的动作是把这句话叠成：
 $$\sigma(a) = \lbrace \varphi(a) : \varphi \in \Delta(\mathcal A)\rbrace = \hat a\big(\Delta(\mathcal A)\big).$$
-$$\Delta(\mathcal A)$$ 是空间，$$\varphi$$ 是点，$$a$$ 是函数，$$\hat a(\varphi)$$ 是函数在点上的值。点是**极大理想**（$$\ker\varphi$$ 就是「在该点取零的函数全体」），这跟代数几何用理想定义点是同一个动作，只是把 $$\mathbb{C}[z]$$ 换成了 Banach 代数。这是全书的**第三次对偶**（ch03 向量空间、ch15 Hilbert 空间、本章代数），而且是一次质变：前两次对偶出来还是线性空间，这一次出来的是**函数代数**——乘法被「解压」成逐点相乘，对偶升级成「一类结构 ↔ 另一类结构」（第 31 章的范畴等价）。
+$$\Delta(\mathcal A)$$ 是空间，$$\varphi$$ 是点，$$a$$ 是函数，$$\hat a(\varphi)$$ 是函数在点上的值。点是**极大理想**（$$\ker\varphi$$ 就是「在该点取零的函数全体」），这跟代数几何用理想定义点是同一个动作，只是把 $$\mathbb{C}[z]$$ 换成了 Banach 代数。这是全书的**第三次对偶**（ch03 向量空间、ch15 Hilbert 空间、本章代数），而且是一次质变：前两次对偶出来还是线性空间，这一次出来的是**函数代数**——乘法被「解压」成逐点相乘，对偶升级成「一类结构 ↔ 另一类结构」（第 62 章的范畴等价）。
 
 **T3. 谱半径公式：谱的大小由幂的增长速率决定，而不是由元素本身的范数决定。** $$r(a) = \lim_n \lVert a^n \rVert^{1/n}$$。经典问题 1 的 Volterra 算子是极端证据：$$\lVert V \rVert \ge 1/\sqrt3 > 0 = r(V)$$、$$\sigma(V) = \lbrace 0\rbrace$$。推论是 $$r(a) \le \lVert a \rVert$$ 且等号只在「$$a$$ 正规」这类特殊情形（命题 3.17 (iii)）成立；**把 $$r(a)$$ 误当成 $$\lVert a \rVert$$ 是初学本章最常见的错误**。
 
 **T4. C\* 恒等式是唯一的焊点，而且这个假设不能减弱。** 恒等式 $$\lVert a^*a \rVert = \lVert a \rVert^2$$ 一头拴住对合（代数数据）、一头拴住范数（分析数据）。它换来 Arens 引理（定理 3.18）：**自伴元的 Gelfand 表示是实值函数**，于是 $$\sigma(T) \subset \mathbb{R}$$，于是量子力学「可观测量取实数」不是特设公理而是公理的推论（§4.3）。而注 3.18 的 $$\mathbb{C}^2$$ 反例说明：把假设放宽成「带保范对合的交换 Banach 代数」，结论立刻假——那个代数里 $$a = (1+i, 1-i)$$ 自伴，谱却是 $$\lbrace 1+i, 1-i\rbrace$$。**「只要有对合就够」是本章最容易产生的错觉。**
 
-**T5. 交换性是 Gelfand 理论的生死线。** 非交换时 $$\Delta$$ 会整个消失（经典问题 2：$$\Delta(M_n(\mathbb{C})) = \varnothing$$，因为 $$M_n(\mathbb{C})$$ 单而 $$\dim > 1$$）。出路不是放弃几何，而是**局部交换化**：固定一个正规算子 $$T$$，退到它生成的交换闭 \*-子代数，那里 $$\Delta(\mathcal A_T)$$ 照常是「点集」，且与 $$\sigma(T)$$ 一一对应（定理 3.21、经典问题 5）。第 19 章谱定理的代数版本、以及「非交换几何」把代数本身当空间用的做法，都从这里出发（§4.5）。
+**T5. 交换性是 Gelfand 理论的生死线。** 非交换时 $$\Delta$$ 会整个消失（经典问题 2：$$\Delta(M_n(\mathbb{C})) = \varnothing$$，因为 $$M_n(\mathbb{C})$$ 单而 $$\dim > 1$$）。出路不是放弃几何，而是**局部交换化**：固定一个正规算子 $$T$$，退到它生成的交换闭 \*-子代数，那里 $$\Delta(\mathcal A_T)$$ 照常是「点集」，且与 $$\sigma(T)$$ 一一对应（定理 3.21、经典问题 5）。第 38 章谱定理的代数版本、以及「非交换几何」把代数本身当空间用的做法，都从这里出发（§4.5）。
 
-### 7.2 下一章：从有界走到无界（第 21 章 无界算子与 Cayley 变换）
+### 7.2 下一章：从有界走到无界（第 42 章 无界算子与 Cayley 变换）
 
 本章的全部结论都压在两块「有限性」上：
 
@@ -1204,7 +1206,7 @@ $$U = (T - iI)(T + iI)^{-1},$$
 $$\zeta = \frac{\mu - i}{\mu + i},$$
 它把实轴连同无穷远点双射到单位圆周；$$\mu \to \infty$$ 对应 $$\zeta \to 1$$，所以 $$\sigma(T) \subset \mathbb{R}$$ 与 $$\sigma(U) \subset \mathbb{T}$$ 是同一件事的两种写法，而 $$\zeta = 1$$ 这个「缺失的点」正是 $$T$$ 无界的记号。
 
-第 21 章反过来用这条等式：**不追 $$T$$，只追 $$U$$**。$$U$$ 有界，所以本章的 C\* 代数机器（Gelfand 表示、谱半径公式、函数演算）全部接管；$$T$$ 的谱、谱测度、函数演算都编码在 $$U$$ 加上那个缺失的点里。再往前一格是第 22 章：正则对易关系与 Stone–von Neumann——那里的主角 $$P, Q$$ 也是无界算子，而 $$[P, Q] = -iI$$ 这条关系本身就是「二者不可能同时有界」的代数表达。
+第 42 章反过来用这条等式：**不追 $$T$$，只追 $$U$$**。$$U$$ 有界，所以本章的 C\* 代数机器（Gelfand 表示、谱半径公式、函数演算）全部接管；$$T$$ 的谱、谱测度、函数演算都编码在 $$U$$ 加上那个缺失的点里。再往前一格是第 44 章：正则对易关系与 Stone–von Neumann——那里的主角 $$P, Q$$ 也是无界算子，而 $$[P, Q] = -iI$$ 这条关系本身就是「二者不可能同时有界」的代数表达。
 
 一句话把本章与下一章接起来：**本章把有界自伴算子的谱搬到实轴上（定理 3.21），下一章把无界的搬到圆周上（Cayley 变换），而这两次搬运用的是同一台机器。**
 
@@ -1218,13 +1220,11 @@ $$\zeta = \frac{\mu - i}{\mu + i},$$
 - W. Arveson, *An Invitation to C\*-Algebras*, Ch. 1——篇幅小，观点高，适合读完本章后当「第二遍」。
 - 历史注记：R. Arens, *On a theorem of Gelfand and Neumark*, Proc. Nat. Acad. Sci. U.S.A. **32** (1946), 237–239——注 3.18 讨论的「自伴性条件到底需要多强」，正是这篇文章的议题。
 - A. Connes, *Noncommutative Geometry*, Ch. 1——§4.5 提到的「没有点也要定义几何」的正式版本。
-
-
 ---
 
 <!-- chapter-nav -->
 <div style="display:flex; justify-content:space-between; align-items:center; padding:1em 0;">
-  <div><a href="ch19_谱定理与投影算子值测度.md">← 第19章 谱定理与投影算子值测度</a></div>
+  <div><a href="ch39_Banach代数与C_代数_上.md">← 第39章 Banach 代数与 C\* 代数·上</a></div>
   <div><a href="index.md">↑ 目录</a></div>
-  <div><a href="ch21_无界算子与Cayley变换.md">第21章 无界算子与 Cayley 变换 →</a></div>
+  <div><a href="ch41_无界算子与Cayley变换_上.md">第41章 无界算子与 Cayley 变换·上 →</a></div>
 </div>
