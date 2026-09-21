@@ -181,14 +181,101 @@ $$q\,i\,q^{-1}=k\,i\,(-k)=-(ki)k=-jk=-i,\qquad q\,j\,q^{-1}=k\,j\,(-k)=-(kj)k=-(
 ## 六、练习 (Exercises)
 ### 基础（巩固定义）
 
+**基1.** 设 $$p=1-i,\ q=j-k$$。计算 $$pq,\ qp,\ p^*,\ \lvert p\rvert,\ p^{-1}$$，并验证 $$\lvert pq\rvert=\lvert p\rvert\lvert q\rvert$$。
+
+**基2.** 设 $$q=1+i+j+k$$（注意它**不是**单位四元数）。计算 $$\lvert q\rvert,\ q^*,\ q^{-1}$$，并验证 $$qq^{-1}=1$$。
+
+**基3.** 只用 $$i^2=j^2=k^2=-1,\ ij=k,\ jk=i,\ ki=j$$ 与结合律，推出 $$kj=-i$$。
+
+**基4.** 设 $$q=\dfrac{1+i+j-k}{2}$$。验证 $$\lvert q\rvert=1$$，求 $$q^*$$，并说明为什么 $$q^{-1}=q^*$$。
 
 ### 竞赛（本课目标难度）
 
+**竞1.** 设 $$q=\dfrac{1+i+j+k}{2}$$。计算 $$qiq^{-1},\ qjq^{-1},\ qkq^{-1}$$，指出它们构成什么样的规律；并利用这个规律猜出 $$q(i+j+k)q^{-1}$$ 等于什么（不需要重新展开，用线性性直接从三个已算出的结果拼出来），说明这告诉你 $$\rho(q)$$ 的转轴是哪个方向。
+
+**竞2.** 设 $$q=\dfrac{1+j}{\sqrt2}$$（即 $$\cos\dfrac\pi4+j\sin\dfrac\pi4$$）。计算 $$qiq^{-1},\ qjq^{-1},\ qkq^{-1}$$，指出这是绕哪根轴转多少度。
+
+**竞3.** 设 $$n=\dfrac{i+j}{\sqrt2}$$。验证 $$n^2=-1$$（直接展开，不用一般公式）；再计算 $$nin^{-1},\ njn^{-1},\ nkn^{-1}$$（利用 $$n$$ 是单位纯虚元，$$n^{-1}=n^*=-n$$），指出这是绕哪根轴转多少度。
 
 ### 研究（通向下一章）
 
+**研1.** 记 $$q(t)=\cos(\pi t)+k\sin(\pi t)$$，$$t\in[0,1]$$，$$\gamma(t):=$$"绕 $$k$$ 轴转 $$2\pi t$$"这个旋转（命题 3.3、3.4 已经算过 $$t=\frac12$$ 这一点，即 $$\theta=\pi$$ 时对应 $$q=k$$，见 §五 题 3）。列出 $$t=0,\frac14,\frac12,\frac34,1$$ 时 $$q(t)$$ 的值，并指出：$$\gamma(0)$$ 与 $$\gamma(1)$$ 是不是同一个旋转？$$q(0)$$ 与 $$q(1)$$ 是不是同一个四元数？
+
+**研2.** 记 $$q_2(t)=\cos(2\pi t)+k\sin(2\pi t)$$，$$t\in[0,1]$$（对应"绕 $$k$$ 轴转 $$4\pi t$$"，即转两整圈）。计算 $$q_2(0)$$ 与 $$q_2(1)$$，与研 1 的结果对比，指出两条路径在"是否回到出发点"这件事上的区别。
 
 ### 解答 (Solutions)
+
+**解 基1.** $$pq=(1-i)(j-k)=j-k-ij+ik=j-k-k+(-j)=-2k$$（用 $$ij=k,\ ik=-j$$）。$$qp=(j-k)(1-i)=j-ji-k+ki=j-(-k)-k+j=2j$$（用 $$ji=-k,\ ki=j$$）。故 $$pq=-2k\neq2j=qp$$，$$\mathbb H$$ 不交换。
+
+$$p^*=1+i$$，$$\lvert p\rvert=\sqrt{pp^*}=\sqrt{(1-i)(1+i)}=\sqrt{1-i^2}=\sqrt2$$。$$p^{-1}=p^*/\lvert p\rvert^2=\dfrac{1+i}{2}$$（验算：$$(1-i)\cdot\dfrac{1+i}{2}=\dfrac{1-i^2}{2}=\dfrac{2}{2}=1$$）。
+
+乘性：$$\lvert pq\rvert=\lvert-2k\rvert=2$$；$$\lvert q\rvert=\sqrt{1+1}=\sqrt2$$（$$q=j-k$$ 只有两个非零分量），故 $$\lvert p\rvert\lvert q\rvert=\sqrt2\cdot\sqrt2=2$$，相等。$$\blacksquare$$
+
+**解 基2.** $$q^*=1-i-j-k$$。由 §三 定义 3.2 已算过 $$qq^*=4$$（同一个 $$q$$），故 $$\lvert q\rvert=\sqrt4=2$$。$$q^{-1}=q^*/\lvert q\rvert^2=\dfrac{1-i-j-k}{4}$$。
+
+验算 $$qq^{-1}=1$$：$$qq^{-1}=\dfrac{qq^*}{4}=\dfrac{4}{4}=1$$（直接用刚才算出的 $$qq^*=4$$，不用重新展开）。$$\blacksquare$$
+
+**解 基3.** 注意 $$i=jk$$，故 $$kj\cdot i=kj\cdot(jk)=(kj)(jk)$$；先算这一项：$$(kj)(jk)=k(jj)k=k(-1)k=-k^2=1$$，说明 $$kj$$ 是 $$jk=i$$ 的右逆。又 $$i\cdot(-i)=-i^2=1$$，即 $$-i$$ 是 $$i$$ 的逆。结合律接起来：
+
+$$kj=kj\cdot1=kj\cdot\big(i\cdot(-i)\big)=(kj\cdot i)(-i)=\big(kj(jk)\big)(-i)=1\cdot(-i)=-i .\qquad\blacksquare$$
+
+**解 基4.** $$\lvert q\rvert^2=\dfrac{1^2+1^2+1^2+(-1)^2}{4}=\dfrac44=1$$，故 $$\lvert q\rvert=1$$。$$q^*=\dfrac{1-i-j+k}{2}$$。由定理 3.3（第 52 章）或直接验证：$$\lvert q\rvert=1$$ 时 $$qq^*=\lvert q\rvert^2=1$$，两边右乘 $$(q^*)^{-1}$$ 前先看 $$q\cdot q^*=1$$ 就是 $$q^{-1}=q^*$$ 的定义式（逆是使乘积为 $$1$$ 的元素，$$q^*$$ 恰好满足）。$$\blacksquare$$
+
+**解 竞1.** 逐个算。$$q^{-1}=q^*=\dfrac{1-i-j-k}{2}$$（$$\lvert q\rvert=1$$，由 基2 的 $$q$$ 除以 $$2$$ 得到，模变为 $$1$$）。
+
+$$q\,i\,q^{-1}$$：$$i(1-i-j-k)=i-i^2-ij-ik=i+1-k+j=1+i+j-k$$（用 $$ik=-j$$）；$$(1+i+j+k)(1+i+j-k)$$——这一步换个算法，直接用 §三 定义 3.2 已经算出的乘法表逐项展开：
+
+$$\begin{aligned}
+(1+i+j+k)(1+i+j-k)&=(1+i+j-k)+i(1+i+j-k)+j(1+i+j-k)+k(1+i+j-k)\\
+&=(1+i+j-k)+(i-1+k+j)+(j-k-1+i)+(k+j-i+1)\\
+&=2+2i+2j+2k\ -\ 0\cdot(\text{已在逐项里配平，直接相加})
+\end{aligned}$$
+
+（逐项用 $$i^2=-1,ij=k,i(-k)=-ik=j$$；$$ji=-k,j^2=-1,j(-k)=-jk=-i$$；$$ki=j,kj=-i,k(-k)=-k^2=1$$ 算出四行，再相加。）四行相加：实部 $$1-1-1+1=0$$，$$i$$ 系数 $$1+1+1-1=2$$，$$j$$ 系数 $$1+1+1+1=4$$……为避免逐项累加出错，改用更稳的算法：直接验证竞1的答案与命题 3.3 的方法一致，重新老实展开：
+
+$$(1+i+j+k)(1+i+j-k)=\underbrace{1\cdot1}_{1}+\underbrace{1\cdot i}_{i}+\underbrace{1\cdot j}_{j}+\underbrace{1\cdot(-k)}_{-k}+\underbrace{i\cdot1}_{i}+\underbrace{i\cdot i}_{-1}+\underbrace{i\cdot j}_{k}+\underbrace{i\cdot(-k)}_{j}+\underbrace{j\cdot1}_{j}+\underbrace{j\cdot i}_{-k}+\underbrace{j\cdot j}_{-1}+\underbrace{j\cdot(-k)}_{-i}+\underbrace{k\cdot1}_{k}+\underbrace{k\cdot i}_{j}+\underbrace{k\cdot j}_{-i}+\underbrace{k\cdot(-k)}_{1}.$$
+
+十六项逐个归类：常数项 $$1-1-1+1=0$$；$$i$$ 系数（来自 $$i,i,-i,-i$$）$$=1+1-1-1=0$$；$$j$$ 系数（来自 $$j,j,j,j$$）$$=1+1+1+1=4$$；$$k$$ 系数（来自 $$-k,k,-k,k$$）$$=-1+1-1+1=0$$。合计 $$4j$$。故
+
+$$q\,i\,q^{-1}=\frac14\cdot4j=j .$$
+
+同法（利用乘法表的对称性，把 $$i\to j\to k\to i$$ 循环代入上面的算法）可得 $$q\,j\,q^{-1}=k,\ q\,k\,q^{-1}=i$$。
+
+规律：$$i\mapsto j\mapsto k\mapsto i$$，恰好是 $$i,j,k$$ 的一个**循环置换**。由线性性，$$q(i+j+k)q^{-1}=q\,i\,q^{-1}+q\,j\,q^{-1}+q\,k\,q^{-1}=j+k+i=i+j+k$$——即 $$i+j+k$$（方向 $$(1,1,1)$$）被 $$\rho(q)$$ **固定**，这正是转轴的方向。$$\blacksquare$$
+
+**解 竞2.** $$\lvert q\rvert=1$$，$$q^{-1}=q^*=\dfrac{1-j}{\sqrt2}$$。
+
+$$i(1-j)=i-ij=i-k,\qquad(1+j)(i-k)=i-k+ji-jk=i-k+(-k)-i=-2k,\qquad q\,i\,q^{-1}=\frac12(-2k)=-k .$$
+
+$$j(1-j)=j-j^2=j+1,\qquad(1+j)(j+1)=j+1+j^2+j=2j,\qquad q\,j\,q^{-1}=\frac12\cdot2j=j .$$
+
+$$k(1-j)=k-kj=k+i,\qquad(1+j)(k+i)=k+i+jk+ji=k+i+i+(-k)=2i,\qquad q\,k\,q^{-1}=\frac12\cdot2i=i .$$
+
+汇总：$$i\mapsto-k,\ j\mapsto j,\ k\mapsto i$$。$$j$$ 轴不动，$$i,k$$ 互相旋转——这是绕 $$j$$ 轴转 $$90°$$（$$\theta=2\times45°=90°$$，与 $$q$$ 里的半角 $$45°$$ 吻合）。$$\blacksquare$$
+
+**解 竞3.** $$n^2=\Big(\dfrac{i+j}{\sqrt2}\Big)^2=\dfrac12(i+j)(i+j)=\dfrac12\big(i^2+ij+ji+j^2\big)=\dfrac12\big(-1+k-k-1\big)=\dfrac12(-2)=-1$$（用 $$ij=k,\ ji=-k$$，两项恰好抵消）。
+
+$$n^{-1}=n^*=-n=\dfrac{-i-j}{\sqrt2}$$（$$n$$ 是纯虚元，$$n^*=-n$$；又 $$\lvert n\rvert=1$$，故 $$n^{-1}=n^*$$）。
+
+$$n\,i\,n^{-1}=n\,i\,(-n)=-(ni)n$$。先算 $$ni=\dfrac{(i+j)i}{\sqrt2}=\dfrac{i^2+ji}{\sqrt2}=\dfrac{-1-k}{\sqrt2}$$（用 $$ji=-k$$）。再算 $$-(ni)n=-\dfrac{(-1-k)(i+j)}{2}=\dfrac{(1+k)(i+j)}{2}$$。这正是 §三 命题 3.3 里已经算过的 $$\dfrac12(1+k)(i+j)=j$$（那里算过 $$(1+k)(i+j)=2j$$）。故 $$n\,i\,n^{-1}=j$$。
+
+同法：$$nj=\dfrac{(i+j)j}{\sqrt2}=\dfrac{ij+j^2}{\sqrt2}=\dfrac{k-1}{\sqrt2}$$，$$n\,j\,n^{-1}=-(nj)n=\dfrac{(1-k)(i+j)}{2}$$。展开 $$(1-k)(i+j)=i+j-ki-kj=i+j-j-(-i)=i+j-j+i=2i$$，故 $$n\,j\,n^{-1}=i$$。
+
+$$nk=\dfrac{(i+j)k}{\sqrt2}=\dfrac{ik+jk}{\sqrt2}=\dfrac{-j+i}{\sqrt2}$$，$$n\,k\,n^{-1}=-(nk)n=\dfrac{(j-i)(i+j)}{2}$$。展开 $$(j-i)(i+j)=ji+j^2-i^2-ij=-k-1+1-k=-2k$$，故 $$n\,k\,n^{-1}=-k$$。
+
+汇总：$$i\mapsto j,\ j\mapsto i,\ k\mapsto-k$$——$$i,j$$ 互换、$$k$$ 反向，这正是绕方向 $$(1,1,0)/\sqrt2$$ 转 $$180°$$（$$n$$ 本身既是转轴方向、又满足 $$n^2=-1$$，对应 $$\theta=\pi$$：与 §五 题 3 的模式一致，只是轴从 $$k$$ 换成了 $$(i+j)/\sqrt2$$）。$$\blacksquare$$
+
+**解 研1.** 逐点代入 $$\cos,\sin$$：
+
+$$q(0)=1,\quad q\big(\tfrac14\big)=\cos\tfrac\pi4+k\sin\tfrac\pi4=\tfrac{1+k}{\sqrt2},\quad q\big(\tfrac12\big)=k,\quad q\big(\tfrac34\big)=\tfrac{-1+k}{\sqrt2},\quad q(1)=-1 .$$
+
+（$$t=\frac12$$ 时 $$\theta=\pi$$，$$\cos\frac\pi2=0,\sin\frac\pi2=1$$，得 $$q=k$$，正是 §五 题 3 用过的四元数。）
+
+$$\gamma(t)$$ 是"绕 $$k$$ 轴转 $$2\pi t$$"，故 $$\gamma(0)=$$ 转 $$0$$ $$=I$$，$$\gamma(1)=$$ 转 $$2\pi=I$$——**是同一个旋转**（转整数圈回到恒等）。但 $$q(0)=1,\ q(1)=-1$$，**不是同一个四元数**。也就是说：$$\gamma$$ 在 $$SO(3)$$ 里是一条从 $$I$$ 出发又回到 $$I$$ 的闭路，但它在 $$S^3$$ 里对应的这条路径（$$q(t)$$）却是从 $$1$$ 走到 $$-1$$，**没有**回到出发点。$$\blacksquare$$
+
+**解 研2.** $$q_2(0)=\cos0+k\sin0=1$$；$$q_2(1)=\cos2\pi+k\sin2\pi=1$$。两者**相等**，$$q_2$$ 是 $$S^3$$ 里一条真正从 $$1$$ 出发、回到 $$1$$ 的闭路。
+
+对比：研 1 的 $$q(t)$$（转一圈）在 $$S^3$$ 里是**不闭合**的路径（从 $$1$$ 到 $$-1$$）；研 2 的 $$q_2(t)$$（转两圈）在 $$S^3$$ 里才是**闭合**的路径（从 $$1$$ 回到 $$1$$）。两条路径对应到 $$SO(3)$$ 里都是闭路（转整数圈回到 $$I$$），但抬到 $$S^3$$ 上看，只有转两圈的那条真正"回去了"。这正是"转 $$360°$$ 不是恒等、转 $$720°$$ 才是"的几何图景——第 52 章会用覆叠空间的道路提升、同伦提升这两条工具，把这个观察严格证明为 $$\pi_1(SO(3))\cong\mathbb Z/2$$（定理 3.9、3.10）。$$\blacksquare$$
 
 
 ## 七、Takeaway 与延伸 (Takeaways)
