@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 03 章的具体例子——一个具体的旋转矩阵、$$J$$ 的幂、$$D$$ 在若干具体频率上的特征值、一条具体的反自伴恒等式——之后，这里把同样的构造写成一般定义并给出完整证明：本章不再挑单独的角度、单独的整数、单独的一对函数来算，而是对**一切**角度、**一切**整数、**一切**函数把第 03 章手算过的四件事一次性证完。
+
 第 02 章我们已经看见三件事是同一件事：平面旋转、复数乘法、以及 $$i^2=-1$$。它还留下了一个悬念：旋转矩阵 $$R_\theta$$ 在实数域里没有特征方向，可一旦允许复特征值，它的谱是 $$\{e^{\pm i\theta}\}$$——**为什么恰好落在单位圆上？** 本章要把这条线索推进一步，回答一个看似更荒谬的问题：**「求导」凭什么能给出「谱」？**
 
 链条是这样的：平面旋转全体构成一个 Lie 群 $$SO(2)$$；对它求导，得到它的 Lie 代数（一维，生成元是一个反对称矩阵 $$J$$）；让这个生成元作用在函数空间上，它就成了一个算子；求这个算子的特征值，我们得到纯虚数 $$ik$$——于是 $$i$$ 从「一个被假设存在的数」变成「求导算子的一条谱线」。而第 02 章悬而未决的那条"单位圆上的谱"，正是这条谱线在指数映射下的像。
@@ -61,11 +63,13 @@ $$v=(c,-a)^{\mathsf{T}}:\qquad a\cdot(-a)-c\cdot c=-(a^2+c^2)=-1.$$
 
 $$R=\begin{bmatrix}a&-c\\ c&a\end{bmatrix},\qquad a^2+c^2=1.$$
 
-最后一步：把单位向量 $$(a,c)$$ 写成 $$(\cos\theta,\sin\theta)$$——这就是"用角参数化单位圆"，$$\theta$$ 在模 $$2\pi$$ 意义下唯一。代回即得 $$R=R_\theta$$。反向的验证是直接的：$$\cos^2\theta+\sin^2\theta=1$$ 给出正交性，行列式为 $$\cos^2\theta+\sin^2\theta=1$$。$$\blacksquare$$
+最后一步：把单位向量 $$(a,c)$$ 写成 $$(\cos\theta,\sin\theta)$$——这就是"用角参数化单位圆"，$$\theta$$ 在模 $$2\pi$$ 意义下唯一。代回即得 $$R=R_\theta$$。反向的验证是直接的：把 $$R_\theta=\begin{bmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{bmatrix}$$ 代入 $$R_\theta^{\mathsf T}R_\theta$$，对角两项算出 $$\cos^2\theta+\sin^2\theta=1$$，非对角两项算出 $$-\cos\theta\sin\theta+\sin\theta\cos\theta=0$$，合起来正是 $$I$$，给出正交性；行列式为 $$\cos\theta\cdot\cos\theta-(-\sin\theta)\cdot\sin\theta=\cos^2\theta+\sin^2\theta=1$$。$$\blacksquare$$
 
 **注**：定理 3.1 只用到两个事实：单位圆上的点可以写成 $$(\cos\theta,\sin\theta)$$，以及三角函数的定义本身。我们没有用到任何三角恒等式——恒等式将在下一小节作为**计算结果**出现。
 
 ### 3.2 群同态 $$\rho$$ 与圆环群的结构
+
+定理 3.1 把 $$SO(2)$$ 的每个元素都写成了 $$R_\theta$$ 的形式；这自然产生一个映射 $$\theta\mapsto R_\theta$$，把"角度"变成"矩阵"。既然 $$\mathbb R$$（在加法下）和 $$SO(2)$$（在矩阵乘法下）都是群，一个自然的问题是：这个映射对群结构做了什么——它是不是把加法变成了乘法？下面的定理回答这个问题。
 
 **定理 3.2**。映射
 
@@ -115,7 +119,11 @@ $$\frac{d}{d\theta}\begin{bmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta
 
 **推论 3.4**。$$J^2=-I$$，从而 $$\dfrac{d^2\rho}{d\theta^2}=-I\cdot\rho=-\rho$$。
 
-*证明*：$$J^2=\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}=\begin{bmatrix}-1&0\\ 0&-1\end{bmatrix}=-I$$，直接计算。再由定理 3.3 对 $$\theta$$ 再求一次导：$$\dfrac{d^2\rho}{d\theta^2}=J\dfrac{d\rho}{d\theta}=J^2\rho=-\rho$$。$$\blacksquare$$
+*证明*：逐项算矩阵乘法 $$J^2=\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}$$：第一行第一列是 $$0\cdot0+(-1)\cdot1=-1$$；第一行第二列是 $$0\cdot(-1)+(-1)\cdot0=0$$；第二行第一列是 $$1\cdot0+0\cdot1=0$$；第二行第二列是 $$1\cdot(-1)+0\cdot0=-1$$。四项拼起来，
+$$J^2=\begin{bmatrix}-1&0\\ 0&-1\end{bmatrix}=-I.$$
+再由定理 3.3 对 $$\theta$$ 再求一次导：$$\dfrac{d^2\rho}{d\theta^2}=\dfrac{d}{d\theta}(J\rho)=J\dfrac{d\rho}{d\theta}=J(J\rho)=J^2\rho=-\rho$$（第二个等号把 $$J$$ 当常数矩阵提出求导号外，第三个等号再用一次定理 3.3，最后一个等号代入刚证出的 $$J^2=-I$$）。$$\blacksquare$$
+
+定理 3.3 只沿着一条特殊的路径——$$\rho(\theta)=R_\theta$$ 本身——验证了"求导 = 乘以 $$J$$"。如果换一条从单位元出发、同样落在 $$SO(2)$$ 里的光滑曲线，求导的结果还会是"乘以 $$J$$"吗？要回答这个问题，需要一个能装下"所有从单位元出发的光滑曲线的速度"的对象——这就是切空间。
 
 **定义（切空间与 Lie 代数 $$so(2)$$）**。$$SO(2)$$ 在单位元 $$I$$ 处的**切空间 (tangent space)** 定义为
 
@@ -135,9 +143,13 @@ $$\gamma'(t)^{\mathsf{T}}\gamma(t)+\gamma(t)^{\mathsf{T}}\gamma'(t)=0.$$
 
 综上，$$\mathfrak{so}(2)=\{aJ\}$$，一维。$$\blacksquare$$
 
+切空间本身只是一个一维实向量空间，还看不出群乘法留下的任何痕迹（一维空间上任何两个向量都"平行"，没有非交换的余地）。要让切空间真正记录群的代数结构（对一般的非交换群，比如后面会遇到的 $$SO(3)$$，这件事至关重要），需要再装配一个额外的运算——把两个切向量"换位相乘"再相减，看是否为零。这就是 Lie 括号。
+
 **定义（Lie 代数与 Lie 括号）**。切空间 $$\mathfrak{so}(2)$$ 配上**Lie 括号 (Lie bracket)** $$[X,Y]=XY-YX$$（矩阵换位子），称为 $$SO(2)$$ 的 **Lie 代数 (Lie algebra)**。（一般定义与 Jacobi 恒等式见第 54 章；本章只需矩阵情形。）
 
 因为 $$\mathfrak{so}(2)$$ 一维，$$[aJ,bJ]=ab(J^2-J^2)=0$$——**$$so(2)$$ 的括号恒为零**。这个"平凡性"很重要：一维 Lie 代数只有这一种，它的全部内容都藏在指数映射里，而不在括号里。第 54 章会看到，一旦换成非交换的 $$SO(3)$$，括号立刻变得非平凡。
+
+切向量 $$X=\theta J\in\mathfrak{so}(2)$$ 只描述"从单位元出发、往哪个方向走一小步"；它本身还不是 $$SO(2)$$ 里的一个元素。要把这个方向"走成"一整条曲线、并且落在群里，标准做法是把它当成一个微分方程的初始速度、再解出这个方程——这正是指数映射的定义，第 03 章命题 3.2 已经在 $$\theta=n\pi/2$$（$$n=0,1,2,3$$）这四个特殊角度上验证过它给出的答案就是 $$J^n$$；下面的定理把这件事扩展到一切 $$\theta$$。
 
 **定理 3.6（指数映射）**。对一切 $$\theta\in\mathbb{R}$$，
 
@@ -248,6 +260,8 @@ $$\langle e^{ik\theta},e^{im\theta}\rangle=\frac{1}{2\pi}\int_0^{2\pi}e^{i(k-m)\
 
 （$$k\ne m$$ 时被积函数是 $$e^{i(k-m)\theta}$$，在一个完整周期上积分为零。）这个正交系在 $$L^2(S^1)$$ 中是**完备的**，即每个 $$f\in L^2(S^1)$$ 有 Fourier 展开 $$f=\sum_{k\in\mathbb{Z}}c_k e^{ik\theta}$$，$$c_k=\langle f,e^{ik\theta}\rangle$$，且 $$\lVert f\rVert^2=\sum_k\lvert c_k\rvert^2$$。（完备性属于第 30 章。）
 
+定理 3.8 已经直接算出 $$D$$ 的特征值都是纯虚数 $$ik$$，但那条证明用的是"解微分方程 + 周期性"这一条纯分析的路径。现在有了内积，我们可以换一条独立的路径重新问同一个问题：$$D$$ 在这个内积下是什么样的算子？如果能说明 $$D$$ 具有某种对称性，这种对称性会不会本身就逼出"特征值必为纯虚数"这个结论？第 03 章 3.4 节已经在两组具体的 $$(f,g)$$ 上验证过 $$\langle Df,g\rangle=-\langle f,Dg\rangle$$；下面把它证成对一切 $$f,g$$ 成立的一般定理。
+
 **定理 3.10（$$D$$ 是反自伴的）**。对 $$f,g\in C^\infty_{2\pi}$$，
 
 $$\langle Df,g\rangle=-\langle f,Dg\rangle.$$
@@ -323,6 +337,8 @@ $$J^2=-\mathrm{id}_V.$$
 
 反向也成立：$$n=2m$$ 时取 $$m$$ 个 $$J$$ 的直和即可（见经典问题 1）。
 
+定理 3.12 只说明了"有复结构的空间维数是偶数"，还没有说明复结构究竟*做*了什么。既然我们的目标是解释"$$i$$ 从哪里来"，就需要证明复结构不只是一个满足 $$J^2=-\mathrm{id}$$ 的矩阵，而是真的能让实向量空间"长出"复数乘法——这正是下面定理要证的事。
+
 **定理 3.13**。复结构 $$J$$ 使 $$V$$ 成为一个复向量空间。具体地，定义
 
 $$(a+bi)\cdot v:=av+b\,Jv\qquad(a,b\in\mathbb{R},\ v\in V),$$
@@ -340,7 +356,7 @@ $$\big((a+bi)(c+di)\big)\cdot v=\big((ac-bd)+(ad+bc)i\big)\cdot v=(ac-bd)v+(ad+b
 $$(a+bi)\cdot\big((c+di)\cdot v\big)=(a+bi)\cdot(cv+dJv)=a(cv+dJv)+bJ(cv+dJv)$$
 $$=ac\,v+ad\,Jv+bc\,Jv+bd\,J^2v=(ac-bd)v+(ad+bc)Jv.$$
 
-两者相等（倒数第二步把 $$bdJ^2v$$ 换成 $$-bd\,v$$，这正是 $$J^2=-\mathrm{id}$$）。乘法单位元是 $$1+0i$$，其作用为恒同；分配律逐项展开即得。故 $$V$$ 是复向量空间，$$\dim_\mathbb{C}V=\tfrac12\dim_\mathbb{R}V$$。$$\blacksquare$$
+两者相等（倒数第二步把 $$bdJ^2v$$ 换成 $$-bd\,v$$，这正是 $$J^2=-\mathrm{id}$$）。乘法单位元是 $$1+0i$$，其作用为恒同：$$(1+0i)\cdot v=1\cdot v+0\cdot Jv=v$$。分配律逐项展开即得：例如 $$(a+bi)\cdot(v+w)=a(v+w)+bJ(v+w)=(av+aw)+(bJv+bJw)=(av+bJv)+(aw+bJw)=(a+bi)\cdot v+(a+bi)\cdot w$$，用的只是 $$J$$ 的线性性；对标量加法的分配律同理。故 $$V$$ 是复向量空间，$$\dim_\mathbb{C}V=\tfrac12\dim_\mathbb{R}V$$。$$\blacksquare$$
 
 **于是**：
 
@@ -398,7 +414,7 @@ $$\sigma(\theta J)=\{\pm i\theta\}\subset i\mathbb{R}\ \xrightarrow{\ \exp\ }\ \
 
   换句话说：**复结构没有消失，它被"分摊"到了无穷多条谱线上；唯有最低的两条 $$\pm i$$ 合起来构成一个 $$2\times2$$ 的真复结构。** 这正是原专栏的话："为了实现两次求导得到特征值 $$\lambda=-1$$，需要让一次求导为复结构。"
 
-**命名提醒**：$$D$$ 在 $$W$$ 上等于 $$-J$$ 而非 $$J$$，只是定向（orientation）问题——$$J$$ 与 $$-J$$ 都满足 $$J^2=-\mathrm{id}$$，都给出复结构。取基 $$(\sin\theta,\cos\theta)$$ 即得 $$+J$$。
+**命名提醒**：$$D$$ 在 $$W$$ 上等于 $$-J$$ 而非 $$J$$，只是定向（orientation）问题——$$J$$ 与 $$-J$$ 都满足 $$J^2=-\mathrm{id}$$，都给出复结构。取基 $$(\sin\theta,\cos\theta)$$（把顺序换一下）即得 $$+J$$：此时 $$D\sin\theta=\cos\theta$$、$$D\cos\theta=-\sin\theta$$，写成矩阵就是把 $$-J$$ 的两行两列互换位置，正是 $$\begin{bmatrix}0&-1\\ 1&0\end{bmatrix}=J$$——这与第 03 章研究题 2 里"$$J$$ 与 $$-J$$ 互为转置、代表相反方向的 $$90^\circ$$ 旋转"是同一个现象。
 
 ### 3.7 一次总结：求导为什么给出谱
 

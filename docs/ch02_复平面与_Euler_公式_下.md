@@ -12,6 +12,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第01章的具体例子后（你已经用手算过"转30°再转60°等于转90°""$$(1,2)\cdot(3,-1)=(5,5)$$""$$i^2=-1$$""模相乘幅角相加"这四件事），这里把同样的构造写成一般定义、给出对任意角度与任意复数都成立的完整证明。
+
 这一章只解决一个问题：**复数的乘法到底是什么？**
 
 标准教材把三样东西当定义塞给你：虚数单位 $$i=\sqrt{-1}$$、乘法法则 $$(a+ib)(c+id)=(ac-bd)+i(ad+bc)$$、Euler 公式 $$e^{i\theta}=\cos\theta+i\sin\theta$$。然后就在一堆计算里往前推。本章反过来做——**从"平面旋转"这个几何事实出发，把乘法结构推出来，再推出 Euler 公式**。三条"定义"最后会显形为同一件事的三张脸。
@@ -111,9 +113,16 @@ $$M_z:=\begin{pmatrix}a & -b\\ b & a\end{pmatrix}.$$
 
 $$M_zM_w=\begin{pmatrix}ac-bd & -(ad+bc)\\ ad+bc & ac-bd\end{pmatrix}=M_{(ac-bd,\ ad+bc)}.$$
 
-**证明**：直接乘：
+**证明**：按矩阵乘法逐项展开（左边矩阵取行、右边矩阵取列，对应位置相乘再相加）：
+
+- 左上（第 1 行 $$\times$$ 第 1 列）：$$a\cdot c+(-b)\cdot d=ac-bd$$；
+- 右上（第 1 行 $$\times$$ 第 2 列）：$$a\cdot(-d)+(-b)\cdot c=-ad-bc$$；
+- 左下（第 2 行 $$\times$$ 第 1 列）：$$b\cdot c+a\cdot d=bc+ad$$；
+- 右下（第 2 行 $$\times$$ 第 2 列）：$$b\cdot(-d)+a\cdot c=-bd+ac$$。
+
+拼起来：
 $$M_zM_w=\begin{pmatrix}a & -b\\ b & a\end{pmatrix}\begin{pmatrix}c & -d\\ d & c\end{pmatrix}=\begin{pmatrix}ac-bd & -ad-bc\\ bc+ad & -bd+ac\end{pmatrix}.$$
-这与所写矩阵逐元素相同。$$\blacksquare$$
+左上与右下都等于 $$ac-bd$$，右上与左下互为相反数（$$-(ad+bc)$$ 与 $$ad+bc$$），这正是 $$M_{(ac-bd,\ ad+bc)}$$ 的形状（把 $$(ac-bd,\ ad+bc)$$ 代入 $$M$$ 的定义逐项核对即可）。这与所写矩阵逐元素相同。$$\blacksquare$$
 
 引理的意义：**$$M_zM_w$$ 仍属于 $$\mathcal{S}$$**。这允许我们把乘法"下放"到点上。
 
@@ -125,6 +134,8 @@ $$z\cdot w:=(ac-bd,\ ad+bc).$$
 
 **定理 3.3（$$\mathbb{C}$$ 是域, field）** $$(\mathbb{R}^2,+,\ \cdot)$$ 是一个**域**，记作 $$\mathbb{C}$$。其中 $$+$$ 是向量加法。
 
+**为什么要证这个**：定义 3.3 只给出了乘法的公式，还没有说这个乘法"讲不讲道理"——结合律成不成立？有没有单位元、逆元？能不能像有理数、实数一样自由做加减乘除？如果不验证，后面写 $$z^2,\ 1/z,\ e^z$$ 这些式子时就都是空中楼阁。这正是要证的内容。
+
 **证明思路**：域的公理很多，逐个硬验会很累。聪明的做法是**把 $$\mathcal{S}$$ 中的矩阵搬来当证人**：加法、乘法、结合律、分配律在 $$M_2(\mathbb{R})$$ 里早就成立，我们只需证明"点上的运算"与"矩阵上的运算"完全同构，公理就整体继承过来。只有交换律和逆元需要单独看一下（交换律其实也是继承的，见下）。
 
 **证明**：
@@ -135,7 +146,9 @@ $$\phi(z+w)=\phi(z)+\phi(w),\qquad \phi(z\cdot w)=\phi(z)\phi(w).$$
 
 **(2) 加法群。** $$(\mathbb{R}^2,+)$$ 是交换群（分量各自相加，满足结合、交换，零元 $$(0,0)$$，逆元 $$-z$$）。
 
-**(3) 结合律与分配律。** 由 (1)，$$\phi$$ 保乘法与加法；(3) 中的恒等式在 $$\mathcal{S}$$ 中成立（$$\mathcal{S}\subset M_2(\mathbb{R})$$，矩阵乘法结合、对加法分配），拉回即得。
+**(3) 结合律与分配律。** 以结合律 $$(z\cdot w)\cdot u=z\cdot(w\cdot u)$$ 为例说明"拉回"具体怎么操作。由 (1)，$$\phi(z\cdot w)=\phi(z)\phi(w)=M_zM_w$$，故
+$$\phi\bigl((z\cdot w)\cdot u\bigr)=\phi(z\cdot w)\phi(u)=(M_zM_w)M_u.$$
+同理 $$\phi\bigl(z\cdot(w\cdot u)\bigr)=M_z(M_wM_u)$$。而 $$\mathcal{S}\subset M_2(\mathbb{R})$$，矩阵乘法满足结合律（这是线性代数里已经证过的事实，与 $$z,w,u$$ 是什么无关），故 $$(M_zM_w)M_u=M_z(M_wM_u)$$，即 $$\phi\bigl((z\cdot w)\cdot u\bigr)=\phi\bigl(z\cdot(w\cdot u)\bigr)$$。又 $$\phi$$ 是双射（(1) 中已说明），双射保证"像相等 $$\Rightarrow$$ 原像相等"，故 $$(z\cdot w)\cdot u=z\cdot(w\cdot u)$$。分配律 $$z\cdot(w+u)=z\cdot w+z\cdot u$$ 逐字同样的三步（用 $$\phi$$ 保加法、矩阵乘法对加法分配、$$\phi$$ 是双射）即得。
 
 **(4) 交换律。** 记 $$J:=M_{(0,1)}=\begin{pmatrix}0 & -1\\ 1 & 0\end{pmatrix}$$，则 $$M_z=aI+bJ$$。由 $$J^2=\begin{pmatrix}-1 & 0\\ 0 & -1\end{pmatrix}=-I$$ 知 $$z\mapsto M_z$$ 与"把 $$J$$ 代入实多项式"是一回事。于是 $$M_zM_w=(aI+bJ)(cI+dJ)$$ 与 $$M_wM_z=(cI+dJ)(aI+bJ)$$ 都是 $$J$$ 的同一个多项式 $$acI+(ad+bc)J+bdJ^2$$，故相等。**（同一个矩阵的多项式总是交换的。）**
 
@@ -159,6 +172,8 @@ $$i^2=(0,1)\cdot(0,1)=(0\cdot 0-1\cdot 1,\ 0\cdot 1+1\cdot 0)=(-1,0)=-1.$$
 **记号约定** 有了定理 3.4，可写 $$(a,b)=(a,0)+(0,b)=a\cdot 1+b\cdot i=:a+bi$$。于是定义 3.3 的乘法就是熟悉的样子：
 
 $$(a+bi)(c+di)=(ac-bd)+(ad+bc)i.$$
+
+到目前为止乘法还只是一条代数公式——$$(ac-bd,ad+bc)$$ 这个式子本身看不出任何几何含义。但本章的出发点是"旋转"，所以有必要把乘法翻译回几何：乘以一个固定的复数，到底是平面上的什么操作？下面这条定理给出精确答案。
 
 **定理 3.5（乘法 $$=$$ 旋转 $$+$$ 伸缩）** 对 $$\theta\in\mathbb{R}$$ 记
 $$X(\theta):=(\cos\theta,\ \sin\theta)\in\mathbb{C}.$$
