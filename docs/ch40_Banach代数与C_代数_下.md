@@ -13,6 +13,8 @@ layout: default
 
 ## 一、本章概要 (Overview)
 
+读完第 39 章的具体例子后——你已经在 $$\mathbb C^3$$、$$M_2(\mathbb C)$$ 这类有限维对象上手算过可逆性、谱、特征与自伴矩阵的实特征值——这里把同样的构造写成一般的 Banach 代数、C\* 代数定义，并给出完整证明。
+
 第 36 章把「谱」定义成算子 $$\lambda I - T$$ 不可逆的标量集合，第 38 章用投影算子值测度把正规算子写成 $$T = \int z \, dE(z)$$。这两章里，「算子」始终是主角。但第 36 章留下了一个从未被回答的问题：**为什么自伴算子的谱一定落在实轴上？** 谱定理本身答不了它——谱定理是「给定自伴 $$T$$，构造 $$E$$」，它预设了 $$T$$ 自伴，却没有解释这条件如何逼出实数谱。
 
 本章把镜头从「一个算子」退到「这个算子所在的代数」。一旦不盯着具体的 $$T$$、而是研究 $$T$$ 所在的代数 $$\mathcal A$$ 本身，谱就脱去了算子外衣，成为一个纯代数概念：$$\sigma(a) = \lbrace \lambda : \lambda e - a \text{ 不可逆} \rbrace$$。在这个高度上，**Gelfand 表示定理**说：任何含单位的交换 Banach 代数都同构于某个紧 Hausdorff 空间上的连续函数代数的子代数，于是
@@ -100,6 +102,8 @@ $$\sigma_{\mathcal A}(a) = \lbrace \lambda \in \mathbb{C} : \lambda e - a \notin
 
 $$\sigma_{\mathcal A}(a)$$ 中的元素称为 $$a$$ 的**谱点**。当 $$\mathcal A = \mathcal B(H)$$ 时，这就是第 36 章已经用过的 $$\sigma(T)$$，所以我们不再区分记号，一律写 $$\sigma(a)$$。
 
+要研究 $$\sigma(a)$$，第一件要弄清楚的事是「可逆」这个条件有多容易满足——如果可逆元多到充满一个开集，$$\sigma(a)$$ 才可能是良态的集合（闭集、甚至紧集）。第 39 章已经在 $$2\times2$$ 矩阵上手算过：只要 $$a$$ 「足够小」，$$e-a$$ 就能用幂级数直接写出逆。下面把这件事一般化到任意 Banach 代数。
+
 **命题 3.3（Neumann 级数；可逆群是开集）** 设 $$\mathcal A$$ 含单位、$$\lVert e \rVert = 1$$。
 
 (i) 若 $$\lVert a \rVert < 1$$，则 $$e - a \in G(\mathcal A)$$，并且
@@ -124,6 +128,8 @@ $$a + h = a\,(e + a^{-1}h) \in G(\mathcal A),$$
 $$(a+h)^{-1} = (e + a^{-1}h)^{-1} a^{-1} = \Big( \sum_{n\ge0} (-a^{-1}h)^n \Big) a^{-1},$$
 
 于是 $$\lVert (a+h)^{-1} - a^{-1} \rVert = \lVert \big(\sum_{n\ge1}(-a^{-1}h)^n\big)a^{-1}\rVert \le \frac{\lVert a^{-1}h \rVert}{1 - \lVert a^{-1}h\rVert}\,\lVert a^{-1}\rVert \to 0$$（当 $$h \to 0$$）。逆映射连续。$$\blacksquare$$
+
+命题 3.3 说明可逆元群是开集；下面把它翻译成谱的语言——「不可逆」是「可逆」的补集，补一个开集是闭集，于是 $$\sigma(a)$$ 自动是闭集，再加上一条容易的估计就能说它是紧集；「非空」则需要更硬的一条分析工具（Liouville 定理）。
 
 **命题 3.4（谱是紧集且非空）** 设 $$\mathcal A$$ 含单位。对任意 $$a \in \mathcal A$$：
 
@@ -154,6 +160,8 @@ $$\frac{u(\lambda) - u(\mu)}{\lambda - \mu} = -\,f\big(R(\lambda)R(\mu)\big) \xr
 于是 $$f(R(\lambda)) = 0$$ 对一切 $$f \in \mathcal A^*$$、一切 $$\lambda$$ 成立。由 Hahn–Banach 的分离点推论（第 30 章的 Riesz 一节；若 $$R(\lambda) \ne 0$$，存在 $$f \in \mathcal A^*$$ 使 $$f(R(\lambda)) \ne 0$$），必须 $$R(\lambda) = 0$$ 对一切 $$\lambda$$。但 $$R(\lambda)$$ 是可逆元（它有逆 $$\lambda e - a$$），而 $$0$$ 不可逆（不存在 $$b$$ 使 $$0 \cdot b = e \ne 0$$）。矛盾。故 $$\sigma(a) \ne \varnothing$$。$$\blacksquare$$
 
 ### 3.3 谱半径公式
+
+命题 3.4 只给出 $$\sigma(a) \subset \{\lvert\lambda\rvert \le \lVert a\rVert\}$$ 这样一个粗糙的包围圈，谱半径 $$r(a)$$ 究竟等于多少，$$\lVert a\rVert$$ 本身答不出来——第 39 章的例子已经提示了：一个幂零矩阵可以范数不小、谱半径却是零。下面这条公式给出 $$r(a)$$ 的精确值,而且只用到 $$a$$ 的幂的范数增长率。
 
 **定理 3.5（谱半径公式, spectral radius formula）** 设 $$\mathcal A$$ 含单位，$$a \in \mathcal A$$，记 **谱半径 (spectral radius)**
 $$r(a) = \sup_{\lambda \in \sigma(a)} \lvert \lambda \rvert .$$
@@ -214,6 +222,8 @@ $$\limsup_n \lVert a^n \rVert^{1/n} = 1/R \le r(a) .$$
 (iii) 设 $$\mathfrak I$$ 极大。在 $$\mathcal A/\mathfrak I$$ 中取非零元 $$a + \mathfrak I$$。令 $$\mathfrak J = \lbrace ac + i : c \in \mathcal A,\ i \in \mathfrak I \rbrace$$（即由 $$a$$ 与 $$\mathfrak I$$ 生成的理想）。因 $$a \notin \mathfrak I$$，$$\mathfrak I \subsetneq \mathfrak J$$；由极大性 $$\mathfrak J = \mathcal A$$，故 $$e = ac + i$$ 对某 $$c \in \mathcal A$$、$$i \in \mathfrak I$$，即 $$(a + \mathfrak I)(c + \mathfrak I) = e + \mathfrak I$$。交换性使左乘右乘一致，故 $$a + \mathfrak I$$ 可逆。即 $$\mathcal A/\mathfrak I$$ 的每个非零元可逆。
 
 反过来，设 $$\mathcal A/\mathfrak I$$ 可除，$$\mathfrak J \supsetneq \mathfrak I$$，取 $$a \in \mathfrak J \setminus \mathfrak I$$。在 $$\mathcal A/\mathfrak I$$ 中 $$a + \mathfrak I \ne 0$$，故有逆 $$c + \mathfrak I$$，即 $$ac - e \in \mathfrak I \subset \mathfrak J$$。又 $$a \in \mathfrak J$$ 给出 $$ac \in \mathfrak J$$，两式相减得 $$e \in \mathfrak J$$，故 $$\mathfrak J = \mathcal A$$。所以 $$\mathfrak I$$ 极大。$$\blacksquare$$
+
+命题 3.7 已经把「极大理想」与「可除代数」挂上了钩；要让这条挂钩真正给出「点」，还差最后一环：可除的 Banach 代数到底长什么样？下面这条定理说，答案出奇地简单——只有 $$\mathbb C$$ 自己。
 
 **定理 3.8（Gelfand–Mazur）** 设 $$\mathcal A$$ 是**可除的** Banach 代数（含单位、$$\lVert e \rVert = 1$$）。则 $$\mathcal A$$ 等距同构于 $$\mathbb{C}$$：具体地，$$\mathcal A = \mathbb{C} e$$，且映射 $$\lambda \mapsto \lambda e$$ 是等距同构。
 
@@ -303,6 +313,8 @@ $$(a+b)^* = a^* + b^*, \quad (\lambda a)^* = \bar\lambda\, a^*, \quad (ab)^* = b
 
 三个例子：$$C(X)$$ 上取 $$f^* = \bar f$$（复共轭）；$$\mathcal B(H)$$ 上取伴随算子 $$T^*$$（第 32 章定义的伴随）；$$\ell^1(\mathbb{Z})$$ 上取 $$(a^*)_n = \overline{a_{-n}}$$。三者都使「自伴」这个抽象定义落回具体的「实值函数」「自伴算子」「实系数序列」。
 
+普通复数总能唯一分成实部加 $$i$$ 乘虚部；对合就是为了让「实部/虚部」这套语言在任意代数里都能重讲一遍——「自伴元」扮演「实数」的角色。下面先确认这件事真的总能做到、而且分法唯一，后面 Arens 引理才有立足点。
+
 **命题 3.15（唯一的自伴分解）** 设 $$\mathcal A(*)$$ 是对合代数。每个 $$a \in \mathcal A$$ 有**唯一**的分解
 
 $$a = u + iv, \qquad u^* = u, \quad v^* = v, \qquad u = \frac{a + a^*}{2}, \quad v = \frac{a - a^*}{2i} .$$
@@ -331,8 +343,14 @@ C\* 恒等式是本理论的核心公理：它把**范数**（分析数据）与
 
 (ii) $$a = a^*$$ 时 $$a^*a = a^2$$，C\* 恒等式直接给出 $$\lVert a^2 \rVert = \lVert a \rVert^2$$。
 
-(iii) 先由 (ii) 归纳证明 $$\lVert a^{2^n} \rVert = \lVert a \rVert^{2^n}$$。$$n=0$$ 平凡。设对 $$n$$ 成立。需要 $$a^{2^n}$$ 正规：由 $$\lVert \cdot \rVert$$ 与对合相容，可验证 $$(a^{2^n})^* a^{2^n} = (a^* a)^{2^n} = a^{2^n}(a^{2^n})^*$$（把 $$a^*a = aa^*$$ 反复用于把 $$*$$ 移过去；等式两端展开后是同一串因子在交换律 $$a^*a = aa^*$$ 下的重排）。于是 $$a^{2^n}$$ 正规，从而
-$$\lVert a^{2^{n+1}} \rVert = \lVert (a^{2^n})^2 \rVert \overset{\text{(ii)}}{=} \lVert a^{2^n} \rVert^2 = \lVert a \rVert^{2^n \cdot 2} .$$
+(iii) 先证一条比 (ii) 更一般的引理：**若 $$b$$ 正规（不必自伴），则 $$\lVert b^2 \rVert = \lVert b \rVert^2$$。**（这一步不能直接套用 (ii)：(ii) 的前提是 $$b$$ 自伴，而正规只保证 $$b^*b = bb^*$$，两者并不是同一件事——比如把 $$a$$ 取成一个「旋转 + 伸缩」型的正规矩阵，$$a^* \ne a$$ 但 $$a^*a = aa^*$$，此时 (ii) 根本不能直接引用。正确的路线是绕道走 $$b^*b$$，因为 $$b^*b$$ **总是自伴的**（$$(b^*b)^* = b^*b^{**} = b^*b$$），不管 $$b$$ 是否自伴。）由 C\* 恒等式与正规性，
+$$\lVert b^2 \rVert^2 = \lVert (b^2)^*b^2 \rVert = \lVert (b^*)^2b^2 \rVert = \lVert b^*(b^*b)b \rVert = \lVert b^*(bb^*)b \rVert = \lVert (b^*b)(b^*b) \rVert = \lVert (b^*b)^2 \rVert ,$$
+中间把 $$b^*b$$ 换成 $$bb^*$$ 用的正是正规性 $$b^*b = bb^*$$，换过之后四个因子 $$b^*, b, b^*, b$$ 重新配对成 $$(b^*b)(b^*b)$$。现在 $$b^*b$$ 自伴，可以合法引用 (ii)：$$\lVert (b^*b)^2 \rVert \overset{\text{(ii)}}{=} \lVert b^*b \rVert^2$$；再由 C\* 恒等式 $$\lVert b^*b \rVert = \lVert b \rVert^2$$（这一步对任意 $$b$$ 成立，不需要正规性），得
+$$\lVert b^2 \rVert^2 = \lVert b^*b \rVert^2 = \big(\lVert b \rVert^2\big)^2 = \lVert b \rVert^4 ,$$
+开平方即 $$\lVert b^2 \rVert = \lVert b \rVert^2$$，引理得证。
+
+现在用这条引理对 $$n$$ 归纳证明 $$\lVert a^{2^n} \rVert = \lVert a \rVert^{2^n}$$。$$n=0$$ 平凡。设对 $$n$$ 成立。需要 $$a^{2^n}$$ 正规：由 $$\lVert \cdot \rVert$$ 与对合相容，可验证 $$(a^{2^n})^* a^{2^n} = (a^* a)^{2^n} = a^{2^n}(a^{2^n})^*$$（把 $$a^*a = aa^*$$ 反复用于把 $$*$$ 移过去；等式两端展开后是同一串因子在交换律 $$a^*a = aa^*$$ 下的重排）。于是 $$a^{2^n}$$ 正规（但一般不自伴），把上面的引理用在 $$b = a^{2^n}$$ 上（**不是**直接用 (ii)，因为 $$a^{2^n}$$ 只保证正规），得
+$$\lVert a^{2^{n+1}} \rVert = \lVert (a^{2^n})^2 \rVert \overset{\text{引理}}{=} \lVert a^{2^n} \rVert^2 = \lVert a \rVert^{2^n \cdot 2} .$$
 由谱半径公式（定理 3.5）取子列 $$n = 2^k$$：
 $$r(a) = \lim_{k\to\infty} \lVert a^{2^k} \rVert^{1/2^k} = \lim_{k\to\infty} \lVert a \rVert^{2^k/2^k} = \lVert a \rVert . \qquad\blacksquare$$
 
@@ -401,6 +419,8 @@ $$\lvert \varphi_1(b) \rvert^2 = \lvert 1+i+it \rvert^2 = (1+t)^2 + 1, \qquad \l
 两者只在 $$t = 0$$ 时相等，所以恒等式 $$\lvert \varphi(b) \rvert^2 = \varphi(b^*b)$$ 在 $$\mathcal A_0$$ 上失效——原证明把它当成初始条件，这一步正是循环论证。
 
 修正后的证明只多用了一处：$$\lVert b \rVert^2 = \lVert b^*b \rVert$$，即「对合与范数相配」中 C\* 代数独有的那一半。在 $$\mathcal A_0$$ 里这一条失效（$$t = 1$$ 时 $$\lVert b \rVert^2 = 5$$ 而 $$\lVert b^*b \rVert = \sqrt5$$），于是 $$\lVert b \rVert^2 \le \lVert a \rVert^2 + t^2$$ 不再成立，整个估计崩塌。**这条注的意义不小于定理本身**：读者天然会以为「只要有对合就够」，而 $$\mathcal A_0$$ 除 C\* 恒等式外样样满足。
+
+Arens 引理只说了自伴元的 Gelfand 表示是实值函数；下面把它升级成「对合本身翻译成复共轭」，再进一步把 §3.6 的收缩 $$\Gamma$$ 升级成不折不扣的等距同构——这才是「$$\mathcal A$$ 与 $$C(\Delta(\mathcal A))$$ 是同一个东西」的完整版本。
 
 **定理 3.19（交换 C\* 代数的 Gelfand–Naimark）** 设 $$\mathcal A$$ 是交换 C\* 代数。
 
