@@ -5,9 +5,7 @@ layout: default
 # 第67章: 单子、Abel 范畴与正合·上：预备与直觉 (Monads, Abelian Categories and Exactness · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第68章 单子、Abel 范畴与正合·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP120、MP126–MP128
 > 专家依据: `_experts/algebra/category-universal-properties.md` + `_experts/algebra/homological-algebra.md`
-> 知识库依据: `opc2/knowledge/math/范畴论/`（13 篇）、`opc2/knowledge/math/同调代数/`（8 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

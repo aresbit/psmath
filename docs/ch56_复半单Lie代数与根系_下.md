@@ -4,9 +4,7 @@ layout: default
 
 # 第56章: 复半单 Lie 代数与根系·下：完整推导 (Complex Semisimple Lie Algebras and Root Systems · Part II: Full Derivation)
 
-> 对应原专栏: MP73
 > 专家依据: `_experts/algebra/lie-algebra-root-systems.md`（主，主场）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/李代数/`（15 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第55章 复半单 Lie 代数与根系·上（同一主题的具体铺垫，建议先读）
 

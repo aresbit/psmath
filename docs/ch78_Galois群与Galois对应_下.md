@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第77章 Galois 群与 Galois 对应·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP149
 > 专家依据: `_experts/algebra/group-theory-galois.md`（主）+ `_experts/numbertheory/algebraic-number-theory.md`
-> 知识库依据: `opc2/knowledge/math/群论/`、`opc2/knowledge/math/代数数论/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

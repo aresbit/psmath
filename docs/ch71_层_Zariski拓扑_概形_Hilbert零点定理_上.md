@@ -5,9 +5,7 @@ layout: default
 # 第71章: 层、Zariski 拓扑、概形、Hilbert 零点定理·上：预备与直觉 (Sheaves, Zariski Topology, Schemes, Hilbert's Nullstellensatz · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第72章 层、Zariski 拓扑、概形、Hilbert 零点定理·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP129、MP133、MP138–MP140、MP145
 > 专家依据: `_experts/algebra/algebraic-geometry-topology-k.md`（主）+ `_experts/algebra/commutative-algebra.md`
-> 知识库依据: `opc2/knowledge/math/代数几何/`、`opc2/knowledge/math/交换代数/`、`opc2/knowledge/math/复几何/ens-lyon-riemann/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

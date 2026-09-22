@@ -5,9 +5,7 @@ layout: default
 # 第45章: 算子半群与 Feynman 路径积分·上：预备与直觉 (Operator Semigroups and Feynman Path Integrals · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第46章 算子半群与 Feynman 路径积分·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP101–MP103
 > 专家依据: `_experts/analysis/functional-analysis.md`(主) + `_experts/analysis/measure-integration.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`、`opc2/knowledge/physics/量子场论/tong-qft/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

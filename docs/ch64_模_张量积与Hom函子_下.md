@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第63章 模、张量积与 Hom 函子·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP114–MP117、Hom函子
 > 专家依据: `_experts/algebra/commutative-algebra.md`（主）+ `_experts/algebra/category-universal-properties.md`
-> 知识库依据: `opc2/knowledge/math/交换代数/`（8 篇）、`opc2/knowledge/math/代数几何/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

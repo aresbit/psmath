@@ -4,9 +4,7 @@ layout: default
 
 # 第52章: 四元数、SO(3)≅RP³、SU(2)≅S³·下：完整推导 (Quaternions, SO(3)≅RP³, SU(2)≅S³ · Part II: Full Derivation)
 
-> 对应原专栏: MP69
 > 专家依据: `_experts/algebra/representation-theory.md` + `_experts/algebra/lie-algebra-root-systems.md`
-> 知识库依据: `opc2/knowledge/math/李群/lie-groups/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第51章 四元数、SO(3)≅RP³、SU(2)≅S³·上（同一主题的具体铺垫，建议先读）
 
@@ -887,7 +885,6 @@ $$\lambda=2j$$ 偶对应维数 $$2j+1$$ 的**整数自旋**表示（$$j=0,1,2,\d
 - Brian Hall,《Lie Groups, Lie Algebras, and Representations》第 1、2 章。$$SU(2)$$ 与 $$SO(3)$$ 的二重覆盖、Pauli 矩阵与四元数对应，写法严格。
 - Michael Artin,《Algebra》第 5 章。四元数作为除环与矩阵代数的处理，含 "Hamilton 的发现" 的历史注记。
 - Квант 杂志关于四元数与旋转的专题；以及任何一本刚体动力学的开篇（轴角、欧拉角、四元数的三角关系），看工程文献怎样使用本章的定理 3.6 与题 2。
-- 原专栏：MP67（典型群(1)：拓扑性质）、MP69（典型群(3)：三维空间的旋转、Pauli 矩阵、四元数、$$SO(3)$$、$$\mathbb{RP}^3$$、$$SU(2)$$、$$S^3$$）。本章的矩阵实现与 $$S^3\cong SU(2)$$ 的论证直接取自 MP69。
 - 中子干涉实验的原始文献：H. Rauch 等, *Phys. Lett. A* **54** (1975) 425；科普叙述见 Feynman《QED》与 Susskind 的量子力学讲义中关于 "旋转 $$2\pi$$" 的讨论。
 ---
 

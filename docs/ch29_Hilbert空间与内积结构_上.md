@@ -5,9 +5,7 @@ layout: default
 # 第29章: Hilbert 空间与内积结构·上：预备与直觉 (Hilbert Spaces and Inner Product Structure · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第30章 Hilbert 空间与内积结构·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP38–MP39
 > 专家依据: `_experts/analysis/functional-analysis.md` + `_experts/analysis/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`（21 篇）、`opc2/knowledge/math/泛函分析/mit-18-102/`（14 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

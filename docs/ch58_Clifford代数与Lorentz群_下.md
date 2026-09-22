@@ -4,9 +4,7 @@ layout: default
 
 # 第58章: Clifford 代数与 Lorentz 群·下：完整推导 (Clifford Algebras and the Lorentz Group · Part II: Full Derivation)
 
-> 对应原专栏: MP104–MP106
 > 专家依据: `_experts/algebra/representation-theory.md`（主）+ `_experts/algebra/lie-algebra-root-systems.md`
-> 知识库依据: `opc2/knowledge/physics/量子场论/tong-qft/`、`opc2/knowledge/math/李代数/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第57章 Clifford 代数与 Lorentz 群·上（同一主题的具体铺垫，建议先读）
 

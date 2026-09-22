@@ -5,9 +5,7 @@ layout: default
 # 第27章: de Rham 上同调·上：预备与直觉 (de Rham Cohomology · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第28章 de Rham 上同调·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP29
 > 专家依据: `_experts/algebra/homological-algebra.md`（主）+ `_experts/algebra/algebraic-geometry-topology-k.md`
-> 知识库依据: `opc2/knowledge/math/微分几何/differential-geometry/`（ch07 de Rham 上同调、ch09 紧支上同调与 Poincaré 对偶）、`opc2/knowledge/math/代数拓扑/paulin-topology/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

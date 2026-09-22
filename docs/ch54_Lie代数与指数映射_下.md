@@ -4,9 +4,7 @@ layout: default
 
 # 第54章: Lie 代数与指数映射·下：完整推导 (Lie Algebras and the Exponential Map · Part II: Full Derivation)
 
-> 对应原专栏: MP70–MP72
 > 专家依据: algebra/lie-algebra-root-systems.md（主）；方法论见 algebra/_SKILL.md
-> 知识库依据: opc2/knowledge/math/李代数/（ch01、ch02、ch04、ch05）、opc2/knowledge/math/李群/lie-groups/（ch02、ch03、ch04）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第53章 Lie 代数与指数映射·上（同一主题的具体铺垫，建议先读）
 
@@ -827,7 +825,6 @@ $$\lambda:\mathfrak t_{\mathbb C}\to\mathbb C,\qquad \lambda(H)=i\beta(H)$$
 - **John Stillwell,《Naive Lie Theory》** 第 6–9 章。矩阵群路线，BCH 与指数映射讲得最平易，与本章的层次最接近。
 - **Brian Hall,《Lie Groups, Lie Algebras, and Representations》(GTM 222)** 第 2–3 章。矩阵 Lie 群、矩阵指数、闭子群定理、李的三条定理的完整证明，以及 $$\exp$$ 不满射的反例。
 - **Bonfiglioli–Fulci,《Topics in Noncommutative Algebra: The Theorem of Campbell, Baker, Hausdorff and Dynkin》**。想要 BCH 的完整证明与历史，看这本；本章只用到它的前三阶系数与"幂零时截断"这条推论。
-- **J. Humphreys,《Introduction to Lie Algebras and Representation Theory》(GTM 9)** 第 1 章。第 56 章的预备：括号公理、理想、伴随表示的抽象处理。本课知识库 `opc2/knowledge/math/李代数/ch01.md` 是它的浓缩版。
 - **回看两条旧账**：第 04 章（$$SO(2)$$ 与 $$D$$ 的谱）的定理 3.6、3.8 在本章被收进定理 3.13；第 44 章（正则对易关系）的定义 3.2、3.3、3.5 与 命题 3.6 在本章被收进定理 3.14。重读那两章时，可以把本章的编号当作"一般框架"去对照。
 ---
 

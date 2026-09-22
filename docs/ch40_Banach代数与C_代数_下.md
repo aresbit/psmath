@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第39章 Banach 代数与 C\* 代数·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP53–MP54
 > 专家依据: `_experts/analysis/functional-analysis.md`（主）+ `_experts/analysis/spectral-theory.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`（21 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

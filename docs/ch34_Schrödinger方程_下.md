@@ -4,9 +4,7 @@ layout: default
 
 # 第34章: Schrödinger 方程·下：完整推导 (The Schrödinger Equation · Part II: Full Derivation)
 
-> 对应原专栏: MP45–MP47
 > 专家依据: `_experts/analysis/harmonic-fourier.md`（主）+ `_experts/analysis/spectral-theory.md`
-> 知识库依据: `opc2/knowledge/physics/量子力学/landau-qm-modern/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第33章 Schrödinger 方程·上（同一主题的具体铺垫，建议先读）
 
@@ -953,7 +951,6 @@ $$a=\sqrt2\,K_+,\qquad a^\dagger=-\sqrt2\,K_- .$$
 - **Landau & Lifshitz, 《量子力学（非相对论理论）》第 23 节**：谐振子的代数解法的最短版本，本章定理 3.14–3.15 的推导结构与之平行。
 - **Feynman, 《物理学讲义》第三卷，第 8–9 章**：用"两个态的耦合"语言讲谐振子的矩阵元，与本章 (5.1) 的三对角矩阵是同一种图像。
 - **专家依据 `_experts/analysis/harmonic-fourier.md` 第 4 节**：Gauss 核为什么是不确定性原理的等号情形、为什么是 Fourier 变换的特征函数。本章 4.4 的两条读法都在这一节有完整证明。
-- **知识库 `opc2/knowledge/physics/量子力学/landau-qm-modern/ch05_薛定谔方程与时间演化.md` 与 `ch11_全同粒子二次量子化与Fock空间.md`**：前者把本章的分离变量接上一般的时间演化算子；后者把本章的 $$a,a^\dagger$$ 搬到多粒子情形——那里的 $$N$$ 变成"粒子数算子"，$$\sqrt n$$ 变成玻色子的统计因子。
 - **顾樵《数学物理方法》中的谐振子分析解**：原文 MP47 推荐的那条被我们绕过的路，作为对照值得走一遍。
 ---
 

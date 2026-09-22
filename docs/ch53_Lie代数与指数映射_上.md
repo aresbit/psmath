@@ -5,9 +5,7 @@ layout: default
 # 第53章: Lie 代数与指数映射·上：预备与直觉 (Lie Algebras and the Exponential Map · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第54章 Lie 代数与指数映射·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP70–MP72
 > 专家依据: algebra/lie-algebra-root-systems.md（主）；方法论见 algebra/_SKILL.md
-> 知识库依据: opc2/knowledge/math/李代数/（ch01、ch02、ch04、ch05）、opc2/knowledge/math/李群/lie-groups/（ch02、ch03、ch04）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

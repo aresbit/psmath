@@ -5,9 +5,7 @@ layout: default
 # 第25章: Stokes 定理·上：预备与直觉 (Stokes' Theorem · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第26章 Stokes 定理·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP27–MP28
 > 专家依据: `_experts/algebra/homological-algebra.md`（主）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/微分几何/differential-geometry/`（ch08 定向积分与 Stokes 定理）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

@@ -5,9 +5,7 @@ layout: default
 # 第65章: 伴随函子与Yoneda 引理·上：预备与直觉 (Adjoint Functors and the Yoneda Lemma · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第66章 伴随函子与Yoneda 引理·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP118、MP124–MP125、MP137
 > 专家依据: `_experts/algebra/category-universal-properties.md`（主）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/范畴论/`（含 `pursuing-stacks/` 12 篇）、`opc2/knowledge/math/代数几何/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

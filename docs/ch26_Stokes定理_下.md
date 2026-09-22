@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第25章 Stokes 定理·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP27–MP28
 > 专家依据: `_experts/algebra/homological-algebra.md`（主）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/微分几何/differential-geometry/`（ch08 定向积分与 Stokes 定理）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)
@@ -889,7 +887,6 @@ $$H^{k}_{dR}(M)\cong H^{k}(M;\mathbb{R}),$$
 
 **延伸阅读。**
 
-- 原专栏：MP27（标准单形上的 Stokes 定理）、MP28（奇异同调及微分形式在其上的积分）——本章第三节两站的直接来源。
 - 教材：M. Spivak《Calculus on Manifolds》，第四章（半空间证明）；M. Nakahara《Geometry, Topology and Physics》，第 5–6 章（原专栏提到的"详细证明"出处）；R. Bott & L. Tu《Differential Forms in Algebraic Topology》，第 1 章（奇异链版本，与本章 3.6 同一路线）。
 - 向量分析的经典对照：任何一本《高等数学》下册的 Gauss / Stokes / Green 三节，可以拿来逐条对照第五节经典题 1、3、4 的翻译表。
 - 后续：第 28 章 de Rham 上同调（本章配对的非退化性）；第 24 章 Hodge 星算子（$$d$$ 与 $$\nabla\cdot,\nabla\times$$ 的词典）。

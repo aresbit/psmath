@@ -4,9 +4,7 @@ layout: default
 
 # 第02章: 复平面与 Euler 公式·下：完整推导 (The Complex Plane and Euler's Formula · Part II: Full Derivation)
 
-> 对应原专栏: MP1、Gap0–Gap2
 > 专家依据: analysis-master（`_experts/analysis/complex-analysis.md` §1；方法论见 `_experts/analysis/_SKILL.md`）
-> 知识库依据: opc2/knowledge/math/复分析/ch01.md（辅以 ch02、ch03 的收敛性口径）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第01章 复平面与 Euler 公式·上（同一主题的具体铺垫，建议先读）
 
@@ -753,7 +751,6 @@ $$\gamma(t)=e^{i\omega t}. \blacksquare$$
 - Stein & Shakarchi,《Complex Analysis》第 1 章。Euler 公式与"收敛半径由复平面上的奇点决定"的第一印象。
 - Tristan Needham,《Visual Complex Analysis》第 1 章。把"乘法 $$=$$ 旋转 $$+$$ 伸缩"画成图，与本章 §四完全同构。
 - Квант 杂志复数几何专题；任何一本奥赛几何教材里的"旋转法"章节。对照题 1 的综合几何解法与复数解法，看两者的分工。
-- 原专栏：MP1（复平面与 Euler 公式）、Gap0（中学到大学的桥梁）、Gap1（导数）、Gap2（重要的导数）。本章的物理直观与"求导算子特征值"的说法直接来自 MP1 与 Gap2。
 ---
 
 <!-- chapter-nav -->

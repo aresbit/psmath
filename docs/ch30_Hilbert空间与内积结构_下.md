@@ -4,9 +4,7 @@ layout: default
 
 # 第30章: Hilbert 空间与内积结构·下：完整推导 (Hilbert Spaces and Inner Product Structure · Part II: Full Derivation)
 
-> 对应原专栏: MP38–MP39
 > 专家依据: `_experts/analysis/functional-analysis.md` + `_experts/analysis/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`（21 篇）、`opc2/knowledge/math/泛函分析/mit-18-102/`（14 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第29章 Hilbert 空间与内积结构·上（同一主题的具体铺垫，建议先读）
 
@@ -64,7 +62,7 @@ $$\Bigg\lVert f-\sum_{\lvert n\rvert\le N}\hat f(n)e^{inx}\Bigg\rVert_2\xrightar
 
 由 1、2 立刻得到**对第二变元共轭线性**：$$\langle x,\alpha y+\beta z\rangle=\overline{\alpha}\langle x,y\rangle+\overline{\beta}\langle x,z\rangle$$（先交换再取共轭即可）。实情形下 $$\overline{\alpha}=\alpha$$，共轭线性退化为线性。
 
-**注 3.1（谁是"第一变元"是个约定）。** 本书取"第一变元线性、第二变元共轭线性"，与知识库 `opc2/knowledge/math/泛函分析/` 的约定一致。物理文献常反过来（把共轭放在第一变元，见 MP39）。**哪个变元带共轭不影响任何定理的内容**，只影响公式里共轭出现的位置；读者看别的书时先确认约定即可。
+**注 3.1（谁是"第一变元"是个约定）。** 本书取"第一变元线性、第二变元共轭线性"。物理文献常反过来（把共轭放在第一变元）。**哪个变元带共轭不影响任何定理的内容**，只影响公式里共轭出现的位置；读者看别的书时先确认约定即可。
 
 **定理 3.2（Cauchy–Schwarz 不等式）。** 对一切 $$x,y$$，
 
@@ -968,7 +966,6 @@ $$\langle\phi,\psi\rangle=\int_{1}^{2}i\,dx=i .$$
 - MIT OCW 18.102 *Introduction to Functional Analysis*（第 14–17 讲）：Melrose 讲义路径，即知识库 `泛函分析/mit-18-102/ch08.md–ch10.md` 的来源；Fejér 绕道与 $$L^2$$ 收敛在这份讲义里讲得最清楚。
 - M. Reed, B. Simon, *Methods of Modern Mathematical Physics*, Vol. I（Ch. II）：把本章内容直接作为量子力学的地基来使用——原专栏 MP38 推荐的就是这套书。
 - R. Vershynin, *Lectures in Functional Analysis*（第 4–5 章）：从紧算子与谱理论回头看 Hilbert 空间，是第 32 章之后的路。
-- 原专栏：MP38（泛函分析与量子力学——度量空间、$$L^p$$、Banach/Hilbert、Riesz 引理）、MP39（量子力学中的内积结构——伴随算子、Hermite 共轭、Dirac 符号）；本章 3.1–3.4 与注 3.20 直接来自这两篇，入口题、定理 3.14 与经典题 4 为本书自编。
 ---
 
 <!-- chapter-nav -->

@@ -4,9 +4,7 @@ layout: default
 
 # 第42章: 无界算子与 Cayley 变换·下：完整推导 (Unbounded Operators and the Cayley Transform · Part II: Full Derivation)
 
-> 对应原专栏: MP55–MP56
 > 专家依据: `_experts/analysis/functional-analysis.md`（主）+ `_experts/analysis/spectral-theory.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第41章 无界算子与 Cayley 变换·上（同一主题的具体铺垫，建议先读）
 

@@ -4,9 +4,7 @@ layout: default
 
 # 第04章: 平面旋转群 SO(2) 与算子的谱·下：完整推导 (The Rotation Group SO(2) and the Spectrum of an Operator · Part II: Full Derivation)
 
-> 对应原专栏: MP2–MP3
 > 专家依据: algebra/lie-algebra-root-systems.md + analysis/spectral-theory.md（主）；方法论见 algebra/_SKILL.md 与 analysis/_SKILL.md
-> 知识库依据: opc2/knowledge/math/李群/lie-groups/（ch01–ch03、ch08）、opc2/knowledge/math/谱理论/（ch01–ch02）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 > 配套预备: 见 第03章 平面旋转群 SO(2) 与算子的谱·上（同一主题的具体铺垫，建议先读）
 
@@ -864,7 +862,6 @@ $$De^{i\varphi_{m,n}}=i\bigl\langle d\varphi_{m,n},\ \partial_{\theta_1}+\partia
 
 **延伸阅读。**
 
-- 原专栏：MP2（平面旋转群 $$SO(2)$$ 的代数结构、群同构、指数函数）、MP3（$$SO(2)$$ 的求导、算子谱分析、复结构）。本章的链条取自 MP3 的核心论证。
 - Chern, S.-S., *Complex Manifolds without Potential Theory*——原专栏引用此书记载复结构的定义。它指向的"近复结构 / Kähler 几何"本课程不单独设章；**辛结构**一支见第 08 章。
 - Arnol'd, V. I., *Ordinary Differential Equations*——振动、相平面与特征值的几何图像，对应本章第四、五节。
 - 专家参考：`algebra/lie-algebra-root-systems.md` §1（Lie 代数、括号、ad 映射）、`analysis/spectral-theory.md` §1、§3（谱、预解式、正规算子谱分类）。

@@ -5,9 +5,7 @@ layout: default
 # 第79章: 尾声：从 Galois 到现代数学·上：预备与直觉 (Epilogue: From Galois to Modern Mathematics · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第80章 尾声：从 Galois 到现代数学·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: 补（原专栏 MP149 结束于 Galois 群；本章是本书收束章）
 > 专家依据: `_experts/algebra/algebraic-geometry-topology-k.md` + `_experts/algebra/category-universal-properties.md` + `_experts/numbertheory/analytic-number-theory.md`
-> 知识库依据: `opc2/knowledge/math/代数数论/`、`opc2/knowledge/math/解析数论/`（23 篇）、`opc2/knowledge/math/K理论/`（14 篇）、`opc2/knowledge/math/代数几何/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

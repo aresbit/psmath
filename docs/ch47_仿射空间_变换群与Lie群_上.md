@@ -5,9 +5,7 @@ layout: default
 # 第47章: 仿射空间、变换群与 Lie 群·上：预备与直觉 (Affine Spaces, Transformation Groups and Lie Groups · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第48章 仿射空间、变换群与 Lie 群·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP30
 > 专家依据: `_experts/algebra/lie-algebra-root-systems.md`（主）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/李群/lie-groups/`（15 篇）、`opc2/knowledge/math/几何力学/marsden-mech-sym/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

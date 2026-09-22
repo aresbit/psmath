@@ -5,9 +5,7 @@ layout: default
 # 第55章: 复半单 Lie 代数与根系·上：预备与直觉 (Complex Semisimple Lie Algebras and Root Systems · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第56章 复半单 Lie 代数与根系·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP73
 > 专家依据: `_experts/algebra/lie-algebra-root-systems.md`（主，主场）+ `_experts/algebra/_SKILL.md`
-> 知识库依据: `opc2/knowledge/math/李代数/`（15 篇）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

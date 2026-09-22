@@ -5,9 +5,7 @@ layout: default
 # 第01章: 复平面与 Euler 公式·上：预备与直觉 (The Complex Plane and Euler's Formula · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第02章 复平面与 Euler 公式·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP1、Gap0–Gap2
 > 专家依据: analysis-master（`_experts/analysis/complex-analysis.md` §1；方法论见 `_experts/analysis/_SKILL.md`）
-> 知识库依据: opc2/knowledge/math/复分析/ch01.md（辅以 ch02、ch03 的收敛性口径）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

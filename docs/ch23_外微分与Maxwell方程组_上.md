@@ -5,9 +5,7 @@ layout: default
 # 第23章: 外微分与 Maxwell 方程组·上：预备与直觉 (Exterior Derivative and Maxwell's Equations · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第24章 外微分与 Maxwell 方程组·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP25、MP26、MP36、MP37
 > 专家依据: 四专家无专章 —— 主用知识库
-> 知识库依据: `opc2/knowledge/physics/电动力学/`（25 篇）、`opc2/knowledge/math/微分几何/differential-geometry/`（ch06、ch08）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

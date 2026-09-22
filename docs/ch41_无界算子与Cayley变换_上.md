@@ -5,9 +5,7 @@ layout: default
 # 第41章: 无界算子与 Cayley 变换·上：预备与直觉 (Unbounded Operators and the Cayley Transform · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第42章 无界算子与 Cayley 变换·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP55–MP56
 > 专家依据: `_experts/analysis/functional-analysis.md`（主）+ `_experts/analysis/spectral-theory.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

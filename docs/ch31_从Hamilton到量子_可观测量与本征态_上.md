@@ -5,9 +5,7 @@ layout: default
 # 第31章: 从 Hamilton 到量子：可观测量与本征态·上：预备与直觉 (From Hamilton to Quantum Mechanics: Observables and Eigenstates · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第32章 从 Hamilton 到量子：可观测量与本征态·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP40–MP43
 > 专家依据: `_experts/analysis/spectral-theory.md`（主）+ `_experts/analysis/_SKILL.md`
-> 知识库依据: `opc2/knowledge/physics/量子力学/`、`opc2/knowledge/physics/分析力学/landau-mechanics/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

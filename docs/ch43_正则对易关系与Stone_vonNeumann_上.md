@@ -5,9 +5,7 @@ layout: default
 # 第43章: 正则对易关系与 Stone–von Neumann·上：预备与直觉 (Canonical Commutation Relations and Stone–von Neumann · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第44章 正则对易关系与 Stone–von Neumann·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP57–MP58
 > 专家依据: `_experts/analysis/spectral-theory.md`（主）+ `_experts/analysis/functional-analysis.md`（主）；`_experts/algebra/lie-algebra-root-systems.md`（对易子的代数侧）
-> 知识库依据: `opc2/knowledge/math/泛函分析/`、`opc2/knowledge/math/李代数/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第31章 从 Hamilton 到量子：可观测量与本征态·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP40–MP43
 > 专家依据: `_experts/analysis/spectral-theory.md`（主）+ `_experts/analysis/_SKILL.md`
-> 知识库依据: `opc2/knowledge/physics/量子力学/`、`opc2/knowledge/physics/分析力学/landau-mechanics/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)

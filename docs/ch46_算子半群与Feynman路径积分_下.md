@@ -6,9 +6,7 @@ layout: default
 
 > 配套预备: 见 第45章 算子半群与 Feynman 路径积分·上（同一主题的具体铺垫，建议先读）
 
-> 对应原专栏: MP101–MP103
 > 专家依据: `_experts/analysis/functional-analysis.md`(主) + `_experts/analysis/measure-integration.md`
-> 知识库依据: `opc2/knowledge/math/泛函分析/`、`opc2/knowledge/physics/量子场论/tong-qft/`
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)
@@ -1049,7 +1047,6 @@ $$[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0$$
 - **半群与生成元**：K.-J. Engel, R. Nagel, *One-Parameter Semigroups for Linear Evolution Equations*（GTM 194）第 II、III 章（定理 3.5 与定理 3.9 的完整证明）；T. Kato, *Perturbation Theory for Linear Operators*（GTM 132）第 IX 章（Trotter–Kato）；原始文献 H. F. Trotter, *On the product of semi-groups of operators*, Proc. AMS 10 (1959)。
 - **路径积分的数学构造**：B. Simon, *Functional Integration and Quantum Physics*；J. Glimm, A. Jaffe, *Quantum Physics: A Functional Integral Point of View*。Feynman–Kac 公式与 Wiener 测度是这两本的主线。
 - **无穷维测度**：Bogachev, *Measure Theory* 中关于无穷维测度的章节——"无穷维没有平移不变测度"与测度论里"可数可加性只在可测集上成立"是同一类现象（把"太大"的族限制掉）。
-- **本课程内部**：第 21、22 章是本章的两条输入，第 38 章的谱定理是全部积分的计算工具，第 34 章给出 $$H$$ 的来源。物理侧对照 QFT 的路径积分表述（知识库 `opc2/knowledge/physics/量子场论/`）——那里从 $$(3.11)$$ 出发的大量形式操作，正是本章要分辨"哪些有严格含义、哪些只是渐近展开"的对象。
 ---
 
 <!-- chapter-nav -->

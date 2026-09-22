@@ -5,9 +5,7 @@ layout: default
 # 第03章: 平面旋转群 SO(2) 与算子的谱·上：预备与直觉 (The Rotation Group SO(2) and the Spectrum of an Operator · Part I: Warm-up and Intuition)
 
 > 配套深化: 见 第04章 平面旋转群 SO(2) 与算子的谱·下（完整推导），本章是它的具体铺垫，建议先读本章
-> 对应原专栏: MP2–MP3
 > 专家依据: algebra/lie-algebra-root-systems.md + analysis/spectral-theory.md（主）；方法论见 algebra/_SKILL.md 与 analysis/_SKILL.md
-> 知识库依据: opc2/knowledge/math/李群/lie-groups/（ch01–ch03、ch08）、opc2/knowledge/math/谱理论/（ch01–ch02）
 > 深度锚: 对标俄罗斯物理数学高中（СУНЦ МГУ 级）
 
 ## 一、本章概要 (Overview)
