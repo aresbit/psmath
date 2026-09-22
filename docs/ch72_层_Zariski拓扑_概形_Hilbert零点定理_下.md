@@ -733,7 +733,7 @@ $$H^{1}=\operatorname{coker}\delta=(\mathbb{Z}\oplus\mathbb{Z})/\{(c,c)\}\cong\m
 ### 延伸阅读
 
 - Robin Hartshorne, *Algebraic Geometry*, GTM 52. 第 II 章是概形与层的标准参考，第 III 章是层上同调。
-- Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*. 现代范畴化写法，把本章每个构造都写成函子与普适性质。
+- Ravi Vakil, *The Rising Sea: Foundations of Algebraic Geometry*. 现代范畴化写法，把本章每个构造都写成函子与万有性质。
 - Igor Shafarevich, *Basic Algebraic Geometry 1*. 对「有理函数域与双有理分类」的讲述比 Hartshorne 初等。
 - Atiyah–MacDonald, *Introduction to Commutative Algebra*. 本章用到的素理想、局部化、Zorn 引理、诺特性都在第 1、3 章。
 - 原专栏 MP129、MP133、MP138–MP140、MP145。

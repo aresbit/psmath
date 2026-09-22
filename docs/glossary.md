@@ -44,7 +44,7 @@ layout: default
 | 点谱 | point spectrum | ch02，σ_p(T) |
 | 复结构 | complex structure | ch02，J² = −id |
 | 谱映射定理 | spectral mapping theorem | ch02 提及，详见 ch18 |
-| 绕数 | winding number | ch02；ch08 中环路情形亦称「度 (degree)」；实测 绕数 38 : 缠绕数 20，全书以「绕数」为正条（ch49/ch50 一带仍多用「缠绕数」，未逐章回改） |
+| 绕数 | winding number | ch02；ch08 中环路情形亦称「度 (degree)」；实测 绕数 38 : 缠绕数 20，全书以「绕数」为正条（2026-09-22 已回改 ch49/ch50 的「缠绕数」为统一写法） |
 | 极小多项式 | minimal polynomial | ch02 |
 | 特征多项式 | characteristic polynomial | ch02 |
 | 有理标准形 | rational canonical form | ch02 |
@@ -176,7 +176,7 @@ layout: default
 | 张量 | tensor | ch10 提及，ch11 展开 |
 | 张量丛 | tensor bundle | ch10 提及，ch11 展开 |
 | 张量积 | tensor product | ch11 |
-| 万有性质 | universal property | ch11 首次出现，ch32 起大量使用；全书统一用「万有性质」（实测 万有性质 126 : 普适性质 60，按出现次数多者为正条，2026-09-22 归一，未逐章回改） |
+| 万有性质 | universal property | ch11 首次出现，ch32 起大量使用；全书统一用「万有性质」（实测 万有性质 126 : 普适性质 60，按出现次数多者为正条，2026-09-22 全书已回改统一） |
 | 双线性映射 | bilinear map | ch11 |
 | 可分解张量 | decomposable tensor | ch11 |
 | 对偶向量 | covector | ch11 |

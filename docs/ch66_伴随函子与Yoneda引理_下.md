@@ -29,7 +29,7 @@ $$\mathcal{D}(Fc,d)\cong\mathcal{C}(c,Gd),$$
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-**先做题，不给定义。** 下面四问都能在纸上做完；前三问（(a)(b)(c)）分别取自自由群的普适性质、模的张量积、MP137 里「线性代数版的 Yoneda」。第 3 节之前不需要任何新名词，第 5 节会把它们全部回收。
+**先做题，不给定义。** 下面四问都能在纸上做完；前三问（(a)(b)(c)）分别取自自由群的万有性质、模的张量积、MP137 里「线性代数版的 Yoneda」。第 3 节之前不需要任何新名词，第 5 节会把它们全部回收。
 
 **(a) 自由生成的两张面孔。** 取集合 $$S=\{s,t\}$$，自由群 $$F_S$$ 是 $$S$$ 生成的约化字构成的群（字 $$s^{\pm1}t^{\pm1}\cdots$$，乘法是拼接后约化）。现在给你任意一个群 $$G$$ 和**任意一个映射** $$f:S\to G$$——不要求 $$f$$ 保持任何东西，两个元素各自随便挑一个群元就行。
 
@@ -368,7 +368,7 @@ $$C\otimes_R-\ \dashv\ \operatorname{Hom}_{S}(C,-),$$
 
 即左伴随是「取模 $$C$$ 的张量函子」，右伴随是「取模 $$C$$ 的 Hom 函子」。**这正是第 64 章末尾点明、留到本章兑现的那一对**：ch32 已经算清了这两个函子各保正合性的一半，本章给出的是「它们为什么成对」的答案。
 
-**证明** 分四步。**(以下默认第 64 章的结论：$$C\otimes_R A$$ 由双线性映射的普适性质刻画，任一 $$R$$-平衡、双可加的映射 $$\beta:A\times C\to B$$ 都唯一过 $$A\otimes_R C$$ 或 $$C\otimes_R A$$ 分解。)**
+**证明** 分四步。**(以下默认第 64 章的结论：$$C\otimes_R A$$ 由双线性映射的万有性质刻画，任一 $$R$$-平衡、双可加的映射 $$\beta:A\times C\to B$$ 都唯一过 $$A\otimes_R C$$ 或 $$C\otimes_R A$$ 分解。)**
 
 **(i) $$\Phi$$ 良定义、类型正确。** 固定 $$f\in\operatorname{Hom}_S(C\otimes_R A,B)$$。对固定 $$a$$，映射 $$c\mapsto f(c\otimes a)$$ 是 $$S$$-线性的：$$f(sc\otimes a)=f(s\cdot(c\otimes a))=s\cdot f(c\otimes a)$$（$$C\otimes_R A$$ 上 $$S$$ 的作用是 $$s(c\otimes a):=(sc)\otimes a$$，与 $$A$$ 无关）。对固定 $$c$$，映射 $$a\mapsto f(c\otimes a)$$ 是加性的。最后验证 $$a\mapsto\Phi(f)(a)$$ 是 $$R$$-线性的：因为 $$\operatorname{Hom}_S(C,B)$$ 上的左 $$R$$-作用定义为 $$(r\psi)(c):=\psi(cr)$$，而对 $$r\in R$$，
 
@@ -386,7 +386,7 @@ $$\beta(ra,c)=g(ra)(c)=\bigl(r\cdot g(a)\bigr)(c)=g(a)(cr)=\beta(a,cr),$$
 
 $$\beta(a+a',c)=\bigl(g(a)+g(a')\bigr)(c)=\beta(a,c)+\beta(a',c),\qquad \beta(a,c+c')=g(a)(c+c')=\beta(a,c)+\beta(a,c').$$
 
-由张量积的普适性质，$$\beta$$ 唯一分解出一个映射 $$\Psi(g):C\otimes_R A\to B$$，满足 $$\Psi(g)(c\otimes a)=\beta(a,c)=g(a)(c)$$。它还是 $$S$$-线性的：$$\Psi(g)\bigl(s(c\otimes a)\bigr)=\Psi(g)\bigl((sc)\otimes a\bigr)=g(a)(sc)=s\cdot g(a)(c)=s\cdot\Psi(g)(c\otimes a)$$（用了 $$g(a)\in\operatorname{Hom}_S(C,B)$$）。故 $$\Psi(g)\in\operatorname{Hom}_S(C\otimes_R A,B)$$。
+由张量积的万有性质，$$\beta$$ 唯一分解出一个映射 $$\Psi(g):C\otimes_R A\to B$$，满足 $$\Psi(g)(c\otimes a)=\beta(a,c)=g(a)(c)$$。它还是 $$S$$-线性的：$$\Psi(g)\bigl(s(c\otimes a)\bigr)=\Psi(g)\bigl((sc)\otimes a\bigr)=g(a)(sc)=s\cdot g(a)(c)=s\cdot\Psi(g)(c\otimes a)$$（用了 $$g(a)\in\operatorname{Hom}_S(C,B)$$）。故 $$\Psi(g)\in\operatorname{Hom}_S(C\otimes_R A,B)$$。
 
 **(iii) $$\Phi\Psi=1$$、$$\Psi\Phi=1$$。** 在生成元上验：$$\Phi(\Psi(g))(a)(c)=\Psi(g)(c\otimes a)=g(a)(c)$$，故 $$\Phi(\Psi(g))=g$$；$$\Psi(\Phi(f))(c\otimes a)=\Phi(f)(a)(c)=f(c\otimes a)$$，由于形如 $$c\otimes a$$ 的元素张成 $$C\otimes_R A$$、且两边都是加性映射，故 $$\Psi(\Phi(f))=f$$。所以 $$\Phi$$ 是双射。
 
@@ -434,7 +434,7 @@ $$\mathcal{C}\Bigl(\operatorname{colim}_j D_j,\ c\Bigr)\cong\lim_j\mathcal{C}(D_
 
 $$\{\text{以 }c\text{ 为顶点、到 }D\text{ 的锥}\}\ =\ \lim_j\mathcal{C}(c,D_j).$$
 
-另一方面，$$\lim D$$ 的普适性质说：以 $$c$$ 为顶点到 $$D$$ 的锥与单个态射 $$c\to\lim D$$ **一一对应**（存在且分解唯一）。两条一比，得到 $$\mathcal{C}(c,\lim D)\cong\lim_j\mathcal{C}(c,D_j)$$，且对应就是把每个锥换成它穿过极限的那条唯一态射——这是由普适性质唯一确定的对应，故是典范的。反变命题是把上面整段论证在 $$\mathcal{C}^{\mathrm{op}}$$ 里重做一遍。$$\blacksquare$$
+另一方面，$$\lim D$$ 的万有性质说：以 $$c$$ 为顶点到 $$D$$ 的锥与单个态射 $$c\to\lim D$$ **一一对应**（存在且分解唯一）。两条一比，得到 $$\mathcal{C}(c,\lim D)\cong\lim_j\mathcal{C}(c,D_j)$$，且对应就是把每个锥换成它穿过极限的那条唯一态射——这是由万有性质唯一确定的对应，故是典范的。反变命题是把上面整段论证在 $$\mathcal{C}^{\mathrm{op}}$$ 里重做一遍。$$\blacksquare$$
 
 **定理 3.20（右伴随保极限, right adjoints preserve limits）** 设 $$F\dashv G$$，$$F:\mathcal{C}\to\mathcal{D}$$、$$G:\mathcal{D}\to\mathcal{C}$$。若 $$D:J\to\mathcal{D}$$ 有极限，则 $$G\circ D$$ 有极限，且存在典范同构
 
@@ -598,9 +598,9 @@ $$(h_A(f))(g)(X)=(f\circ\rho_a)(X)=f(Xa)=XaF=X(aF)=\rho_{aF}(X),$$
 
 **对象由可表函子决定。** 取 $$p=n'$$，则 $$h_A(\mathbb{K}^{m\times n'})=\operatorname{Hom}_{\mathfrak{m}-}(A,B)\cong\mathbb{K}^{n\times n'}$$。由推论 3.10，$$h_A\cong h_B\Rightarrow A\cong B$$；由推论 3.11，给出这个自然同构的矩阵 $$a\in\mathbb{K}^{n\times n'}$$ 唯一（它是 $$\Phi_A(1_A)$$ 的矩阵），且局部上「可逆 ⟺ $$a$$ 可逆」。**关键 leap**：矩阵这里扮演的正是「自然变换」——**自然变换这个抽象概念，在矩阵语言里就是「乘一个矩阵」**。
 
-**问题 4（普适性质就是可表性；Yoneda 与 ch32 的交汇）** 设 $$R$$ 是环，$$C$$ 是右 $$R$$-模，$$A$$ 是左 $$R$$-模。对 $$\mathbb{Z}$$-模 $$B$$ 记 $$\operatorname{Bilin}_R(C,A;B)$$ 为一切 $$R$$-**平衡**双可加映射 $$\beta:C\times A\to B$$ 的集合（即 $$\beta(cr,a)=\beta(c,ra)$$、对每个变量分别可加）。**证明**：函子 $$B\mapsto\operatorname{Bilin}_R(C,A;B)$$（对 $$k:B\to B'$$ 的作用是 $$\beta\mapsto k\circ\beta$$）是可表的，其表示对象就是张量积 $$C\otimes_R A$$，而万有元就是 $$\otimes:C\times A\to C\otimes_R A$$。
+**问题 4（万有性质就是可表性；Yoneda 与 ch32 的交汇）** 设 $$R$$ 是环，$$C$$ 是右 $$R$$-模，$$A$$ 是左 $$R$$-模。对 $$\mathbb{Z}$$-模 $$B$$ 记 $$\operatorname{Bilin}_R(C,A;B)$$ 为一切 $$R$$-**平衡**双可加映射 $$\beta:C\times A\to B$$ 的集合（即 $$\beta(cr,a)=\beta(c,ra)$$、对每个变量分别可加）。**证明**：函子 $$B\mapsto\operatorname{Bilin}_R(C,A;B)$$（对 $$k:B\to B'$$ 的作用是 $$\beta\mapsto k\circ\beta$$）是可表的，其表示对象就是张量积 $$C\otimes_R A$$，而万有元就是 $$\otimes:C\times A\to C\otimes_R A$$。
 
-**解** 由 ch32 的普适性质（定理 3.17 的证明里也用了它）：对任意 $$B$$，映射
+**解** 由 ch32 的万有性质（定理 3.17 的证明里也用了它）：对任意 $$B$$，映射
 
 $$\Theta:\operatorname{Hom}_{\mathbb{Z}}\bigl(C\otimes_R A,\ B\bigr)\to\operatorname{Bilin}_R(C,A;B),\qquad \Theta(f):=f\circ\otimes$$
 
@@ -608,9 +608,9 @@ $$\Theta:\operatorname{Hom}_{\mathbb{Z}}\bigl(C\otimes_R A,\ B\bigr)\to\operator
 
 $$\Theta(1_{C\otimes_R A})=1\circ\otimes=\otimes,$$
 
-所以万有元就是那个**双线性映射** $$\otimes$$ 自己。用推论 3.12 的判据核对：对任意 $$B$$ 与任意 $$\beta\in\operatorname{Bilin}_R(C,A;B)$$，存在唯一的 $$f:C\otimes_R A\to B$$ 使 $$\beta=f\circ\otimes$$——这句话**逐字**是张量积的普适性质。
+所以万有元就是那个**双线性映射** $$\otimes$$ 自己。用推论 3.12 的判据核对：对任意 $$B$$ 与任意 $$\beta\in\operatorname{Bilin}_R(C,A;B)$$，存在唯一的 $$f:C\otimes_R A\to B$$ 使 $$\beta=f\circ\otimes$$——这句话**逐字**是张量积的万有性质。
 
-**关键 leap**：这一步把 ch32 里当作「公理」用掉的普适性质，重写成了「某个函子可表」这条**结构性**陈述。于是「张量积是什么」不再依赖任何具体构造，而只说：**它是双线性函子的表示对象，由 Yoneda 定理 3.8 与推论 3.10 在同构意义下唯一**。同一句话适用于自由群（例 3.16）、自由模、极限、余极限——**一切用「唯一分解」定义的构造都是可表函子**，这就是入口题 (d) 那个共同形状的最终答案。
+**关键 leap**：这一步把 ch32 里当作「公理」用掉的万有性质，重写成了「某个函子可表」这条**结构性**陈述。于是「张量积是什么」不再依赖任何具体构造，而只说：**它是双线性函子的表示对象，由 Yoneda 定理 3.8 与推论 3.10 在同构意义下唯一**。同一句话适用于自由群（例 3.16）、自由模、极限、余极限——**一切用「唯一分解」定义的构造都是可表函子**，这就是入口题 (d) 那个共同形状的最终答案。
 
 ## 六、练习 (Exercises)
 
