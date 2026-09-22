@@ -44,7 +44,7 @@ layout: default
 | 点谱 | point spectrum | ch02，σ_p(T) |
 | 复结构 | complex structure | ch02，J² = −id |
 | 谱映射定理 | spectral mapping theorem | ch02 提及，详见 ch18 |
-| 绕数 | winding number | ch02；ch08 中环路情形亦称「度 (degree)」 |
+| 绕数 | winding number | ch02；ch08 中环路情形亦称「度 (degree)」；实测 绕数 38 : 缠绕数 20，全书以「绕数」为正条（ch49/ch50 一带仍多用「缠绕数」，未逐章回改） |
 | 极小多项式 | minimal polynomial | ch02 |
 | 特征多项式 | characteristic polynomial | ch02 |
 | 有理标准形 | rational canonical form | ch02 |
@@ -176,7 +176,7 @@ layout: default
 | 张量 | tensor | ch10 提及，ch11 展开 |
 | 张量丛 | tensor bundle | ch10 提及，ch11 展开 |
 | 张量积 | tensor product | ch11 |
-| 普适性质 | universal property | ch11 |
+| 万有性质 | universal property | ch11 首次出现，ch32 起大量使用；全书统一用「万有性质」（实测 万有性质 126 : 普适性质 60，按出现次数多者为正条，2026-09-22 归一，未逐章回改） |
 | 双线性映射 | bilinear map | ch11 |
 | 可分解张量 | decomposable tensor | ch11 |
 | 对偶向量 | covector | ch11 |
@@ -222,6 +222,9 @@ layout: default
 | 正交规范基 | orthonormal basis | ch15；ch16 一处写作「正交归一基」，全书以「正交规范」为主 |
 | 正交规范集 | orthonormal set | ch15 |
 | 极化恒等式 | polarization identity | ch15 |
+| 柯西列 | Cauchy sequence | ch29/ch30 |
+| 完备 | complete | ch29/ch30；名词形式「完备化 (completion)」 |
+| 最小二乘 | least squares | ch29/ch30 |
 | 相空间 | phase space | ch16，T*M |
 | 广义坐标 | generalized coordinates | ch16 |
 | 广义动量 | generalized momenta | ch16 |
