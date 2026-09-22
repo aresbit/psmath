@@ -1230,7 +1230,6 @@ $$\zeta = \frac{\mu - i}{\mu + i},$$
 
 ### 7.3 延伸阅读 (Further reading)
 
-- **原专栏**：MP53–MP54（本章的原始素材）。
 - W. Rudin, *Functional Analysis*, 2nd ed., Ch. 10–11——本章 §3.3–3.6 的骨架，也是入口题 (a)(b) 的出处。
 - J. B. Conway, *A Course in Functional Analysis*, 2nd ed., Ch. VII——Gelfand 理论讲得最细的一本入门。
 - G. J. Murphy, *C\*-Algebras and Operator Theory*, Ch. 1–2——从 Banach 代数走到 C\* 代数，含 Gelfand–Naimark 一般形式。

@@ -20,7 +20,7 @@ layout: default
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-> 题目来源：自编。母题是 MP55 开篇那段"位置算符与动量算符都不能保证结果平方可积"，以及 MP55 末段关于 $$-\frac{d^2}{dt^2}$$ 的算例。
+> 题目来源：自编。母题是"位置算符与动量算符都不能保证结果平方可积"这一现象，以及关于 $$-\frac{d^2}{dt^2}$$ 的算例。
 
 **问题 2.1（动量算子的定义域之谜）.** 取 $$H=L^2(\mathbb R)$$（$$\mathbb R$$ 上平方可积复函数空间，内积与 $$L^2$$ 的基本事实见第 30 章），取 $$\hbar=1$$，把动量算子写成
 
@@ -86,7 +86,7 @@ $$\sup_{\lVert y\rVert\le1}\lVert\varphi_y\rVert\le C .$$
 
 代回 $$\lVert\varphi_y\rVert=\lVert Ty\rVert$$ 得 $$\sup_{\lVert y\rVert\le1}\lVert Ty\rVert\le C$$，即 $$T$$ 有界。$$\blacksquare$$
 
-**推论 3.4（对称与自伴的区分只存在于无界情形）。** 若 $$T$$ 稠定对称且无界，则 $$\mathrm{Dom}(T)\ne H$$。因此在有界算子的世界里，"对称"与"自伴"是同一件事（见 3.3 节的 定理 3.17）：有界对称算子 $$T$$ 满足 $$T=T^*$$。**只有在无界情形下，这两个词才分家**——这就是本章标题里"对称 vs 自伴"的由来，也是 MP55 反复强调的那一点。
+**推论 3.4（对称与自伴的区分只存在于无界情形）。** 若 $$T$$ 稠定对称且无界，则 $$\mathrm{Dom}(T)\ne H$$。因此在有界算子的世界里，"对称"与"自伴"是同一件事（见 3.3 节的 定理 3.17）：有界对称算子 $$T$$ 满足 $$T=T^*$$。**只有在无界情形下，这两个词才分家**——这就是本章标题里"对称 vs 自伴"的由来，也是需要反复强调的一点。
 
 ### 3.2 图像、图像范数、闭算子
 
@@ -102,7 +102,7 @@ $$\Gamma(T)=\bigl\lbrace (x,Tx)\ :\ x\in\mathrm{Dom}(T)\bigr\rbrace$$
 
 $$x_n\to x\ \text{且}\ Tx_n\to y\qquad\Longrightarrow\qquad x\in\mathrm{Dom}(T)\ \text{且}\ Tx=y .$$
 
-这个定义是 MP55 里"$$B$$ 是 $$A$$ 的扩张"时那个 $$\Gamma(A)\subset\Gamma(B)$$ 的语言的精确化。闭性是"在图像里的极限不跑出去"，它取代了无界算子缺失的连续性。
+这个定义是"$$B$$ 是 $$A$$ 的扩张"时那个 $$\Gamma(A)\subset\Gamma(B)$$ 的语言的精确化。闭性是"在图像里的极限不跑出去"，它取代了无界算子缺失的连续性。
 
 **定义 3.7（图像范数, graph norm）。** 在 $$\mathrm{Dom}(T)$$ 上定义
 
@@ -368,7 +368,7 @@ $$n_+=n_-=2 .$$
 
 ### 3.6 Cayley 变换：把无界变成酉
 
-现在到本章的技术核心。想法来自 MP56：三角函数的万能公式 $$x=\tan\frac\theta2$$ 把实直线铺到单位圆上；同一个映射作用在算子上，就把"谱在实轴"翻译成"谱在单位圆"。
+现在到本章的技术核心。想法来自三角函数的万能公式 $$x=\tan\frac\theta2$$ 把实直线铺到单位圆上；同一个映射作用在算子上，就把"谱在实轴"翻译成"谱在单位圆"。
 
 **定义 3.26（Cayley 变换, Cayley transform）。** 设 $$T$$ 稠定对称。由 (3.2)，$$T+i$$ 单射，故有逆
 
@@ -468,7 +468,7 @@ $$\lambda\in\sigma(T)\qquad\Longleftrightarrow\qquad \mu=c(\lambda)\in\sigma(U) 
 
 $$U=(P-i)(P+i)^{-1}\ \longleftrightarrow\ \text{乘以}\ \frac{p-i}{p+i}=-e^{2i\arctan p}=e^{i(2\arctan p-\pi)} .$$
 
-$$U$$ 的"特征值"$$\frac{p-i}{p+i}$$ 的模恒为 $$1$$，辐角 $$2\arctan p-\pi$$ 随动量 $$p$$ 从 $$-\pi$$ 变到 $$0$$——这正是散射理论里那个**随能量变化的相移**，$$U$$ 就是 S 矩阵的最简模型。MP56 用万能公式 $$x=\tan\frac\theta2$$ 引入 Cayley 变换，不是巧合：$$c(\lambda)=\frac{\lambda-i}{\lambda+i}$$ 的逆正是 $$\lambda=-\cot\frac\theta2$$，与 $$x=\tan\frac\theta2$$ 是同一个半角替换。**万能公式把直线卷成圆，Cayley 变换把无界算子卷成酉算子。**
+$$U$$ 的"特征值"$$\frac{p-i}{p+i}$$ 的模恒为 $$1$$，辐角 $$2\arctan p-\pi$$ 随动量 $$p$$ 从 $$-\pi$$ 变到 $$0$$——这正是散射理论里那个**随能量变化的相移**，$$U$$ 就是 S 矩阵的最简模型。用万能公式 $$x=\tan\frac\theta2$$ 引入 Cayley 变换，不是巧合：$$c(\lambda)=\frac{\lambda-i}{\lambda+i}$$ 的逆正是 $$\lambda=-\cot\frac\theta2$$，与 $$x=\tan\frac\theta2$$ 是同一个半角替换。**万能公式把直线卷成圆，Cayley 变换把无界算子卷成酉算子。**
 
 最后把这个手段用到谱定理上。
 
@@ -514,7 +514,7 @@ $$T$$ 与 $$T_{\text{formal}}$$ 都是 $$i(I+U)(I-U)^{-1}$$：前者由 定理 3
 
 谱与范数的断言是同一个积分的推论：$$\langle Tx,x\rangle=\int\lambda\,d\langle Ex,x\rangle$$ 与 $$\lVert Tx\rVert^2=\int\lambda^2\,d\langle Ex,x\rangle$$（后者由 $$T$$ 自伴时 $$\lVert Tx\rVert^2=\langle T^2x,x\rangle=\int\lambda^2\,d\langle Ex,x\rangle$$），于是 $$T$$ 有界 $$\iff$$ $$\int\lambda^2d\langle Ex,x\rangle\le C\lVert x\rVert^2$$ $$\iff$$ $$\mathrm{supp}\,E$$ 有界 $$\iff$$ $$\sigma(T)$$ 有界，此时 $$\lVert Tx\rVert^2\le(\sup\lvert\sigma(T)\rvert)^2\lVert x\rVert^2$$ 且取等号可达。$$\blacksquare$$
 
-**注（乘法算子模型）。** 定理 3.30 也是 MP55"自伴算子酉等价于乘法算子"那句话的精确形态：把 $$H$$ 按 $$E_U$$ 分解，$$T$$ 就变成"乘以函数 $$\lambda\mapsto\lambda$$"，定义域就是"函数与 $$\lambda$$ 相乘后仍属空间"的那些向量。位置算子是乘 $$x$$、动量算子是乘 $$p$$（在动量表象）、自由能量是乘 $$p^2$$——第 3.4 节三个例子正是这一定理的三个具体化身。
+**注（乘法算子模型）。** 定理 3.30 也是"自伴算子酉等价于乘法算子"这句话的精确形态：把 $$H$$ 按 $$E_U$$ 分解，$$T$$ 就变成"乘以函数 $$\lambda\mapsto\lambda$$"，定义域就是"函数与 $$\lambda$$ 相乘后仍属空间"的那些向量。位置算子是乘 $$x$$、动量算子是乘 $$p$$（在动量表象）、自由能量是乘 $$p^2$$——第 3.4 节三个例子正是这一定理的三个具体化身。
 
 ### 3.7 回账：第 04 章的 $$\sigma(D)=i\mathbb Z$$ 现在有了地基
 
@@ -597,7 +597,7 @@ $$\hat p\psi_k=\frac{e^{ikt}\bigl(k\varphi(t)-i\varphi'(t)\bigr)}{\lVert\varphi\
 
 **关键 leap**：把"$$P_0$$ 的伴随"与"$$P$$ 的伴随"用 定理 3.14(ii) 联系起来——**扩大定义域使伴随变小**。对称算子的一切麻烦都源于这两个定义域不相等。
 
-**经典问题 3（Cayley 变换的两个算例：矩阵与相移）。** 考点：定义 3.26，定理 3.27–3.29。位置：3.6 节，与 MP56 原文逐字对应。
+**经典问题 3（Cayley 变换的两个算例：矩阵与相移）。** 考点：定义 3.26，定理 3.27–3.29。位置：3.6 节。
 
 *题*：**(a)** 对 $$B=\begin{pmatrix}0&x\\-x&0\end{pmatrix}$$（实反对称）算出 $$(I-B)(I+B)^{-1}$$，验证它是旋转矩阵，并指出 $$x=\tan\frac\theta2$$。**(b)** 对动量算子 $$P=-i\frac{d}{dx}$$ 在动量表象算出 Cayley 变换，验证它是酉算子，写出它的谱。
 
@@ -605,7 +605,7 @@ $$\hat p\psi_k=\frac{e^{ikt}\bigl(k\varphi(t)-i\varphi'(t)\bigr)}{\lVert\varphi\
 
 $$(I+B)^{-1}=\frac{1}{1+x^2}\begin{pmatrix}1&-x\\x&1\end{pmatrix},\qquad (I-B)(I+B)^{-1}=\frac{1}{1+x^2}\begin{pmatrix}1-x^2&-2x\\2x&1-x^2\end{pmatrix}.$$
 
-用 $$x=\tan\frac\theta2$$ 与倍角公式 $$\frac{1-x^2}{1+x^2}=\cos\theta$$、$$\frac{2x}{1+x^2}=\sin\theta$$，得 $$\begin{pmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{pmatrix}$$：旋转 $$\theta$$。注意 $$B$$ 的 Cayley 变换用的是 $$I\pm B$$，而 $$B$$ 是**反自伴**的（实反对称在复数化下为反 Hermite）：与本章 $$T$$ 自伴时用 $$T\pm i$$ 是同一构造——因为 $$iT$$ 才反自伴，$$T\pm i=i(T\mp i i)=$$ 的形式转换使 $$i$$ 出现在该出现的位置。（MP56 原文里反对称矩阵对应"正交矩阵"，把实矩阵换成复矩阵后"正交"换成"酉"，这正是 $$B\mapsto T$$ 的一步。）
+用 $$x=\tan\frac\theta2$$ 与倍角公式 $$\frac{1-x^2}{1+x^2}=\cos\theta$$、$$\frac{2x}{1+x^2}=\sin\theta$$，得 $$\begin{pmatrix}\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta\end{pmatrix}$$：旋转 $$\theta$$。注意 $$B$$ 的 Cayley 变换用的是 $$I\pm B$$，而 $$B$$ 是**反自伴**的（实反对称在复数化下为反 Hermite）：与本章 $$T$$ 自伴时用 $$T\pm i$$ 是同一构造——因为 $$iT$$ 才反自伴，$$T\pm i=i(T\mp i i)=$$ 的形式转换使 $$i$$ 出现在该出现的位置。（反对称矩阵对应"正交矩阵"，把实矩阵换成复矩阵后"正交"换成"酉"，这正是 $$B\mapsto T$$ 的一步。）
 
 **(b)** 在动量表象 $$P$$ 是乘 $$p$$（定理 3.22 的 Fourier 结论），故
 
@@ -899,7 +899,6 @@ $$[\hat x,\hat p]=i\hbar I .$$
 第 44 章要问：这个等式（在一族公共稠定定义域上）到底决定了多少东西？答案惊人地刚性——**在 Weyl 形式（指数化后的酉算子关系）下，它在不可约意义上有唯一的表示**，这就是 Stone–von Neumann 定理。中间要过两道本章刚铺好的桥：一是 Stone 定理（自伴算子与单参数强连续酉群的一一对应，其证明正是沿本章定理 3.30 的 PVM 积分 $$e^{-itH}=\int e^{-it\lambda}dE(\lambda)$$），二是"把无界关系指数化成酉算子关系好处理"这条策略——它不过是 Cayley 变换（定理 3.28）的同一思想换个方向再走一次。第 46 章则会把 Cayley 变换再推一步，用算子半群与 Feynman 路径积分处理"$$e^{-tH}$$ 这个半群本身"。
 
 **延伸阅读。**
-- MP55（本章入口的母题：位置与动量算子的无界性、乘法算子、图与闭算子、本质自伴）与 MP56（Cayley 变换，从万能公式到实矩阵到复算子）。
 - 第 04 章的"诚实清单"（本章 3.7 节正面回应）与第 34 章末尾关于 $$a,a^\dagger$$ 无界的预告。
 - 细节补充方向：闭算子的值域定理、自伴扩张与边界三元组（abstract boundary conditions）、Weyl 判据与本质谱——它们都在第 18–20 章的谱论与本章的亏指数之间架桥。
 ---

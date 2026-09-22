@@ -21,7 +21,7 @@ layout: default
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-**先做题，不给定义。** 下面四个都是可以在纸张上算完的具体问题（(a)(b)(d) 依 MP114–MP117 的风格自编，(c) 取自交换代数标准习题）。第 3 节之前你不需要任何新名词，第 5 节我们会把这四个全部回收。
+**先做题，不给定义。** 下面四个都是可以在纸张上算完的具体问题（(a)(b)(d) 依相关风格自编，(c) 取自交换代数标准习题）。第 3 节之前你不需要任何新名词，第 5 节我们会把这四个全部回收。
 
 **(a)** 计算 $$\mathbb{Z}/2\mathbb{Z}\ \otimes_{\mathbb{Z}}\ \mathbb{Z}/2\mathbb{Z}$$。你的第一反应大概是二者之一：「两个 2 阶的东西相乘，得 $$\mathbb{Z}/4$$」，或者「乘完只剩 0」。到底是哪一个？为什么？
 
@@ -478,7 +478,7 @@ $$\{\text{有限生成 }A\text{-模}\}\ \longleftrightarrow\ \{\mathbb{A}^n\text
 
 **（二）张量积 = 基变换。** 设环同态 $$A\to B$$（例如 $$\mathbb{Z}\to\mathbb{Q}$$）。把 $$A$$-模 $$M$$ 送到 $$B\otimes_AM$$ 叫作**标量扩张 (extension of scalars)**——「$$M$$ 的元素允许被 $$B$$ 中的元素重新缩放」。入口题 (b) 就是它的极端情形：**把 $$\mathbb{Z}/n$$ 搬到 $$\mathbb{Q}$$ 上，那个「不能被 $$n$$ 除」的扭元素被除掉了，整块塌成 0。** 反之 $$\mathbb{Z}\to\mathbb{Z}/n$$ 是「搬到模掉 $$n$$ 的世界」（见问题 3）。
 
-**（三）物理：态空间上有两个环在作用。** 这是原专栏 MP114 的原始动机，值得完整写出来。设 $$\mathcal{H}$$ 是量子力学的态空间（第 30 章）。它上面有两个结构同时存在：
+**（三）物理：态空间上有两个环在作用。** 这是原专栏的原始动机，值得完整写出来。设 $$\mathcal{H}$$ 是量子力学的态空间（第 30 章）。它上面有两个结构同时存在：
 
 - $$\mathcal{H}$$ 是 $$\mathbb{C}$$-**模**（就是复向量空间），标量 $$\lambda$$ 的作用是 $$\psi\mapsto\lambda\psi$$；
 - $$\mathcal{H}$$ 又是**算子环** $$\Lambda$$（自伴、正规、有界……这些算子构成的环）上的模，$$A\in\Lambda$$ 的作用是 $$\psi\mapsto A\psi$$。
@@ -576,7 +576,7 @@ $$M\xrightarrow{\ \times n\ }M\to\mathbb{Z}/n\otimes_{\mathbb{Z}}M\to0 ,$$
 
 ### 问题 4：$$k[x]$$-模、特征值与预解式
 
-**考点**：例 3.1(ii)（$$k[x]$$-模 = 带算子的空间）与例 3.2(iii)（子模 = 不变子空间）。**位置**：本章与第 15–19 章、以及 MP114 的接口。
+**考点**：例 3.1(ii)（$$k[x]$$-模 = 带算子的空间）与例 3.2(iii)（子模 = 不变子空间）。**位置**：本章与第 15–19 章的接口。
 
 **解。** 设 $$k$$ 是域，$$V$$ 是有限维 $$k$$-向量空间，$$T:V\to V$$ 是线性算子，按例 3.1(ii) 把 $$V$$ 看成 $$k[x]$$-模（$$x\cdot v:=Tv$$）。命题：对 $$\lambda\in k$$，
 
@@ -596,7 +596,7 @@ $$\ker(x-\lambda)=\{v: Tv=\lambda v\}=\{\lambda\text{-特征向量}\}\cup\{0\},$
 
 $$\det(\lambda I-T)=0\iff\lambda I-T\ \text{不可逆}\iff(x-\lambda)\ \text{有非零核}\iff V\ \text{有非零的}\ (x-\lambda)\text{-扭子模}.$$
 
-**这就是 MP114 写下的预解式 $$(\lambda I-A)\psi=0$$ 的模论读法**：左端的 $$\lambda\psi$$ 来自 $$\mathbb{C}$$-模作用，右端的 $$A\psi$$ 来自算子环 $$\Lambda$$-模作用。有限维时这件事由行列式收尾（第 36 章的谱）；无穷维时 $$\lambda I-T$$ 可以既不单、又不满、却有非零核——那时「谱」必须从「特征值集合」升级成「使 $$\lambda I-T$$ 不可逆的 $$\lambda$$ 的集合」（第 18、19 章），而模语言一步都不用改。$$\blacksquare$$
+**这就是预解式 $$(\lambda I-A)\psi=0$$ 的模论读法**：左端的 $$\lambda\psi$$ 来自 $$\mathbb{C}$$-模作用，右端的 $$A\psi$$ 来自算子环 $$\Lambda$$-模作用。有限维时这件事由行列式收尾（第 36 章的谱）；无穷维时 $$\lambda I-T$$ 可以既不单、又不满、却有非零核——那时「谱」必须从「特征值集合」升级成「使 $$\lambda I-T$$ 不可逆的 $$\lambda$$ 的集合」（第 18、19 章），而模语言一步都不用改。$$\blacksquare$$
 
 ### 问题 5：$$\mathbb{Z}/n$$ 什么时候是投射 $$\mathbb{Z}$$-模？
 
@@ -811,7 +811,6 @@ $$\alpha_Q(g)=g\circ f .$$
 - Atiyah–MacDonald《Introduction to Commutative Algebra》第 2 章（模、张量积、正合序列）——本章的 $$\mathbb{Z}$$-模例子全部取自这一章的标准习题。
 - Emily Riehl《Category Theory in Context》第 1–2 章（函子与自然变换、伴随）——第 66 章会用到的语言。
 - Saunders Mac Lane《Categories for the Working Mathematician》第 IV 章（伴随）——三角恒等式的标准出处。
-- 原专栏 MP114（线性算子环与模范畴，物理动机）、MP115（Hom 函子）、MP116（矩阵的张量积）、MP117（模的张量积）——本章的入口题与第四节的物理图像来自这四篇。
 ---
 
 <!-- chapter-nav -->

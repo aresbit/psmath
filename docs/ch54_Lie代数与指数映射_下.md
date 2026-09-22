@@ -821,7 +821,7 @@ $$\lambda:\mathfrak t_{\mathbb C}\to\mathbb C,\qquad \lambda(H)=i\beta(H)$$
 
 ### 延伸阅读
 
-- **原专栏**：MP70（典型群(4)：Lie 群的同伦、旋量群）、MP71（典型群(5)：流形的 Lie 代数和 Lie 群的左不变向量场）、MP72（典型群(6)：单参数子群与指数映射）。本章 §3.1–§3.2 的结构直接取自 MP71–MP72；MP70 里提到的旋量群 $$\mathrm{Spin}(n)$$ 的构造要用 Clifford 代数，那是第 58 章。
+- 本章 §3.1–§3.2 的结构直接取自前述内容；旋量群 $$\mathrm{Spin}(n)$$ 的构造要用 Clifford 代数，那是第 58 章。
 - **John Stillwell,《Naive Lie Theory》** 第 6–9 章。矩阵群路线，BCH 与指数映射讲得最平易，与本章的层次最接近。
 - **Brian Hall,《Lie Groups, Lie Algebras, and Representations》(GTM 222)** 第 2–3 章。矩阵 Lie 群、矩阵指数、闭子群定理、李的三条定理的完整证明，以及 $$\exp$$ 不满射的反例。
 - **Bonfiglioli–Fulci,《Topics in Noncommutative Algebra: The Theorem of Campbell, Baker, Hausdorff and Dynkin》**。想要 BCH 的完整证明与历史，看这本；本章只用到它的前三阶系数与"幂零时截断"这条推论。

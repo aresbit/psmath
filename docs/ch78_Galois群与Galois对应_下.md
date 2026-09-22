@@ -267,7 +267,7 @@ $$\mathbb{Z}/2\times\mathbb{Z}/2$$ 的子群恰有五个：$$\{1\}$$、$$\langle
 
 验证一行：$$\sigma_2$$ 固定 $$\sqrt2$$、把 $$\sqrt3\mapsto-\sqrt3$$，故它固定 $$\mathbb{Q}(\sqrt2)$$；反过来若 $$a+b\sqrt2+c\sqrt3+d\sqrt6$$ 被 $$\sigma_2$$ 固定，则 $$c=d=0$$（因为 $$\sigma_2$$ 把它变成 $$a+b\sqrt2-c\sqrt3-d\sqrt6$$，相等迫使 $$c=d=0$$），故固定域恰是 $$\mathbb{Q}(\sqrt2)$$。其余三行同理。**这张表就是入口题 (1)(3) 的完整答案**：$$\lvert G\rvert=4=[L:\mathbb{Q}]$$（例 3.3），且每个中间域都来自一个子群。
 
-### 3.5 Galois 群的格结构（MP149 的组合定理）
+### 3.5 Galois 群的格结构
 
 例 3.11 里 $$\operatorname{Gal}(\mathbb{Q}(\sqrt2,\sqrt3)/\mathbb{Q})\cong\mathbb{Z}/2\times\mathbb{Z}/2$$ 不是巧合：它是两个「互不相干」的二次扩张 $$\mathbb{Q}(\sqrt2)$$、$$\mathbb{Q}(\sqrt3)$$ 拼起来的。下面把这条「拼接」规律写成一般定理，以后遇到多个独立根号叠在一起的域，就不必每次都重新数自同构。
 
@@ -307,7 +307,7 @@ $$\operatorname{Gal}(\mathbb{Q}(\sqrt2,\sqrt3)/\mathbb{Q})\cong\mathbb{Z}/2\time
 
 $$\operatorname{Gal}\bigl(\mathbb{Q}(\sqrt{p_1},\dots,\sqrt{p_n})/\mathbb{Q}\bigr)\cong(\mathbb{Z}/2)^n,$$
 
-且每个非平凡子群都对应一个由部分 $$\sqrt{p_i}$$ 生成的中间域——这正是 MP149 里那条「互不相等的素数的平方根给出 $$(\mathbb{Z}/2)^n$$」的结论，现在它是定理 3.12 的直接推论。
+且每个非平凡子群都对应一个由部分 $$\sqrt{p_i}$$ 生成的中间域——这正是那条「互不相等的素数的平方根给出 $$(\mathbb{Z}/2)^n$$」的结论，现在它是定理 3.12 的直接推论。
 
 ### 3.6 判别式：Galois 群嵌进 $$A_n$$ 的判据
 
@@ -461,7 +461,7 @@ Galois 对应是一张**图**。画两列点：左边一列是中间域，从下
 
 把 $$L/K$$ Galois 读成物理语言：$$L$$ 是全对称的母相、$$G$$ 是完整对称群。选一个中间域 $$E$$ 相当于**对称破缺 (symmetry breaking)**，$$H=\operatorname{Gal}(L/E)$$ 是**剩余对称群**，被破缺掉的是商 $$G/H$$。由定理 3.11 (iv)，$$[E:K]=[G:H]$$：**破缺出的「相」的复杂程度，恰好等于被破缺掉的对称的量**。而当 $$H\trianglelefteq G$$ 时 $$\operatorname{Gal}(E/K)\cong G/H$$——**剩余对称正规，等价于这个相自己是一个自洽的物理系统**（$$E/K$$ 本身也是 Galois 扩张，有自己的对称群）。这正是规范理论中「自发破缺后有效理论由商群 $$G/H$$ 描述」的代数骨架。
 
-### 4.4 一个矩阵图像（MP149 的写法）
+### 4.4 一个矩阵图像
 
 对最简单的例子 $$\mathbb{C}/\mathbb{R}$$，把复数写成实矩阵（第 02 章）：$$a+bi\leftrightarrow\begin{pmatrix}a&-b\\ b&a\end{pmatrix}$$，而 $$a+bi\mapsto a-bi$$ 就是左乘 $$\sigma_2=\begin{pmatrix}0&-1\\ 1&0\end{pmatrix}$$。于是
 

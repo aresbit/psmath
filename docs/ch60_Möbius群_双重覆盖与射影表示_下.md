@@ -24,7 +24,7 @@ layout: default
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-**问题 A：同一批矩阵，两副面孔。（来源：自编，母题是 MP107 的 $$\mathrm{SL}(2,\mathbb C)$$ 与光锥，亦见保角几何教材里的标准开场）**
+**问题 A：同一批矩阵，两副面孔。（来源：自编，母题是 $$\mathrm{SL}(2,\mathbb C)$$ 与光锥的经典联系，亦见保角几何教材里的标准开场）**
 
 取 $$2\times 2$$ 复矩阵
 $$A=\begin{pmatrix}a&b\\ c&d\end{pmatrix},\qquad \det A=ad-bc=1,$$

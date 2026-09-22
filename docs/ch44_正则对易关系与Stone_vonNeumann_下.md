@@ -215,9 +215,9 @@ $$\operatorname{Im}\langle A_0\psi,B_0\psi\rangle=\frac{1}{2i}\bigl(\langle B_0A
 下标平移不改变对易子，即 $$[A_0,B_0]=[X,P]=i\hbar I$$，所以 $$\bigl\lvert\operatorname{Im}\langle A_0\psi,B_0\psi\rangle\bigr\rvert=\hbar/2$$。代入上面的不等式即得
 $$\Delta X\,\Delta P\ge\frac{\hbar}{2}. \quad\blacksquare$$
 
-**推论 3.13（图景的酉等价，MP57）** 设 $$H$$ 是自伴 Hamilton 算子。时间演化算子 $$U(t)=e^{-iHt/\hbar}$$ 是强连续单参数酉群（定理 3.7 的生成元为 $$-H/\hbar$$），且 $$\psi(t)=U(t)\psi(0)$$ 就是 Schrödinger 方程 $$i\hbar\partial_t\psi=H\psi$$ 的解。取任意酉算子 $$\mathcal U$$ 作变换
+**推论 3.13（图景的酉等价）** 设 $$H$$ 是自伴 Hamilton 算子。时间演化算子 $$U(t)=e^{-iHt/\hbar}$$ 是强连续单参数酉群（定理 3.7 的生成元为 $$-H/\hbar$$），且 $$\psi(t)=U(t)\psi(0)$$ 就是 Schrödinger 方程 $$i\hbar\partial_t\psi=H\psi$$ 的解。取任意酉算子 $$\mathcal U$$ 作变换
 $$\mathsf X'=\mathcal U\mathsf X\mathcal U^{-1},\qquad \mathsf P'=\mathcal U\mathsf P\mathcal U^{-1},$$
-则 $$(\mathsf X',\mathsf P')$$ 仍满足正则对易关系；由定理 3.11，$$\mathsf X',\mathsf P'$$ 在不可约情形必酉等价于 $$(\mathsf X,\mathsf P)$$。**"换视角"不改变对易关系，"换视角"也穷尽了一切实现**——这正是 MP57 里"酉变换只是改变观察视角"的精确含义。
+则 $$(\mathsf X',\mathsf P')$$ 仍满足正则对易关系；由定理 3.11，$$\mathsf X',\mathsf P'$$ 在不可约情形必酉等价于 $$(\mathsf X,\mathsf P)$$。**"换视角"不改变对易关系，"换视角"也穷尽了一切实现**——这正是"酉变换只是改变观察视角"这一说法的精确含义。
 
 
 ## 四、几何与物理直觉 (Intuition)
@@ -244,7 +244,7 @@ $$[N,a]=-a,\qquad [N,a^{\dagger}]=a^{\dagger}.$$
 
 $$N$$ 的本征值是 $$\mathbb N=\{0,1,2,\dots\}$$；$$a^{\dagger}$$ 升 $$1$$、$$a$$ 降 $$1$$，所以谱是等差阶梯。第 56 章会看到，$$\mathfrak{sl}(2)$$ 的不可约表示 $$V(m)$$ 也有一条这样的阶梯：$$h$$ 测权、$$x$$ 升权、$$y$$ 降权，权重是 $$m,m-2,\dots,-m$$。两处的代数机制完全一样，差别只在**阶梯的形态**：$$\mathfrak{sl}(2)$$ 的阶梯是有限的（$$m+1$$ 级），谐振子的阶梯是半有界无限的。这个差别决定了两者的表示论走向不同的结局——$$\mathfrak{sl}(2)$$ 的不可约表示由最高权 $$\mathbb N$$ 分类（第 56 章），而Heisenberg代数的不可约表示在固定 $$\hbar$$ 之后**只有一个**（定理 3.11）。
 
-**五、物理上的三句总结。** 其一，测不准原理（推论 3.12）不是独立公理，它是对易关系的直接推论。其二，位置表象与动量表象之间的变换是 Fourier 变换（第六节竞 1），它是酉变换，所以是"换视角"而不是"换物理"。其三，Schrödinger 图景（态随时间演化、算符不动）与 Heisenberg 图景（算符演化、态不动）由 $$A_H(t)=U(t)^{-1}AU(t)$$ 联系，二者物理等价——这正是 MP57 的标题"从 Schrödinger 图景看酉变换"想说的：**图景是记账方式，不是不同的物理**。
+**五、物理上的三句总结。** 其一，测不准原理（推论 3.12）不是独立公理，它是对易关系的直接推论。其二，位置表象与动量表象之间的变换是 Fourier 变换（第六节竞 1），它是酉变换，所以是"换视角"而不是"换物理"。其三，Schrödinger 图景（态随时间演化、算符不动）与 Heisenberg 图景（算符演化、态不动）由 $$A_H(t)=U(t)^{-1}AU(t)$$ 联系，二者物理等价——这正是"从 Schrödinger 图景看酉变换"这一说法想表达的：**图景是记账方式，不是不同的物理**。
 
 ## 五、经典问题精讲 (Classical Problems)
 
@@ -511,9 +511,6 @@ $$\frac{U(t)\psi-\psi}{t}=\frac{e^{-iHt/\hbar}-1}{t}\psi\ \longrightarrow\ -\fra
 **再往后看（卷四）。** 本章的对易关系在卷四会以完全一般的面貌回来：第 54 章把"对易子"抽象为 Lie 代数并研究 $$\exp$$ 映射（本章的 $$e^{isX}$$ 只是它的一例），第 60 章用中心扩张与上同调处理"射影表示"，届时本章的 $$H_3(\mathbb R)$$ 会成为整个理论的原型。
 
 **延伸阅读**（对应原专栏与参考书）：
-- MP57《从 Schrödinger 图景看量子力学中的酉变换》（时间演化算子、算子指数、单参数半群）；
-- MP58《正则对易关系、Stone–von Neumann 定理、后继学习的展望》（本章主线）；
-- MP43（正则对易关系与 Poisson 括号的首次出现）、MP46（谐振子与升降算子）；
 - Hall, *Quantum Theory for Mathematicians* (GTM 267)，第 28 章（Heisenberg 群与 Stone–von Neumann 的完整证明）；
 - Reed & Simon, *Methods of Modern Mathematical Physics I*，§VIII.5（Weyl 关系与唯一性）；
 - Weyl, *The Theory of Groups and Quantum Mechanics*（Weyl 形式的原始出处）。

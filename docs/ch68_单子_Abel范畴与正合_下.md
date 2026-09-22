@@ -20,7 +20,7 @@ layout: default
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-> 题源：自编，取材 MP120（原专栏正是用两个正交投影算子引出"二次复合为零"）。
+> 题源：自编，取材于原专栏用两个正交投影算子引出"二次复合为零"的构造。
 
 设 $$\mathcal H$$ 是 $$n$$ 维 $$\mathbb{C}$$-向量空间，$$P_1,P_2\in\operatorname{End}(\mathcal H)$$ 是两个**正交投影算子 (orthogonal projection)**：$$P_i^2=P_i$$ 且 $$P_i^\ast=P_i$$；又设二者**正交**，即 $$\operatorname{im}P_1\perp\operatorname{im}P_2$$。考虑态射序列
 
@@ -306,7 +306,7 @@ $$U_T\bigl(F_T(f)\bigr)=\mu_B\circ T(\eta_B\circ f)=\mu_B\circ T\eta_B\circ Tf=T
 
 **短正合列 = 正交分解。** 入口题里 $$H=0$$ 的条件是 $$\operatorname{im}P_1\oplus\operatorname{im}P_2=\mathcal H$$，也就是 $$P_1+P_2=1$$。这正是"$$\mathcal H$$ 被两个正交投影分解为两个直和项"，用序列写就是
 $$0\to\operatorname{im}P_1\hookrightarrow\mathcal H\xrightarrow{\ P_2\ }\operatorname{im}P_2\to 0 .$$
-MP120 用这个例子引出同调，形式上是把"二次复合为零"当成起点；本章则说清了为什么这个起点是对的：**$$P_2P_1=0$$ 让 $$(1)$$ 成为复形，"$$H=0$$"就是它正合，而 $$H\ne0$$ 时 $$H$$ 的维数就是两个投影"没把 $$\mathcal H$$ 铺满"的缺口。**
+这个例子引出同调，形式上是把"二次复合为零"当成起点；本章则说清了为什么这个起点是对的：**$$P_2P_1=0$$ 让 $$(1)$$ 成为复形，"$$H=0$$"就是它正合，而 $$H\ne0$$ 时 $$H$$ 的维数就是两个投影"没把 $$\mathcal H$$ 铺满"的缺口。**
 
 **物理里的复形：Maxwell 与规范自由度。** 第 24 章的 $$d^2=0$$ 与第 28 章的 $$H^k_{dR}$$ 是本章最重的物理落点。在 $$\mathbb R^3$$ 上，de Rham 复形的一部分是
 $$\text{数量函数}\xrightarrow{\ \operatorname{grad}\ }\text{向量场}\xrightarrow{\ \operatorname{curl}\ }\text{向量场}\xrightarrow{\ \operatorname{div}\ }\text{数量函数},$$

@@ -15,17 +15,17 @@ layout: default
 
 第 14 章造出了外微分 $$d$$，并证明了全书最重要的一条恒等式 $$d^2=0$$。当时它只是一个代数事实：**分析里的对称（二阶偏导可交换）与代数里的反对称（楔积变号）精确配对，凑出零**。本章要给这条恒等式一个物理名字。
 
-要做三件事。其一，说清**为什么电场 $$\vec E$$ 是 1-形式、磁感应 $$\vec B$$ 是 2-形式**——这不是记号游戏，而是"镜子里左右颠倒"这条中学常识的严格后果（MP25）。其二，引入 **Hodge 星算子 $$\star$$ (Hodge star)**，把 $$\mathbb R^3$$ 上的 grad / curl / div **三个算子统一成同一个 $$d$$**，并证明 $$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 就是 $$d^2=0$$ 的两种写法（MP26）。其三，把 Maxwell 方程组**从四个压成两个**：
+要做三件事。其一，说清**为什么电场 $$\vec E$$ 是 1-形式、磁感应 $$\vec B$$ 是 2-形式**——这不是记号游戏，而是"镜子里左右颠倒"这条中学常识的严格后果。其二，引入 **Hodge 星算子 $$\star$$ (Hodge star)**，把 $$\mathbb R^3$$ 上的 grad / curl / div **三个算子统一成同一个 $$d$$**，并证明 $$\operatorname{curl}\circ\operatorname{grad}=0$$ 与 $$\operatorname{div}\circ\operatorname{curl}=0$$ 就是 $$d^2=0$$ 的两种写法。其三，把 Maxwell 方程组**从四个压成两个**：
 
 $$dF=0,\qquad d\star F=J,$$
 
-其中 $$F$$ 是把 $$\vec E,\vec B$$ 装在一起的一个 2-形式。$$dF=0$$ 的两个分量，恰好是 $$\nabla\cdot\vec B=0$$ 与 $$\nabla\times\vec E=-\partial_t\vec B$$。一句话点题：**"边界的边界为空"在物理里就叫"不存在磁单极子"**。最后接 MP37：在四维 Minkowski 时空上 $$\star^2=-1$$，$$\star$$ 的特征值为 $$\pm i$$，$$F$$ 分裂成自对偶与反自对偶两部分；由此引出电磁势 $$F=dA$$ 与**规范变换** $$A\mapsto A+df$$。
+其中 $$F$$ 是把 $$\vec E,\vec B$$ 装在一起的一个 2-形式。$$dF=0$$ 的两个分量，恰好是 $$\nabla\cdot\vec B=0$$ 与 $$\nabla\times\vec E=-\partial_t\vec B$$。一句话点题：**"边界的边界为空"在物理里就叫"不存在磁单极子"**。最后：在四维 Minkowski 时空上 $$\star^2=-1$$，$$\star$$ 的特征值为 $$\pm i$$，$$F$$ 分裂成自对偶与反自对偶两部分；由此引出电磁势 $$F=dA$$ 与**规范变换** $$A\mapsto A+df$$。
 
 **从哪来**：第 14 章的 $$d$$ 与 $$d^2=0$$，第 08 章的向量与 1-形式的对偶。**到哪去**：第 26 章的 Stokes 定理——它把 $$d$$、边界、积分焊成一句话，本章的所有物理结论在它那里变成"通量与环量的守恒律"。
 
 ## 二、入口：一道具体的问题 (Entry Problem)
 
-**来源**：问题 (a) 取自 MP25 的镜像例子（原文配图），问题 (b) 为自编。**先给题，不给定义。**
+**来源**：问题 (a) 取自经典的镜像例子（原文配图），问题 (b) 为自编。**先给题，不给定义。**
 
 ### 问题 (a)：镜子里的一辆车
 
@@ -99,7 +99,7 @@ $$\vec a\times\vec b\ \longleftrightarrow\ \alpha\wedge\beta .$$
 
 $$\boxed{\;\vec E=E_x\,dx+E_y\,dy+E_z\,dz\in\Omega^1,\qquad \vec B=B_x\,dy\wedge dz+B_y\,dz\wedge dx+B_z\,dx\wedge dy\in\Omega^2.\;}$$
 
-**注**。$$\mathbb R^3$$ 中 1-形式与 2-形式维数相同（都是 $$3$$），所以初等教材里把 $$\vec B$$ 当成向量场从不区分——这正是 MP26 说"磁场表现非常像一般向量场"的原因。但在 $$\mathbb R^4$$ 或一般流形上，这个巧合消失，$$\vec B$$ 的 2-形式身份就再也藏不住了（见 3.7 与 3.9）。
+**注**。$$\mathbb R^3$$ 中 1-形式与 2-形式维数相同（都是 $$3$$），所以初等教材里把 $$\vec B$$ 当成向量场从不区分——这正是"磁场表现非常像一般向量场"的原因。但在 $$\mathbb R^4$$ 或一般流形上，这个巧合消失，$$\vec B$$ 的 2-形式身份就再也藏不住了（见 3.7 与 3.9）。
 
 ### 3.2 Hodge 星算子：定义
 
@@ -153,7 +153,7 @@ $$\boxed{\star\star\omega=+\omega\quad\text{在 }\Omega^k(\mathbb R^3)\text{ 上
 
 $$\boxed{\star\star\omega=-\omega\quad\text{在 }\Omega^2(\mathbb R^{3,1})\text{ 上}.} \tag{24.6}$$
 
-（12.6）是 MP37 反复用到的 $$\star^2=-1$$，它将在 3.9 节给出 $$\star$$ 的特征值 $$\pm i$$。
+（12.6）是反复用到的 $$\star^2=-1$$，它将在 3.9 节给出 $$\star$$ 的特征值 $$\pm i$$。
 
 ### 3.3 $$\mathbb R^3$$ 中的 $$\star$$：显式表
 
@@ -171,7 +171,7 @@ $$\Omega^0\ \xrightarrow{\ \star\ }\ \Omega^3,\qquad \Omega^1\ \xrightarrow{\ \s
 
 ### 3.4 高潮之一：grad / curl / div 是同一个 $$d$$
 
-现在把第 14 章的外微分 $$d$$ 与经典向量分析对齐。回忆第 14 章 3.9 节：$$d$$ 作用在 0-形式上是梯度、作用在 1-形式上是旋度、作用在 2-形式上是散度。用 $$\star$$ 可以把结果"搬回"熟悉的向量/标量，得到 MP26 的公式。
+现在把第 14 章的外微分 $$d$$ 与经典向量分析对齐。回忆第 14 章 3.9 节：$$d$$ 作用在 0-形式上是梯度、作用在 1-形式上是旋度、作用在 2-形式上是散度。用 $$\star$$ 可以把结果"搬回"熟悉的向量/标量，得到熟悉的公式。
 
 **定理 3.8（三个算子，一个 $$d$$）**。设 $$f\in\Omega^0(\mathbb R^3)$$、$$\vec F$$ 是光滑向量场，记 $$\omega_F=F_xdx+F_ydy+F_zdz\in\Omega^1$$。则
 
@@ -221,7 +221,7 @@ $$\operatorname{div}(\operatorname{curl}\vec F)=\star\,d\star(\star d\omega_F)=\
 
 ### 3.6 时变情形：$$F=B+E\wedge dt$$ 与 $$dF=0$$
 
-回到入口题 (b)。静态时两个"零方程"就是 $$dE=0$$（即 $$\nabla\times\vec E=0$$）与 $$dB=0$$（即 $$\nabla\cdot\vec B=0$$）。时变时差一个 $$\partial_t\vec B$$ 项。MP26 的补救办法是**把时间也当成一个坐标**，在 $$\mathbb R^{3,1}$$（坐标 $$(t,x,y,z)$$）上把 $$\vec E,\vec B$$ 合成一个 2-形式：
+回到入口题 (b)。静态时两个"零方程"就是 $$dE=0$$（即 $$\nabla\times\vec E=0$$）与 $$dB=0$$（即 $$\nabla\cdot\vec B=0$$）。时变时差一个 $$\partial_t\vec B$$ 项。补救办法是**把时间也当成一个坐标**，在 $$\mathbb R^{3,1}$$（坐标 $$(t,x,y,z)$$）上把 $$\vec E,\vec B$$ 合成一个 2-形式：
 
 **定义 3.10（电磁场 2-形式 / field strength）**。
 
@@ -342,7 +342,7 @@ $$F=dA. \tag{24.19}$$
 
 $$B=d_SA_1\ \Longleftrightarrow\ \vec B=\nabla\times\vec A,\qquad E=\partial_tA_1-d_S\phi\ \Longleftrightarrow\ \vec E=\partial_t\vec A-\nabla\phi .$$
 
-（静态时 $$\partial_t\vec A=0$$，退化为物理课本的 $$\vec E=-\nabla\phi$$；$$\phi$$ 的整体符号只是约定，本章取 MP37 "数学上不用负号"的写法。）
+（静态时 $$\partial_t\vec A=0$$，退化为物理课本的 $$\vec E=-\nabla\phi$$；$$\phi$$ 的整体符号只是约定，本章取"数学上不用负号"的写法。）
 
 **规范自由度 (gauge freedom)**。若把 $$A$$ 换成 $$A'=A+df$$（$$f\in\Omega^0$$），则
 
@@ -368,7 +368,7 @@ $$\star d\star df=-\star d\star A\ \Longleftrightarrow\ \square f=\star d\star A
 
 （这里用到了余微分 $$\delta=\pm\star d\star$$ 的语言，第 28 章会正式引入；本章只需知道它是一个可解的线性算子。）
 
-### 3.9 四维 Hodge 星算子与自对偶分解（接 MP37）
+### 3.9 四维 Hodge 星算子与自对偶分解
 
 (24.6) 说：在 $$\mathbb R^{3,1}$$ 的 2-形式上 $$\star^2=-1$$。这带来一个漂亮的结论：$$\star$$ 作为实向量空间 $$\Omega^2(\mathbb R^{3,1})$$ 上的线性算子，满足 $$t^2+1=0$$ 这条多项式关系（把 $$t=\star$$ 代入，$$\star^2+1=0$$ 正是 (24.6)），却没有实的一次因子——因为若 $$\star\omega=\lambda\omega$$（$$\lambda\in\mathbb R$$，$$\omega\ne0$$），两边再作用一次 $$\star$$ 得 $$-\omega=\star^2\omega=\lambda^2\omega$$，即 $$\lambda^2=-1$$，无实数解。所以 $$\star$$ 在实数域上没有特征值，要找特征向量就必须把系数域扩大到复数：把 $$\star$$ 线性延拓到**复化**的 2-形式上，则 $$\star$$ 的极小多项式是 $$t^2+1=(t-i)(t+i)$$，**特征值为 $$\pm i$$**，对应的特征子空间是
 
@@ -382,7 +382,7 @@ $$\omega=\underbrace{\tfrac12(\omega+i\star\omega)}_{\in\Omega^2_+}+\underbrace{
 
 $$F=B+E\wedge dt\ \xrightarrow{\ \star\ }\ -\tilde E+\tilde B\wedge dt\qquad(\text{由 (24.15)}),$$
 
-即 $$B\mapsto-\star_SE$$、$$E\mapsto\star_SB$$。**齐次方程组与非齐次方程组是同一个 $$F$$ 的对偶两面**：$$dF=0$$ 与 $$d\star F=0$$ 在真空 ($$J=0$$) 时形式完全对称，这种"电与磁的对称性"就是 MP26 说的"电和磁相似性的根源"。有源时 $$J\ne0$$ 打破对称——这正是"为什么自然界有电荷而无磁荷"这个悬案的数学形状。
+即 $$B\mapsto-\star_SE$$、$$E\mapsto\star_SB$$。**齐次方程组与非齐次方程组是同一个 $$F$$ 的对偶两面**：$$dF=0$$ 与 $$d\star F=0$$ 在真空 ($$J=0$$) 时形式完全对称，这种"电与磁的对称性"正是"电和磁相似性的根源"。有源时 $$J\ne0$$ 打破对称——这正是"为什么自然界有电荷而无磁荷"这个悬案的数学形状。
 
 ## 四、几何与物理直觉 (Intuition)
 
@@ -480,7 +480,7 @@ $$-\partial_t\rho=\nabla\cdot\vec j\ \Longleftrightarrow\ \partial_t\rho+\nabla\
 
 **解**。(a) $$d(A+df)=dA+d^2f=dA$$（第 14 章定理 3.18）。故 $$F$$ 不变。
 
-(b) 由定理 3.11 的证明同款计算：$$dA=d_SA_1+(\partial_tA_1-d_S\phi)\wedge dt$$。与 $$F=B+E\wedge dt$$ 比较得 $$B=d_SA_1$$，即 $$\vec B=\nabla\times\vec A$$；及 $$E=\partial_tA_1-d_S\phi$$，即 $$\vec E=\partial_t\vec A-\nabla\phi$$。静态时 $$\partial_t\vec A=0$$，$$\vec E=-\nabla\phi$$（本章取 MP37 的不带负号约定；换成物理惯用符号 $$\phi\to-\phi$$ 即得常见的 $$\vec E=-\nabla\phi$$）。
+(b) 由定理 3.11 的证明同款计算：$$dA=d_SA_1+(\partial_tA_1-d_S\phi)\wedge dt$$。与 $$F=B+E\wedge dt$$ 比较得 $$B=d_SA_1$$，即 $$\vec B=\nabla\times\vec A$$；及 $$E=\partial_tA_1-d_S\phi$$，即 $$\vec E=\partial_t\vec A-\nabla\phi$$。静态时 $$\partial_t\vec A=0$$，$$\vec E=-\nabla\phi$$（本章取不带负号的约定；换成物理惯用符号 $$\phi\to-\phi$$ 即得常见的 $$\vec E=-\nabla\phi$$）。
 
 (c) 给定任一势 $$A$$，令 $$A'=A+df$$。要 $$0=\nabla\cdot\vec A'=\nabla\cdot\vec A+\nabla\cdot\nabla f=\nabla\cdot\vec A+\Delta f$$，只需解 Poisson 方程 $$\Delta f=-\nabla\cdot\vec A$$。$$\mathbb R^3$$ 上该方程总有解（第 28 章会给出显式解），故 Coulomb 规范可达。$$\square$$
 
@@ -650,13 +650,12 @@ $$\iint_{S^2}\omega=\iint_{S^2}d\eta=\oint_{\partial S^2}\eta=0,$$
 2. **Hodge 星算子 $$\star$$ 是"取互补指标"**（定义 3.5、引理 3.6）。它满足 $$\star\star=(-1)^{k(n-k)}\operatorname{sgn}(g)$$：在 $$\mathbb R^3$$ 上恒为 $$+1$$，在四维 Minkowski 的 2-形式上为 $$-1$$。
 3. **grad / curl / div 是同一个 $$d$$**：$$\nabla f\leftrightarrow df$$、$$\nabla\times\vec F\leftrightarrow\star d\omega_F$$、$$\nabla\cdot\vec F=\star d\star\omega_F$$（定理 3.8）。于是 $$\operatorname{curl}\circ\operatorname{grad}=0$$、$$\operatorname{div}\circ\operatorname{curl}=0$$ 就是 $$d^2=0$$（推论 3.9）。
 4. **Maxwell 四个方程压成两个**：$$dF=0\iff\{\nabla\cdot\vec B=0,\ \nabla\times\vec E=-\partial_t\vec B\}$$，$$\star d\star F=J\iff\{\nabla\cdot\vec E=\rho,\ \nabla\times\vec B-\partial_t\vec E=\vec j\}$$（(24.18)）。**"边界的边界为空"在物理里就叫"不存在磁单极子"**。
-5. **$$F=dA$$ 与规范变换**：$$A\mapsto A+df$$ 由 $$d^2=0$$ 保持 $$F$$ 不变；四维中 $$\star^2=-1$$ 给出特征值 $$\pm i$$，$$F$$ 分解为自对偶与反自对偶两部分（MP37）。
+5. **$$F=dA$$ 与规范变换**：$$A\mapsto A+df$$ 由 $$d^2=0$$ 保持 $$F$$ 不变；四维中 $$\star^2=-1$$ 给出特征值 $$\pm i$$，$$F$$ 分解为自对偶与反自对偶两部分。
 
 **下一章的悬念**。本章反复出现"边界上的积分"与"内部 $$d$$ 的积分"这对话（研1、研2），也反复出现 $$\oint_{\partial S}$$、$$\iint_{S^2}$$ 这类符号，但**始终没有证明它们可以互换**。那一条 $$\displaystyle\int_{\partial M}\omega=\int_M d\omega$$ 就是**第 26 章的 Stokes 定理**——它把 $$d$$（微分）、$$\partial$$（边界）、$$\int$$（积分）三者焊成一句话，是本章所有"积分形式 Maxwell 方程"的统一出生地，也是第 28 章 de Rham 上同调的门票。
 
 **延伸阅读**。
 
-- 文集里与本课对应的四篇：MP25（镜像、极/轴向量、叉乘、nabla 算子与外微分算子——本章入口题 (a) 与 3.1 节的原型）、MP26（Maxwell 方程组、电场与磁场、Hodge 星算子——命题 3.4、定义 3.5、定理 3.8 的来源）、MP36（Maxwell 方程的外微分形式——定理 3.11、3.13 与 (24.18) 的来源）、MP37（四维 Hodge 星算子、电磁势、规范变换——3.8、3.9 节的来源）。
 - 陈省身《微分几何讲义》：Hodge 星算子与 Laplace–de Rham 算子的标准写法，$$\star^2$$ 与余微分 $$\delta$$ 的符号约定最干净的出处。
 - Bott & Tu, *Differential Forms in Algebraic Topology*：第 1–2 章的 Poincaré 引理与 Mayer–Vietoris，是研2 中 $$H^2(\mathbb R^3\setminus\{0\})\ne0$$ 的标准处理。
 - 朗道《场论》§25–§28：电磁场张量 $$F_{\mu\nu}$$ 与势 $$A_\mu$$ 的物理约定；对照本章 (24.9) 与 3.8 节。

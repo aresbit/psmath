@@ -56,7 +56,7 @@ $$a = \frac{1}{\sqrt{2m\hbar\omega}}\bigl(m\omega X + iP\bigr),\qquad a^\dagger 
 
 $$i\hbar\,\partial_t\psi = H\psi,\qquad \psi(\cdot,t)\in\mathscr H,\ \ t\in\mathbb R .$$
 
-使 $$H$$ 有定义的向量全体记作 $$\operatorname{Dom}H$$，称 $$H$$ 为该系统的 **Hamilton 算子 (Hamiltonian operator)**，$$i\hbar\partial_t - H$$ 为 **Schrödinger 算子 (Schrödinger operator)**——原文 MP45 把求解方程归纳为求它的核：$$\psi\in\operatorname{Ker}\bigl(i\hbar\partial_t - H\bigr)$$。若把 $$\psi(\cdot,t)$$ 看成一条在 $$\mathscr H$$ 里随 $$t$$ 走的曲线，等价的写法是
+使 $$H$$ 有定义的向量全体记作 $$\operatorname{Dom}H$$，称 $$H$$ 为该系统的 **Hamilton 算子 (Hamiltonian operator)**，$$i\hbar\partial_t - H$$ 为 **Schrödinger 算子 (Schrödinger operator)**——求解方程可以归纳为求它的核：$$\psi\in\operatorname{Ker}\bigl(i\hbar\partial_t - H\bigr)$$。若把 $$\psi(\cdot,t)$$ 看成一条在 $$\mathscr H$$ 里随 $$t$$ 走的曲线，等价的写法是
 
 $$\partial_t\psi = -\frac{i}{\hbar}H\psi .$$
 
@@ -411,7 +411,7 @@ $$\psi_0(x) = \Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4}\exp\Bigl(-\frac{m\omega
 
 ### 3.10 被绕过的那条路
 
-作为对照，把传统分析解法走一遍的清单（原文 MP47 逐条列出）：① 把定态方程写成变系数二阶线性 ODE；② 令 $$x\to\infty$$ 抓渐近解 $$e^{-x^2/2}$$；③ 去掉渐近因子得 Hermite 方程 $$h''-2xh'+2nh=0$$；④ 求 $$h$$ 的幂级数解；⑤ 由"波函数可归一"要求级数截断，得 $$n$$ 为整数与 Hermite 多项式；⑥ 用 Sturm–Liouville 理论检查正交性。六步中的每一步都要算，而且几乎不提供"为什么是这个谱"的理解。
+作为对照，把传统分析解法走一遍的清单（逐条列出）：① 把定态方程写成变系数二阶线性 ODE；② 令 $$x\to\infty$$ 抓渐近解 $$e^{-x^2/2}$$；③ 去掉渐近因子得 Hermite 方程 $$h''-2xh'+2nh=0$$；④ 求 $$h$$ 的幂级数解；⑤ 由"波函数可归一"要求级数截断，得 $$n$$ 为整数与 Hermite 多项式；⑥ 用 Sturm–Liouville 理论检查正交性。六步中的每一步都要算，而且几乎不提供"为什么是这个谱"的理解。
 
 代数路线只用了：一条对易关系 $$[X,P]=i\hbar I$$、一次因式分解、三个对易式 $$[a,a^\dagger]=I,\ [N,a]=-a,\ [N,a^\dagger]=a^\dagger$$。**传统路线的"级数必须截断"这个技术条件，在代数路线里变成了"本征值不能是负数"这条结构性事实**——同一个现象，两种说法，后者解释了前者。
 
@@ -423,7 +423,7 @@ $$\psi_0(x) = \Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4}\exp\Bigl(-\frac{m\omega
 
 $$u^2+v^2 = 2mE .$$
 
-复化坐标 $$z=u+iv$$ 后，圆就是 $$\lvert z\rvert^2 = 2mE$$——这正是原文 MP46 开头那句"看见 $$x^2+y^2$$ 就想到 $$z^*z$$"的几何出处。
+复化坐标 $$z=u+iv$$ 后，圆就是 $$\lvert z\rvert^2 = 2mE$$——这正是"看见 $$x^2+y^2$$ 就想到 $$z^*z$$"这一联想的几何出处。
 
 量子化之后，$$z$$ 变成一个**算子**：$$a=\frac{1}{\sqrt{2m\hbar\omega}}(u+iv)$$、$$a^\dagger=\frac{1}{\sqrt{2m\hbar\omega}}(u-iv)$$。如果它们当真交换，$$a^\dagger a$$ 就正比于 $$u^2+v^2$$，能谱会是一条连续的射线，每个 $$E\ge0$$ 都可取——**经典圆变成了量子圆**。真实的差别发生在一次运算上：$$aa^\dagger - a^\dagger a = I$$。这一条**迫使圆的半径只能取离散值**，并且把圆心从"可能取 0"推高到了 $$\hbar\omega/2$$。
 
@@ -455,7 +455,7 @@ $$a$$ 把箭头全部反向。**向上走没有尽头**（因为没有上界：$
 2. 它是 Heisenberg 不确定性原理的等号情形（$$\Delta x\cdot\Delta p = \hbar/2$$），即"最确定性"的量子态；
 3. 它是热方程的热核，也是经典 Gauss 概率密度。
 
-第 1 条解释了为什么基态在动量表象里长得一模一样；第 2 条解释了为什么它是能量的下界——**再想让它更"集中"，就得把动量摊得更开，动能会涨过势能**。第 3 条联系到 $$\lvert\psi_0\rvert^2$$ 是概率密度：$$x$$ 的分布是一个方差 $$\sigma^2=\hbar/(2m\omega)$$ 的正态分布。原文 MP47 提到的"传统解法要先抓渐近解"，抓的就是这个 Gauss；代数解法直接从 $$a\psi_0=0$$ 一步得到它。
+第 1 条解释了为什么基态在动量表象里长得一模一样；第 2 条解释了为什么它是能量的下界——**再想让它更"集中"，就得把动量摊得更开，动能会涨过势能**。第 3 条联系到 $$\lvert\psi_0\rvert^2$$ 是概率密度：$$x$$ 的分布是一个方差 $$\sigma^2=\hbar/(2m\omega)$$ 的正态分布。"传统解法要先抓渐近解"，抓的就是这个 Gauss；代数解法直接从 $$a\psi_0=0$$ 一步得到它。
 
 ### 4.5 几何 ↔ 物理 ↔ 代数，三条线的交点
 
@@ -477,7 +477,7 @@ $$a$$ 把箭头全部反向。**向上走没有尽头**（因为没有上界：$
 
 ### 经典题 5.1（用代数关系解出全部算子恒等式）
 
-**考点**：对易子的 Leibniz 律（定理 3.8，第 32 章）。**在本章结构里的位置**：定理 3.9 的完整化；原文 MP46 把这两条留作习题，我们把它补全。
+**考点**：对易子的 Leibniz 律（定理 3.8，第 32 章）。**在本章结构里的位置**：定理 3.9 的完整化；这两条常留作习题，我们把它补全。
 
 **题**：只用 $$[a,a^\dagger]=I$$ 与 $$N=a^\dagger a$$，求 $$[a,N]$$ 与 $$[a^\dagger,N]$$。
 
@@ -951,7 +951,7 @@ $$a=\sqrt2\,K_+,\qquad a^\dagger=-\sqrt2\,K_- .$$
 - **Landau & Lifshitz, 《量子力学（非相对论理论）》第 23 节**：谐振子的代数解法的最短版本，本章定理 3.14–3.15 的推导结构与之平行。
 - **Feynman, 《物理学讲义》第三卷，第 8–9 章**：用"两个态的耦合"语言讲谐振子的矩阵元，与本章 (5.1) 的三对角矩阵是同一种图像。
 - **专家依据 `_experts/analysis/harmonic-fourier.md` 第 4 节**：Gauss 核为什么是不确定性原理的等号情形、为什么是 Fourier 变换的特征函数。本章 4.4 的两条读法都在这一节有完整证明。
-- **顾樵《数学物理方法》中的谐振子分析解**：原文 MP47 推荐的那条被我们绕过的路，作为对照值得走一遍。
+- **顾樵《数学物理方法》中的谐振子分析解**：这是被我们绕过的传统路线，作为对照值得走一遍。
 ---
 
 <!-- chapter-nav -->
